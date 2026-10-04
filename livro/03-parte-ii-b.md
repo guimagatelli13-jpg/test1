@@ -27,7 +27,7 @@ Toda abstração esconde algo. O risco é esconder algo que importa.
 
 Se o modelo do Vértice tratar todas as amostras como iguais ("uma amostra é uma amostra"), ele esconde a diferença entre amostras de rotina e amostras de investigação de desvio — que têm regras, prazos e responsáveis completamente diferentes. Se o modelo da Marzipã tratar a capacidade de produção como "número de bolos por dia", ele esconde que um bolo de três andares ocupa a equipe tanto quanto seis bolos simples.
 
-Duas perguntas ajudam a detectar abstrações perigosas:
+Para detectar abstrações perigosas, pergunte:
 
 - **"Existem dois casos que este modelo trata como iguais, mas que as pessoas tratam de forma diferente?"** Se existirem, a abstração está grossa demais.
 - **"Existem detalhes neste modelo que nenhuma decisão usa?"** Se existirem, ela está fina demais.
@@ -155,15 +155,15 @@ Um Process Map útil registra:
 >              │                                          ▼                                 │
 >              │                        registra na planilha ◄──────────────────────────────┘
 >              │                                          │
->              │                         ⏳ FILA DE ANÁLISE (mediana: 7h)
+>              │                         ESPERA: FILA DE ANÁLISE (mediana 7h)
 >              │                                          │
 > ANALISTA     │                        analisa ─► imprime resultado
 >              │                                          │
->              │                         ⏳ espera digitação (mediana: 5h; digita em lote)
+>              │                         ESPERA: digitação (mediana 5h; digita em lote)
 >              │                                          │
 >              │                        digita resultados na planilha ─► compara c/ especificação
 >              │                                          │
->              │                         ⏳ FILA DE REVISÃO (mediana: 16h)
+>              │                         ESPERA: FILA DE REVISÃO (mediana 16h)
 >              │                                          │
 > COORDENAÇÃO  │                        revisa ─◇ dados ok? ──não──► devolve ao analista ──┐
 >              │                                │sim              (retrabalho: ~1 em 8)    │
@@ -338,6 +338,8 @@ A pergunta 5 antecipa o que o Capítulo 32 vai tratar em profundidade. Por ora, 
 
 **Exercício 9.1 · F · M0** — Modele as entidades, atributos e relações de uma biblioteca comunitária que empresta livros. Inclua pelo menos quatro entidades. Para cada relação, escreva a cardinalidade nos dois sentidos.
 
+> **Para conferir** — Uma boa resposta distingue **título** (a obra) de **exemplar** (a cópia física): um título tem muitos exemplares, e o que se empresta é o exemplar. Entidades mínimas: usuário, título, exemplar, empréstimo; frequentemente também reserva e multa. Cardinalidades: um usuário tem muitos empréstimos, cada empréstimo é de um usuário; um título tem muitos exemplares, cada exemplar é de um título; cada empréstimo (no modelo mais simples) se refere a um exemplar, e um exemplar tem muitos empréstimos ao longo do tempo. Se o seu modelo tem só "livro", ele não consegue representar duas cópias do mesmo título nem saber qual delas está emprestada.
+
 **Exercício 9.2 · P · M0** — Para o modelo do exercício anterior, identifique os estados de cada entidade que os tenha. Qual é a fonte da verdade para "este livro está disponível"?
 
 **Exercício 9.3 · P · M4** — A tabela abaixo é um trecho fictício, mas realista, dos registros de clientes de uma pequena loja. Avalie a qualidade pelas seis dimensões e liste cada problema encontrado.
@@ -449,12 +451,14 @@ No Capítulo 9, você identificou os estados das entidades. Uma **máquina de es
 
 ```
                          sinal pago
-   RASCUNHO ──► AGUARDANDO SINAL ─────────► CONFIRMADO ──► EM PRODUÇÃO ──► PRONTO ──► ENTREGUE ──► CONCLUÍDO
-       │               │                        │               │                                (saldo pago)
-       │               │ prazo de sinal         │ cancelamento  │ cancelamento
-       │               │ vencido                │ pela cliente  │ (só com decisão de Helena)
-       ▼               ▼                        ▼               ▼
-   DESCARTADO      EXPIRADO                 CANCELADO       CANCELADO
+   RASCUNHO ──► AGUARDANDO SINAL ─────────► CONFIRMADO ──► EM PRODUÇÃO ──► PRONTO
+       │               │                        │               │            │
+       ▼               ▼                        ▼               ▼            ▼
+   DESCARTADO      EXPIRADO                 CANCELADO       CANCELADO     ENTREGUE
+                   (prazo do sinal          (pedido da      (só com          │
+                    vencido)                 cliente)        decisão de      │ saldo pago
+                                                             Helena)         ▼
+                                                                         CONCLUÍDO
 ```
 
 A máquina de estado responde a perguntas que, sem ela, ficam para ser decididas na hora — geralmente mal:

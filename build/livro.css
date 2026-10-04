@@ -11,7 +11,7 @@
 
 @page {
   size: A4;
-  margin: 21mm 20mm 22mm 22mm;
+  margin: 19mm 19mm 20mm 21mm;
   @top-left {
     content: string(parte);
     font: 7.5pt "IBM Plex Sans", "Noto Sans", sans-serif;
@@ -46,15 +46,15 @@
 
 html {
   font-family: "Noto Serif", "DejaVu Serif", serif;
-  font-size: 10pt;
-  line-height: 1.47;
+  font-size: 9.8pt;
+  line-height: 1.44;
   color: var(--tinta);
   hyphens: auto;
 }
 
 body { margin: 0; }
 
-p { margin: 0 0 0.62em 0; text-align: justify; orphans: 3; widows: 3; }
+p { margin: 0 0 0.55em 0; text-align: justify; orphans: 3; widows: 3; }
 
 a { color: inherit; text-decoration: none; }
 
@@ -166,8 +166,8 @@ h1.parte + p, h1.parte + p + p, h1.parte + p + p + p {
 h2 {
   font-size: 19pt;
   line-height: 1.2;
-  margin: 0 0 7mm 0;
-  padding-top: 8mm;
+  margin: 0 0 6mm 0;
+  padding-top: 4mm;
   break-before: page;
   string-set: capitulo content();
 }
@@ -313,3 +313,33 @@ img { max-width: 100%; }
 .apendices ~ h2 { font-size: 16pt; }
 
 td:first-child, th:first-child { hyphens: manual; }
+
+/* Formulários dos apêndices: um pouco maiores para impressão e preenchimento */
+h2.apendice ~ pre { font-size: 8.2pt; line-height: 1.45; break-inside: auto; }
+
+/* Listas de verificação: caixa desenhada em texto, alinhada ao item */
+ul.task-list { list-style: none; padding-left: 1mm; }
+ul.task-list li { padding-left: 5.5mm; text-indent: -5.5mm; margin-bottom: 0.35em; }
+ul.task-list li input { display: none; }
+ul.task-list li label::before {
+  content: "☐";
+  font-family: "DejaVu Sans", sans-serif;
+  display: inline-block;
+  width: 5.5mm;
+  text-indent: 0;
+  color: #5b6470;
+}
+
+/* Caixas com diagrama não se partem entre páginas */
+div.com-diagrama { break-inside: avoid; }
+
+/* Diagramas: sem quebra de linha; corpo ajustado pelo filtro */
+pre.diagrama { white-space: pre; }
+pre.fs79 { font-size: 7.9pt; }
+pre.fs76 { font-size: 7.6pt; }
+pre.fs73 { font-size: 7.3pt; }
+pre.fs70 { font-size: 7.0pt; }
+pre.fs67 { font-size: 6.7pt; }
+pre.fs64 { font-size: 6.4pt; }
+pre.fs61 { font-size: 6.1pt; }
+pre.fs58 { font-size: 5.8pt; }

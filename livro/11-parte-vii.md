@@ -134,7 +134,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 ## P01 — Automação pessoal
 
-**Pré-requisitos:** Capítulos 1 a 15. **Modos de IA:** M0 na análise e na especificação; M3 na construção; M1 na revisão do Test Plan. **Duração sugerida:** duas a três semanas (incluindo duas semanas de uso).
+**Pré-requisitos:** Capítulos 1 a 15. **Modos de IA:** M0 na análise e na especificação; M3 na construção; M1 na revisão da lista de testes. **Duração sugerida:** duas a três semanas (incluindo duas semanas de uso).
 
 **Objetivo.** Construir uma automação simples e de baixo risco, completa nos dez elementos, e operá-la por duas semanas.
 
@@ -146,9 +146,9 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Competências desenvolvidas.** Automation Thinking, Specification, Testing, Technology Literacy.
 
-**Briefing.** Descreva o problema em um mini Problem Statement (cinco linhas, com indicador). Aplique a Escada: a tarefa poderia ser eliminada, reorganizada ou padronizada? Avalie os cinco fatores de automação. Especifique os dez elementos. Escreva o AI Delegation Brief. Construa no ambiente de teste. Escreva e execute um Test Plan com pelo menos oito casos, sendo pelo menos três negativos, um de duplicidade e um de falha de dependência. Coloque em uso por duas semanas, com log. Meça o indicador.
+**Briefing.** Descreva o problema em um mini Problem Statement (cinco linhas, com indicador). Aplique a Escada: a tarefa poderia ser eliminada, reorganizada ou padronizada? Avalie os cinco fatores de automação. Especifique os dez elementos do Capítulo 15 — essa especificação é o seu pedido de construção à IA (o formato completo de delegação, T10, só será apresentado no Capítulo 21; aqui, a especificação dos dez elementos, acrescida das restrições de segurança, é suficiente). Construa no ambiente de teste. Antes de usar, escreva e execute uma lista de pelo menos oito situações de teste, com o resultado esperado de cada uma: pelo menos três em que a automação deve se recusar a agir ou separar o caso, uma de execução duplicada e uma de falha do serviço usado. Registre o resultado de cada situação (o Capítulo 30 aprofundará testes; aqui, basta uma lista planejada antes e registrada depois). Coloque em uso por duas semanas, com log. Meça o indicador.
 
-**Entregáveis.** Mini Problem Statement; análise da Escada e dos cinco fatores; especificação dos dez elementos; T10 AI Delegation Brief; automação funcionando; T11 Test Plan executado com evidência; log de duas semanas; reflexão.
+**Entregáveis.** Mini Problem Statement; análise da Escada e dos cinco fatores; especificação dos dez elementos usada como pedido de construção; automação funcionando; lista de testes executada, com resultado e evidência de cada situação; log de duas semanas; reflexão.
 
 **Critérios de sucesso.** Duas semanas de operação sem falha não tratada; teste de duplicidade aprovado; indicador medido antes e depois.
 
@@ -159,8 +159,8 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 | Critério | Crítico | Proficiente (3) | Avançado (4) |
 |---|---|---|---|
 | Justificativa da automação | sim | Escada e cinco fatores aplicados; automação ligada ao indicador. | Mostra o que foi resolvido antes de automatizar, nos degraus baixos. |
-| Especificação | sim | Dez elementos definidos; brief com nove blocos. | Antecipa exceções que só apareceram depois em outros alunos ou contextos. |
-| Testes | sim | Test Plan com negativos, duplicidade e falha de dependência, com evidência. | Aplica teste de sabotagem e registra o que descobriu. |
+| Especificação | sim | Dez elementos definidos, com restrições de segurança, usados como pedido de construção. | Antecipa exceções que só apareceriam na operação, e mostra como chegou a elas. |
+| Testes | sim | Lista de testes planejada antes, com recusas, duplicidade e falha de serviço, executada com evidência. | Quebra de propósito uma regra e verifica se algum teste detecta. |
 | Operação | não | Log de duas semanas; indicador medido. | Usa o log para ajustar a automação e registra a decisão. |
 | Segurança | sim | Nenhum segredo exposto; ambiente de teste separado. | Documenta o pior comportamento possível e como seria interrompido. |
 
@@ -168,11 +168,11 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Transferência.** Reescreva a especificação supondo que a automação passe a servir uma equipe de vinte pessoas, e não só você. Que elementos mudam (identidade, permissões, exceções, supervisão)? Quais ficam iguais?
 
-**Resultado de portfólio.** Um caso curto com o antes e depois medido, a especificação dos dez elementos e o que o Test Plan revelou.
+**Resultado de portfólio.** Um caso curto com o antes e depois medido, a especificação dos dez elementos e o que os testes revelaram.
 
 ## P02 — Sistema pessoal
 
-**Pré-requisitos:** Capítulos 1 a 18. **Modos de IA:** M0 em modelagem, regras e requisitos; M2 nas alternativas de arquitetura; M3 na construção; M4 em uma auditoria. **Duração sugerida:** quatro a cinco semanas (incluindo quatro de uso).
+**Pré-requisitos:** Capítulos 1 a 19. **Modos de IA:** M0 em modelagem, regras e requisitos; M2 nas alternativas de arquitetura; M3 na construção; M4 em uma auditoria. **Duração sugerida:** quatro a cinco semanas (incluindo quatro de uso).
 
 **Objetivo.** Construir um sistema pequeno com dados, estados e decisões, e usá-lo de verdade por quatro semanas.
 
@@ -186,7 +186,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Briefing.** Escreva o Problem Statement. Modele entidades, atributos, relações (com cardinalidade), identificadores, estados e fonte da verdade. Escreva regras como tabela de decisão e máquina de estado; escreva três invariantes. Escreva requisitos dos seis tipos, priorizados, com critérios de aceitação para os "deve". Gere três alternativas de arquitetura e registre a decisão. Construa em fatias. Teste. Use por quatro semanas. Faça uma retrospectiva.
 
-**Entregáveis.** T02; modelo de dados; tabelas de decisão e máquina de estado; T06 Requirements; T07 Acceptance Criteria; T09 Decision Log (mínimo três entradas); sistema funcionando; T11 executado; uma auditoria (M4) do próprio sistema por IA em sessão separada, com seus achados avaliados; T14 Retrospective.
+**Entregáveis.** T02; modelo de dados; tabelas de decisão e máquina de estado; T06 Requirements; T07 Acceptance Criteria; Decision Log (mínimo três entradas, na versão mínima do Capítulo 3 ou na completa do T09); sistema funcionando; registro dos testes executados (o formato T11 do Apêndice A pode ser usado; o Capítulo 30 o detalha); uma auditoria (M4): numa conversa nova, entregue a uma IA o modelo, as regras e uma descrição do sistema construído e peça que aponte inconsistências entre eles — avalie cada achado; retrospectiva (T14).
 
 **Critérios de sucesso.** Uso real por quatro semanas; invariantes verificados ao fim do período; indicador medido.
 

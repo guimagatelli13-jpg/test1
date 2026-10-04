@@ -218,14 +218,23 @@ A diferença está em três conceitos que transformam um conjunto de tabelas num
 > **Caso Marzipã** — O modelo conceitual do Capítulo 9 vira tabelas assim (trecho):
 >
 > ```
-> CLIENTES                         PEDIDOS                               ITENS_PEDIDO
-> ┌────┬────────────┬──────────┐   ┌──────┬────────────┬─────────┬─────────────┐   ┌────┬───────────┬────────────┬────┬──────┐
-> │ id │ nome       │ telefone │   │ id   │ cliente_id │ entrega │ status      │   │ id │ pedido_id │ produto_id │ qt │ UTs  │
-> ├────┼────────────┼──────────┤   ├──────┼────────────┼─────────┼─────────────┤   ├────┼───────────┼────────────┼────┼──────┤
-> │ 17 │ Ana Souza  │ 1198...  │◄──┤ 1284 │ 17         │ 14/06   │ aguard_sinal│◄──┤ 91 │ 1284      │ 3          │ 1  │ 4    │
-> │ 22 │ Rita Melo  │ 1197...  │   │ 1285 │ 22         │ 14/06   │ confirmado  │   │ 92 │ 1284      │ 8          │ 2  │ 2    │
-> └────┴────────────┴──────────┘   └──────┴────────────┴─────────┴─────────────┘   └────┴───────────┴────────────┴────┴──────┘
->                                    cliente_id → CLIENTES.id                         pedido_id → PEDIDOS.id
+> CLIENTES                         PEDIDOS
+> ┌────┬───────────┬──────────┐    ┌──────┬────────────┬─────────┬──────────────┐
+> │ id │ nome      │ telefone │    │ id   │ cliente_id │ entrega │ status       │
+> ├────┼───────────┼──────────┤    ├──────┼────────────┼─────────┼──────────────┤
+> │ 17 │ Ana Souza │ 1198...  │◄───┤ 1284 │ 17         │ 14/06   │ aguard_sinal │
+> │ 22 │ Rita Melo │ 1197...  │    │ 1285 │ 22         │ 14/06   │ confirmado   │
+> └────┴───────────┴──────────┘    └──────┴────────────┴─────────┴──────────────┘
+>                                  PEDIDOS.cliente_id → CLIENTES.id
+>
+> ITENS_PEDIDO
+> ┌────┬───────────┬────────────┬────┬─────┐
+> │ id │ pedido_id │ produto_id │ qt │ UTs │
+> ├────┼───────────┼────────────┼────┼─────┤
+> │ 91 │ 1284      │ 3          │ 1  │ 4   │
+> │ 92 │ 1284      │ 8          │ 2  │ 2   │
+> └────┴───────────┴────────────┴────┴─────┘
+> ITENS_PEDIDO.pedido_id → PEDIDOS.id
 > ```
 >
 > A relação "um pedido tem muitos itens" é implementada colocando o identificador do pedido em cada item — e não criando colunas "item1", "item2", "item3" na tabela de pedidos, que é o erro mais comum em planilhas.
@@ -344,6 +353,8 @@ Esquemas são especialmente importantes quando um dos lados é uma IA. Se você 
 **Exercício 12.1 · F · M0** — Transforme o modelo da biblioteca comunitária (Exercício 9.1) em tabelas, indicando chave primária, chaves estrangeiras e o tipo de cada coluna.
 
 **Exercício 12.2 · F · M0** — Leia o JSON do pedido da Marzipã e responda: quantos itens tem o pedido? Qual o total de UTs? O pedido pode entrar em produção? Por quê?
+
+> **Para conferir** — Dois itens. Total de 6 UT: 4 do bolo decorado de dois andares e 2 dos 100 brigadeiros — o campo `uts` já representa o total da linha, com a quantidade incorporada. O pedido não pode entrar em produção: está em `aguardando_sinal`, com `sinal_pago: false`, e pela máquina de estado só pedidos confirmados seguem para produção. Se você somou 4 + 2 × 2 = 8, encontrou uma ambiguidade real: o exemplo não diz se `uts` é por unidade ou por linha. É por isso que esquemas devem documentar o significado de cada campo, e não só o tipo.
 
 **Exercício 12.3 · P · M4** — O JSON abaixo foi devolvido por uma IA encarregada de extrair um pedido de uma mensagem. Liste todos os problemas, considerando o esquema implícito no exemplo do capítulo.
 
@@ -498,7 +509,7 @@ O **contrato** de uma API é tudo o que ela promete: quais endpoints existem, qu
 
 Contratos mudam. Por isso, muitas APIs têm **versões** (o `v1` no endereço). Uma mudança que quebra quem já usa a API — remover um campo, mudar um formato — deveria vir numa versão nova, com prazo para migrar. Nem todos os fornecedores fazem isso bem. Ao depender de uma API externa, pergunte: como ficarei sabendo de mudanças? O que acontece com minha integração se um campo sumir?
 
-Dois outros elementos do contrato aparecem com frequência:
+O contrato costuma incluir ainda:
 
 - **Paginação.** Listas grandes são devolvidas em partes ("páginas"). Uma integração que lê só a primeira página e acha que leu tudo é um erro clássico.
 - **Limites de taxa.** O serviço limita quantas requisições você pode fazer num período. Ultrapassar gera `429`.
@@ -593,7 +604,11 @@ A recomendação, sempre que possível, é **evitar sincronização de mão dupl
 
 **Exercício 13.1 · F · M0** — Para cada ação, escolha o método mais adequado (`GET`, `POST`, `PATCH`, `DELETE`): (a) listar as amostras aguardando revisão; (b) registrar uma nova amostra; (c) mudar o status de uma amostra para "aprovada"; (d) cancelar o registro de uma amostra feito por engano; (e) consultar a especificação de um produto.
 
+> **Para conferir** — (a) `GET`. (b) `POST`. (c) `PATCH`. (d) `DELETE`, ou `PATCH` mudando o status para "cancelado" — em ambientes com trilha de auditoria, como o Vértice, a segunda forma é preferível, porque preserva o registro. (e) `GET`.
+
 **Exercício 13.2 · F · M0** — Uma integração recebeu, em sequência, os códigos 503, 503, 200. Outra recebeu 401, 401, 401. Explique o que provavelmente aconteceu em cada caso e o que a integração deveria ter feito.
+
+> **Para conferir** — No primeiro caso, houve instabilidade momentânea do serviço, e as novas tentativas com intervalo resolveram — comportamento correto. No segundo, a credencial é inválida ou expirou; repetir não adianta e pode até bloquear a conta. A integração deveria ter parado na primeira resposta 401, registrado o erro e alertado o responsável pela credencial.
 
 **Exercício 13.3 · P · M0** — Escreva a requisição (método, endpoint, headers e corpo em JSON) para criar no sistema da Marzipã uma alteração de pedido: a cliente quer trocar o recheio de um item. Depois, escreva três respostas possíveis: sucesso, alteração recusada porque o pedido está em produção, e pedido inexistente. Use códigos de status adequados.
 

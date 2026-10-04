@@ -115,7 +115,7 @@ Os onze projetos (P00 a P10) estão reunidos na Parte VII, mas **não devem ser 
 |---|---|---|
 | P00 — Diagnóstico | Capítulo 5 | Transformar situação vaga em problema definido |
 | P01 — Automação pessoal | Capítulo 15 | Automação simples e de baixo risco |
-| P02 — Sistema pessoal | Capítulo 18 | Sistema pequeno com dados, estados e decisões |
+| P02 — Sistema pessoal | Capítulo 19 | Sistema pequeno com dados, estados e decisões |
 | P03 — Processo real | Capítulo 20 | Mapear um processo real e propor melhoria |
 | P04 — Automação robusta | Capítulo 24 | Exceções, logs e recuperação |
 | P05 — Integração | Capítulo 25 | Integrar dois ou mais sistemas |
@@ -610,6 +610,17 @@ Cada movimento produz artefatos. O Apêndice A traz templates completos para os 
 | Testar e validar | T11 Test Plan · T12 Validation Report |
 | Evoluir | T14 Retrospective |
 | Transversais | T15 Portfolio Case · T16 Competency Assessment |
+
+Um desses artefatos deve ser começado já, antes de ser estudado em detalhe no Capítulo 20: o **Decision Log**, a lista das decisões do seu trabalho. Até lá, use uma versão mínima, com quatro campos por decisão:
+
+```
+DECISÃO:         o que foi decidido, numa frase
+ALTERNATIVAS:    o que mais foi considerado
+POR QUÊ:         a razão principal da escolha
+COMO SABEREMOS:  o que indicaria, mais adiante, se a decisão foi boa ou ruim
+```
+
+Vários exercícios das Partes II a IV pedem que você registre decisões. Use essa versão mínima até o Capítulo 20, que acrescenta evidência, riscos, hipóteses e validação.
 
 Artefatos não são burocracia quando cumprem uma de três funções: **ajudar você a pensar** (o ato de preencher revela lacunas), **comunicar** (outra pessoa, ou uma IA, consegue trabalhar a partir dele) ou **lembrar** (daqui a seis meses, alguém entende o que foi feito e por quê). Um artefato que não cumpre nenhuma dessas funções deve ser simplificado ou eliminado.
 

@@ -172,6 +172,8 @@ c) "Os atrasos acontecem porque o fornecedor de embalagens é lento."
 d) "O sistema de vendas é ruim."
 e) "Quando o vendedor A está de férias, os pedidos atrasam mais."
 
+> **Para conferir** — (a) Interpretação; seria sustentada ou refutada por registros de reclamações ou pela taxa de entregas fora do prazo. (b) Fato. (c) Hipótese; para verificá-la, compare os pedidos atrasados com o tempo de entrega das embalagens — quantos atrasos dependiam delas? (d) Interpretação; fatos possíveis: erros registrados, tempo de resposta, interrupções. (e) Hipótese (ou fato, se já houver dados); compare a taxa de atraso nos períodos de férias de A com os demais períodos. Se você classificou (c) ou (e) como fato, observe que ambas explicam uma relação de causa que ninguém mediu.
+
 **Exercício 4.2 · P · M0** — Os três Problem Statements abaixo têm defeitos. Identifique-os usando os oito elementos da anatomia de um problema e reescreva o melhor dos três.
 
 a) "Precisamos de um aplicativo para melhorar a comunicação entre a escola e os pais."
@@ -217,7 +219,7 @@ Um **estoque** é algo que se acumula: amostras aguardando análise, pedidos agu
                                 └───────────────────┘
 ```
 
-Três consequências práticas:
+Daí decorrem consequências práticas:
 
 **Se a entrada é maior que a saída, o estoque cresce — sempre.** Não importa o esforço ou a boa vontade. Se chegam 50 amostras por dia e o laboratório consegue concluir 45, a fila cresce cerca de 5 por dia até que algo mude: chegam menos, sai mais ou alguém para de registrar.
 
@@ -236,7 +238,7 @@ Em qualquer sequência de etapas, a etapa com menor capacidade limita a saída d
                                   └── gargalo: o sistema inteiro sai a ≈ 35/dia
 ```
 
-Duas consequências contraintuitivas:
+Isso tem consequências que contrariam a intuição:
 
 **Melhorar uma etapa que não é o gargalo não melhora o sistema.** No exemplo acima, se o registro passar a processar 200 amostras por dia, os laudos não sairão mais rápido. A fila diante da revisão só vai crescer mais depressa. Essa é a armadilha clássica da automação: automatiza-se a etapa que é mais fácil de automatizar, não a que limita o sistema.
 
@@ -305,7 +307,7 @@ O **System Map** é a representação do sistema que você vai usar como referê
 > ```
 >  AMBIENTE: diretoria industrial · clientes da fábrica · fornecedores · auditorias externas
 > ┌───────────────────────────────── FRONTEIRA DO SISTEMA ──────────────────────────────────┐
-> │                                                                                          │
+> │                                                                                         │
 > │  PRODUÇÃO ──(amostra física + etiqueta)──► RECEPÇÃO ──► [FILA DE ANÁLISE] ──► ANALISTAS │
 > │     ▲                                     (registro      (estoque)           │   ▲      │
 > │     │                                      na planilha)                      │   │      │
@@ -321,10 +323,10 @@ O **System Map** é a representação do sistema que você vai usar como referê
 > │     │      ◄─────────(laudo por e-mail: libera/bloqueia lote)──────── COORDENAÇÃO       │
 > │     │                                                                (aprovação)        │
 > │     └──── (pedidos de urgência, por telefone e mensagem) ───────────────► ANALISTAS     │
-> │                                                                                          │
+> │                                                                                         │
 > │  ESPECIFICAÇÕES DE PRODUTO (documentos controlados) ··········· consultadas na análise  │
 > │  LOTES BLOQUEADOS NO ESTOQUE DA FÁBRICA (estoque físico afetado pelo sistema)           │
-> └──────────────────────────────────────────────────────────────────────────────────────────┘
+> └─────────────────────────────────────────────────────────────────────────────────────────┘
 >   Laço de reforço: atraso → pressão → urgências → interrupções → erros → retrabalho → atraso
 > ```
 >
@@ -345,6 +347,8 @@ Um System Map útil passa em quatro testes:
 
 **Exercício 5.1 · F · M0** — Para cada item, diga se é estoque ou fluxo, e em que sistema faz sentido: (a) e-mails não lidos; (b) pedidos recebidos por dia; (c) contas a pagar no mês; (d) pacientes atendidos por hora; (e) livros emprestados e não devolvidos; (f) novos cadastros por semana.
 
+> **Para conferir** — (a) Estoque. (b) Fluxo. (c) Estoque — o total acumulado a pagar num momento; o fluxo correspondente seria "contas recebidas por mês". (d) Fluxo. (e) Estoque. (f) Fluxo. Uma regra prática: estoque responde a "quantos há agora?"; fluxo responde a "quantos por dia, semana ou mês?".
+
 **Exercício 5.2 · P · M0** — Um escritório de contabilidade recebe cerca de 120 documentos de clientes por semana. A triagem consegue processar 200 por semana, a digitação 150, a conferência 90 e o arquivamento 300. (a) Onde está o gargalo? (b) O que acontece com a fila diante da conferência ao longo de um mês? (c) O sócio propõe automatizar a digitação com IA. Que efeito isso terá sobre o tempo total? (d) Proponha duas intervenções que atuem no gargalo, sendo pelo menos uma sem tecnologia.
 
 > **Para conferir** — (a) Conferência, com 90 por semana. (b) A fila cresce cerca de 30 documentos por semana (entram 120, saem 90), ou seja, aproximadamente 120 a mais ao fim de um mês, e o tempo de espera aumenta continuamente. (c) Nenhum efeito sobre a saída; a digitação já processa mais do que a conferência. A fila diante da conferência continua crescendo no mesmo ritmo. (d) Exemplos: redistribuir parte do tempo de quem faz triagem ou arquivamento (com capacidade ociosa) para a conferência; reduzir o que precisa ser conferido (conferência por amostragem em documentos de baixo risco, com regra explícita); melhorar a qualidade na entrada para reduzir o tempo por conferência. Se você propôs "automatizar a conferência com IA", pergunte-se se isso está no degrau mínimo suficiente e como seria verificado.
@@ -354,6 +358,8 @@ Um System Map útil passa em quatro testes:
 **Exercício 5.4 · P · M0** — No seu mapa, identifique pelo menos um laço de reforço e um de equilíbrio. Para o de reforço, proponha um ponto onde ele poderia ser quebrado.
 
 **Exercício 5.5 · A · M0 · Transferência** — Numa biblioteca comunitária, livros atrasados geram multas; as multas fazem com que alguns usuários evitem voltar à biblioteca para devolver; os livros não devolvidos reduzem o acervo disponível; com menos acervo, menos pessoas frequentam; com menos frequência, a biblioteca recebe menos doações. Desenhe o laço, identifique se é de reforço ou equilíbrio, e proponha uma intervenção de degrau 1 (reorganizar) que o quebre. Depois, aponte um efeito de segunda ordem possível dessa intervenção.
+
+> **Para conferir** — É um laço de reforço: multas → usuários evitam voltar → menos devoluções → acervo menor → menos frequência → menos doações → acervo ainda menor. Intervenções de degrau 1: anistia periódica para devolução; substituir multa por suspensão temporária; caixa de devolução sem atendimento, que elimina o constrangimento de encontrar alguém. Efeito de segunda ordem plausível: sem a multa, parte dos usuários pode demorar mais para devolver — por isso, a intervenção deveria vir acompanhada do acompanhamento do tempo médio de devolução.
 
 > **Fim da etapa de pré-requisitos do Projeto P00.** Você já pode fazer o Projeto P00 — Diagnóstico (Parte VII). Ele consolida os Capítulos 4 e 5 num caso real seu.
 
@@ -456,7 +462,7 @@ Para cada interface, pergunte:
 
 No Vértice, a interface entre "análise" e "revisão" é uma folha impressa do instrumento, que o analista digita numa planilha, que a coordenação abre quando tem tempo. Três problemas cabem nessa frase: mudança de formato (impresso para digitado), ausência de sinal (ninguém avisa que algo chegou) e responsabilidade difusa (se a digitação estiver errada, quem percebe?).
 
-> **Anti-padrão: decompor pela ferramenta** — *Sintoma:* as partes do problema têm nomes de ferramentas ("a parte do WhatsApp", "a parte da planilha", "a parte da IA"). *Causa:* a pessoa pensa a partir dos meios disponíveis, não das funções necessárias. *Consequência:* a solução fica presa às ferramentas atuais; trocar uma ferramenta exige redesenhar tudo; funções que nenhuma ferramenta cobre ficam invisíveis. *Correção:* decomponha por etapa, função, entidade, decisão ou risco. Ferramentas entram depois, como forma de implementar uma parte.
+> **Anti-padrão: decompor pela ferramenta** — *Sintoma:* as partes do problema têm nomes de ferramentas ("a parte do aplicativo de mensagens", "a parte da planilha", "a parte da IA"). *Causa:* a pessoa pensa a partir dos meios disponíveis, não das funções necessárias. *Consequência:* a solução fica presa às ferramentas atuais; trocar uma ferramenta exige redesenhar tudo; funções que nenhuma ferramenta cobre ficam invisíveis. *Correção:* decomponha por etapa, função, entidade, decisão ou risco. Ferramentas entram depois, como forma de implementar uma parte.
 
 ### Decompor com IA
 
@@ -472,7 +478,7 @@ A ordem recomendada é sempre a mesma: **primeiro você decompõe sozinho (M0), 
 
 **Exercício 6.3 · P · M0** — Os itens abaixo são partes de uma decomposição feita para o problema "pedidos da Confeitaria Marzipã chegam incompletos e há erros de capacidade". Identifique os problemas da decomposição (sobreposição, falta de cobertura, nomes de ferramenta, partes não delegáveis) e reescreva-a.
 
-1. Chatbot do WhatsApp
+1. Chatbot do aplicativo de mensagens
 2. Planilha de pedidos
 3. Melhorar o atendimento
 4. Verificar se o pedido está completo

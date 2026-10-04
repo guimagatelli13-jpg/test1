@@ -55,6 +55,8 @@ Quatro técnicas garantem idempotência:
 
 Um teste simples revela se uma automação é idempotente: **execute-a duas vezes seguidas com a mesma entrada**. Se o mundo mudou duas vezes — duas mensagens, dois registros, duas cobranças —, ela não é.
 
+> **▲ Avançado — gravar e avisar sem inconsistência** — Um problema clássico aparece quando uma operação precisa, ao mesmo tempo, mudar dados no banco e avisar outro sistema (enviar uma mensagem, chamar uma API). Se ela grava e depois avisa, uma falha entre os dois passos deixa o dado mudado sem aviso; se avisa e depois grava, uma falha deixa um aviso sobre algo que não aconteceu. Uma solução muito usada é registrar a intenção de avisar *na mesma transação* que muda os dados — numa tabela de "mensagens a enviar" — e ter um processo separado que lê essa tabela, envia e marca como enviada, de forma idempotente. Esse arranjo, conhecido como padrão *outbox* (caixa de saída), troca a ilusão de simultaneidade por uma garantia explícita: tudo o que foi gravado será avisado pelo menos uma vez, e o receptor trata duplicatas. Ao delegar operações desse tipo, pergunte explicitamente à IA como ela garante a consistência entre gravar e avisar.
+
 ### Estado e retomada
 
 Automações que processam vários itens precisam lembrar onde estão. Se a importação de um arquivo com 40 resultados falha no 23º, o que acontece quando ela recomeça? Sem **estado por item**, há duas opções ruins: começar do zero (e duplicar os 22 primeiros, se não for idempotente) ou abandonar o arquivo (e perder os 18 restantes).
@@ -115,6 +117,8 @@ Antes de colocar uma automação em operação, verifique:
 **Exercício 24.1 · F · M0** — Para a automação de lembretes de Lucas, monte o catálogo de exceções com pelo menos oito itens, com frequência estimada e tratamento.
 
 **Exercício 24.2 · P · M0** — Classifique cada erro como transitório ou permanente e diga o tratamento: (a) o serviço de mensagens respondeu 503; (b) a planilha de contas foi renomeada e a automação não a encontra; (c) a API respondeu 429; (d) a credencial do e-mail expirou; (e) a conexão caiu no meio do envio.
+
+> **Para conferir** — (a) Transitório: repetir com intervalo crescente. (b) Permanente: não repetir; alertar — é um erro de configuração. (c) Transitório: esperar e repetir mais devagar. (d) Permanente até alguém renovar a credencial: não repetir; alertar o responsável. (e) Transitório, com um cuidado: a mensagem pode ter sido enviada antes de a conexão cair. Antes de repetir, verifique se o envio aconteceu (ou use chave de idempotência), para não duplicar.
 
 **Exercício 24.3 · P · M0** — Projete a idempotência da automação "quando um pagamento é confirmado, enviar à cliente uma mensagem de agradecimento e mudar o pedido para confirmado". Qual é a chave de idempotência? O que acontece se o webhook chegar três vezes? E se a mensagem for enviada, mas a mudança de status falhar?
 
@@ -218,6 +222,8 @@ Integrações são difíceis de testar porque dependem de sistemas que você nã
 **Exercício 25.2 · P · M0** — Monte o mapeamento de campos de uma integração entre um formulário de inscrição online e uma planilha de participantes de um evento, incluindo transformações e o que fazer com inscrições duplicadas.
 
 **Exercício 25.3 · P · M4** — Uma pessoa descreve: "Quando o laudo é aprovado, o sistema chama a API do sistema de lotes e marca o lote como liberado no nosso painel." Aponte os problemas dessa descrição à luz do caso Vértice e reescreva-a.
+
+> **Para conferir** — Problemas: o painel marca o lote como liberado sem confirmação do sistema de lotes; não há tratamento para o sistema de lotes fora do ar ou para respostas perdidas; não há estados de trânsito; não há novas tentativas nem alerta; não há conciliação. Reescrita: "Quando o laudo é aprovado, a liberação entra em 'pendente de envio'. O sistema chama a API do sistema de lotes; com resposta de sucesso, passa a 'enviada' e só se torna 'confirmada' quando o sistema de lotes confirma o novo estado do lote. Em falha, há novas tentativas com intervalo crescente; esgotadas, alerta à coordenação com instrução de liberação manual. Uma conciliação diária compara laudos aprovados e lotes liberados."
 
 **Exercício 25.4 · A · M3** — Implemente (ou especifique para implementação por IA) uma integração real entre dois serviços que você usa, incluindo conciliação. Teste com o serviço de destino simulado em pelo menos três tipos de falha.
 

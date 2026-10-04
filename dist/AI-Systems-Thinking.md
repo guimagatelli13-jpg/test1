@@ -121,7 +121,7 @@ Os onze projetos (P00 a P10) estão reunidos na Parte VII, mas **não devem ser 
 |---|---|---|
 | P00 — Diagnóstico | Capítulo 5 | Transformar situação vaga em problema definido |
 | P01 — Automação pessoal | Capítulo 15 | Automação simples e de baixo risco |
-| P02 — Sistema pessoal | Capítulo 18 | Sistema pequeno com dados, estados e decisões |
+| P02 — Sistema pessoal | Capítulo 19 | Sistema pequeno com dados, estados e decisões |
 | P03 — Processo real | Capítulo 20 | Mapear um processo real e propor melhoria |
 | P04 — Automação robusta | Capítulo 24 | Exceções, logs e recuperação |
 | P05 — Integração | Capítulo 25 | Integrar dois ou mais sistemas |
@@ -617,6 +617,17 @@ Cada movimento produz artefatos. O Apêndice A traz templates completos para os 
 | Evoluir | T14 Retrospective |
 | Transversais | T15 Portfolio Case · T16 Competency Assessment |
 
+Um desses artefatos deve ser começado já, antes de ser estudado em detalhe no Capítulo 20: o **Decision Log**, a lista das decisões do seu trabalho. Até lá, use uma versão mínima, com quatro campos por decisão:
+
+```
+DECISÃO:         o que foi decidido, numa frase
+ALTERNATIVAS:    o que mais foi considerado
+POR QUÊ:         a razão principal da escolha
+COMO SABEREMOS:  o que indicaria, mais adiante, se a decisão foi boa ou ruim
+```
+
+Vários exercícios das Partes II a IV pedem que você registre decisões. Use essa versão mínima até o Capítulo 20, que acrescenta evidência, riscos, hipóteses e validação.
+
 Artefatos não são burocracia quando cumprem uma de três funções: **ajudar você a pensar** (o ato de preencher revela lacunas), **comunicar** (outra pessoa, ou uma IA, consegue trabalhar a partir dele) ou **lembrar** (daqui a seis meses, alguém entende o que foi feito e por quê). Um artefato que não cumpre nenhuma dessas funções deve ser simplificado ou eliminado.
 
 ### Proporcionalidade
@@ -825,6 +836,8 @@ c) "Os atrasos acontecem porque o fornecedor de embalagens é lento."
 d) "O sistema de vendas é ruim."
 e) "Quando o vendedor A está de férias, os pedidos atrasam mais."
 
+> **Para conferir** — (a) Interpretação; seria sustentada ou refutada por registros de reclamações ou pela taxa de entregas fora do prazo. (b) Fato. (c) Hipótese; para verificá-la, compare os pedidos atrasados com o tempo de entrega das embalagens — quantos atrasos dependiam delas? (d) Interpretação; fatos possíveis: erros registrados, tempo de resposta, interrupções. (e) Hipótese (ou fato, se já houver dados); compare a taxa de atraso nos períodos de férias de A com os demais períodos. Se você classificou (c) ou (e) como fato, observe que ambas explicam uma relação de causa que ninguém mediu.
+
 **Exercício 4.2 · P · M0** — Os três Problem Statements abaixo têm defeitos. Identifique-os usando os oito elementos da anatomia de um problema e reescreva o melhor dos três.
 
 a) "Precisamos de um aplicativo para melhorar a comunicação entre a escola e os pais."
@@ -870,7 +883,7 @@ Um **estoque** é algo que se acumula: amostras aguardando análise, pedidos agu
                                 └───────────────────┘
 ```
 
-Três consequências práticas:
+Daí decorrem consequências práticas:
 
 **Se a entrada é maior que a saída, o estoque cresce — sempre.** Não importa o esforço ou a boa vontade. Se chegam 50 amostras por dia e o laboratório consegue concluir 45, a fila cresce cerca de 5 por dia até que algo mude: chegam menos, sai mais ou alguém para de registrar.
 
@@ -889,7 +902,7 @@ Em qualquer sequência de etapas, a etapa com menor capacidade limita a saída d
                                   └── gargalo: o sistema inteiro sai a ≈ 35/dia
 ```
 
-Duas consequências contraintuitivas:
+Isso tem consequências que contrariam a intuição:
 
 **Melhorar uma etapa que não é o gargalo não melhora o sistema.** No exemplo acima, se o registro passar a processar 200 amostras por dia, os laudos não sairão mais rápido. A fila diante da revisão só vai crescer mais depressa. Essa é a armadilha clássica da automação: automatiza-se a etapa que é mais fácil de automatizar, não a que limita o sistema.
 
@@ -958,7 +971,7 @@ O **System Map** é a representação do sistema que você vai usar como referê
 > ```
 >  AMBIENTE: diretoria industrial · clientes da fábrica · fornecedores · auditorias externas
 > ┌───────────────────────────────── FRONTEIRA DO SISTEMA ──────────────────────────────────┐
-> │                                                                                          │
+> │                                                                                         │
 > │  PRODUÇÃO ──(amostra física + etiqueta)──► RECEPÇÃO ──► [FILA DE ANÁLISE] ──► ANALISTAS │
 > │     ▲                                     (registro      (estoque)           │   ▲      │
 > │     │                                      na planilha)                      │   │      │
@@ -974,10 +987,10 @@ O **System Map** é a representação do sistema que você vai usar como referê
 > │     │      ◄─────────(laudo por e-mail: libera/bloqueia lote)──────── COORDENAÇÃO       │
 > │     │                                                                (aprovação)        │
 > │     └──── (pedidos de urgência, por telefone e mensagem) ───────────────► ANALISTAS     │
-> │                                                                                          │
+> │                                                                                         │
 > │  ESPECIFICAÇÕES DE PRODUTO (documentos controlados) ··········· consultadas na análise  │
 > │  LOTES BLOQUEADOS NO ESTOQUE DA FÁBRICA (estoque físico afetado pelo sistema)           │
-> └──────────────────────────────────────────────────────────────────────────────────────────┘
+> └─────────────────────────────────────────────────────────────────────────────────────────┘
 >   Laço de reforço: atraso → pressão → urgências → interrupções → erros → retrabalho → atraso
 > ```
 >
@@ -998,6 +1011,8 @@ Um System Map útil passa em quatro testes:
 
 **Exercício 5.1 · F · M0** — Para cada item, diga se é estoque ou fluxo, e em que sistema faz sentido: (a) e-mails não lidos; (b) pedidos recebidos por dia; (c) contas a pagar no mês; (d) pacientes atendidos por hora; (e) livros emprestados e não devolvidos; (f) novos cadastros por semana.
 
+> **Para conferir** — (a) Estoque. (b) Fluxo. (c) Estoque — o total acumulado a pagar num momento; o fluxo correspondente seria "contas recebidas por mês". (d) Fluxo. (e) Estoque. (f) Fluxo. Uma regra prática: estoque responde a "quantos há agora?"; fluxo responde a "quantos por dia, semana ou mês?".
+
 **Exercício 5.2 · P · M0** — Um escritório de contabilidade recebe cerca de 120 documentos de clientes por semana. A triagem consegue processar 200 por semana, a digitação 150, a conferência 90 e o arquivamento 300. (a) Onde está o gargalo? (b) O que acontece com a fila diante da conferência ao longo de um mês? (c) O sócio propõe automatizar a digitação com IA. Que efeito isso terá sobre o tempo total? (d) Proponha duas intervenções que atuem no gargalo, sendo pelo menos uma sem tecnologia.
 
 > **Para conferir** — (a) Conferência, com 90 por semana. (b) A fila cresce cerca de 30 documentos por semana (entram 120, saem 90), ou seja, aproximadamente 120 a mais ao fim de um mês, e o tempo de espera aumenta continuamente. (c) Nenhum efeito sobre a saída; a digitação já processa mais do que a conferência. A fila diante da conferência continua crescendo no mesmo ritmo. (d) Exemplos: redistribuir parte do tempo de quem faz triagem ou arquivamento (com capacidade ociosa) para a conferência; reduzir o que precisa ser conferido (conferência por amostragem em documentos de baixo risco, com regra explícita); melhorar a qualidade na entrada para reduzir o tempo por conferência. Se você propôs "automatizar a conferência com IA", pergunte-se se isso está no degrau mínimo suficiente e como seria verificado.
@@ -1007,6 +1022,8 @@ Um System Map útil passa em quatro testes:
 **Exercício 5.4 · P · M0** — No seu mapa, identifique pelo menos um laço de reforço e um de equilíbrio. Para o de reforço, proponha um ponto onde ele poderia ser quebrado.
 
 **Exercício 5.5 · A · M0 · Transferência** — Numa biblioteca comunitária, livros atrasados geram multas; as multas fazem com que alguns usuários evitem voltar à biblioteca para devolver; os livros não devolvidos reduzem o acervo disponível; com menos acervo, menos pessoas frequentam; com menos frequência, a biblioteca recebe menos doações. Desenhe o laço, identifique se é de reforço ou equilíbrio, e proponha uma intervenção de degrau 1 (reorganizar) que o quebre. Depois, aponte um efeito de segunda ordem possível dessa intervenção.
+
+> **Para conferir** — É um laço de reforço: multas → usuários evitam voltar → menos devoluções → acervo menor → menos frequência → menos doações → acervo ainda menor. Intervenções de degrau 1: anistia periódica para devolução; substituir multa por suspensão temporária; caixa de devolução sem atendimento, que elimina o constrangimento de encontrar alguém. Efeito de segunda ordem plausível: sem a multa, parte dos usuários pode demorar mais para devolver — por isso, a intervenção deveria vir acompanhada do acompanhamento do tempo médio de devolução.
 
 > **Fim da etapa de pré-requisitos do Projeto P00.** Você já pode fazer o Projeto P00 — Diagnóstico (Parte VII). Ele consolida os Capítulos 4 e 5 num caso real seu.
 
@@ -1109,7 +1126,7 @@ Para cada interface, pergunte:
 
 No Vértice, a interface entre "análise" e "revisão" é uma folha impressa do instrumento, que o analista digita numa planilha, que a coordenação abre quando tem tempo. Três problemas cabem nessa frase: mudança de formato (impresso para digitado), ausência de sinal (ninguém avisa que algo chegou) e responsabilidade difusa (se a digitação estiver errada, quem percebe?).
 
-> **Anti-padrão: decompor pela ferramenta** — *Sintoma:* as partes do problema têm nomes de ferramentas ("a parte do WhatsApp", "a parte da planilha", "a parte da IA"). *Causa:* a pessoa pensa a partir dos meios disponíveis, não das funções necessárias. *Consequência:* a solução fica presa às ferramentas atuais; trocar uma ferramenta exige redesenhar tudo; funções que nenhuma ferramenta cobre ficam invisíveis. *Correção:* decomponha por etapa, função, entidade, decisão ou risco. Ferramentas entram depois, como forma de implementar uma parte.
+> **Anti-padrão: decompor pela ferramenta** — *Sintoma:* as partes do problema têm nomes de ferramentas ("a parte do aplicativo de mensagens", "a parte da planilha", "a parte da IA"). *Causa:* a pessoa pensa a partir dos meios disponíveis, não das funções necessárias. *Consequência:* a solução fica presa às ferramentas atuais; trocar uma ferramenta exige redesenhar tudo; funções que nenhuma ferramenta cobre ficam invisíveis. *Correção:* decomponha por etapa, função, entidade, decisão ou risco. Ferramentas entram depois, como forma de implementar uma parte.
 
 ### Decompor com IA
 
@@ -1125,7 +1142,7 @@ A ordem recomendada é sempre a mesma: **primeiro você decompõe sozinho (M0), 
 
 **Exercício 6.3 · P · M0** — Os itens abaixo são partes de uma decomposição feita para o problema "pedidos da Confeitaria Marzipã chegam incompletos e há erros de capacidade". Identifique os problemas da decomposição (sobreposição, falta de cobertura, nomes de ferramenta, partes não delegáveis) e reescreva-a.
 
-1. Chatbot do WhatsApp
+1. Chatbot do aplicativo de mensagens
 2. Planilha de pedidos
 3. Melhorar o atendimento
 4. Verificar se o pedido está completo
@@ -1171,7 +1188,7 @@ Toda abstração esconde algo. O risco é esconder algo que importa.
 
 Se o modelo do Vértice tratar todas as amostras como iguais ("uma amostra é uma amostra"), ele esconde a diferença entre amostras de rotina e amostras de investigação de desvio — que têm regras, prazos e responsáveis completamente diferentes. Se o modelo da Marzipã tratar a capacidade de produção como "número de bolos por dia", ele esconde que um bolo de três andares ocupa a equipe tanto quanto seis bolos simples.
 
-Duas perguntas ajudam a detectar abstrações perigosas:
+Para detectar abstrações perigosas, pergunte:
 
 - **"Existem dois casos que este modelo trata como iguais, mas que as pessoas tratam de forma diferente?"** Se existirem, a abstração está grossa demais.
 - **"Existem detalhes neste modelo que nenhuma decisão usa?"** Se existirem, ela está fina demais.
@@ -1299,15 +1316,15 @@ Um Process Map útil registra:
 >              │                                          ▼                                 │
 >              │                        registra na planilha ◄──────────────────────────────┘
 >              │                                          │
->              │                         ⏳ FILA DE ANÁLISE (mediana: 7h)
+>              │                         ESPERA: FILA DE ANÁLISE (mediana 7h)
 >              │                                          │
 > ANALISTA     │                        analisa ─► imprime resultado
 >              │                                          │
->              │                         ⏳ espera digitação (mediana: 5h; digita em lote)
+>              │                         ESPERA: digitação (mediana 5h; digita em lote)
 >              │                                          │
 >              │                        digita resultados na planilha ─► compara c/ especificação
 >              │                                          │
->              │                         ⏳ FILA DE REVISÃO (mediana: 16h)
+>              │                         ESPERA: FILA DE REVISÃO (mediana 16h)
 >              │                                          │
 > COORDENAÇÃO  │                        revisa ─◇ dados ok? ──não──► devolve ao analista ──┐
 >              │                                │sim              (retrabalho: ~1 em 8)    │
@@ -1482,6 +1499,8 @@ A pergunta 5 antecipa o que o Capítulo 32 vai tratar em profundidade. Por ora, 
 
 **Exercício 9.1 · F · M0** — Modele as entidades, atributos e relações de uma biblioteca comunitária que empresta livros. Inclua pelo menos quatro entidades. Para cada relação, escreva a cardinalidade nos dois sentidos.
 
+> **Para conferir** — Uma boa resposta distingue **título** (a obra) de **exemplar** (a cópia física): um título tem muitos exemplares, e o que se empresta é o exemplar. Entidades mínimas: usuário, título, exemplar, empréstimo; frequentemente também reserva e multa. Cardinalidades: um usuário tem muitos empréstimos, cada empréstimo é de um usuário; um título tem muitos exemplares, cada exemplar é de um título; cada empréstimo (no modelo mais simples) se refere a um exemplar, e um exemplar tem muitos empréstimos ao longo do tempo. Se o seu modelo tem só "livro", ele não consegue representar duas cópias do mesmo título nem saber qual delas está emprestada.
+
 **Exercício 9.2 · P · M0** — Para o modelo do exercício anterior, identifique os estados de cada entidade que os tenha. Qual é a fonte da verdade para "este livro está disponível"?
 
 **Exercício 9.3 · P · M4** — A tabela abaixo é um trecho fictício, mas realista, dos registros de clientes de uma pequena loja. Avalie a qualidade pelas seis dimensões e liste cada problema encontrado.
@@ -1593,12 +1612,14 @@ No Capítulo 9, você identificou os estados das entidades. Uma **máquina de es
 
 ```
                          sinal pago
-   RASCUNHO ──► AGUARDANDO SINAL ─────────► CONFIRMADO ──► EM PRODUÇÃO ──► PRONTO ──► ENTREGUE ──► CONCLUÍDO
-       │               │                        │               │                                (saldo pago)
-       │               │ prazo de sinal         │ cancelamento  │ cancelamento
-       │               │ vencido                │ pela cliente  │ (só com decisão de Helena)
-       ▼               ▼                        ▼               ▼
-   DESCARTADO      EXPIRADO                 CANCELADO       CANCELADO
+   RASCUNHO ──► AGUARDANDO SINAL ─────────► CONFIRMADO ──► EM PRODUÇÃO ──► PRONTO
+       │               │                        │               │            │
+       ▼               ▼                        ▼               ▼            ▼
+   DESCARTADO      EXPIRADO                 CANCELADO       CANCELADO     ENTREGUE
+                   (prazo do sinal          (pedido da      (só com          │
+                    vencido)                 cliente)        decisão de      │ saldo pago
+                                                             Helena)         ▼
+                                                                         CONCLUÍDO
 ```
 
 A máquina de estado responde a perguntas que, sem ela, ficam para ser decididas na hora — geralmente mal:
@@ -1930,14 +1951,23 @@ A diferença está em três conceitos que transformam um conjunto de tabelas num
 > **Caso Marzipã** — O modelo conceitual do Capítulo 9 vira tabelas assim (trecho):
 >
 > ```
-> CLIENTES                         PEDIDOS                               ITENS_PEDIDO
-> ┌────┬────────────┬──────────┐   ┌──────┬────────────┬─────────┬─────────────┐   ┌────┬───────────┬────────────┬────┬──────┐
-> │ id │ nome       │ telefone │   │ id   │ cliente_id │ entrega │ status      │   │ id │ pedido_id │ produto_id │ qt │ UTs  │
-> ├────┼────────────┼──────────┤   ├──────┼────────────┼─────────┼─────────────┤   ├────┼───────────┼────────────┼────┼──────┤
-> │ 17 │ Ana Souza  │ 1198...  │◄──┤ 1284 │ 17         │ 14/06   │ aguard_sinal│◄──┤ 91 │ 1284      │ 3          │ 1  │ 4    │
-> │ 22 │ Rita Melo  │ 1197...  │   │ 1285 │ 22         │ 14/06   │ confirmado  │   │ 92 │ 1284      │ 8          │ 2  │ 2    │
-> └────┴────────────┴──────────┘   └──────┴────────────┴─────────┴─────────────┘   └────┴───────────┴────────────┴────┴──────┘
->                                    cliente_id → CLIENTES.id                         pedido_id → PEDIDOS.id
+> CLIENTES                         PEDIDOS
+> ┌────┬───────────┬──────────┐    ┌──────┬────────────┬─────────┬──────────────┐
+> │ id │ nome      │ telefone │    │ id   │ cliente_id │ entrega │ status       │
+> ├────┼───────────┼──────────┤    ├──────┼────────────┼─────────┼──────────────┤
+> │ 17 │ Ana Souza │ 1198...  │◄───┤ 1284 │ 17         │ 14/06   │ aguard_sinal │
+> │ 22 │ Rita Melo │ 1197...  │    │ 1285 │ 22         │ 14/06   │ confirmado   │
+> └────┴───────────┴──────────┘    └──────┴────────────┴─────────┴──────────────┘
+>                                  PEDIDOS.cliente_id → CLIENTES.id
+>
+> ITENS_PEDIDO
+> ┌────┬───────────┬────────────┬────┬─────┐
+> │ id │ pedido_id │ produto_id │ qt │ UTs │
+> ├────┼───────────┼────────────┼────┼─────┤
+> │ 91 │ 1284      │ 3          │ 1  │ 4   │
+> │ 92 │ 1284      │ 8          │ 2  │ 2   │
+> └────┴───────────┴────────────┴────┴─────┘
+> ITENS_PEDIDO.pedido_id → PEDIDOS.id
 > ```
 >
 > A relação "um pedido tem muitos itens" é implementada colocando o identificador do pedido em cada item — e não criando colunas "item1", "item2", "item3" na tabela de pedidos, que é o erro mais comum em planilhas.
@@ -2056,6 +2086,8 @@ Esquemas são especialmente importantes quando um dos lados é uma IA. Se você 
 **Exercício 12.1 · F · M0** — Transforme o modelo da biblioteca comunitária (Exercício 9.1) em tabelas, indicando chave primária, chaves estrangeiras e o tipo de cada coluna.
 
 **Exercício 12.2 · F · M0** — Leia o JSON do pedido da Marzipã e responda: quantos itens tem o pedido? Qual o total de UTs? O pedido pode entrar em produção? Por quê?
+
+> **Para conferir** — Dois itens. Total de 6 UT: 4 do bolo decorado de dois andares e 2 dos 100 brigadeiros — o campo `uts` já representa o total da linha, com a quantidade incorporada. O pedido não pode entrar em produção: está em `aguardando_sinal`, com `sinal_pago: false`, e pela máquina de estado só pedidos confirmados seguem para produção. Se você somou 4 + 2 × 2 = 8, encontrou uma ambiguidade real: o exemplo não diz se `uts` é por unidade ou por linha. É por isso que esquemas devem documentar o significado de cada campo, e não só o tipo.
 
 **Exercício 12.3 · P · M4** — O JSON abaixo foi devolvido por uma IA encarregada de extrair um pedido de uma mensagem. Liste todos os problemas, considerando o esquema implícito no exemplo do capítulo.
 
@@ -2210,7 +2242,7 @@ O **contrato** de uma API é tudo o que ela promete: quais endpoints existem, qu
 
 Contratos mudam. Por isso, muitas APIs têm **versões** (o `v1` no endereço). Uma mudança que quebra quem já usa a API — remover um campo, mudar um formato — deveria vir numa versão nova, com prazo para migrar. Nem todos os fornecedores fazem isso bem. Ao depender de uma API externa, pergunte: como ficarei sabendo de mudanças? O que acontece com minha integração se um campo sumir?
 
-Dois outros elementos do contrato aparecem com frequência:
+O contrato costuma incluir ainda:
 
 - **Paginação.** Listas grandes são devolvidas em partes ("páginas"). Uma integração que lê só a primeira página e acha que leu tudo é um erro clássico.
 - **Limites de taxa.** O serviço limita quantas requisições você pode fazer num período. Ultrapassar gera `429`.
@@ -2305,7 +2337,11 @@ A recomendação, sempre que possível, é **evitar sincronização de mão dupl
 
 **Exercício 13.1 · F · M0** — Para cada ação, escolha o método mais adequado (`GET`, `POST`, `PATCH`, `DELETE`): (a) listar as amostras aguardando revisão; (b) registrar uma nova amostra; (c) mudar o status de uma amostra para "aprovada"; (d) cancelar o registro de uma amostra feito por engano; (e) consultar a especificação de um produto.
 
+> **Para conferir** — (a) `GET`. (b) `POST`. (c) `PATCH`. (d) `DELETE`, ou `PATCH` mudando o status para "cancelado" — em ambientes com trilha de auditoria, como o Vértice, a segunda forma é preferível, porque preserva o registro. (e) `GET`.
+
 **Exercício 13.2 · F · M0** — Uma integração recebeu, em sequência, os códigos 503, 503, 200. Outra recebeu 401, 401, 401. Explique o que provavelmente aconteceu em cada caso e o que a integração deveria ter feito.
+
+> **Para conferir** — No primeiro caso, houve instabilidade momentânea do serviço, e as novas tentativas com intervalo resolveram — comportamento correto. No segundo, a credencial é inválida ou expirou; repetir não adianta e pode até bloquear a conta. A integração deveria ter parado na primeira resposta 401, registrado o erro e alertado o responsável pela credencial.
 
 **Exercício 13.3 · P · M0** — Escreva a requisição (método, endpoint, headers e corpo em JSON) para criar no sistema da Marzipã uma alteração de pedido: a cliente quer trocar o recheio de um item. Depois, escreva três respostas possíveis: sucesso, alteração recusada porque o pedido está em produção, e pedido inexistente. Use códigos de status adequados.
 
@@ -2379,7 +2415,7 @@ Autorizar é decidir o que uma identidade pode fazer. A forma mais comum de orga
 >
 > A célula vazia em "alterar resultado aprovado" é deliberada: ninguém altera. Uma correção depois da aprovação exige um novo registro, vinculado ao original, com motivo — preservando a trilha de auditoria. A matriz também deixa claro que "analista" corrige apenas os próprios resultados.
 
-Dois princípios orientam a autorização:
+A autorização bem feita se apoia nestes princípios:
 
 **Menor privilégio.** Cada identidade recebe apenas as permissões necessárias para sua função, e nada mais. Isso vale para pessoas, para automações e, principalmente, para agentes de IA (Capítulo 29).
 
@@ -2429,9 +2465,13 @@ Toda automação age com alguma identidade. Se a automação de lembretes da Mar
 
 **Exercício 14.1 · F · M0** — Para cada situação, diga se o problema é de autenticação ou de autorização: (a) um ex-funcionário ainda consegue entrar no sistema; (b) um estagiário consegue apagar registros de clientes; (c) alguém descobriu a senha de um gerente; (d) uma automação de relatórios consegue enviar e-mails em nome do diretor.
 
+> **Para conferir** — (a) Autenticação — a credencial do ex-funcionário não foi revogada (um problema de processo de saída). (b) Autorização — o papel do estagiário tem permissões demais. (c) Autenticação — a credencial foi comprometida; um segundo fator teria reduzido o dano. (d) Autorização — a automação age com uma identidade ou um escopo inadequados; deveria usar uma conta de serviço com permissão apenas para o que precisa.
+
 **Exercício 14.2 · P · M0** — Construa a matriz de permissões do sistema de pedidos da Marzipã, considerando os papéis: Helena (dona), confeiteira, entregador, automação de lembretes, IA de triagem de mensagens. Lembre-se: a IA de triagem cria rascunhos, mas não confirma pedidos.
 
 **Exercício 14.3 · P · M4** — Identifique todas as violações da Regra dos segredos no relato: "Montei a automação usando minha conta pessoal. A chave da API de pagamentos eu deixei numa aba escondida da planilha de pedidos, para não perder. Quando deu erro, colei a configuração inteira no assistente de IA e ele resolveu. Depois mandei a configuração para a Helena por mensagem, para ela ter uma cópia."
+
+> **Para conferir** — Violações: a automação usa a conta pessoal (deveria ser uma conta de serviço); a chave está numa planilha (regra 1: segredos só em cofre ou variáveis de ambiente); a configuração com a chave foi colada num assistente de IA (regra 2); foi enviada por mensagem (regra 2); não há dono nem prazo de troca (regra 4). Consequência obrigatória, pela regra 5: a chave foi exposta em pelo menos três lugares e deve ser revogada e substituída — apagar as mensagens não basta.
 
 ## Capítulo 15 — Anatomia de uma automação
 
@@ -2525,6 +2565,8 @@ e) Copiar diariamente as amostras registradas para uma planilha de indicadores d
 
 **Exercício 15.3 · P · M4** — Uma pessoa descreve sua automação: "Quando chega um e-mail com 'nota fiscal' no assunto, a automação salva o anexo numa pasta e lança o valor na planilha de despesas." Liste os elementos que estão faltando e pelo menos cinco situações reais em que essa automação falharia ou faria algo errado.
 
+> **Para conferir** — Faltam, entre outros: estado (quais e-mails já foram processados, para não lançar duas vezes), exceções, tratamento de erro, log e supervisão. Situações de falha: reprocessamento duplica lançamentos; e-mail promocional com "nota fiscal" no assunto; e-mail sem anexo, ou com anexo que não é a nota; várias notas no mesmo e-mail; nota cancelada depois; valor extraído do campo errado; assunto escrito de outra forma ("NF", "NF-e"); e um risco de segurança sério: anexos de remetentes desconhecidos podem ser maliciosos. Se a sua lista não tem nenhum item de segurança, revise-a.
+
 > **Fim da etapa de pré-requisitos do Projeto P01.** Você já pode fazer o Projeto P01 — Automação pessoal.
 
 ## Capítulo 16 — Como a IA funciona, o suficiente para decidir
@@ -2592,7 +2634,7 @@ Para usar IA dentro de um sistema (e não só numa conversa), é preciso que ela
 
 ### Ferramentas, recuperação e agentes
 
-Três ideias ampliam o que um modelo de linguagem consegue fazer. Elas serão aprofundadas nos Capítulos 28 e 29; aqui, o objetivo é reconhecê-las.
+Ferramentas, recuperação e agentes ampliam o que um modelo de linguagem consegue fazer. Elas serão aprofundadas nos Capítulos 28 e 29; aqui, o objetivo é reconhecê-las.
 
 **Uso de ferramentas.** Um modelo pode ser configurado para, em vez de responder diretamente, pedir que o sistema execute uma ferramenta: consultar um banco de dados, chamar uma API, fazer um cálculo, buscar na internet. O sistema executa e devolve o resultado ao modelo, que continua. O modelo não executa nada sozinho; ele *pede*, e o sistema ao redor decide se executa. Essa distinção é o que permite pôr limites.
 
@@ -2663,6 +2705,8 @@ O primeiro critério é o mais importante e o mais negligenciado. A única forma
 ### Exercícios
 
 **Exercício 16.1 · F · M0** — Classifique cada tarefa por função (classificar, extrair, gerar, transformar, analisar, interpretar) e ordene da mais fácil para a mais difícil de verificar: (a) identificar o idioma de um e-mail; (b) resumir uma reunião; (c) encontrar o número da nota fiscal num PDF; (d) sugerir por que as vendas caíram; (e) reescrever uma política em linguagem simples; (f) decidir se uma reclamação é procedente.
+
+> **Para conferir** — (a) Classificar. (b) Transformar/gerar (resumo). (c) Extrair. (d) Analisar e interpretar. (e) Transformar. (f) Interpretar — e é uma decisão de julgamento que deveria permanecer humana. Ordem aproximada, da mais fácil à mais difícil de verificar: (a), (c), (e), (b), (d), (f). Classificação e extração têm resposta conferível; resumos e reescritas exigem comparar com o original; análises e julgamentos não têm gabarito simples.
 
 **Exercício 16.2 · P · M4** — Peça a uma IA três referências bibliográficas sobre um tema específico do seu trabalho, com autores, títulos e anos. Verifique cada uma em fontes confiáveis (catálogo de biblioteca, site da editora, base acadêmica). Registre quantas existem exatamente como descritas, quantas existem com dados diferentes e quantas não existem. O objetivo não é "pegar a IA no erro", mas calibrar sua confiança para esse tipo de pedido.
 
@@ -2738,7 +2782,7 @@ Dados se perdem: por erro humano, por falha de serviço, por uma automação que
 
 ### Custos e dependências
 
-Duas últimas camadas de infraestrutura invisível.
+Restam duas camadas de infraestrutura invisível: os custos e as dependências.
 
 **Custos de uso.** Muitos serviços — nuvem, plataformas de automação, IA — cobram por uso: por execução, por requisição, por volume de texto processado. Um erro de lógica que faz uma automação rodar em ciclo pode gerar um custo inesperado em poucas horas. Configure limites de gasto e alertas de custo sempre que o serviço permitir.
 
@@ -2781,6 +2825,8 @@ Duas últimas camadas de infraestrutura invisível.
 **Exercício 17.2 · P · M0** — Escreva, para a automação de lembretes de Lucas, a lista do que deve ser registrado em log a cada execução, duas métricas semanais e dois alertas. Indique o que nunca deveria aparecer nos logs.
 
 **Exercício 17.3 · P · M4** — Uma pessoa relata: "A IA refez meu script e agora ele não funciona mais. Não sei o que ela mudou. Pedi para ela consertar, ela mudou de novo, e agora está pior." Explique quais práticas deste capítulo teriam evitado a situação e o que a pessoa deve fazer agora.
+
+> **Para conferir** — Teriam evitado a situação: commits (ou versões) pequenos e frequentes, leitura do diff antes de aceitar cada mudança, e construção em fatias verificadas. A pessoa está numa espiral de correções (Capítulo 23). O que fazer agora: parar de pedir correções; recuperar a última versão que funcionava (histórico da ferramenta, cópia ou controle de versões); se não houver nenhuma, reconstruir em pequenos passos a partir da especificação, verificando e registrando cada um. E, daqui em diante, versionar.
 
 ## Revisão da Parte III
 
@@ -2917,6 +2963,8 @@ Além dos critérios de aceitação de cada requisito, projetos se beneficiam de
 
 **Exercício 18.1 · F · M0** — Reescreva cada requisito de forma verificável: (a) "O sistema deve ser fácil de usar"; (b) "Os lembretes devem ser enviados com antecedência adequada"; (c) "O sistema deve suportar muitos usuários"; (d) "A IA deve entender as mensagens dos clientes".
 
+> **Para conferir** — Respostas possíveis: (a) "Um usuário novo conclui o registro de um pedido em até cinco minutos, sem ajuda, em teste com três usuários". (b) "O lembrete é enviado três dias antes do vencimento, às 8h; se o terceiro dia anterior cair em dia não útil, no último dia útil antes dele". (c) "O sistema atende 20 usuários simultâneos com tempo de resposta inferior a 2 segundos" — o número deve vir do volume esperado, não de um valor genérico. (d) O requisito é dependente de solução e não verificável; reescreva sem IA: "mensagens de pedido são transformadas em rascunhos com data, produto, tamanho e modo de entrega preenchidos; campos sem informação clara ficam marcados como 'a confirmar'", com desempenho medido num conjunto de avaliação.
+
 **Exercício 18.2 · P · M0** — Para o problema que você vem trabalhando, escreva uma lista de requisitos com pelo menos um de cada tipo. Ligue cada requisito a uma causa da árvore de problemas ou a um stakeholder. Priorize com as quatro categorias, garantindo que no máximo metade fique em "deve".
 
 **Exercício 18.3 · P · M0** — Escolha os dois requisitos mais importantes da sua lista e escreva critérios de aceitação no formato Dado / Quando / Então, cobrindo caso normal, negativo, limite e dado ausente.
@@ -2924,11 +2972,10 @@ Além dos critérios de aceitação de cada requisito, projetos se beneficiam de
 **Exercício 18.4 · P · M4** — Os critérios abaixo foram escritos para o lembrete de contas de Lucas. Identifique o que está faltando ou ambíguo e reescreva-os.
 
 > CA-1: Dado que há contas vencendo, quando chegar a hora, então o sistema envia lembrete.
+>
 > CA-2: O sistema não deve enviar lembretes de contas pagas.
 
 > **Para conferir** — CA-1 não diz quanto antes do vencimento ("vencendo" quando?), que hora é "a hora", para quem vai o lembrete, o que ele contém, nem o que acontece se houver várias contas (uma mensagem por conta ou uma lista?). CA-2 é uma regra útil, mas não está no formato verificável e não diz como o sistema sabe que a conta foi paga (status marcado manualmente? conferência com extrato?). Faltam: conta sem data de vencimento; conta que vence no fim de semana; lembrete já enviado hoje (duplicidade); falha no envio. Uma reescrita do CA-1: "*Dado* uma conta com status 'recebida' e vencimento daqui a 3 dias, *quando* a automação rodar às 8h, *então* Lucas recebe uma única mensagem listando essa conta com fornecedor, valor e data de vencimento."
-
-> **Fim da etapa de pré-requisitos do Projeto P02.** Você já pode fazer o Projeto P02 — Sistema pessoal.
 
 ## Capítulo 19 — Arquitetura como sequência de decisões
 
@@ -2993,7 +3040,7 @@ Com as alternativas em mãos, compare-as segundo critérios derivados dos requis
 >
 > A alternativa A foi descartada por não atender à trilha de auditoria — um requisito obrigatório, que funciona como eliminatório independentemente da soma. C ficou competitiva em efeito e auditoria, mas exigiria adaptar o processo recém-melhorado ao sistema comprado, com custo recorrente alto para o porte do laboratório; ela foi registrada como alternativa a reavaliar se a aplicação própria se mostrasse difícil de manter. D foi descartada por risco e custo: a IA em todo o fluxo acrescentava opacidade a decisões que exigem rastreabilidade, sem ganho correspondente no indicador. E foi escolhida.
 
-Duas advertências sobre matrizes desse tipo.
+Matrizes desse tipo são úteis, mas podem enganar de duas formas.
 
 **Os números dão uma falsa sensação de precisão.** As notas são julgamentos, e os pesos também. A matriz não decide; ela organiza a discussão, torna os julgamentos visíveis e permite que alguém conteste um peso ou uma nota específica. Se mudar um peso de 2 para 3 inverte a decisão, a decisão é frágil — e isso deve ser registrado.
 
@@ -3071,6 +3118,8 @@ Um erro comum é tratar todas as decisões da mesma forma: ou com análise demai
 > "Um agente de IA atende os clientes no aplicativo de mensagens, entende o pedido, consulta o calendário de produção, gera a cobrança do sinal, confirma o pedido e atualiza o banco de dados. Um segundo agente monitora o estoque de ingredientes e faz pedidos aos fornecedores automaticamente. Um painel mostra tudo em tempo real. A arquitetura usa microsserviços em nuvem para garantir escalabilidade."
 
 > **Para conferir** — Excessos: dois agentes autônomos para um negócio com poucas dezenas de pedidos por semana; microsserviços e "escalabilidade" sem requisito que os justifique; compra automática de ingredientes sem que esse problema tenha aparecido no Problem Statement. Lacunas: quem confirma o pedido (a confirmação envolve compromisso e capacidade — deveria ficar com Helena); como o agente sabe a capacidade (as UTs e suas regras); o que acontece com mensagens ambíguas, reclamações e alterações de pedido em produção; riscos de injeção de instruções via mensagens de clientes; custo de operação; quem mantém. Uma arquitetura assim parece moderna e ignora quase todas as nove questões.
+
+> **Fim da etapa de pré-requisitos do Projeto P02.** Você já pode fazer o Projeto P02 — Sistema pessoal.
 
 ## Capítulo 20 — Decisões registradas
 
@@ -3373,7 +3422,7 @@ O Capítulo 22 apresenta os dez protocolos de colaboração com IA, que valem pa
 
 O Capítulo 2 propôs tratar a IA como um consultor externo extremamente rápido, que sabe muito em geral e nada sobre o seu caso, raramente diz "não sei" e não sofre as consequências dos próprios erros. Este capítulo transforma essa atitude em prática.
 
-Quatro princípios orientam toda colaboração com IA no método:
+Toda colaboração com IA, no método, segue estes princípios:
 
 **Você pensa primeiro quando o pensamento é o ponto.** Em enquadramento, decomposição e decisão, produza sua própria versão antes de consultar a IA. A versão da IA é mais útil como contraste do que como ponto de partida.
 
@@ -3831,6 +3880,8 @@ O ciclo de construção vale para qualquer forma de construir. O que muda é ond
 | Revisar mudanças | Histórico de versões da plataforma, se houver; registro manual se não houver | Histórico de versões da planilha | Diff no controle de versões |
 | Registrar | Exportar a configuração e guardar com data | Cópia datada + diário | Commit |
 
+> **Atenção — para quem nunca executou um programa** — Se você é do Perfil A e a sua solução exige código, não tente aprender programação ao mesmo tempo em que constrói o projeto. Há três caminhos, em ordem de preferência: (1) prefira plataformas visuais ou planilhas com automações, que tornam cada etapa visível; (2) se o código for necessário, use um assistente de programação que execute e mostre os resultados num ambiente isolado, e peça, com o Protocolo 10, que ele guie a preparação do ambiente passo a passo, confirmando com você o resultado de cada passo antes do seguinte; (3) faça par com alguém do Perfil B ou C na primeira configuração e escreva você mesmo o passo a passo, para conseguir repeti-lo sozinho. Em qualquer caminho, a sua responsabilidade não muda: critérios de aceitação, testes, leitura das mudanças e registro.
+
 Se a plataforma que você usa não tem histórico de versões nem forma de exportar a configuração, isso é um risco a registrar no Decision Log — e um motivo para manter documentação da configuração fora dela.
 
 ### Exercícios
@@ -3900,6 +3951,8 @@ Quatro técnicas garantem idempotência:
 
 Um teste simples revela se uma automação é idempotente: **execute-a duas vezes seguidas com a mesma entrada**. Se o mundo mudou duas vezes — duas mensagens, dois registros, duas cobranças —, ela não é.
 
+> **▲ Avançado — gravar e avisar sem inconsistência** — Um problema clássico aparece quando uma operação precisa, ao mesmo tempo, mudar dados no banco e avisar outro sistema (enviar uma mensagem, chamar uma API). Se ela grava e depois avisa, uma falha entre os dois passos deixa o dado mudado sem aviso; se avisa e depois grava, uma falha deixa um aviso sobre algo que não aconteceu. Uma solução muito usada é registrar a intenção de avisar *na mesma transação* que muda os dados — numa tabela de "mensagens a enviar" — e ter um processo separado que lê essa tabela, envia e marca como enviada, de forma idempotente. Esse arranjo, conhecido como padrão *outbox* (caixa de saída), troca a ilusão de simultaneidade por uma garantia explícita: tudo o que foi gravado será avisado pelo menos uma vez, e o receptor trata duplicatas. Ao delegar operações desse tipo, pergunte explicitamente à IA como ela garante a consistência entre gravar e avisar.
+
 ### Estado e retomada
 
 Automações que processam vários itens precisam lembrar onde estão. Se a importação de um arquivo com 40 resultados falha no 23º, o que acontece quando ela recomeça? Sem **estado por item**, há duas opções ruins: começar do zero (e duplicar os 22 primeiros, se não for idempotente) ou abandonar o arquivo (e perder os 18 restantes).
@@ -3960,6 +4013,8 @@ Antes de colocar uma automação em operação, verifique:
 **Exercício 24.1 · F · M0** — Para a automação de lembretes de Lucas, monte o catálogo de exceções com pelo menos oito itens, com frequência estimada e tratamento.
 
 **Exercício 24.2 · P · M0** — Classifique cada erro como transitório ou permanente e diga o tratamento: (a) o serviço de mensagens respondeu 503; (b) a planilha de contas foi renomeada e a automação não a encontra; (c) a API respondeu 429; (d) a credencial do e-mail expirou; (e) a conexão caiu no meio do envio.
+
+> **Para conferir** — (a) Transitório: repetir com intervalo crescente. (b) Permanente: não repetir; alertar — é um erro de configuração. (c) Transitório: esperar e repetir mais devagar. (d) Permanente até alguém renovar a credencial: não repetir; alertar o responsável. (e) Transitório, com um cuidado: a mensagem pode ter sido enviada antes de a conexão cair. Antes de repetir, verifique se o envio aconteceu (ou use chave de idempotência), para não duplicar.
 
 **Exercício 24.3 · P · M0** — Projete a idempotência da automação "quando um pagamento é confirmado, enviar à cliente uma mensagem de agradecimento e mudar o pedido para confirmado". Qual é a chave de idempotência? O que acontece se o webhook chegar três vezes? E se a mensagem for enviada, mas a mudança de status falhar?
 
@@ -4063,6 +4118,8 @@ Integrações são difíceis de testar porque dependem de sistemas que você nã
 **Exercício 25.2 · P · M0** — Monte o mapeamento de campos de uma integração entre um formulário de inscrição online e uma planilha de participantes de um evento, incluindo transformações e o que fazer com inscrições duplicadas.
 
 **Exercício 25.3 · P · M4** — Uma pessoa descreve: "Quando o laudo é aprovado, o sistema chama a API do sistema de lotes e marca o lote como liberado no nosso painel." Aponte os problemas dessa descrição à luz do caso Vértice e reescreva-a.
+
+> **Para conferir** — Problemas: o painel marca o lote como liberado sem confirmação do sistema de lotes; não há tratamento para o sistema de lotes fora do ar ou para respostas perdidas; não há estados de trânsito; não há novas tentativas nem alerta; não há conciliação. Reescrita: "Quando o laudo é aprovado, a liberação entra em 'pendente de envio'. O sistema chama a API do sistema de lotes; com resposta de sucesso, passa a 'enviada' e só se torna 'confirmada' quando o sistema de lotes confirma o novo estado do lote. Em falha, há novas tentativas com intervalo crescente; esgotadas, alerta à coordenação com instrução de liberação manual. Uma conciliação diária compara laudos aprovados e lotes liberados."
 
 **Exercício 25.4 · A · M3** — Implemente (ou especifique para implementação por IA) uma integração real entre dois serviços que você usa, incluindo conciliação. Teste com o serviço de destino simulado em pelo menos três tipos de falha.
 
@@ -4285,6 +4342,8 @@ Como medir:
 
 E, antes de rodar, **defina os limiares de aceitação**: que desempenho é suficiente para cada nível de autonomia? Definir o limiar depois de ver o resultado é uma forma de autoengano.
 
+> **▲ Avançado — quanto confiar num número medido em poucos casos** — Um conjunto de avaliação de 40 casos com 36 acertos dá 90% de acerto, mas esse número é incerto: com outros 40 casos parecidos, o resultado poderia ser razoavelmente diferente. Quanto menor o conjunto, maior a incerteza e maior a cautela necessária na decisão. Três práticas ajudam: reportar o número de casos junto com a porcentagem ("36 de 40", e não apenas "90%"); examinar os erros um a um, porque um único erro crítico pode pesar mais do que a taxa; e, quando duas alternativas diferem por poucos casos, tratar a diferença como inconclusiva até ampliar o conjunto. Quem tem formação em estatística pode calcular intervalos de confiança; quem não tem deve, no mínimo, evitar tratar diferenças pequenas em amostras pequenas como evidência forte.
+
 ### Confiabilidade e incerteza
 
 Um sistema com IA precisa saber quando não confiar em si mesmo. Algumas formas de detectar incerteza, da mais fraca para a mais forte:
@@ -4317,6 +4376,8 @@ E precisa de supervisão contínua:
 ### Exercícios
 
 **Exercício 27.1 · F · M0** — Posicione cada tarefa na Matriz Entrada × Regra e indique o custo do erro: (a) calcular o valor de uma fatura a partir das horas registradas; (b) identificar, em e-mails de clientes, os que pedem cancelamento; (c) decidir se um pedido de exceção na política de devolução deve ser aceito; (d) ler a data de validade em fotos de documentos; (e) decidir a prioridade de chamados de manutenção a partir de descrições livres.
+
+> **Para conferir** — (a) Quadrante 1: regra explícita sobre dados estruturados — determinístico, sem IA; erro com custo financeiro. (b) Quadrante 2: classificar texto livre; a IA identifica os pedidos de cancelamento e regras ou pessoas decidem o que fazer; o cancelamento não deveria ser executado automaticamente a partir da classificação. (c) Quadrante 3 ou 4: julgamento; a decisão é humana, e a IA pode, no máximo, resumir o histórico do cliente. (d) Quadrante 2: extração de imagens, com validação de formato e de plausibilidade da data; custo do erro alto se a data dispara obrigações. (e) Entre os quadrantes 2 e 4: tentar primeiro explicitar critérios de prioridade (segurança, número de pessoas afetadas, impacto na operação); a IA sugere a categoria a partir da descrição e uma pessoa confirma os casos de prioridade alta.
 
 **Exercício 27.2 · P · M2** — Amplie o conjunto de avaliação do Exercício 16.4 para pelo menos 40 mensagens, com respostas definidas antes. Separe um terço. Ajuste a instrução da IA usando só os dois terços; depois meça no terço separado. A diferença de desempenho entre as duas partes é grande? O que isso indica?
 
@@ -4386,6 +4447,8 @@ RAG é frequentemente proposto para problemas que não precisam dele. Antes de c
 
 **Exercício 28.1 · F · M0** — Para cada situação, diga se RAG é adequado ou exagero, e qual a alternativa: (a) um assistente para responder dúvidas de funcionários sobre 300 páginas de políticas internas; (b) responder a clientes sobre o horário de funcionamento; (c) consultar o saldo de férias de um funcionário; (d) ajudar técnicos a encontrar soluções em 5.000 registros de chamados anteriores.
 
+> **Para conferir** — (a) Adequado: muitos documentos e perguntas variadas — com citação das fontes e controle das versões vigentes. (b) Exagero: informação fixa; uma página de informações resolve. (c) Exagero: é uma consulta a dado estruturado no sistema de pessoal, não uma pergunta sobre documentos. (d) Possivelmente adequado (busca por semelhança em histórico extenso), mas avalie antes se uma busca bem organizada já resolve; atenção a dados pessoais registrados nos chamados.
+
 **Exercício 28.2 · P · M0** — Monte um conjunto de avaliação para um RAG sobre um conjunto de documentos que você conhece (manuais, regulamentos, materiais de curso): quinze perguntas com resposta e fonte esperadas, incluindo cinco cuja resposta não está nos documentos.
 
 **Exercício 28.3 · A · M3** — Se você tiver acesso a uma ferramenta que permita consultar documentos próprios com IA, aplique o conjunto do exercício anterior. Meça separadamente busca, fidelidade, exatidão, citação e comportamento sem resposta. Que componente falhou mais?
@@ -4399,12 +4462,22 @@ Um agente, como visto no Capítulo 16, é um modelo de linguagem que opera em ci
 Entre a automação totalmente definida e o agente totalmente aberto, há um espectro:
 
 ```
-  FLUXO FIXO             FLUXO FIXO COM          FLUXO COM DECISÃO       AGENTE COM            AGENTE
-  com etapas de IA  ──►  ROTEAMENTO POR IA  ──►  DE PASSOS LIMITADA ──►  FERRAMENTAS     ──►  ABERTO
-  (passos definidos;     (IA escolhe qual        (IA escolhe entre       RESTRITAS             (muitas ferramentas,
-   IA extrai/classifica)  caminho seguir)         poucas ações)          (decide os passos,     amplas permissões)
-                                                                          dentro de limites)
-  ◄────────── mais previsível, testável, barato ──────────    ────────── mais flexível, arriscado, caro ──────────►
+  FLUXO FIXO COM ETAPAS DE IA ........... passos definidos; a IA extrai ou classifica
+        │
+        ▼
+  FLUXO COM ROTEAMENTO POR IA ........... a IA escolhe qual caminho seguir
+        │
+        ▼
+  FLUXO COM DECISÃO DE PASSOS LIMITADA .. a IA escolhe entre poucas ações
+        │
+        ▼
+  AGENTE COM FERRAMENTAS RESTRITAS ...... decide os passos, dentro de limites
+        │
+        ▼
+  AGENTE ABERTO ......................... muitas ferramentas, amplas permissões
+
+  De cima para baixo: menos previsível, testável e barato;
+                      mais flexível, arriscado e caro.
 ```
 
 A regra do método é a mesma de sempre: comece pela esquerda e mova-se para a direita apenas quando o problema exigir.
@@ -4500,6 +4573,8 @@ Guardrails são as defesas que limitam o que um agente pode fazer, independentem
 
 **Exercício 29.1 · F · M0** — Aplique o teste do fluxograma a cada proposta e diga se é caso de fluxo ou de agente: (a) responder a perguntas de clientes sobre o status do pedido; (b) pesquisar e comparar fornecedores de embalagens a partir de critérios dados; (c) processar pedidos de reembolso; (d) investigar por que as vendas de uma linha de produtos caíram; (e) agendar reuniões entre pessoas com agendas compartilhadas.
 
+> **Para conferir** — (a) Fluxo: consulta ao status, com IA no máximo para entender a pergunta. (b) Agente pode fazer sentido: os passos dependem do que se encontra em fontes variadas; com ferramentas apenas de leitura e resultado para decisão humana. (c) Fluxo: processo com regras conhecidas e exceções enumeráveis. (d) Agente de análise pode ajudar, somente com leitura, entregando um relatório para pessoas decidirem. (e) Fluxo: é um problema de agendamento com restrição; buscar horários livres e propor não exige que a sequência de passos seja decidida durante a execução.
+
 **Exercício 29.2 · P · M0** — Especifique um agente para uma tarefa do seu contexto que passou no teste do fluxograma (isto é, que realmente precisa de agente), usando a tabela de componentes. Atribua autonomia a cada ferramenta.
 
 **Exercício 29.3 · P · M4** — Avalie a especificação: "Agente de e-mail: lê a caixa de entrada, responde aos clientes, agenda reuniões, encaminha faturas ao financeiro e arquiva o resto. Tem acesso completo à conta de e-mail e ao calendário." Liste os riscos e reescreva a especificação com guardrails.
@@ -4540,7 +4615,7 @@ Construir ficou barato. Confiar continua caro. Esta parte trata do trabalho que 
 
 ### Testar e validar não são a mesma coisa
 
-Duas perguntas diferentes, que exigem atividades diferentes:
+São perguntas diferentes, que exigem atividades diferentes:
 
 - **Testar** responde: *a solução funciona como foi especificada?* Compara o comportamento com os critérios de aceitação.
 - **Validar** responde: *a solução resolve o problema que motivou o projeto?* Compara o mundo depois da solução com o Problem Statement.
@@ -4587,6 +4662,8 @@ Não é possível testar todas as entradas possíveis. Quatro técnicas ajudam a
 ### O teste de sabotagem
 
 Como saber se seus testes são bons? Uma técnica direta: **quebre deliberadamente o sistema e veja se algum teste falha.** Inverta um limite (de "menor ou igual" para "menor"), remova uma verificação de permissão, desative a checagem de duplicidade. Se, depois da sabotagem, todos os testes continuam passando, eles não estavam testando aquilo. Profissionais técnicos conhecem a versão automatizada dessa ideia como teste de mutação; a versão manual, aplicada às regras mais críticas, está ao alcance de qualquer leitor.
+
+> **▲ Avançado — testes de propriedade e de mutação** — Duas técnicas ampliam o alcance dos testes para quem trabalha com código. *Testes baseados em propriedades* não verificam um exemplo específico, mas uma regra que deve valer para qualquer entrada ("para qualquer conjunto de pedidos aceitos, a soma das UTs do dia nunca excede a capacidade"); uma ferramenta gera centenas de entradas variadas e procura uma que viole a propriedade — os invariantes do Capítulo 10 são candidatos naturais. *Testes de mutação* automatizam o teste de sabotagem: uma ferramenta introduz pequenas alterações no código (troca "menor ou igual" por "menor", remove uma condição) e verifica se algum teste falha; as alterações que "sobrevivem" apontam regras não testadas. As duas técnicas são especialmente úteis para verificar código gerado por IA, porque procuram defeitos que ninguém pensou em procurar.
 
 ### O Test Plan
 
@@ -4639,11 +4716,15 @@ Além disso, componentes com IA que recebem texto de terceiros devem ter **casos
 
 **Exercício 30.1 · F · M0** — Para a regra "reembolsos de até R$ 200,00 com recibo são aprovados automaticamente", identifique as classes de equivalência e os valores limite, e escreva os casos de teste.
 
+> **Para conferir** — Classes: valor até o limite com recibo (aprovação automática); valor acima do limite com recibo (outra regra); sem recibo (outra regra); valor inválido (zero, negativo, não numérico). Valores limite: R$ 199,99; R$ 200,00; R$ 200,01; e, na fronteira inferior, R$ 0,00 e R$ 0,01. Antes de escrever os testes, uma pergunta precisa de resposta de quem é dono da regra: "até R$ 200,00" inclui exatamente R$ 200,00? Testes de limite costumam revelar ambiguidades como essa antes mesmo de rodarem.
+
 **Exercício 30.2 · P · M0** — A partir da máquina de estado do pedido da Marzipã (Capítulo 10), escreva os testes de todas as transições permitidas e de pelo menos uma transição proibida a partir de cada estado.
 
 **Exercício 30.3 · P · M3** — Escreva o Test Plan de um componente do seu projeto, execute-o e registre os resultados com evidência. Depois, aplique o teste de sabotagem a duas regras críticas. Algum teste deixou de falhar quando deveria?
 
 **Exercício 30.4 · P · M4** — Um colega diz: "Testei a automação de lembretes: cadastrei uma conta para amanhã e o lembrete chegou. Está funcionando." Liste o que esse teste não verifica e escreva os dez casos de teste mais importantes que faltam.
+
+> **Para conferir** — O teste verifica apenas um caso feliz, uma vez. Casos que faltam: conta já paga (não deve gerar lembrete); conta sem data de vencimento; execução repetida no mesmo dia (sem duplicidade); vencimento em fim de semana; várias contas no mesmo dia (uma mensagem com todas?); conta vencida ontem; status digitado de forma diferente; falha do serviço de mensagens; conteúdo da mensagem correto (fornecedor, valor, data); e a automação que não rodou (alerta de ausência). Um teste que não foi registrado também não pode ser repetido depois de uma mudança.
 
 > **Etapa concluída para o Projeto P06.** Com os Capítulos 26 e 30, você pode concluir o Projeto P06 — Aplicação.
 
@@ -4667,7 +4748,7 @@ O Capítulo 3 apresentou a escala de evidência. Aqui ela se torna um instrument
 | **E3** | Uso real controlado | Resolve o problema com usuários e dados reais? | Piloto com indicador medido contra linha de base. | Período e escala limitados. |
 | **E4** | Uso sustentado | Continua resolvendo ao longo do tempo? | Operação acompanhada por métricas; incidentes tratados. | Exige tempo; o contexto pode mudar. |
 
-Duas regras de uso. Primeiro, **declare sempre o nível de evidência** ao afirmar que algo funciona ("a importação foi testada em E2; o piloto de duas semanas está em andamento"). Segundo, **o nível exigido depende do uso**: E2 antes de qualquer pessoa usar; E3 antes de chamar de solução; E4 antes de remover o processo antigo ou de ampliar a escala.
+A escala tem duas regras de uso. Primeiro, **declare sempre o nível de evidência** ao afirmar que algo funciona ("a importação foi testada em E2; o piloto de duas semanas está em andamento"). Segundo, **o nível exigido depende do uso**: E2 antes de qualquer pessoa usar; E3 antes de chamar de solução; E4 antes de remover o processo antigo ou de ampliar a escala.
 
 ### O plano de validação
 
@@ -4724,6 +4805,8 @@ O template T12 organiza o resultado da validação em: problema e indicador; hip
 ### Exercícios
 
 **Exercício 31.1 · F · M0** — Classifique cada afirmação pelo nível de evidência: (a) "Mostramos o sistema para a diretoria e todos gostaram"; (b) "Nos 40 casos do Test Plan, 39 passaram; o que falhou foi corrigido e retestado"; (c) "Em três meses de uso, o tempo médio de atendimento caiu de 30 para 12 horas, e se mantém"; (d) "O fornecedor garante 99% de acerto"; (e) "Durante o piloto de três semanas com uma equipe, os erros de cadastro caíram pela metade em relação às três semanas anteriores".
+
+> **Para conferir** — (a) E0: a reação da plateia é opinião; o que foi mostrado vale, no máximo, como E1. (b) E2. (c) E4, se as métricas continuarem acompanhadas. (d) E0 para o seu caso: é uma afirmação do fornecedor, não testada no seu contexto. (e) E3, com as cautelas do capítulo (período curto, comparação simples antes e depois).
 
 **Exercício 31.2 · P · M0** — Escreva o plano de validação completo (dez itens) para o seu projeto. Dê atenção especial ao método de comparação e às explicações alternativas que poderiam produzir uma melhora falsa.
 
@@ -4869,6 +4952,8 @@ Pôr "um humano no circuito" não garante supervisão. Pessoas que aprovam cente
 **Exercício 32.3 · P · M3** — Crie dez casos adversariais de injeção de instruções para o componente com IA do seu projeto (ou para a triagem de mensagens da Marzipã). Execute-os. Algum produziu efeito além do esperado? Que defesa de arquitetura teria contido o efeito?
 
 **Exercício 32.4 · P · M4** — Identifique os problemas de privacidade e exposição: "Para treinar a equipe no novo sistema, copiamos a base de clientes para o ambiente de testes. Também colamos algumas conversas reais de clientes no assistente de IA para ajustar a triagem. Os logs guardam as mensagens completas para facilitar o diagnóstico."
+
+> **Para conferir** — Problemas: dados reais de clientes copiados para o ambiente de testes (exposição desnecessária; use dados fictícios ou anonimizados); treinamento com dados reais amplia quem tem acesso a eles; conversas reais coladas num assistente de IA sem anonimização nem verificação de que o serviço é aprovado para esses dados; logs com mensagens completas (dados pessoais nos logs sem necessidade; registre identificadores e metadados, não o conteúdo). Cada prática, isoladamente, parece pequena; juntas, multiplicam os lugares por onde os dados podem vazar.
 
 > **Etapa concluída para o Projeto P08.** Com os Capítulos 29 e 32, você pode concluir o Projeto P08 — Sistema com agente.
 
@@ -5189,7 +5274,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 ## P01 — Automação pessoal
 
-**Pré-requisitos:** Capítulos 1 a 15. **Modos de IA:** M0 na análise e na especificação; M3 na construção; M1 na revisão do Test Plan. **Duração sugerida:** duas a três semanas (incluindo duas semanas de uso).
+**Pré-requisitos:** Capítulos 1 a 15. **Modos de IA:** M0 na análise e na especificação; M3 na construção; M1 na revisão da lista de testes. **Duração sugerida:** duas a três semanas (incluindo duas semanas de uso).
 
 **Objetivo.** Construir uma automação simples e de baixo risco, completa nos dez elementos, e operá-la por duas semanas.
 
@@ -5201,9 +5286,9 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Competências desenvolvidas.** Automation Thinking, Specification, Testing, Technology Literacy.
 
-**Briefing.** Descreva o problema em um mini Problem Statement (cinco linhas, com indicador). Aplique a Escada: a tarefa poderia ser eliminada, reorganizada ou padronizada? Avalie os cinco fatores de automação. Especifique os dez elementos. Escreva o AI Delegation Brief. Construa no ambiente de teste. Escreva e execute um Test Plan com pelo menos oito casos, sendo pelo menos três negativos, um de duplicidade e um de falha de dependência. Coloque em uso por duas semanas, com log. Meça o indicador.
+**Briefing.** Descreva o problema em um mini Problem Statement (cinco linhas, com indicador). Aplique a Escada: a tarefa poderia ser eliminada, reorganizada ou padronizada? Avalie os cinco fatores de automação. Especifique os dez elementos do Capítulo 15 — essa especificação é o seu pedido de construção à IA (o formato completo de delegação, T10, só será apresentado no Capítulo 21; aqui, a especificação dos dez elementos, acrescida das restrições de segurança, é suficiente). Construa no ambiente de teste. Antes de usar, escreva e execute uma lista de pelo menos oito situações de teste, com o resultado esperado de cada uma: pelo menos três em que a automação deve se recusar a agir ou separar o caso, uma de execução duplicada e uma de falha do serviço usado. Registre o resultado de cada situação (o Capítulo 30 aprofundará testes; aqui, basta uma lista planejada antes e registrada depois). Coloque em uso por duas semanas, com log. Meça o indicador.
 
-**Entregáveis.** Mini Problem Statement; análise da Escada e dos cinco fatores; especificação dos dez elementos; T10 AI Delegation Brief; automação funcionando; T11 Test Plan executado com evidência; log de duas semanas; reflexão.
+**Entregáveis.** Mini Problem Statement; análise da Escada e dos cinco fatores; especificação dos dez elementos usada como pedido de construção; automação funcionando; lista de testes executada, com resultado e evidência de cada situação; log de duas semanas; reflexão.
 
 **Critérios de sucesso.** Duas semanas de operação sem falha não tratada; teste de duplicidade aprovado; indicador medido antes e depois.
 
@@ -5214,8 +5299,8 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 | Critério | Crítico | Proficiente (3) | Avançado (4) |
 |---|---|---|---|
 | Justificativa da automação | sim | Escada e cinco fatores aplicados; automação ligada ao indicador. | Mostra o que foi resolvido antes de automatizar, nos degraus baixos. |
-| Especificação | sim | Dez elementos definidos; brief com nove blocos. | Antecipa exceções que só apareceram depois em outros alunos ou contextos. |
-| Testes | sim | Test Plan com negativos, duplicidade e falha de dependência, com evidência. | Aplica teste de sabotagem e registra o que descobriu. |
+| Especificação | sim | Dez elementos definidos, com restrições de segurança, usados como pedido de construção. | Antecipa exceções que só apareceriam na operação, e mostra como chegou a elas. |
+| Testes | sim | Lista de testes planejada antes, com recusas, duplicidade e falha de serviço, executada com evidência. | Quebra de propósito uma regra e verifica se algum teste detecta. |
 | Operação | não | Log de duas semanas; indicador medido. | Usa o log para ajustar a automação e registra a decisão. |
 | Segurança | sim | Nenhum segredo exposto; ambiente de teste separado. | Documenta o pior comportamento possível e como seria interrompido. |
 
@@ -5223,11 +5308,11 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Transferência.** Reescreva a especificação supondo que a automação passe a servir uma equipe de vinte pessoas, e não só você. Que elementos mudam (identidade, permissões, exceções, supervisão)? Quais ficam iguais?
 
-**Resultado de portfólio.** Um caso curto com o antes e depois medido, a especificação dos dez elementos e o que o Test Plan revelou.
+**Resultado de portfólio.** Um caso curto com o antes e depois medido, a especificação dos dez elementos e o que os testes revelaram.
 
 ## P02 — Sistema pessoal
 
-**Pré-requisitos:** Capítulos 1 a 18. **Modos de IA:** M0 em modelagem, regras e requisitos; M2 nas alternativas de arquitetura; M3 na construção; M4 em uma auditoria. **Duração sugerida:** quatro a cinco semanas (incluindo quatro de uso).
+**Pré-requisitos:** Capítulos 1 a 19. **Modos de IA:** M0 em modelagem, regras e requisitos; M2 nas alternativas de arquitetura; M3 na construção; M4 em uma auditoria. **Duração sugerida:** quatro a cinco semanas (incluindo quatro de uso).
 
 **Objetivo.** Construir um sistema pequeno com dados, estados e decisões, e usá-lo de verdade por quatro semanas.
 
@@ -5241,7 +5326,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Briefing.** Escreva o Problem Statement. Modele entidades, atributos, relações (com cardinalidade), identificadores, estados e fonte da verdade. Escreva regras como tabela de decisão e máquina de estado; escreva três invariantes. Escreva requisitos dos seis tipos, priorizados, com critérios de aceitação para os "deve". Gere três alternativas de arquitetura e registre a decisão. Construa em fatias. Teste. Use por quatro semanas. Faça uma retrospectiva.
 
-**Entregáveis.** T02; modelo de dados; tabelas de decisão e máquina de estado; T06 Requirements; T07 Acceptance Criteria; T09 Decision Log (mínimo três entradas); sistema funcionando; T11 executado; uma auditoria (M4) do próprio sistema por IA em sessão separada, com seus achados avaliados; T14 Retrospective.
+**Entregáveis.** T02; modelo de dados; tabelas de decisão e máquina de estado; T06 Requirements; T07 Acceptance Criteria; Decision Log (mínimo três entradas, na versão mínima do Capítulo 3 ou na completa do T09); sistema funcionando; registro dos testes executados (o formato T11 do Apêndice A pode ser usado; o Capítulo 30 o detalha); uma auditoria (M4): numa conversa nova, entregue a uma IA o modelo, as regras e uma descrição do sistema construído e peça que aponte inconsistências entre eles — avalie cada achado; retrospectiva (T14).
 
 **Critérios de sucesso.** Uso real por quatro semanas; invariantes verificados ao fim do período; indicador medido.
 
@@ -5579,3 +5664,2039 @@ O problema pode vir do seu contexto, de um terceiro ou do banco de capstones man
 **Transferência.** Avaliada na defesa, pelas variações. Uma resposta que repete o procedimento do projeto sem adaptá-lo à variação indica procedimento decorado; uma resposta que reconstrói a decisão a partir dos princípios indica domínio.
 
 **Resultado de portfólio.** O caso de maior peso do portfólio, acompanhado da gravação ou do registro da defesa, quando o formato permitir.
+
+# PARTE VIII — DOMÍNIO E TRANSFERÊNCIA
+
+Concluir projetos não é o mesmo que dominar uma competência. É possível executar um procedimento bem sem entender por que ele funciona — e falhar na primeira vez que o contexto mudar. Esta parte trata exatamente dessa diferença: define as competências do método de forma observável, mostra como avaliá-las com variações que impedem a repetição mecânica, ensina a transformar os projetos em evidência profissional e apresenta a competência que coroa o percurso: orquestrar.
+
+## Capítulo 35 — Matriz de competências
+
+### Como ler a matriz
+
+O método desenvolve 26 competências, organizadas em seis blocos que acompanham o ciclo de nove movimentos. Para cada uma, a matriz apresenta:
+
+- **definição** — o que é a competência;
+- **comportamento observável** — o que uma pessoa competente *faz*, de forma que outra pessoa consiga ver;
+- **erro comum** — o que costuma acontecer quando a competência ainda é fraca;
+- **evidência** — que artefatos ou registros mostram a competência;
+- **avaliação** — como verificar o nível;
+- **projetos** — onde ela é desenvolvida e avaliada.
+
+Cada competência é avaliada em quatro níveis, compatíveis com a escala das rubricas:
+
+| Nível | Nome | Descrição |
+|---|---|---|
+| **1** | Reconhece | Identifica o conceito quando apresentado; não o aplica sozinho. |
+| **2** | Aplica com apoio | Aplica em contexto conhecido, seguindo template ou orientação. |
+| **3** | Aplica com autonomia | Aplica em contexto real, sem orientação, com evidência. |
+| **4** | Transfere | Aplica em contexto novo, adapta o procedimento e explica o porquê das adaptações. |
+
+O objetivo da formação completa é que o aluno chegue ao nível 3 em todas as competências e ao nível 4 na maioria delas, com destaque para as do bloco Pensar e para Orquestração e Metacognição.
+
+### Bloco 1 — Pensar
+
+#### 1. Problem Framing (enquadramento de problemas)
+
+- **Definição:** transformar situações vagas e pedidos de solução em problemas formulados, verificáveis e reconhecidos por quem os tem.
+- **Comportamento observável:** pergunta por casos concretos antes de aceitar a tarefa; separa fatos, interpretações e hipóteses; escreve Problem Statements sem solução embutida, com indicador e proteção.
+- **Erro comum:** aceitar o pedido como problema; escrever um Problem Statement que é uma solução reformulada.
+- **Evidência:** Problem Statement; notas de conversa; tabela de fatos e hipóteses; reação do stakeholder.
+- **Avaliação:** rubrica do P00; exame de transferência (itens 1 e 2); variação de domínio.
+- **Projetos:** P00, P03, P09, P10.
+
+#### 2. Systems Thinking (pensamento sistêmico)
+
+- **Definição:** enxergar o problema como comportamento de um sistema de elementos, relações, fluxos, estoques e laços.
+- **Comportamento observável:** desenha System Maps com fronteira justificada; identifica gargalos, laços e atrasos; pergunta "e depois?" sobre cada intervenção.
+- **Erro comum:** otimizar uma etapa que não é o gargalo; ignorar efeitos de segunda ordem.
+- **Evidência:** System Map; análise de laços; previsão de efeitos de segunda ordem comparada com o que ocorreu.
+- **Avaliação:** testes do estranho, do afetado, do problema e da intervenção; validação (o gargalo mudou como previsto?).
+- **Projetos:** P00, P03, P09, P10.
+
+#### 3. Decomposition (decomposição)
+
+- **Definição:** dividir problemas e soluções em partes que possam ser entendidas, construídas e verificadas separadamente.
+- **Comportamento observável:** usa mais de um critério de decomposição; aplica a regra de parada; define interfaces entre as partes.
+- **Erro comum:** decompor pela ferramenta; decompor a solução antes do problema; parar cedo demais (partes não delegáveis) ou tarde demais.
+- **Evidência:** árvore de problemas; decomposição da solução com entrada, saída e critério de pronto.
+- **Avaliação:** verificar cobertura e sobreposição; verificar se cada parte final é delegável.
+- **Projetos:** P03, P06, P10.
+
+#### 4. Abstraction (abstração)
+
+- **Definição:** manter o que importa para um propósito e esconder o resto; reconhecer padrões estruturais entre domínios.
+- **Comportamento observável:** cria visões diferentes por papel sobre um modelo único; nomeia os padrões estruturais presentes num problema novo; detecta abstrações grossas ou finas demais.
+- **Erro comum:** tratar como iguais casos que as pessoas tratam como diferentes; não reconhecer que um problema novo tem forma conhecida.
+- **Evidência:** modelos com justificativa das abstrações; identificação de padrões em problemas de transferência.
+- **Avaliação:** exercícios de padrões estruturais; exame de transferência.
+- **Projetos:** P02, P06, P10.
+
+#### 5. Process Mapping (mapeamento de processos)
+
+- **Definição:** descobrir e representar o processo real, com papéis, passagens, esperas, decisões, exceções e retrabalho.
+- **Comportamento observável:** segue casos concretos; entrevista com perguntas de instância; distingue processo oficial de real; mede esperas.
+- **Erro comum:** mapear o processo oficial; mapear só o caminho feliz.
+- **Evidência:** Process Map real e oficial; casos acompanhados; medições.
+- **Avaliação:** teste do afetado; presença de exceções e esperas medidas.
+- **Projetos:** P03, P04, P09, P10.
+
+#### 6. Data Thinking (pensamento em dados)
+
+- **Definição:** identificar entidades, atributos, relações, identificadores, estados, fontes da verdade e qualidade dos dados de um processo.
+- **Comportamento observável:** modela com cardinalidade correta; escolhe identificadores estáveis; explicita estados; avalia qualidade por amostragem; minimiza dados pessoais.
+- **Erro comum:** nomes como identificadores; estados implícitos; várias fontes da verdade; colunas "item1, item2".
+- **Evidência:** modelo de dados; avaliação de qualidade; respostas às cinco perguntas de ciclo de vida.
+- **Avaliação:** revisão do modelo; testes de invariantes; variação de escala.
+- **Projetos:** P02, P05, P06.
+
+#### 7. Rule Modeling (modelagem de regras)
+
+- **Definição:** descobrir, explicitar, representar e verificar as regras de um processo, incluindo exceções e o grau de explicitabilidade das decisões.
+- **Comportamento observável:** extrai regras tácitas com casos e contrastes; representa regras em tabelas, árvores, máquinas de estado e invariantes; encontra lacunas e conflitos; separa regra de parâmetro.
+- **Erro comum:** escrever regras em parágrafos ambíguos; ignorar exceções; tratar julgamento como se fosse regra.
+- **Evidência:** tabelas de decisão completas; máquinas de estado; catálogo de exceções classificado.
+- **Avaliação:** verificação de completude e consistência; testes por linha e por transição.
+- **Projetos:** P02, P04, P07.
+
+### Bloco 2 — Enxergar
+
+#### 8. Automation Thinking (pensamento de automação)
+
+- **Definição:** decidir se, onde e como automatizar, projetando automações completas nos dez elementos.
+- **Comportamento observável:** aplica a Escada e os cinco fatores antes de automatizar; identifica funções escondidas de etapas manuais; especifica exceções, erros, idempotência e supervisão.
+- **Erro comum:** automatizar processo ruim; definir só gatilho, condição e ação.
+- **Evidência:** análise de justificativa; especificação dos dez elementos; checklist de robustez.
+- **Avaliação:** rubricas do P01 e P04; testes de duplicidade e retomada.
+- **Projetos:** P01, P04.
+
+#### 9. AI Opportunity Identification (identificação de oportunidades de IA)
+
+- **Definição:** identificar as partes de um problema em que a IA é de fato a melhor solução, e as partes em que não é.
+- **Comportamento observável:** posiciona cada parte na Matriz Entrada × Regra; considera alternativas determinísticas; propõe o padrão "IA na borda, regra no centro" quando adequado; recusa IA quando não se justifica.
+- **Erro comum:** usar IA por moda; usar IA para regras explícitas sobre dados estruturados.
+- **Evidência:** posicionamento na matriz; experimento determinístico × IA.
+- **Avaliação:** rubrica do P07; exame de transferência (item 6).
+- **Projetos:** P07, P08, P10.
+
+#### 10. Technology Literacy (literacia tecnológica)
+
+- **Definição:** reconhecer os componentes de sistemas digitais — interface, frontend, backend, dados, APIs, webhooks, autenticação, autorização, automação, IA, RAG, agentes, infraestrutura, observabilidade — e como se relacionam.
+- **Comportamento observável:** localiza em que camada um problema acontece; lê uma requisição de API e um JSON; explica quando usar e quando não usar cada componente.
+- **Erro comum:** confundir ferramentas com conceitos; pôr regras só no frontend; ignorar infraestrutura invisível.
+- **Evidência:** exercícios da Parte III; especificações com terminologia correta.
+- **Avaliação:** exercícios das fichas; diagnóstico de falhas por camada.
+- **Projetos:** P01, P05, P06.
+
+### Bloco 3 — Projetar
+
+#### 11. Requirements (requisitos)
+
+- **Definição:** derivar requisitos necessários, verificáveis, não ambíguos e priorizados a partir do problema e dos stakeholders.
+- **Comportamento observável:** escreve requisitos dos seis tipos; elimina palavras ambíguas; prioriza com "não agora" real; mantém rastreabilidade.
+- **Erro comum:** requisitos dependentes de solução; tudo em "deve"; esquecer requisitos de qualidade e de transição.
+- **Evidência:** documento de requisitos rastreável.
+- **Avaliação:** revisão por checklist; rastreabilidade até os testes.
+- **Projetos:** P02, P06, P09.
+
+#### 12. Architecture (arquitetura)
+
+- **Definição:** tomar as decisões de estrutura de uma solução — responsabilidades, interfaces, dados, dependências, riscos, custo, manutenção, escalabilidade, segurança — de forma consciente e registrada.
+- **Comportamento observável:** gera alternativas em vários degraus; usa critérios eliminatórios e ponderados; projeta em fases; isola dependências.
+- **Erro comum:** escolher a primeira ideia; adicionar complexidade sem requisito; confundir o diagrama com a arquitetura.
+- **Evidência:** ADR; matriz de comparação; diagrama com responsabilidades e interfaces.
+- **Avaliação:** rubrica do P06; perguntas de variação de escala e de restrição.
+- **Projetos:** P06, P08, P09, P10.
+
+#### 13. Technical Decision Making (tomada de decisão técnica)
+
+- **Definição:** decidir entre alternativas com evidência classificada, hipóteses verificáveis e consciência de reversibilidade.
+- **Comportamento observável:** registra decisões com alternativas, evidência, risco, hipótese e validação; faz pré-mortem; revisita hipóteses.
+- **Erro comum:** decisões sem registro; evidência fraca apresentada como forte; ancoragem e custo afundado.
+- **Evidência:** Decision Log com hipóteses revisadas na retrospectiva.
+- **Avaliação:** qualidade das entradas; proporção de hipóteses revisadas; robustez das decisões a mudanças de peso.
+- **Projetos:** P02, P03, P07, P10.
+
+#### 14. Specification (especificação)
+
+- **Definição:** transformar intenção em descrição executável e verificável, com os nove blocos.
+- **Comportamento observável:** escreve briefs que não deixam decisões importantes para quem constrói; inclui critérios negativos, limites e concorrência; mantém a especificação como artefato versionado.
+- **Erro comum:** confundir prompt com especificação; omitir dados ausentes e falhas.
+- **Evidência:** AI Delegation Briefs; lista de suposições do executor (quanto menor e menos grave, melhor a especificação).
+- **Avaliação:** Protocolo 5 aplicado ao brief; quantidade e gravidade das lacunas encontradas.
+- **Projetos:** P01, P04, P06.
+
+#### 15. AI Delegation (delegação para IA)
+
+- **Definição:** delegar partes do trabalho a IA com contexto, escopo e verificação adequados — e saber quando não delegar.
+- **Comportamento observável:** usa os protocolos; separa geração de avaliação; aplica as sete condições de não delegação; mantém o Mapa Humano–Máquina sem IA em "responde".
+- **Erro comum:** delegar sem critérios; aceitar sem verificar; delegar decisões de valor.
+- **Evidência:** registro de uso de IA por protocolo; Mapa Humano–Máquina.
+- **Avaliação:** auditoria do registro; teste do defeito plantado.
+- **Projetos:** P01, P06, P08, P10.
+
+### Bloco 4 — Construir
+
+#### 16. Implementation Supervision (supervisão da implementação)
+
+- **Definição:** controlar escopo, ordem, verificação e integração da construção feita por IA ou por terceiros.
+- **Comportamento observável:** constrói em fatias verticais a partir de um esqueleto andante; lê diffs; reconhece sinais de alerta; sai de espirais de correção; mantém arquivo de contexto.
+- **Erro comum:** fatias grandes demais; aceitar mudanças fora do escopo; corrigir em espiral.
+- **Evidência:** plano de fatias; histórico de versões; registro de diffs revisados.
+- **Avaliação:** rubrica do P06; revisão do histórico.
+- **Projetos:** P04, P06, P08.
+
+#### 17. Integration (integração)
+
+- **Definição:** projetar e construir trocas confiáveis entre sistemas, com fonte da verdade, mapeamento, tratamento de falhas e conciliação.
+- **Comportamento observável:** responde às oito perguntas; separa o que é seu, do outro e em trânsito; trata duplicatas, ordem e falhas; concilia.
+- **Erro comum:** marcar como concluído o que o outro lado não confirmou; sincronização de mão dupla sem necessidade.
+- **Evidência:** mapeamento; diagrama de estados de trânsito; relatório de conciliação.
+- **Avaliação:** rubrica do P05; testes de falha simulada.
+- **Projetos:** P05, P06, P09.
+
+### Bloco 5 — Confiar
+
+#### 18. Testing (testes)
+
+- **Definição:** planejar e executar testes que verifiquem a solução contra a especificação, incluindo negativos, limites, estados, permissões, duplicidade, concorrência e falhas.
+- **Comportamento observável:** usa classes de equivalência, valores limite, tabelas e máquinas de estado para escolher casos; registra evidência; aplica sabotagem; mantém regressão.
+- **Erro comum:** testar só o caso feliz; não registrar; testes derivados do código.
+- **Evidência:** Test Plan executado.
+- **Avaliação:** proporção e qualidade de casos negativos; resultado do teste de sabotagem.
+- **Projetos:** P01 a P10.
+
+#### 19. Validation (validação)
+
+- **Definição:** verificar, com evidência, se a solução resolveu o problema que motivou o projeto.
+- **Comportamento observável:** escreve plano de validação antes do piloto; usa linha de base e proteção; considera explicações alternativas; declara nível de evidência e limitações.
+- **Erro comum:** confundir demonstração com validação; comparar períodos não comparáveis; omitir limitações.
+- **Evidência:** Validation Report.
+- **Avaliação:** rubrica do P07 e P09; honestidade das limitações.
+- **Projetos:** P07, P09, P10.
+
+#### 20. Risk Analysis (análise de risco)
+
+- **Definição:** identificar o que pode dar errado, com que probabilidade e impacto, e decidir o que fazer, reconhecendo que a arquitetura define o tamanho dos riscos.
+- **Comportamento observável:** aplica as quatro perguntas; mantém Risk Register; pergunta pelo pior comportamento possível de cada automação; reduz impacto por arquitetura.
+- **Erro comum:** "riscos: nenhum"; tratar riscos só com instruções e boa vontade.
+- **Evidência:** Risk Register; decisões de arquitetura justificadas por risco.
+- **Avaliação:** rubrica do P08; exame de transferência (item sobre riscos).
+- **Projetos:** P04, P07, P08, P10.
+
+#### 21. Security Awareness (consciência de segurança)
+
+- **Definição:** aplicar práticas de segurança e privacidade proporcionais: segredos, autenticação, autorização, menor privilégio, minimização, defesa contra injeção, reversibilidade, logs de auditoria.
+- **Comportamento observável:** nunca expõe segredos; testa permissões no backend; anonimiza dados; projeta guardrails de arquitetura; revisa acessos.
+- **Erro comum:** chaves em conversas e código; dados reais em testes; confiar na instrução do modelo contra injeção.
+- **Evidência:** auditorias de segurança; testes adversariais; checklist de segurança.
+- **Avaliação:** revisão dos artefatos; testes adversariais do P08.
+- **Projetos:** P01, P05, P06, P08.
+
+### Bloco 6 — Conduzir
+
+#### 22. Documentation (documentação)
+
+- **Definição:** produzir documentação orientada às tarefas de quem vai usar, operar e manter a solução.
+- **Comportamento observável:** escreve manuais de operação testados por outra pessoa; mantém decisões e arquivo de contexto; documenta o comportamento real.
+- **Erro comum:** documentação genérica, desatualizada ou inexistente; documentar a intenção em vez do comportamento.
+- **Evidência:** manual de operação; registro do teste do manual com outra pessoa.
+- **Avaliação:** outra pessoa executa uma tarefa só com a documentação.
+- **Projetos:** P04, P06, P09.
+
+#### 23. Communication (comunicação)
+
+- **Definição:** conduzir conversas de enquadramento, explicar decisões e trade-offs e reportar resultados de forma adequada a cada público.
+- **Comportamento observável:** entrevista sem induzir respostas; comunica decisões em cinco partes; relata resultados com nível de evidência e limitações; trata objeções.
+- **Erro comum:** jargão; esconder más notícias; prometer além da evidência.
+- **Evidência:** notas de entrevista; comunicações de decisão; Validation Report; reação dos stakeholders.
+- **Avaliação:** rubricas do P00, P03 e P09; defesa do P10.
+- **Projetos:** P00, P03, P09, P10.
+
+#### 24. Project Management (gestão de projetos)
+
+- **Definição:** conduzir um projeto com escopo escrito, prazo fixo, incrementos, riscos de projeto e comunicação regular.
+- **Comportamento observável:** ajusta escopo para caber no prazo; registra mudanças de escopo; antecipa bloqueios; mantém atualizações curtas.
+- **Erro comum:** escopo e prazo fixos ao mesmo tempo; mudanças de escopo não registradas.
+- **Evidência:** Project Brief; atualizações; Decision Log de escopo.
+- **Avaliação:** rubricas do P03 e P09.
+- **Projetos:** P03, P09, P10.
+
+#### 25. Orchestration (orquestração)
+
+- **Definição:** coordenar pessoas, sistemas e IAs ao longo do ciclo, mantendo a visão do todo, a consistência entre as partes e a responsabilidade definida.
+- **Comportamento observável:** mantém plano de orquestração e Mapa Humano–Máquina; delega unidades com interfaces claras; integra e verifica; limita o trabalho em andamento.
+- **Erro comum:** perder a visão do todo ao delegar; partes inconsistentes entre si; atividades sem responsável.
+- **Evidência:** plano de orquestração; Mapa Humano–Máquina; registro de integrações e verificações.
+- **Avaliação:** rubrica do P10; perguntas da defesa.
+- **Projetos:** P08, P09, P10.
+
+#### 26. Metacognition (metacognição)
+
+- **Definição:** saber o que se sabe e o que não se sabe; calibrar a própria confiança; aprender deliberadamente com a experiência.
+- **Comportamento observável:** registra previsões e as compara com resultados; reconhece quando não consegue explicar algo que construiu; ajusta o próprio processo a partir das retrospectivas.
+- **Erro comum:** confundir familiaridade com entendimento; confiança descalibrada; reflexões genéricas.
+- **Evidência:** diário de bordo; reflexões dos projetos; diário metacognitivo do P10; comparação dos autodiagnósticos de entrada e saída.
+- **Avaliação:** especificidade e honestidade das reflexões; calibração (previsões × resultados).
+- **Projetos:** todos, com ênfase em P00 e P10.
+
+### A matriz em uma página
+
+A tabela abaixo mostra em que projetos cada competência é **avaliada como crítica** (●) ou **desenvolvida e observada** (○).
+
+| Competência | P00 | P01 | P02 | P03 | P04 | P05 | P06 | P07 | P08 | P09 | P10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 Problem Framing | ● | ○ | ○ | ● | | | | ○ | | ● | ● |
+| 2 Systems Thinking | ● | | | ● | | | | | | ○ | ● |
+| 3 Decomposition | ○ | | ○ | ● | | | ● | | | ○ | ● |
+| 4 Abstraction | | | ● | ○ | | | ○ | | | | ● |
+| 5 Process Mapping | | | | ● | ● | | | | | ● | ● |
+| 6 Data Thinking | | | ● | | | ● | ● | | | ○ | ● |
+| 7 Rule Modeling | | | ● | ○ | ● | | | ● | | | ● |
+| 8 Automation Thinking | | ● | ○ | | ● | | | | | ○ | ○ |
+| 9 AI Opportunity Identification | | | | | | | | ● | ● | ○ | ● |
+| 10 Technology Literacy | | ● | ○ | | ○ | ● | ● | | | | ○ |
+| 11 Requirements | | ○ | ● | | | | ● | | | ● | ● |
+| 12 Architecture | | | ○ | | | | ● | | ● | ● | ● |
+| 13 Technical Decision Making | | | ● | ● | | | ○ | ● | ● | ○ | ● |
+| 14 Specification | | ● | ○ | | ● | ● | ● | | ○ | | ● |
+| 15 AI Delegation | | ● | ○ | | ○ | ○ | ● | ○ | ● | ○ | ● |
+| 16 Implementation Supervision | | ○ | ○ | | ● | ○ | ● | ○ | ● | ○ | ● |
+| 17 Integration | | | | | | ● | ● | | | ○ | ● |
+| 18 Testing | | ● | ● | | ● | ● | ● | ● | ● | ● | ● |
+| 19 Validation | | ○ | ○ | ○ | | | | ● | | ● | ● |
+| 20 Risk Analysis | | ○ | | | ● | ○ | ○ | ● | ● | ○ | ● |
+| 21 Security Awareness | | ● | ○ | | ○ | ● | ● | ○ | ● | ○ | ● |
+| 22 Documentation | | | ○ | | ● | ○ | ○ | | ○ | ● | ● |
+| 23 Communication | ● | | | ● | | | ○ | | | ● | ● |
+| 24 Project Management | | | | ○ | | | ○ | | | ● | ● |
+| 25 Orchestration | | | | | | | | | ○ | ● | ● |
+| 26 Metacognition | ● | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ○ | ● |
+
+O template T16 — Competency Assessment (Apêndice A) permite registrar a avaliação de cada competência, com nível e evidência, ao longo do percurso.
+
+## Capítulo 36 — Avaliação e transferência
+
+### A pergunta da avaliação
+
+Toda avaliação no método responde a uma pergunta: **o aluno aprendeu o conceito, ou apenas decorou o procedimento?** Quem decorou o procedimento consegue repetir o projeto do exemplo, às vezes muito bem. Quem aprendeu o conceito consegue resolver um problema diferente — e explicar por que fez diferente.
+
+Por isso, a avaliação combina três tipos de evidência:
+
+- **evidência de produto** — os artefatos e a solução (o que foi feito);
+- **evidência de processo** — diário de bordo, Decision Log com datas, registro de uso de IA, histórico de versões (como foi feito);
+- **evidência de transferência** — respostas a variações e a problemas nunca vistos (o que o aluno consegue fazer com o que aprendeu).
+
+A evidência de produto, sozinha, é a mais fácil de obter sem aprender — especialmente com IA. As outras duas são as que distinguem domínio.
+
+### Três momentos de avaliação
+
+**Diagnóstica.** O autodiagnóstico de entrada (em "Como usar este livro") e as revisões de fim de parte. Servem para orientar o estudo, não para aprovar.
+
+**Formativa.** Os exercícios com gabarito comentado, a avaliação por pares dos projetos e as reflexões. Servem para aprender — o erro é esperado e útil.
+
+**Somativa.** A aprovação dos projetos pelas rubricas, o exame de transferência e a defesa do capstone. Servem para atestar o nível de competência.
+
+### As oito dimensões de variação
+
+Para testar transferência, o método varia o problema em uma ou mais de oito dimensões. Cada dimensão testa algo diferente.
+
+| Dimensão | O que muda | O que testa | Pergunta típica |
+|---|---|---|---|
+| **Domínio** | O setor ou área do problema. | Se o aluno reconhece padrões estruturais em contexto novo. | "Como seria o mesmo raciocínio numa clínica, numa escola, num escritório?" |
+| **Ferramenta** | A tecnologia disponível. | Se a solução foi pensada por funções ou presa a uma ferramenta. | "E se essa plataforma não existisse? O que da sua solução sobrevive?" |
+| **Usuário** | Quem usa a solução. | Se a interface, as permissões e a supervisão foram pensadas a partir do usuário. | "E se os usuários fossem idosos, ou técnicos, ou clientes externos?" |
+| **Restrição** | Uma limitação nova (legal, de dados, de prazo). | Se o aluno revisita decisões, e não só acrescenta remendos. | "E se os dados não pudessem sair da empresa?" |
+| **Escala** | Volume, número de usuários, frequência. | Se o aluno sabe o que muda com escala (e o que não muda). | "E se o volume fosse cem vezes maior?" |
+| **Orçamento** | Recursos disponíveis. | Se o aluno consegue descer a Escada e priorizar. | "E se não houvesse orçamento algum para ferramentas?" |
+| **Objetivo** | O que se quer otimizar. | Se o aluno liga decisões ao indicador. | "E se o objetivo fosse reduzir erros, e não tempo?" |
+| **Risco** | O custo do erro. | Se o aluno ajusta autonomia, testes e supervisão. | "E se um erro aqui pudesse causar dano a uma pessoa?" |
+
+### Sinais de procedimento e sinais de conceito
+
+Ao avaliar uma resposta a uma variação, observe:
+
+| Sinais de procedimento decorado | Sinais de conceito aprendido |
+|---|---|
+| Repete os mesmos passos e artefatos, na mesma ordem, independentemente da variação. | Diz quais decisões mudam e quais permanecem, e por quê. |
+| Usa os mesmos termos do exemplo, mesmo quando não se aplicam. | Usa os termos do novo domínio, ligando-os aos conceitos do método. |
+| Acrescenta remendos à solução anterior. | Volta ao movimento do ciclo afetado pela variação (às vezes, ao enquadramento). |
+| Justifica com "porque é assim que se faz". | Justifica com princípios (intervenção mínima, evidência, responsabilidade, projeto para a falha). |
+| Não percebe quando a variação torna a solução anterior inadequada. | Percebe, e diz que a solução anterior deixaria de ser aceitável. |
+| Escala a mesma profundidade de análise para qualquer problema. | Ajusta a profundidade ao custo do erro (proporcionalidade). |
+
+### O exame de transferência
+
+O exame de transferência é a avaliação somativa central do método, aplicado ao fim da Parte VIII (e exigido para o nível profissional de certificação, Capítulo 41). Ele apresenta um problema que não aparece no livro e pede que o aluno percorra o ciclo até a especificação, o plano de construção, de teste e de validação. A construção completa não é exigida no exame; ela já foi demonstrada nos projetos.
+
+O exame abaixo é um modelo. Os formatos acompanhados devem manter um banco de problemas equivalentes, renovado periodicamente, para que o exame não seja conhecido de antemão.
+
+#### Exame modelo — Concessão de crédito na distribuidora
+
+*Situação.* Uma distribuidora de peças industriais vende a prazo para empresas clientes. Quando um cliente novo quer comprar a prazo, o vendedor envia ao setor de crédito, por e-mail, um conjunto de documentos (cadastro preenchido, documentos da empresa, referências comerciais, às vezes demonstrativos financeiros), em formatos variados — PDFs, fotos, planilhas. Uma analista de crédito confere os documentos, consulta um serviço externo de informações de crédito, consulta no sistema de gestão da distribuidora se o cliente já comprou antes, e registra tudo numa planilha. O gerente de crédito aprova ou recusa o limite, às vezes pedindo garantias. As regras de concessão estão parcialmente num documento de política de cinco anos atrás; parte delas "o gerente sabe" (por exemplo, clientes de certos setores exigem garantia; referências de concorrentes valem menos). Os vendedores reclamam que a análise demora de três a quinze dias e que perdem vendas; o financeiro reclama da inadimplência de clientes novos. A diretoria pediu "uma IA que analise o crédito automaticamente".
+
+*Tarefas.* Em até [duração definida pelo programa], produza:
+
+1. as decisões embutidas no pedido e o Problem Statement, com indicador principal, indicador de proteção e o que precisaria ser medido para a linha de base;
+2. o mapa de stakeholders, com posições, interesses, perdas e conflitos;
+3. o System Map, com pelo menos um laço;
+4. o Process Map provisório, com esperas, exceções e as perguntas que você faria para validá-lo;
+5. o modelo de dados, com estados da entidade principal e fontes da verdade;
+6. as regras conhecidas e as implícitas, representadas como tabela de decisão ou árvore, com as lacunas marcadas, e a classificação de cada decisão por grau de explicitabilidade;
+7. as exceções relevantes e como seriam tratadas;
+8. oportunidades de intervenção em pelo menos quatro degraus da Escada, com o posicionamento de cada parte candidata a IA na Matriz Entrada × Regra;
+9. três alternativas de arquitetura e a comparação entre elas;
+10. a decisão, registrada como entrada de Decision Log, com hipótese, validação e pré-mortem curto;
+11. o AI Delegation Brief do primeiro componente a ser construído;
+12. o Mapa Humano–Máquina, com o nível de autonomia de cada ação;
+13. o Test Plan resumido do primeiro componente, com casos negativos e adversariais;
+14. o plano de validação, incluindo como evitar conclusões falsas sobre a inadimplência;
+15. o Risk Register com os cinco riscos principais, incluindo privacidade.
+
+*O que o avaliador procura (guia).* Uma resposta proficiente:
+
+- recusa a premissa de "análise automática": a decisão de conceder crédito é de julgamento parcial e de alto custo de erro; a IA pode estruturar documentos (quadrante 2) e apoiar a análise, mas a decisão fica em N1 ou N2;
+- identifica dois problemas com indicadores possivelmente conflitantes (tempo de análise e inadimplência) e escolhe um principal com o outro como proteção — ou trata ambos explicitamente;
+- encontra intervenções de degrau baixo: lista de documentos obrigatória e padronizada para os vendedores (degrau 2), atualização e explicitação da política com o gerente (degrau 1), registro estruturado em vez de e-mails (degrau 3), triagem de pedidos simples com regra explícita (por exemplo, limites baixos com critérios objetivos) para reduzir a fila do gerente;
+- reconhece padrões estruturais: coleta de informação incompleta, fluxo de aprovação, consolidação, verificação contra regra;
+- trata as regras tácitas do gerente com as técnicas do Capítulo 10 (casos, contrastes, pensar em voz alta) e reconhece que algumas podem ser problemáticas e precisar de revisão (por exemplo, critérios que não se sustentam);
+- trata dados de terceiros (documentos de empresas e possivelmente de pessoas, informações de crédito) com minimização, acesso restrito e cuidado com envio a serviços externos;
+- prevê injeção de instruções em documentos enviados pelos clientes;
+- planeja a validação reconhecendo que inadimplência é um indicador com atraso longo (meses), e propõe indicadores intermediários e comparação adequada;
+- ajusta a profundidade ao risco e não propõe um agente.
+
+Uma resposta avançada, além disso: discute o risco de a IA de apoio reproduzir critérios injustos ou inadequados presentes nas decisões passadas; propõe uma fase de explicitação e revisão das regras antes de qualquer automação; desenha a supervisão para evitar que o gerente apenas "carimbe" as sugestões.
+
+#### Correção e devolutiva
+
+O exame é corrigido com a rubrica do capstone, nos blocos Pensar e modelar, Decidir e especificar, Confiar e Transferir. A devolutiva deve apontar, para cada bloco, um ponto forte com evidência e um ponto a desenvolver com uma pergunta que leve o aluno a revisitar o raciocínio. Nos formatos acompanhados, o exame pode ser seguido de uma conversa de quinze minutos em que o avaliador apresenta duas variações e observa o raciocínio.
+
+### Problemas para praticar transferência
+
+Use os problemas abaixo como treino. Para cada um, faça pelo menos as tarefas 1, 4, 6, 8 e 12 do exame modelo.
+
+**T-1. Laboratório de análises clínicas.** Pedidos de exames chegam em papel, por foto e por sistema de convênios; há regras de preparo do paciente e de coleta por tipo de exame; resultados críticos precisam ser comunicados ao médico em prazo curto. "Queremos um robô que avise os pacientes."
+
+**T-2. Departamento de compras de uma universidade.** Solicitações de compra chegam por formulário e e-mail, com especificações vagas; há regras de licitação conforme valor; várias aprovações; fornecedores enviam propostas em formatos diferentes. "As compras demoram meses."
+
+**T-3. Cooperativa de produtores rurais.** Os cooperados entregam produção em dias variados; a qualidade é classificada por amostragem; o pagamento depende da classificação e do preço do dia; há reclamações sobre a classificação. "Queremos transparência."
+
+### Repetir o autodiagnóstico
+
+Ao concluir esta parte, repita o autodiagnóstico de entrada e compare com o registro do início. Para cada afirmação em que sua nota subiu, aponte a evidência (projeto, artefato) que a sustenta. Para cada uma em que não subiu, ou subiu sem evidência, registre o que faria para desenvolvê-la. Diferenças entre a sua nota e as evidências são um indicador de calibração — matéria-prima da metacognição (Capítulo 38).
+
+### Avaliação por pares
+
+No estudo autodirigido, a avaliação por pares substitui parcialmente o avaliador. Para que funcione:
+
+- o avaliador recebe os artefatos e a rubrica, não a apresentação do autor (avalia-se a evidência, não a eloquência);
+- cada nota vem com a evidência que a justifica ("critério 3, nível 2: o Test Plan não tem casos de permissão");
+- o par apresenta pelo menos uma variação e pede ao autor que responda por escrito;
+- a discordância entre a autoavaliação e a avaliação do par é discutida, e a conclusão registrada.
+
+### IA e integridade na avaliação
+
+Num método que ensina a usar IA, proibi-la nas avaliações seria incoerente; permitir sem regras tornaria a avaliação inútil. As regras são:
+
+- os modos de IA de cada etapa são respeitados e declarados;
+- a evidência de processo (diário, Decision Log com datas, histórico de versões, registro de uso de IA) faz parte da avaliação — artefatos impecáveis sem rastro de processo são tratados com cautela;
+- a transferência é avaliada por variações respondidas em condições controladas (conversa, defesa ou prova em modo M0), onde a compreensão própria precisa aparecer;
+- uso de IA não declarado, quando detectado, invalida o projeto.
+
+## Capítulo 37 — Portfólio
+
+### Para que serve
+
+Cada projeto gera uma evidência profissional. Reunidas, elas formam um portfólio que mostra a quem precisa avaliar sua competência — um empregador, um cliente, um avaliador do programa — algo que um certificado sozinho não mostra: **como você pensa diante de um problema real**.
+
+Quem lê um portfólio não está procurando a ferramenta que você usou. Está procurando quatro coisas: se você entendeu o problema, se suas decisões foram fundamentadas, se você tem evidência do resultado e se é honesto sobre os limites.
+
+### A estrutura de um caso
+
+Cada caso de portfólio segue a estrutura abaixo (template T15). As orientações dizem o que cada seção deve mostrar.
+
+| Seção | O que mostrar | Erro comum |
+|---|---|---|
+| **Problema** | O Problem Statement, em linguagem acessível. | Descrever a solução no lugar do problema. |
+| **Contexto** | Organização (anonimizada, se necessário), stakeholders, restrições. | Contexto genérico demais para entender as decisões. |
+| **Situação anterior** | Como as coisas funcionavam, com o indicador na linha de base. | Exagerar o caos anterior para valorizar o resultado. |
+| **Análise** | O achado principal do mapeamento (processo, sistema, dados, regras). | Listar artefatos sem dizer o que revelaram. |
+| **Decisões** | As duas ou três decisões principais, com alternativas e justificativa. | Apresentar decisões como óbvias. |
+| **Arquitetura** | A estrutura da solução, com o diagrama e o porquê. | Diagrama sem explicação. |
+| **Implementação** | Como foi construída, o que foi delegado e como foi supervisionado. | Focar na ferramenta. |
+| **Testes** | O que foi testado e o que os testes revelaram. | "Testado e funcionando." |
+| **Validação** | Método, nível de evidência, comparação com a linha de base. | Confundir demonstração com validação. |
+| **Resultados** | Os números e as observações, com o nível de evidência declarado. | Resultados sem fonte ou inflados. |
+| **Limitações** | O que não funcionou, o que não foi provado, o que ficou de fora. | Omitir — é a seção que mais gera confiança. |
+| **Aprendizados** | O que você aprendeu sobre o problema, a tecnologia e você mesmo. | Aprendizados genéricos ("aprendi a importância da comunicação"). |
+| **Próximos passos** | O que deveria acontecer a seguir, e por quê. | Lista de desejos sem prioridade. |
+
+### Um exemplo condensado
+
+> **Caso de portfólio (ilustrativo) — Pedidos sob encomenda numa confeitaria**
+>
+> **Problema.** Pedidos chegavam por mensagem, incompletos e registrados de forma dispersa; a dona gastava grande parte do dia completando informações, e houve erros de pedido e dias com encomendas além da capacidade.
+>
+> **Situação anterior.** Nas oito semanas anteriores: erros de pedido em vários casos e dois dias acima da capacidade; tempo da dona com mensagens de pedido estimado por registro de amostragem de uma semana.
+>
+> **Análise.** A capacidade era medida intuitivamente por esforço, não por número de bolos; a regra tácita foi explicitada como unidades de trabalho (UT). As alterações de pedido eram a principal fonte de erro, porque o sabor existia em três lugares sem fonte da verdade.
+>
+> **Decisões.** (1) Capacidade em UT, validada por duas semanas de comparação com a percepção da dona. (2) Formulário para quem aceita usá-lo e extração por IA para mensagens livres, com a IA em nível N2 (rascunho para aprovação) — escolhida após avaliação com 60 mensagens; datas relativas nunca resolvidas pela IA. (3) Chatbot autônomo rejeitado: o teste do fluxograma mostrou que o atendimento cabia num fluxo, e as partes de julgamento deveriam ficar com a dona.
+>
+> **Arquitetura.** Aplicação simples com pedidos, itens, capacidade e pagamentos; integração com serviço de pagamentos por webhook com conciliação diária; triagem de mensagens com IA na borda e regras no centro.
+>
+> **Testes.** Test Plan com casos de capacidade no limite, concorrência, webhook duplicado e com assinatura inválida, e dez casos de injeção nas mensagens. O teste de concorrência revelou que dois pedidos simultâneos passavam; corrigido antes do piloto.
+>
+> **Validação.** Piloto de oito semanas comparado com as oito anteriores (período de mesma sazonalidade). Nenhum dia acima da capacidade; erros de pedido reduzidos; tempo da dona com mensagens de pedido reduzido em proporção próxima da meta (E3). Um incidente (webhooks rejeitados após troca de chave do fornecedor) levou a três mudanças no sistema.
+>
+> **Limitações.** O tempo da dona foi medido por amostragem e autorregistro; a satisfação das clientes foi avaliada apenas qualitativamente; o volume no período foi modesto, e o comportamento em datas de pico ainda não foi observado.
+>
+> **Aprendizados.** A regra mais importante do sistema (UT) não estava em lugar nenhum antes do projeto; o maior risco técnico (webhook) estava num lugar que parecia resolvido; e a decisão de não automatizar a confirmação foi a mais valorizada pela dona.
+>
+> **Próximos passos.** Observar a operação no próximo pico; reavaliar os pesos de UT com a nova confeiteira; decidir sobre o lembrete de retirada.
+
+### Regras de honestidade
+
+- **Todo resultado declara seu nível de evidência.** "Reduziu erros (E3, piloto de oito semanas)" é diferente de "reduziu erros".
+- **Nenhum dado confidencial ou pessoal.** Anonimize organizações e pessoas quando necessário, e peça autorização a terceiros para usar o caso.
+- **Crédito a quem participou.** Diga o que foi feito por você, por outras pessoas e por IA.
+- **Números ilustrativos são marcados como tal** — e não devem aparecer num portfólio profissional como se fossem resultados.
+- **Nada de depoimentos editados ou inventados.** Se houver avaliação do terceiro, ela vai nas palavras dele.
+
+### Compor o portfólio
+
+Um portfólio não é a lista dos onze projetos. É uma seleção de três a cinco casos que, juntos, mostram amplitude — domínios diferentes, tipos de solução diferentes (pelo menos um em que a melhor solução não foi tecnológica, ou não usou IA) — e profundidade, com o P09 e o P10 como casos principais. Cada caso tem uma versão de uma página (para leitura rápida) e a versão completa (para quem quiser os detalhes).
+
+## Capítulo 38 — Orquestração
+
+### O que é orquestrar
+
+À medida que os projetos crescem, o trabalho deixa de ser fazer cada parte e passa a ser **coordenar as partes**: pessoas com interesses e prazos diferentes, sistemas que precisam conversar, várias tarefas delegadas a IAs ao mesmo tempo, decisões que dependem umas das outras. Orquestrar é manter a visão do todo enquanto as partes acontecem — garantindo que elas sejam consistentes entre si, que cada uma seja verificada e que cada atividade tenha um responsável.
+
+O nono movimento do ciclo aparece no diagrama do Capítulo 3 envolvendo os outros oito. Esta é a razão: a orquestração não é uma etapa no fim, é a camada que mantém o ciclo funcionando quando há muitas coisas em andamento.
+
+### Os instrumentos do orquestrador
+
+Quatro artefatos, todos já apresentados, formam o painel de controle de quem orquestra:
+
+- o **plano de orquestração** — a lista das unidades de trabalho, com dependências, executor, verificação e estado;
+- o **Mapa Humano–Máquina** — quem executa, decide, verifica e responde por cada atividade (Capítulo 21);
+- o **arquivo de contexto do projeto** — o que cada executor (pessoa ou IA) precisa saber para trabalhar de forma consistente (Capítulo 23);
+- o **Decision Log** — a fonte da verdade das decisões, que todos os executores devem respeitar.
+
+### O plano de orquestração
+
+O plano de orquestração é a decomposição do trabalho (Capítulo 6) transformada em plano de execução. Para cada unidade:
+
+| Campo | Pergunta |
+|---|---|
+| **Unidade** | O que precisa ser feito (com critério de pronto)? |
+| **Depende de** | Que unidades precisam estar prontas antes? |
+| **Executor** | Quem ou o quê executa (pessoa, IA, automação, fornecedor)? |
+| **Contexto** | Que artefatos o executor recebe? |
+| **Interface** | O que esta unidade entrega às outras, em que formato? |
+| **Verificação** | Como e por quem será verificada antes de ser integrada? |
+| **Estado** | Não iniciada, em andamento, aguardando verificação, verificada, integrada. |
+
+> **Caso Vértice** — Trecho do plano de orquestração das fases 3 e 4, executadas em paralelo por Rodrigo:
+>
+> | Unidade | Depende de | Executor | Verificação | Estado |
+> |---|---|---|---|---|
+> | U1 Especificar integração com sistema de lotes | — | Rodrigo + equipe do sistema de lotes | Revisão de Beatriz e da equipe do sistema de lotes | verificada |
+> | U2 Implementar envio e estados de liberação | U1 | IA (assistente de programação), sessão A | Testes de U2 + auditoria em sessão separada | em andamento |
+> | U3 Conciliação diária laudos × lotes | U1 | IA, sessão B | Divergência proposital detectada | aguardando verificação |
+> | U4 Montar conjunto de avaliação de certificados | — | Analista sênior | Segunda analista confere 20% do gabarito | em andamento |
+> | U5 Leitores de modelo fixo (3 fornecedores) | U4 | IA, sessão C | Conjunto de avaliação | não iniciada |
+> | U6 Extração por IA (demais fornecedores) | U4 | IA, sessão D | Conjunto de avaliação, terço separado | não iniciada |
+> | U7 Decisão de arquitetura da fase 4 | U5, U6 | Beatriz | Decision Log com evidência de U5 e U6 | não iniciada |
+>
+> Duas regras de orquestração aparecem no plano: as unidades U2 e U3 trabalham em partes diferentes do sistema, com interface definida em U1, para que as sessões de IA não alterem os mesmos arquivos; e nenhuma unidade é integrada sem passar pela verificação da sua linha.
+
+### Orquestrar várias IAs
+
+Quando várias tarefas são delegadas a IAs em paralelo — prática cada vez mais comum —, aparecem problemas que não existiam com uma única sessão:
+
+- **Inconsistência.** Duas sessões tomam decisões diferentes sobre a mesma coisa (nomes, formatos, regras). *Defesa:* o arquivo de contexto e o Decision Log como fonte comum; interfaces definidas antes de paralelizar.
+- **Conflito de alterações.** Duas sessões alteram o mesmo arquivo ou componente. *Defesa:* cada artefato tem um único dono por vez; paralelize apenas unidades com fronteiras claras.
+- **Integração tardia.** Cada parte funciona sozinha e o conjunto não. *Defesa:* integrar cedo e com frequência; testes de integração; esqueleto andante antes de paralelizar.
+- **Verificação diluída.** Com muitas entregas chegando, a verificação vira formalidade. *Defesa:* limitar o trabalho em andamento ao que você consegue verificar com cuidado; a capacidade de verificação, não a de geração, define o ritmo.
+
+A última defesa é a mais importante e a mais contraintuitiva. Com IA, é fácil iniciar dez frentes ao mesmo tempo. Mas cada frente produz algo que precisa ser verificado, e a verificação depende de você. **O gargalo do orquestrador é a verificação** — o mesmo raciocínio de gargalos do Capítulo 5, aplicado ao próprio trabalho.
+
+### Orquestrar pessoas
+
+Pessoas não são executores intercambiáveis. Orquestrar pessoas exige:
+
+- **direitos de decisão claros** — quem decide o quê, e quem precisa ser consultado (o Mapa Humano–Máquina responde);
+- **cadência** — atualizações curtas e regulares, com o que foi feito, o que vem, o que está bloqueado e que decisão é necessária;
+- **passagens de bastão explícitas** — quando o trabalho muda de mãos, o que é entregue, em que estado, com que contexto;
+- **atenção às perdas** — as pessoas que perdem algo com a mudança (Capítulo 4) precisam ser ouvidas ao longo do projeto, não só no início.
+
+### Orquestrar sistemas em operação
+
+Depois da implantação, a orquestração continua: automações, integrações e componentes de IA precisam ser acompanhados como um conjunto. O orquestrador mantém a visão de quais componentes existem, quem responde por cada um, que métricas e alertas os cobrem, que dependências têm e qual o plano de saída de cada dependência crítica. Um **inventário de componentes** — simples, atualizado — evita o problema clássico das automações esquecidas que continuam rodando depois que ninguém lembra para que servem.
+
+### Metacognição: orquestrar o próprio pensamento
+
+A última competência da matriz é também a mais pessoal. **Metacognição** é a capacidade de observar o próprio pensamento: saber o que você sabe, perceber o que não sabe, e ajustar sua confiança ao que a evidência permite.
+
+Ela é especialmente importante quando se trabalha com IA, por uma razão simples: a IA produz resultados que parecem entendidos por você, porque você os pediu e os leu. Mas ter pedido e lido não é o mesmo que entender. Três práticas desenvolvem a metacognição:
+
+**Prever antes de ver.** Antes de rodar um teste, uma avaliação ou um piloto, registre o que você espera que aconteça e com que confiança. Depois compare. Com o tempo, você descobre em que tipo de situação sua intuição é boa e em que tipo ela é sistematicamente otimista ou pessimista. Essa é a **calibração**.
+
+**O teste da explicação.** Para cada parte importante do que você construiu, pergunte: "consigo explicar, sem consultar nada, o que isso faz e por que foi feito assim?". Se não conseguir, você tem um ponto cego — e uma dependência. Não é necessário entender cada linha de código, mas é necessário entender cada decisão e cada regra.
+
+**Reflexão específica.** Reflexões genéricas ("aprendi muito", "a comunicação é importante") não desenvolvem nada. Reflexões úteis são específicas: "pensei que a principal causa era a digitação; os dados mostraram que era a fila de revisão; eu tendo a acreditar na primeira hipótese plausível que ouço, especialmente quando vem de quem tem autoridade". O diário de bordo, as reflexões dos projetos e o diário metacognitivo do P10 existem para isso.
+
+> **Princípio** — Quanto mais você delega a execução, mais importante se torna saber o que você mesmo entende. A IA pode ampliar enormemente o que você consegue fazer. Só você pode garantir que entende o que foi feito.
+
+### Exercícios
+
+**Exercício 38.1 · P · M0** — Escreva o plano de orquestração de um projeto seu com pelo menos seis unidades, pelo menos duas em paralelo. Verifique: as unidades paralelas têm fronteiras e interfaces claras? Sua capacidade de verificação comporta o ritmo planejado?
+
+**Exercício 38.2 · P · M0** — Durante duas semanas de trabalho em projeto, registre antes de cada teste ou verificação sua previsão e sua confiança (de 0 a 100%). No fim, compare. Você estava calibrado? Em que tipo de previsão errou mais?
+
+**Exercício 38.3 · A · M0** — Aplique o teste da explicação a um sistema que você construiu com IA. Liste as partes que não consegue explicar. Para cada uma, decida: estudar (Protocolo 10), simplificar ou aceitar o risco conscientemente, registrando no Decision Log.
+
+# PARTE IX — O PRODUTO EDUCACIONAL
+
+As partes anteriores foram escritas para o aluno. Esta é escrita para quem vai **criar, conduzir, avaliar e manter** o método como produto educacional: o fundador, mentores, avaliadores, coordenadores de turma, parceiros corporativos.
+
+Ela segue o próprio método. Trata o produto como um sistema, com problema, stakeholders, decisões, riscos e validação. E aplica a si mesma a regra que o livro aplica a tudo: **distinguir o que foi projetado do que foi comprovado**. Tudo o que esta parte descreve é estrutura. Nada aqui foi, ainda, validado com alunos ou com o mercado — e o Capítulo 42 diz exatamente o que precisaria acontecer para que fosse.
+
+## Capítulo 39 — Founder Track
+
+### O princípio da independência
+
+O fundador de um método educacional enfrenta uma tentação: ser a peça que faz tudo funcionar. Ele explica melhor, responde às dúvidas, corrige os projetos, percebe quando um aluno está perdido. No início, isso parece qualidade. Na verdade, é um defeito de projeto: **um produto que depende do fundador não escala, não sobrevive à ausência dele e não pode ser avaliado**, porque não se sabe se os resultados vêm do método ou da pessoa.
+
+O Founder Track descreve como o criador do método deve trabalhar para que o produto funcione sem ele. Ele tem nove frentes.
+
+### 1. Aprender
+
+Antes de ensinar o método, o fundador precisa praticá-lo integralmente:
+
+- fazer **todos os projetos, P00 a P10**, em domínios diferentes, com as mesmas regras de aprovação do aluno, avaliados por outra pessoa;
+- manter o próprio **diário de bordo** e o próprio portfólio;
+- registrar, em cada projeto, **onde o livro foi insuficiente**: o conceito que faltou, o exercício que não preparou, o template que não serviu.
+
+Esse registro é a primeira fonte de melhoria do produto. Um fundador que não fez os projetos não sabe onde o aluno vai tropeçar.
+
+### 2. Testar
+
+O material precisa ser testado com pessoas reais antes de qualquer oferta em escala:
+
+- **leitura acompanhada** — leitores dos perfis A, B e C leem um capítulo pensando em voz alta, enquanto alguém registra onde hesitam, onde se perdem, onde se entediam;
+- **percurso cognitivo** — para cada exercício, alguém tenta resolvê-lo usando apenas o que veio antes no livro; se precisar de algo que não foi ensinado, há um problema de pré-requisito;
+- **piloto pequeno** — uma turma reduzida percorre uma parte do livro com acompanhamento próximo, para observar o ritmo real, as dúvidas recorrentes e os projetos que travam.
+
+### 3. Documentar
+
+As decisões sobre o currículo são decisões de arquitetura do produto e devem ser registradas como tal: um **Decision Log do currículo**, com ADRs para decisões pedagógicas importantes ("por que a Parte II não tem exercícios com IA", "por que P07 é aprovado mesmo quando a IA perde"). Isso permite que outros mantenham o produto sem desfazer, por desconhecimento, decisões que tinham boas razões.
+
+Além disso, cada versão do material tem **notas de versão** (o que mudou e por quê) e cada papel do produto (mentor, avaliador, coordenador) tem um **guia próprio**.
+
+### 4. Validar
+
+Validar o produto educacional significa obter evidência de que **o aluno aprende a resolver problemas que nunca viu antes** — a promessa central. Isso exige medir, no mínimo:
+
+- **desempenho no exame de transferência**, antes e depois da formação, com problemas equivalentes e nunca vistos, corrigidos por avaliadores que não conhecem o aluno nem sabem se a prova é de entrada ou de saída;
+- **aprovação nos projetos na primeira tentativa**, por projeto e por perfil de aluno;
+- **concordância entre avaliadores** — duas pessoas, corrigindo o mesmo projeto de forma independente, chegam ao mesmo nível?;
+- **aplicação posterior** — meses depois, o aluno aplicou o método num problema real? Com que resultado? (Com evidência, não só com declaração.)
+
+A escala de evidência do Capítulo 31 vale aqui. "Os alunos gostaram" é E0. "Os alunos foram aprovados nos projetos" é E2 para o produto. "Os alunos melhoraram no exame de transferência, numa comparação adequada" é E3. "Ex-alunos continuam aplicando o método com resultados verificáveis" é E4.
+
+### 5. Revisar
+
+O produto tem ciclos de revisão regulares (Capítulo 41) e revisões extraordinárias quando: um exercício ou projeto tem taxa de reprovação muito alta ou muito baixa; avaliadores discordam sistematicamente num critério; uma mudança tecnológica torna um trecho enganoso; alunos de um perfil abandonam sistematicamente numa parte.
+
+### 6. Transformar experiência em material
+
+Os melhores exemplos e exercícios vêm de projetos reais. Mas a passagem de um projeto real para material didático exige cuidado. O protocolo:
+
+1. **Autorização.** Obter consentimento de quem forneceu o caso.
+2. **Anonimização e composição.** Remover tudo o que identifica pessoas e organizações; quando necessário, combinar elementos de vários casos (como os casos deste livro).
+3. **Extração dos pontos de decisão.** O valor didático de um caso está nos momentos em que algo poderia ter sido decidido de outra forma. Identifique-os.
+4. **Contraexemplo.** Para cada decisão, registre a alternativa plausível e por que ela seria pior — ou melhor em outro contexto.
+5. **Conversão em exercício.** Transforme o ponto de decisão numa pergunta com contexto suficiente, e escreva o gabarito comentado (elementos de uma boa resposta e erros comuns).
+6. **Teste pedagógico** (próxima seção).
+7. **Marcação dos números.** Números de casos compostos são marcados como ilustrativos.
+
+### 7. Testar pedagogicamente cada novo conteúdo
+
+Todo capítulo, exercício ou projeto novo — ou revisado — passa por cinco testes antes de entrar no material:
+
+| Teste | Pergunta | Como aplicar |
+|---|---|---|
+| **Clareza** | Um leitor do perfil A entende? | Leitura acompanhada com um leitor A. |
+| **Desafio** | Um leitor do perfil B aprende algo que não sabia? | Leitura com um leitor B; pedir que aponte o que é novo. |
+| **Crescimento** | Um leitor do perfil C encontra aprofundamento? | Verificar a existência de camada avançada útil. |
+| **Pré-requisitos** | Tudo o que é necessário foi ensinado antes? | Percurso cognitivo. |
+| **Transferência** | Há pelo menos uma variação que impede a repetição mecânica? | Revisão por um avaliador. |
+
+### 8. Medir resultados
+
+Um painel mínimo do produto acompanha quatro famílias de indicadores. A distinção entre elas importa, porque indicadores fáceis de medir (como engajamento) são frequentemente os menos significativos.
+
+| Família | Exemplos | Cuidado |
+|---|---|---|
+| **Engajamento** | Progresso por parte; tempo por projeto; abandono por parte. | Engajamento alto não significa aprendizado. |
+| **Aprendizagem** | Aprovação por projeto; desempenho no exame de transferência; evolução do autodiagnóstico versus evidências. | Requer avaliação independente e calibrada. |
+| **Resultado** | Aplicação posterior com evidência; qualidade dos portfólios; avaliação de terceiros atendidos no P09. | Exige acompanhamento por meses; amostras pequenas. |
+| **Produto** | Conclusão; recomendação espontânea; recompra corporativa; custo de entrega por aluno. | Não confundir intenção declarada com comportamento. |
+
+### 9. Atualizar
+
+O material é versionado (por exemplo, versão principal e revisão: 1.0, 1.1, 2.0). Mudanças de revisão corrigem e melhoram sem alterar a estrutura; mudanças de versão principal alteram a estrutura, os projetos ou os critérios de aprovação. Alunos em andamento concluem na versão em que começaram, salvo correções. Certificados indicam a versão do método em que foram obtidos.
+
+### O teste de independência
+
+O produto funciona sem o fundador quando todos os itens abaixo existem e foram testados por alguém que não é o fundador:
+
+- [ ] O livro completo, com gabaritos comentados dos exercícios.
+- [ ] Os templates, checklists e rubricas, utilizáveis sem explicação adicional.
+- [ ] Exemplos-âncora para cada rubrica: trabalhos reais (anonimizados) ou realistas nos níveis 2, 3 e 4, com a justificativa do nível.
+- [ ] O guia do avaliador, com o processo de calibração.
+- [ ] O guia do mentor, com as dificuldades previstas por parte e as intervenções recomendadas.
+- [ ] O banco de cenários e o banco de exames de transferência e de capstones, com renovação planejada.
+- [ ] O processo de governança e de atualização, com responsáveis que não sejam apenas o fundador.
+- [ ] Pelo menos uma turma conduzida e avaliada inteiramente por outras pessoas, com resultados comparáveis aos das turmas conduzidas pelo fundador.
+
+O último item é a prova real. Até ele acontecer, a independência é uma hipótese.
+
+## Capítulo 40 — Experiência do aluno e formatos de oferta
+
+### A jornada do aluno
+
+Independentemente do formato, a jornada tem as mesmas etapas:
+
+```
+ ENTRADA ──────────► TRILHA ──────────► CICLOS ────────────────────► AVALIAÇÃO
+ autodiagnóstico     F / P / A          leitura + exercícios +       projetos, exame,
+                                        projeto, nas nove partes     defesa
+                                                                         │
+                                                                         ▼
+                     CERTIFICAÇÃO ◄────────────────────────────── PORTFÓLIO
+                     (se aplicável)                               3 a 5 casos
+```
+
+### Onde os alunos devem tropeçar
+
+O projeto pedagógico permite prever, como hipóteses a verificar nos pilotos, os pontos de dificuldade e preparar respostas:
+
+| Ponto | Quem tende a tropeçar | Por quê | Resposta prevista |
+|---|---|---|---|
+| Parte II | Perfil B e C | Parece lenta ("quando vamos construir?"). | Mostrar cedo o Caso Vértice completo; P00 com stakeholder real. |
+| Parte III | Perfil A | Muitos conceitos novos de uma vez. | Fichas como referência; exercícios F; sessão de dúvidas nos formatos acompanhados. |
+| P01 | Perfil A | Primeira construção; ferramenta desconhecida. | Caminho "sem código" detalhado; par com perfil B ou C. |
+| P04 e P06 | Todos | Volume de trabalho; frustração com espirais de correção. | Fatias menores; revisão do arquivo de contexto; mentoria focada em supervisão. |
+| P07 | Perfil B | Resistência a resultados em que a IA perde. | Reforçar que se avalia a decisão, não a tecnologia vencedora. |
+| P09 | Todos | Encontrar um terceiro; dependência da agenda dele. | Banco de organizações parceiras; prazos flexíveis com escopo ajustável. |
+| P10 | Todos | Ambiguidade; ansiedade da defesa. | Defesa simulada com variações; exemplos-âncora. |
+
+### Formatos de oferta
+
+O mesmo método pode ser oferecido em quatro formatos. A tabela descreve a **estrutura proposta** de cada um. Durações, tamanhos de turma e proporções são hipóteses de projeto, a serem ajustadas pelos pilotos; nenhum preço é sugerido aqui (ver Capítulo 42).
+
+| Elemento | Autodirigido | Formação acompanhada | Programa intensivo | Treinamento corporativo |
+|---|---|---|---|---|
+| **Para quem** | Pessoas com disciplina para estudar sozinhas. | Pessoas que se beneficiam de ritmo, grupo e devolutiva. | Pessoas com tempo concentrado e alguma base (perfis B e C). | Equipes de uma organização. |
+| **Componentes** | Livro, templates, banco de cenários, avaliação por pares, comunidade opcional. | Livro + encontros periódicos + mentoria + avaliação dos projetos por avaliador. | Livro + imersão com trabalho diário supervisionado. | Livro + adaptação aos processos da organização + mentoria + avaliação. |
+| **Projetos** | P00 a P10, com avaliação por pares e autoavaliação. | P00 a P10, com avaliação por avaliador. | Seleção: P00, P03, P06 ou P07, P10 reduzido; os demais como opcionais. | P00, P03 e P09 em processos reais da organização; demais conforme o objetivo. |
+| **Duração indicativa** | Definida pelo aluno. | Vários meses. | Algumas semanas. | Definida com a organização. |
+| **Papéis** | Aluno; par avaliador. | Aluno; mentor; avaliador; coordenador. | Aluno; mentor dedicado; avaliador. | Aluno; mentor; avaliador; patrocinador interno; responsável por dados e segurança da organização. |
+| **Certificação** | Possível com avaliação paga de P09, P10 e exame (opcional). | Sim, nos níveis do Capítulo 41. | Parcial (nível correspondente aos projetos feitos). | Sim, nos níveis; resultados também medidos nos indicadores da organização. |
+| **Riscos principais** | Abandono; autoavaliação complacente. | Custo de mentoria e avaliação; dependência de bons mentores. | Perda de profundidade; projetos superficiais; falta de tempo de uso real para validação. | Conflito entre aprendizagem e entrega; sigilo; pressão por resultados rápidos. |
+| **O que precisa ser validado** | Taxa de conclusão; qualidade da avaliação por pares. | Ganho no exame de transferência; viabilidade econômica. | Se a versão reduzida produz transferência comparável. | Efeito nos indicadores da organização; recompra. |
+
+Algumas observações sobre cada formato:
+
+**Autodirigido.** É o formato mais escalável e o que mais depende da qualidade do material. É também o que mais exige o teste de independência do Capítulo 39. A avaliação por pares precisa de regras claras e de exemplos-âncora acessíveis.
+
+**Formação acompanhada.** O mentor não ensina o conteúdo — o livro faz isso. O mentor faz o que o livro não pode fazer: observa o raciocínio, faz perguntas de variação, ajuda a sair de bloqueios, devolve com especificidade. O guia do mentor deve proibir explicitamente que o mentor faça o trabalho pelo aluno.
+
+**Programa intensivo.** O risco é a compressão destruir a transferência: projetos feitos sem tempo de uso real não chegam a E3, e a reflexão fica superficial. A versão intensiva deve declarar honestamente o que não cobre e deve, sempre que possível, incluir um acompanhamento posterior de algumas semanas para o projeto ser usado de verdade.
+
+**Treinamento corporativo.** Trabalhar com problemas reais da organização é a maior vantagem e o maior risco. Vantagem: transferência imediata e resultados mensuráveis. Risco: o projeto vira entrega de consultoria e o aprendizado fica em segundo plano; ou o sigilo impede o uso de dados e ferramentas. A oferta corporativa precisa de um acordo explícito sobre dados, ferramentas de IA aprovadas, papel do gestor, propriedade dos artefatos e critérios de sucesso. A adaptação deve acontecer por meio de cenários e exemplos da organização, sem alterar o núcleo do método (ciclo, princípios, competências, critérios de aprovação).
+
+### Papéis
+
+| Papel | Responsabilidade | Não é responsabilidade |
+|---|---|---|
+| **Aluno** | Estudar, praticar, registrar, entregar com honestidade. | Agradar o avaliador. |
+| **Mentor** | Fazer perguntas, observar raciocínio, desbloquear, devolver com especificidade. | Fazer o trabalho; dar a resposta antes do aluno tentar. |
+| **Avaliador** | Aplicar rubricas com base em evidência; participar da calibração. | Avaliar quem também mentora (separação de funções, quando possível). |
+| **Coordenador** | Ritmo da turma, logística, acompanhamento de abandono, coleta de dados do produto. | Alterar critérios de aprovação. |
+| **Patrocinador (corporativo)** | Garantir acesso a problemas, dados e tempo; remover obstáculos. | Escolher quem é aprovado. |
+
+## Capítulo 41 — Avaliação, certificação e governança
+
+### Níveis de certificação
+
+A estrutura proposta tem três níveis. Cada um atesta algo específico e, igualmente importante, não atesta outras coisas.
+
+| Nível | Requisitos | Atesta | Não atesta |
+|---|---|---|---|
+| **Praticante** | P00 a P04 aprovados; autodiagnóstico de entrada e saída. | Capacidade de enquadrar problemas, mapear processos e construir automações robustas em contexto próprio. | Capacidade de construir aplicações, usar IA aplicada com rigor ou trabalhar para terceiros. |
+| **Construtor** | Praticante + P05 a P08 aprovados. | Capacidade de integrar sistemas, construir aplicações, comparar soluções com e sem IA e projetar agentes com limites. | Capacidade de conduzir projetos para terceiros até validação. |
+| **Profissional** | Construtor + P09 e P10 aprovados + exame de transferência + defesa. | Capacidade de resolver problemas novos e ambíguos de terceiros, de ponta a ponta, com evidência E3. | Especialização técnica profunda em qualquer tecnologia específica; competência jurídica. |
+
+A certificação é uma **atestação interna do programa**, baseada nas rubricas e evidências descritas neste livro. Ela não é uma acreditação externa e não deve ser apresentada como tal. Se no futuro houver acreditação por terceiros, ela deve ser declarada com o nome da entidade e o escopo exato.
+
+### Avaliadores e calibração
+
+A credibilidade da certificação depende da consistência da avaliação. Por isso:
+
+- **Requisitos do avaliador.** Ter concluído o método no nível Profissional (ou ter competência equivalente demonstrada por avaliação), e ter participado do processo de calibração.
+- **Calibração inicial.** Novos avaliadores corrigem um conjunto de trabalhos-âncora (com níveis já definidos) e comparam suas notas com as de referência. Divergências são discutidas até que a interpretação da rubrica seja compartilhada.
+- **Dupla correção por amostragem.** Uma parte dos projetos é corrigida por dois avaliadores independentes. A concordância é acompanhada; quando cai, há nova sessão de calibração.
+- **Revisão da rubrica.** Critérios com discordância persistente entre avaliadores calibrados indicam rubrica ambígua — e devem ser reescritos, com novos exemplos-âncora.
+- **Separação de funções.** Sempre que possível, quem mentora um aluno não é quem avalia seus projetos somativos.
+
+### Integridade e uso de IA
+
+A política de integridade segue o Capítulo 36: modos de IA declarados e respeitados; evidência de processo como parte da avaliação; transferência avaliada em condições controladas; uso não declarado invalida o projeto. Além disso:
+
+- trabalhos com resultados inconsistentes com a evidência de processo são encaminhados a uma conversa de verificação (o aluno explica e responde a variações);
+- a política é revisada a cada versão, porque as formas de usar IA mudam.
+
+### Recurso
+
+O aluno pode contestar uma avaliação. O recurso é analisado por um avaliador diferente, que tem acesso aos artefatos e à justificativa da primeira avaliação. A decisão é registrada com justificativa. Recursos recorrentes sobre o mesmo critério são sinal de que a rubrica precisa de revisão.
+
+### Governança
+
+O produto precisa de uma estrutura de governança simples e explícita:
+
+| Elemento | Definição proposta |
+|---|---|
+| **Responsável pelo currículo** | Uma pessoa ou comitê com autoridade sobre o conteúdo, os projetos e os critérios de aprovação. Deve incluir pelo menos uma pessoa além do fundador. |
+| **Processo de mudança** | Mudanças relevantes são propostas como ADR do currículo, com justificativa, evidência (dados de turmas, feedback de avaliadores) e impacto em alunos em andamento. |
+| **Conflito de interesse** | Avaliadores não avaliam pessoas com quem têm relação comercial ou pessoal; patrocinadores corporativos não interferem em aprovações. |
+| **Dados dos alunos** | Trabalhos e dados pessoais dos alunos são protegidos com os princípios do Capítulo 32; uso de trabalhos como exemplo exige consentimento e anonimização. |
+| **Transparência** | Critérios de aprovação, rubricas e níveis de certificação são públicos para os alunos desde o início. |
+
+### Atualização e obsolescência
+
+O método foi escrito para resistir à obsolescência tecnológica, mas o material inevitavelmente envelhece em alguns pontos. A política de atualização:
+
+- **Revisão periódica completa**, com intervalo definido pela governança (sugere-se uma revisão ao menos anual, e semestral para os capítulos da Parte V e para o Capítulo 16).
+- **Revisão de obsolescência**, aplicada a cada revisão: procurar menções a ferramentas, interfaces, modelos, marcas, preços e versões; para cada uma, perguntar se é exemplo ou fundamento; substituir por princípio sempre que possível; marcar com data as afirmações sobre capacidades atuais da IA.
+- **Gatilhos de revisão extraordinária**: mudança tecnológica que torne um trecho enganoso; padrão de reprovação ou discordância de avaliadores; erro relatado.
+- **Errata pública** entre versões.
+
+## Capítulo 42 — Validação externa e comercialização
+
+### Estrutura comercial não é validação comercial
+
+Este livro descreve uma **estrutura comercial**: formatos de oferta, papéis, níveis de certificação, processos de avaliação e governança. Essa estrutura foi projetada com cuidado, mas é uma hipótese. **Validação comercial** é outra coisa: evidência, obtida no mundo real, de que pessoas e organizações precisam do produto, pagam por ele, concluem, aprendem, aplicam e recomendam.
+
+Até o momento desta edição, **nenhuma validação comercial foi obtida**. Não há dados de mercado, preços testados, turmas concluídas, depoimentos ou resultados de alunos. Qualquer afirmação em sentido contrário, em material de divulgação, seria falsa.
+
+O resto deste capítulo aplica o próprio método ao produto: formula as hipóteses, define a evidência necessária e propõe a sequência de experimentos.
+
+### O produto como problema
+
+Antes de qualquer oferta, o produto merece um Problem Statement próprio, escrito com os oito elementos — e sujeito às mesmas regras: sem solução embutida, com indicador e proteção. Uma formulação provisória, a ser testada:
+
+> "Pessoas e equipes que já têm acesso a IA, software e automação frequentemente não conseguem transformar esse acesso em soluções que resolvam problemas reais de forma confiável: constroem coisas que não resolvem o problema, que falham em operação ou cujo efeito ninguém consegue demonstrar. Queremos que quem conclui a formação seja capaz de resolver, com evidência, problemas novos em contextos que nunca viu — medido pelo desempenho em exames de transferência e pela aplicação posterior verificada — sem criar dependência de ferramentas específicas nem de quem conduz a formação."
+
+Cada parte dessa frase é uma hipótese: que o problema existe, para quem, com que intensidade, e que a formação o resolve.
+
+### Hipóteses a validar
+
+| # | Hipótese | Como testar | Evidência que contaria |
+|---|---|---|---|
+| H1 | O problema existe e é sentido por um público identificável. | Entrevistas de enquadramento (Capítulo 4) com pessoas dos perfis A, B e C e com gestores. | Casos concretos e recentes de projetos com IA ou automação que fracassaram pelas razões descritas. |
+| H2 | O método produz aprendizagem transferível. | Piloto com exame de transferência antes e depois, corrigido às cegas. | Melhora consistente nos itens do exame, em comparação adequada. |
+| H3 | Os alunos concluem. | Pilotos nos formatos autodirigido e acompanhado. | Taxas de conclusão por formato e por perfil, e motivos de abandono conhecidos. |
+| H4 | Os alunos aplicam depois. | Acompanhamento de egressos por alguns meses. | Projetos reais com evidência (portfólio, avaliação de terceiros). |
+| H5 | Há disposição real de pagar. | Ofertas reais com preço, a públicos definidos. | Pagamentos efetivos — não respostas a pesquisas de intenção. |
+| H6 | O custo de entrega é sustentável. | Medição do tempo de mentoria e avaliação por aluno nos pilotos. | Custo por aluno compatível com o preço praticado, no formato. |
+| H7 | Organizações percebem valor. | Piloto corporativo com indicadores da própria organização. | Efeito nos indicadores combinados e decisão de continuidade ou expansão. |
+| H8 | O produto funciona sem o fundador. | Turma conduzida e avaliada por outras pessoas. | Resultados comparáveis aos das turmas do fundador. |
+
+Para cada hipótese, os limiares de sucesso devem ser definidos **antes** do experimento, como no P07. Definir o limiar depois de ver o resultado é a forma mais comum de se convencer de que um produto funciona.
+
+### Sequência de experimentos
+
+Uma sequência razoável, em que cada etapa só começa se a anterior produzir evidência suficiente:
+
+1. **Validação pedagógica pequena.** Uma turma reduzida, sem cobrança ou com valor simbólico, percorrendo pelo menos as Partes I a IV e os projetos P00 a P03, com exame de transferência antes e depois. Objetivo: H1, H2 (parcial), H3 (parcial) e correções do material.
+2. **Piloto pago.** Uma turma completa, com preço real, no formato acompanhado. Objetivo: H3, H5, H6.
+3. **Piloto autodirigido.** Material completo com avaliação por pares e certificação opcional. Objetivo: H3, H5, H8 (parcial).
+4. **Piloto corporativo.** Uma organização, com problema real e indicadores próprios. Objetivo: H7.
+5. **Acompanhamento de egressos.** Contato com concluintes das etapas anteriores, meses depois. Objetivo: H4.
+6. **Turma sem o fundador.** Objetivo: H8.
+
+Só depois dessas etapas faz sentido falar em escala — e, mesmo então, com os indicadores do Capítulo 39 acompanhados continuamente.
+
+### O que seria necessário para falar em product-market fit
+
+"Product-market fit" — o ajuste entre produto e mercado — é uma expressão frequentemente usada sem critério. Para este produto, ela só deveria ser usada quando houver, simultaneamente:
+
+- **demanda paga e recorrente**, de públicos definidos, sem depender de esforço extraordinário de venda do fundador;
+- **conclusão e aprendizagem demonstradas**, com melhora no exame de transferência em comparações adequadas;
+- **aplicação posterior verificada** em parte relevante dos egressos;
+- **recomendação espontânea** e, no caso corporativo, **recompra ou expansão**;
+- **viabilidade econômica** do formato, com custo de entrega coberto;
+- **independência do fundador** demonstrada;
+- **evidência qualitativa forte**: alunos e organizações que, perguntados, relatam que ficariam significativamente prejudicados se o produto deixasse de existir — e cujo comportamento (uso, pagamento, recomendação) é coerente com essa resposta.
+
+Nenhum desses itens deve ser declarado com base em uma única turma, em pesquisas de intenção ou em depoimentos selecionados.
+
+### Preço
+
+Este livro não sugere preços. Preço é uma decisão a ser tomada com evidência, e não há evidência ainda. O método para chegar a ele:
+
+- calcular o **custo de entrega** por aluno em cada formato (incluindo tempo de mentoria e avaliação, que tende a ser o maior custo dos formatos acompanhados);
+- formular **hipóteses de valor** por público (o que o aluno ou a organização deixa de perder ou passa a ganhar);
+- testar com **ofertas reais**, em que a pessoa de fato paga ou não paga;
+- registrar a decisão no Decision Log do produto, com hipótese e validação, como qualquer outra decisão.
+
+### O que não fazer
+
+- Não inventar números de mercado, de alunos, de resultados ou de satisfação.
+- Não usar depoimentos fictícios, editados ou sem consentimento.
+- Não chamar o método de "comprovado" antes da evidência descrita.
+- Não prometer empregos, renda ou resultados profissionais.
+- Não apresentar a certificação interna como acreditação externa.
+- Não confundir o interesse gerado pela palavra "IA" com demanda pelo produto. Muitas pessoas querem aprender "a usar IA"; o produto oferece outra coisa — e essa diferença precisa ser testada, não suposta.
+
+### O método aplicado ao método
+
+Há uma coerência que vale a pena explicitar no fim. Tudo o que este livro ensina — enquadrar antes de construir, registrar decisões, testar casos negativos, validar com evidência, declarar limitações, projetar para a falha, não depender de uma única pessoa ou ferramenta — se aplica ao próprio produto. Um método que ensina a distinguir demonstração de validação não pode ser vendido com base em demonstrações. Essa é, ao mesmo tempo, a maior exigência e a maior oportunidade do produto: se ele funcionar, a evidência de que funciona será do mesmo tipo que ele ensina a produzir.
+
+## Nota final
+
+Este livro começou com uma cena: alguém chega com um pedido pronto e uma ferramenta em mente. Ao longo de nove partes, você aprendeu a fazer outra coisa com esse pedido: perguntar pelo problema, enxergar o sistema, mapear o processo real, encontrar os dados e as regras, procurar soluções nos degraus mais baixos antes de subir, decidir comparando alternativas, especificar o que deve ser construído, delegar com contexto, supervisionar a construção, testar o que pode dar errado, validar se resolveu, proteger o que precisa ser protegido, aprender com as falhas e coordenar o conjunto.
+
+Nenhuma dessas competências depende de uma ferramenta específica. Todas ficam mais valiosas à medida que as ferramentas ficam mais poderosas — porque quanto mais rápido for construir, mais importante é saber o que deveria ser construído e como saber se está certo.
+
+O critério de sucesso do livro foi definido nas primeiras páginas, e ele não mudou: diante de um problema que você nunca viu, num domínio que não é o seu, você consegue ir do pedido vago à solução validada, sabendo em cada passo o que está fazendo e por quê. A IA pode construir. Você continua responsável por decidir se aquilo deveria existir, como deveria funcionar e se está correto.
+
+# APÊNDICES
+
+Os apêndices reúnem o material de uso: templates, checklists, rubricas, exemplos comentados de decisões, cartões dos protocolos de IA, o catálogo de anti-padrões e o glossário. Eles foram escritos para serem copiados, impressos e usados — no estudo, nos projetos e no trabalho.
+
+## Apêndice A — Templates
+
+Os dezesseis templates a seguir correspondem aos artefatos do método. Cada um traz quando usar, o formulário em texto simples (para copiar para qualquer editor) e uma lista de verificação.
+
+Três regras de uso valem para todos:
+
+- **Proporcionalidade.** Preencha com a profundidade que o custo do erro justifica. Para um problema pessoal pequeno, uma linha por campo pode bastar.
+- **Campo vazio é informação.** Se você não consegue preencher um campo, não invente: escreva "desconhecido" e o que precisaria fazer para descobrir.
+- **Versão e data.** Todo artefato tem versão e data. Artefatos sem data não podem ser comparados com o que aconteceu depois.
+
+## T01 — Project Brief
+
+**Quando usar:** no início de qualquer projeto, para combinar escopo, restrições e critérios com quem tem o problema. Revise sempre que o escopo mudar.
+
+```
+PROJECT BRIEF
+Projeto: ______________________   Versão: ____   Data: ________
+Responsável: __________________   Quem aprova este brief: ____________
+
+1. PROBLEMA (resumo de 3 a 5 linhas; detalhe no T02)
+
+2. PARA QUEM (stakeholders principais; detalhe no T05)
+
+3. OBJETIVO E CRITÉRIO DE SUCESSO
+   Indicador principal: ________  Linha de base: ________  Meta: ________  Prazo: ____
+   Indicador(es) de proteção: ________
+
+4. ESCOPO
+   Dentro:
+   Fora (explicitamente):
+
+5. RESTRIÇÕES
+   Prazo:            Orçamento:          Equipe/tempo disponível:
+   Tecnologia:       Dados (o que pode e não pode ser usado, onde):
+   Legais/regulatórias (a confirmar com quem responde por elas):
+
+6. RECURSOS DISPONÍVEIS (pessoas, acessos, ferramentas, dados)
+
+7. DECISÕES JÁ TOMADAS (e por quem) — registrar no Decision Log
+
+8. RISCOS DO PROJETO (o que pode impedir o projeto de acontecer)
+
+9. ENTREGAS E MARCOS
+   | Marco | Entrega | Data prevista | Critério de pronto |
+
+10. COMUNICAÇÃO
+    Cadência de atualização: ________  Canal: ________  Participantes: ________
+
+11. ENCERRAMENTO
+    O que acontece ao final (quem opera, quem mantém, o que é entregue):
+```
+
+**Verificação**
+
+- [ ] O problema está descrito sem solução embutida.
+- [ ] Há indicador, linha de base (ou método para obtê-la), meta e prazo.
+- [ ] O que está fora do escopo está escrito.
+- [ ] Restrições de dados estão explícitas.
+- [ ] Quem aprova o brief leu e concordou.
+- [ ] O encerramento está definido (quem fica com a solução).
+
+## T02 — Problem Statement
+
+**Quando usar:** sempre, antes de qualquer decisão de solução. É o artefato a que todos os outros se referem.
+
+```
+PROBLEM STATEMENT
+Projeto: ______________________   Versão: ____   Data: ________   Autor: ________
+
+1. AFETADOS — Para quem isto é um problema?
+
+2. ESTADO ATUAL — O que acontece hoje, de forma observável? (fatos, com fonte)
+
+3. ESTADO DESEJADO — O que deveria acontecer?
+
+4. IMPACTO — Por que a diferença importa? Quanto custa (tempo, dinheiro, erros, risco)?
+
+5. CAUSAS
+   Conhecidas (com evidência):
+   Hipóteses (a verificar, com o que as confirmaria ou refutaria):
+
+6. RESTRIÇÕES — O que não pode mudar ou não pode ser violado?
+
+7. CRITÉRIO DE RESOLUÇÃO
+   Indicador principal: ________  Como é medido: ________
+   Linha de base: ________ (ou método e prazo para obtê-la)
+   Meta: ________  Prazo: ________
+   Indicador(es) de proteção (não podem piorar): ________
+
+8. FORA DO ESCOPO
+
+DECLARAÇÃO (um parágrafo, integrando os elementos acima):
+
+REGISTRO DE APOIO
+| Fatos (fonte) | Interpretações (de quem) | Hipóteses (como verificar) |
+|               |                          |                            |
+
+VALIDAÇÃO COM AFETADOS
+Mostrado a: ________  Em: ________  Reação/ajustes: ________
+```
+
+**Verificação**
+
+- [ ] Não menciona nenhuma solução, ferramenta ou tecnologia.
+- [ ] O estado atual contém fatos com fonte, não só interpretações.
+- [ ] O critério de resolução mede o problema, não a solução.
+- [ ] Há pelo menos um indicador de proteção.
+- [ ] O nível do problema é aquele em que ele importa, você tem influência e é verificável.
+- [ ] Pelo menos um afetado reconheceu a declaração.
+
+## T03 — System Map
+
+**Quando usar:** depois das primeiras conversas, para entender o sistema em que o problema existe. Atualize quando descobrir elementos ou relações novas.
+
+```
+SYSTEM MAP
+Projeto: ______________________   Versão: ____   Data: ________
+
+1. FRONTEIRA — O que está dentro do sistema? Por que a fronteira está aqui?
+
+2. AMBIENTE — O que influencia, mas será tratado como dado?
+
+3. ATORES — pessoas, papéis, organizações
+   | Ator | Papel no sistema |
+
+4. ELEMENTOS NÃO HUMANOS — equipamentos, documentos, sistemas, repositórios
+   | Elemento | Função | Quem usa |
+
+5. FLUXOS
+   Material:     De ______ para ______ (o quê)
+   Informação:   De ______ para ______ (o quê, em que formato)
+   Decisão:      Quem decide o quê, para quem
+   Dinheiro:     De ______ para ______
+
+6. ESTOQUES — onde as coisas se acumulam (e tamanho típico)
+
+7. GARGALO (provável) — etapa de menor capacidade, com evidência
+
+8. LAÇOS
+   Reforço:     A → B → C → A  (descrição)
+   Equilíbrio:  A → B → (−) A  (descrição)
+
+9. ATRASOS RELEVANTES — efeitos que demoram a aparecer
+
+10. PONTOS DE ALAVANCAGEM (gargalo, entrada, regras, informação)
+
+DIAGRAMA (desenhe abaixo ou anexe)
+```
+
+**Verificação (quatro testes)**
+
+- [ ] Teste do estranho: alguém de fora explica o caminho de um item olhando o mapa.
+- [ ] Teste do afetado: quem vive o sistema reconhece o mapa como real.
+- [ ] Teste do problema: dá para apontar onde o problema aparece e duas hipóteses de causa.
+- [ ] Teste da intervenção: dá para apontar onde cada solução atuaria e seus efeitos de segunda ordem.
+
+## T04 — Process Map
+
+**Quando usar:** para descobrir e representar o processo real. Faça um mapa do processo oficial e outro do real, quando forem diferentes.
+
+```
+PROCESS MAP
+Processo: ______________________   Versão: real / oficial   Data: ________
+Início (evento que dispara): ________   Fim (resultado entregue): ________
+Casos acompanhados (identificação anonimizada e data): ________
+
+1. PAPÉIS (raias)
+
+2. ATIVIDADES
+   | # | Atividade (verbo + objeto) | Papel | Entrada | Saída | Ferramenta/registro | Tempo de execução | Espera antes |
+
+3. DECISÕES
+   | # | Pergunta | Opções | Quem decide | Regra (ref. tabela de decisão) |
+
+4. EXCEÇÕES
+   | # | Exceção | O que dispara | Frequência | Tratamento atual | Quem decide |
+
+5. RETRABALHO — retornos, causa, frequência, tempo acrescentado
+
+6. DESPERDÍCIOS
+   Espera:       Retrabalho:       Transcrição:
+   Busca:        Aprovação redundante:       Interrupção:
+   Lotes:        Passagens de bastão (quantas):
+
+7. TEMPO TOTAL (mediana dos casos) ______  dos quais em execução ______  em espera ______
+
+8. DIFERENÇAS ENTRE OFICIAL E REAL — e a necessidade que cada atalho atende
+
+DIAGRAMA EM RAIAS (desenhe abaixo ou anexe)
+```
+
+**Verificação**
+
+- [ ] Baseado em casos reais acompanhados, não só em descrições.
+- [ ] Esperas medidas (ou estimadas com método declarado).
+- [ ] Exceções registradas com frequência e tratamento.
+- [ ] Pelo menos dois executores reconheceram o mapa.
+- [ ] Cada atalho tem a necessidade correspondente identificada.
+
+## T05 — Stakeholder Map
+
+**Quando usar:** no enquadramento, e sempre que um novo grupo afetado aparecer.
+
+```
+STAKEHOLDER MAP
+Projeto: ______________________   Versão: ____   Data: ________
+
+| Stakeholder | Papel (sofre / causa / decide / opera / paga / pode bloquear) |
+| Posição (o que pede) | Interesse (o que precisa) | Influência (alta/baixa) |
+| O que perde se a situação mudar | Como envolver |
+
+GRADE INFLUÊNCIA × INTERESSE
+                interesse baixo        interesse alto
+influência alta [manter informado]     [envolver de perto]
+influência baixa [monitorar]           [consultar]
+(Lembrete: quem opera a solução tem influência real maior que a formal.)
+
+CONFLITOS DE INTERESSE IDENTIFICADOS — e como afetam o critério de resolução
+
+QUEM AINDA NÃO FOI OUVIDO
+```
+
+**Verificação**
+
+- [ ] Posição e interesse separados para cada stakeholder.
+- [ ] "O que perde" preenchido para todos.
+- [ ] Quem vai operar a solução está incluído e foi ouvido.
+- [ ] Conflitos de interesse explicitados.
+
+## T06 — Requirements
+
+**Quando usar:** depois do Problem Statement e dos modelos, antes da arquitetura.
+
+```
+REQUIREMENTS
+Projeto: ______________________   Versão: ____   Data: ________
+
+| ID | Tipo | Requisito | Origem (causa / stakeholder / regra) | Prioridade | Critérios (ref. T07) | Teste (ref. T11) |
+| R01 | Funcional |  |  | Deve |  |  |
+| R02 | Qualidade |  |  | Deveria |  |  |
+| R03 | Dados |  |  |  |  |  |
+| R04 | Segurança/privacidade |  |  |  |  |  |
+| R05 | Restrição |  |  |  |  |  |
+| R06 | Transição |  |  |  |  |  |
+
+Tipos: Funcional · Qualidade · Dados · Segurança/privacidade · Restrição · Transição
+Prioridades: Deve · Deveria · Poderia · Não agora
+
+LISTA "NÃO AGORA" (ideias reconhecidas e conscientemente adiadas)
+```
+
+**Verificação**
+
+- [ ] Cada requisito é necessário, verificável, não ambíguo, atômico, priorizado e viável.
+- [ ] Nenhum requisito usa palavras ambíguas (rápido, fácil, adequado, suportar, tratar, etc.) sem medida.
+- [ ] Requisitos são independentes de solução sempre que possível.
+- [ ] No máximo metade está em "Deve".
+- [ ] Cada requisito tem origem; cada causa importante tem requisito.
+- [ ] Há requisitos de qualidade e de transição.
+
+## T07 — Acceptance Criteria
+
+**Quando usar:** para cada requisito "Deve" (e para os demais, quando forem implementados), antes de especificar ou delegar.
+
+```
+ACCEPTANCE CRITERIA
+Requisito: R__ — ______________________   Versão: ____   Data: ________
+
+| ID | Tipo | Dado (contexto/estado inicial) | Quando (ação/evento) | Então (resultado observável) |
+| CA-1 | Normal |  |  |  |
+| CA-2 | Negativo |  |  |  |
+| CA-3 | Limite (no limite) |  |  |  |
+| CA-4 | Limite (logo acima/abaixo) |  |  |  |
+| CA-5 | Dado ausente/inválido |  |  |  |
+| CA-6 | Duplicidade |  |  |  |
+| CA-7 | Concorrência |  |  |  |
+| CA-8 | Falha de dependência |  |  |  |
+(remova os tipos que não se aplicam, justificando)
+
+DEFINIÇÃO DE PRONTO DO PROJETO (vale para toda entrega)
+[ ] Todos os critérios passam em testes registrados
+[ ] Nenhum segredo no código ou na configuração visível
+[ ] Logs das operações principais funcionando
+[ ] Documentação de operação atualizada
+[ ] Decisões registradas no Decision Log
+```
+
+**Verificação**
+
+- [ ] Cada "Então" é observável por outra pessoa sem interpretação.
+- [ ] Há pelo menos um caso negativo e um caso limite.
+- [ ] Os limites dizem se são inclusivos ou exclusivos.
+- [ ] O comportamento com dado ausente é definido (sem valores padrão implícitos).
+
+## T08 — Architecture Decision Record
+
+**Quando usar:** para decisões de estrutura caras de reverter.
+
+```
+ADR-___ — TÍTULO DA DECISÃO
+Data: ________   Status: proposta / aceita / substituída por ADR-___ / revertida
+Responsável pela decisão: ________   Participantes: ________
+
+1. CONTEXTO
+   Problema e requisitos relevantes (ref. T02, T06):
+   Restrições:
+   Forças em tensão:
+
+2. ALTERNATIVAS CONSIDERADAS
+   A) ________  Degrau da Escada: __  Descrição:
+   B) ________  Degrau da Escada: __  Descrição:
+   C) ________  Degrau da Escada: __  Descrição:
+   (incluir "comprar" quando aplicável)
+
+3. CRITÉRIOS E COMPARAÇÃO
+   Eliminatórios: ________
+   | Critério | Peso | A | B | C |
+   Robustez: a decisão muda se o peso de ________ variar em uma unidade? ____
+
+4. DECISÃO
+
+5. JUSTIFICATIVA (ligada a requisitos e critérios)
+
+6. EVIDÊNCIA (com tipo: medida / teste / experiência / especialista / fornecedor / IA / suposição)
+
+7. CONSEQUÊNCIAS
+   Positivas:
+   Negativas (aceitas conscientemente):
+   O que fica mais difícil de mudar:
+
+8. RISCOS (ref. T13)
+
+9. REVERSIBILIDADE — como reverter e quanto custa
+
+10. HIPÓTESE E VALIDAÇÃO
+    Esperamos que: ________
+    Saberemos em: ________ (data/evento)  por meio de: ________
+    Sinal de que a decisão foi errada: ________
+
+11. RELACIONADOS (outros ADRs, entradas do Decision Log)
+```
+
+**Verificação**
+
+- [ ] Pelo menos três alternativas reais, em degraus diferentes.
+- [ ] Critérios eliminatórios separados dos ponderados.
+- [ ] Evidência classificada por tipo.
+- [ ] Consequências negativas escritas.
+- [ ] Hipótese com data e sinal de erro.
+
+## T09 — Decision Log
+
+**Quando usar:** desde o primeiro dia do projeto, para todas as decisões que atendem aos critérios do Capítulo 20 (cara de reverter, afeta outros, não óbvia, contestada, depende de hipótese, aceita risco).
+
+```
+DECISION LOG
+Projeto: ______________________
+
+| ID | Data | Decisão | Contexto | Alternativas | Justificativa | Evidência (tipo) |
+| Riscos | Hipótese | Validação (como/quando/sinal de erro) | Responsável | Status | Revisão |
+
+ENTRADA (formato estendido, para decisões relevantes)
+DL-__  ________________________________   Data: ______  Status: ______
+Contexto:
+Alternativas: (a) ______ (b) ______ (c) ______
+Justificativa:
+Evidência:            Tipo: medida / teste / experiência / especialista / fornecedor / IA / suposição
+Riscos:
+Hipótese:
+Validação:            Quando: ______   Sinal de erro: ______
+Responsável:
+Revisão (preencher na retrospectiva): confirmada / refutada / inconclusiva — comentário:
+```
+
+**Verificação**
+
+- [ ] Toda decisão tem alternativas, não só a escolhida.
+- [ ] "Riscos: nenhum" não aparece.
+- [ ] Toda hipótese tem forma de validação e data.
+- [ ] Decisões revisadas na retrospectiva têm o campo de revisão preenchido.
+
+## T10 — AI Delegation Brief
+
+**Quando usar:** sempre que delegar a construção de um componente a uma IA (ou a uma pessoa, ou a um fornecedor).
+
+```
+AI DELEGATION BRIEF
+Componente: ______________________   Versão: ____   Data: ________   Autor: ________
+
+1. CONTEXTO
+   Sistema em que o componente vive:
+   Problema que ajuda a resolver (ref. T02 / DL):
+   O que já existe em volta (anexos: esquema, código, convenções):
+
+2. OBJETIVO — o que exatamente este componente deve fazer
+
+3. RESTRIÇÕES
+   Tecnologia/linguagem/plataforma:
+   O que NÃO pode ser alterado:
+   Segurança (segredos, permissões, dados):
+   Desempenho/custo:
+   Dependências permitidas:
+
+4. DADOS
+   Entradas (nome, tipo, formato, origem, obrigatoriedade):
+   Saídas (nome, tipo, formato, destino):
+
+5. REGRAS (numeradas: R1, R2... — cada regra uma linha, com parâmetros explícitos)
+
+6. CRITÉRIOS DE ACEITAÇÃO (ref. T07, ou listados aqui)
+
+7. FORMATO DA ENTREGA
+   (código/configuração, onde, estrutura, explicações exigidas)
+
+8. TESTES EXIGIDOS
+   (um por critério; casos negativos; adversariais se houver texto de terceiros)
+
+9. ACEITAÇÃO
+   Como vou verificar:
+   O que acontece se não passar:
+
+INSTRUÇÕES DE TRABALHO
+- Antes de implementar, resuma o entendimento e liste dúvidas; pare se houver dúvida sobre regra.
+- Não altere nada fora do escopo definido.
+- Não coloque segredos no código.
+- Ao final, liste suposições feitas e o que não foi implementado.
+
+REGISTRO PÓS-ENTREGA
+Dúvidas levantadas e respostas: ________
+Suposições declaradas e decisão sobre cada uma: ________
+Resultado da verificação: ________
+```
+
+**Verificação (antes de enviar)**
+
+- [ ] Protocolo 5 aplicado e lacunas resolvidas.
+- [ ] Nenhuma regra importante deixada para quem constrói.
+- [ ] Restrições de escopo explícitas.
+- [ ] Nenhum dado real sensível no brief ou nos anexos.
+- [ ] A unidade é pequena o suficiente para ser verificada por completo.
+
+## T11 — Test Plan
+
+**Quando usar:** antes de construir (planejamento) e durante a verificação (execução e registro).
+
+```
+TEST PLAN
+Componente/sistema: ______________________   Versão testada: ____   Data: ________
+
+1. ESCOPO — o que será testado
+2. FORA DO ESCOPO — o que não será testado, e por quê
+3. AMBIENTE — onde (nunca produção, exceto aceitação planejada)
+4. DADOS DE TESTE — fictícios; como foram montados
+5. CRITÉRIOS DE SAÍDA — o que precisa passar para aceitar
+6. RESPONSÁVEIS — quem executa, quem verifica
+
+CASOS
+| ID | Cobre (CA/regra/invariante) | Tipo | Cenário | Entrada | Esperado | Obtido | Passou? | Evidência | Data |
+
+Tipos: normal · negativo · limite · ausente/inválido · exceção · estado · permissão ·
+       duplicidade · concorrência · falha de dependência · adversarial · regressão · aceitação
+
+TESTE DE SABOTAGEM
+| Regra sabotada | Como | Teste(s) que falharam | Conclusão |
+
+COMPONENTES COM IA
+Conjunto de avaliação: ______ casos (separados: ______)  Limiares definidos em: ______
+| Métrica | Limiar | Resultado (execução 1 / 2 / 3) |
+
+DEFEITOS ENCONTRADOS
+| ID | Descrição | Gravidade | Correção | Reteste |
+```
+
+**Verificação**
+
+- [ ] Há mais casos negativos (incluindo permissão e estado) do que você acharia confortável.
+- [ ] Cada caso aponta para um critério, regra ou invariante.
+- [ ] Toda execução tem evidência e data.
+- [ ] O teste de sabotagem foi aplicado às regras críticas.
+- [ ] Os testes podem ser repetidos (regressão).
+
+## T12 — Validation Report
+
+**Quando usar:** ao fim de um piloto ou período de uso real, para responder se o problema foi resolvido.
+
+```
+VALIDATION REPORT
+Projeto: ______________________   Período avaliado: ________   Data: ________
+
+1. PROBLEMA E INDICADOR (ref. T02)
+2. HIPÓTESE (ref. Decision Log)
+3. MÉTODO
+   Comparação: antes/depois · etapas · grupo de comparação
+   Linha de base (como e quando medida):
+   Outras mudanças no período:
+   Sazonalidade e explicações alternativas consideradas:
+4. RESULTADOS
+   Indicador principal: linha de base ______ → resultado ______ (meta ______)
+   Indicadores de proteção:
+   Evidência qualitativa (observações, conversas):
+   Adoção (a solução é usada como previsto? surgiram atalhos?):
+5. NÍVEL DE EVIDÊNCIA ATINGIDO: E0 / E1 / E2 / E3 / E4 — justificativa
+6. EFEITOS NÃO ESPERADOS (inclusive segunda ordem; o gargalo mudou?)
+7. LIMITAÇÕES
+8. CONCLUSÃO: validado · parcialmente validado · não validado
+9. PRÓXIMOS PASSOS
+```
+
+**Verificação**
+
+- [ ] O plano de validação foi escrito antes do piloto.
+- [ ] Linha de base e resultado medidos da mesma forma.
+- [ ] Explicações alternativas consideradas e discutidas.
+- [ ] Limitações escritas.
+- [ ] A conclusão é proporcional à evidência.
+
+## T13 — Risk Register
+
+**Quando usar:** desde a decisão de arquitetura; revisado a cada fase, a cada incidente e antes de ampliar autonomia ou escala.
+
+```
+RISK REGISTER
+Projeto: ______________________   Versão: ____   Data: ________
+
+ATIVOS A PROTEGER (dados, dinheiro, operação, reputação, pessoas):
+
+QUATRO PERGUNTAS
+1. O que estamos protegendo?
+2. De quê / de quem? (erro humano, automação defeituosa, fornecedor, má-fé, injeção)
+3. Como pode dar errado?
+4. O que faremos? (evitar · reduzir · transferir · aceitar)
+
+| ID | Risco | Causa | Consequência | Prob. (B/M/A) | Impacto (B/M/A) |
+| Controles existentes | Controles planejados | Responsável | Status | Próxima revisão |
+
+AUTOMAÇÕES, COMPONENTES COM IA E AGENTES
+| Componente | Identidade | Permissões | Pior comportamento possível | Como seria percebido | Como seria interrompido |
+
+DEPENDÊNCIAS ENTRE RISCOS E ARQUITETURA
+(riscos cujo impacto mudaria se a arquitetura mudasse)
+```
+
+**Verificação**
+
+- [ ] Os riscos de privacidade e de exposição de dados foram considerados.
+- [ ] Componentes que leem conteúdo de terceiros têm risco de injeção registrado.
+- [ ] O pior comportamento de cada automação foi considerado.
+- [ ] Riscos altos têm controle de arquitetura, não só instrução ou boa vontade.
+- [ ] Cada risco tem responsável.
+
+## T14 — Retrospective
+
+**Quando usar:** ao fim de cada fase ou projeto, e periodicamente durante a operação.
+
+```
+RETROSPECTIVE
+Projeto: ______________________   Período: ________   Participantes: ________
+
+1. O QUE FUNCIONOU E DEVE SER MANTIDO
+
+2. O QUE NÃO FUNCIONOU — E POR QUÊ (causas no sistema e no processo, não em pessoas)
+
+3. O QUE APRENDEMOS QUE NÃO SABÍAMOS
+   Sobre o problema:
+   Sobre a tecnologia:
+   Sobre o método / nosso modo de trabalhar:
+
+4. REVISÃO DE HIPÓTESES
+   | Decisão (DL/ADR) | Hipótese | Resultado observado | Confirmada / refutada / inconclusiva |
+
+5. CALIBRAÇÃO — previsões feitas × resultados
+
+6. AÇÕES
+   | Ação | Responsável | Prazo |
+
+7. ITENS PARA A LISTA DE EVOLUÇÃO / DÍVIDA TÉCNICA
+```
+
+**Verificação**
+
+- [ ] As causas estão no sistema, não em culpados.
+- [ ] Pelo menos duas hipóteses do Decision Log foram revisadas.
+- [ ] Cada ação tem responsável e prazo.
+- [ ] Há pelo menos um aprendizado específico (não genérico).
+
+## T15 — Portfolio Case
+
+**Quando usar:** ao concluir cada projeto (versão curta) e para os casos principais do portfólio (versão completa).
+
+```
+PORTFOLIO CASE
+Título: ______________________   Projeto: P__   Período: ________
+Papel do autor: ________   Outras pessoas envolvidas: ________   Uso de IA: ________
+
+PROBLEMA
+CONTEXTO (anonimizado se necessário)
+SITUAÇÃO ANTERIOR (com indicador na linha de base)
+ANÁLISE (o achado principal)
+DECISÕES (2 ou 3, com alternativas e justificativa)
+ARQUITETURA (diagrama + porquê)
+IMPLEMENTAÇÃO (o que foi delegado e como foi supervisionado)
+TESTES (o que revelaram)
+VALIDAÇÃO (método e nível de evidência)
+RESULTADOS (com nível de evidência declarado)
+LIMITAÇÕES
+APRENDIZADOS (específicos)
+PRÓXIMOS PASSOS
+
+VERSÃO DE UMA PÁGINA
+Problema (2 linhas) · Decisão principal (2 linhas) · Resultado com evidência (2 linhas) ·
+Limitação principal (1 linha) · Aprendizado principal (1 linha)
+```
+
+**Verificação (honestidade)**
+
+- [ ] Todo resultado declara seu nível de evidência.
+- [ ] Nenhum dado confidencial ou pessoal.
+- [ ] Autorização do terceiro, quando houver.
+- [ ] Autoria e uso de IA declarados.
+- [ ] Números ilustrativos marcados ou ausentes.
+- [ ] Limitações presentes.
+
+## T16 — Competency Assessment
+
+**Quando usar:** ao fim de cada projeto (para as competências avaliadas nele) e ao fim da formação (todas).
+
+```
+COMPETENCY ASSESSMENT
+Aluno: ________   Avaliador: ________ (ou autoavaliação / par)   Data: ________
+Projetos considerados: ________
+
+Níveis: 1 Reconhece · 2 Aplica com apoio · 3 Aplica com autonomia · 4 Transfere
+
+| # | Competência | Nível | Evidência (artefato, projeto) | Próximo passo |
+| 1 | Problem Framing |  |  |  |
+| 2 | Systems Thinking |  |  |  |
+| 3 | Decomposition |  |  |  |
+| 4 | Abstraction |  |  |  |
+| 5 | Process Mapping |  |  |  |
+| 6 | Data Thinking |  |  |  |
+| 7 | Rule Modeling |  |  |  |
+| 8 | Automation Thinking |  |  |  |
+| 9 | AI Opportunity Identification |  |  |  |
+| 10 | Technology Literacy |  |  |  |
+| 11 | Requirements |  |  |  |
+| 12 | Architecture |  |  |  |
+| 13 | Technical Decision Making |  |  |  |
+| 14 | Specification |  |  |  |
+| 15 | AI Delegation |  |  |  |
+| 16 | Implementation Supervision |  |  |  |
+| 17 | Integration |  |  |  |
+| 18 | Testing |  |  |  |
+| 19 | Validation |  |  |  |
+| 20 | Risk Analysis |  |  |  |
+| 21 | Security Awareness |  |  |  |
+| 22 | Documentation |  |  |  |
+| 23 | Communication |  |  |  |
+| 24 | Project Management |  |  |  |
+| 25 | Orchestration |  |  |  |
+| 26 | Metacognition |  |  |  |
+
+CALIBRAÇÃO
+Competências em que autoavaliação e avaliação diferem em 2 níveis ou mais: ________
+Discussão e conclusão: ________
+
+SÍNTESE
+Pontos fortes (com evidência):
+Pontos a desenvolver (com plano):
+```
+
+**Verificação**
+
+- [ ] Cada nível tem evidência apontada.
+- [ ] Nível 4 só é atribuído com evidência de transferência (variação ou problema novo).
+- [ ] Diferenças grandes entre autoavaliação e avaliação foram discutidas.
+
+## Apêndice B — Checklists
+
+Os checklists são versões compactas das verificações do livro, para uso no momento da decisão. Cada um indica o capítulo em que os itens são explicados.
+
+### B1 — Antes de escolher qualquer solução (Caps. 4 a 10)
+
+- [ ] Tenho um Problem Statement sem solução embutida, com indicador e proteção.
+- [ ] Conversei com pelo menos um afetado e com quem opera o processo.
+- [ ] Separei fatos de interpretações e hipóteses.
+- [ ] Sei onde está o gargalo, com evidência.
+- [ ] Mapeei o processo real, com esperas e exceções.
+- [ ] Sei quais dados o processo usa, onde estão e qual é a fonte da verdade.
+- [ ] As regras principais estão explícitas; sei quais decisões são de julgamento.
+- [ ] Identifiquei os padrões estruturais do problema.
+
+### B2 — Escada de Intervenção (Cap. 3)
+
+- [ ] Considerei eliminar a atividade (degrau 0).
+- [ ] Considerei reorganizar responsabilidades, ordem ou regras (degrau 1).
+- [ ] Considerei padronizar entradas e procedimentos (degrau 2).
+- [ ] Considerei estruturar os dados (degrau 3).
+- [ ] Só subi para automação, software ou IA com evidência de que os degraus abaixo não bastam.
+- [ ] Combinei degraus onde fazia sentido.
+- [ ] Registrei no Decision Log por que não usei degraus mais baixos.
+
+### B3 — Antes de delegar (Caps. 18 e 21)
+
+- [ ] Os critérios de aceitação existem e incluem negativos, limites e dado ausente.
+- [ ] O brief tem os nove blocos.
+- [ ] Apliquei o Protocolo 5 e resolvi as lacunas.
+- [ ] O escopo e o que não pode ser alterado estão explícitos.
+- [ ] Nenhum dado sensível ou segredo vai no brief.
+- [ ] A unidade é pequena o suficiente para eu verificar por completo.
+- [ ] Nenhuma das sete condições de "não delegar" se aplica.
+
+### B4 — Antes de aceitar uma entrega (Caps. 22 e 23)
+
+- [ ] Rodei os testes eu mesmo.
+- [ ] Li o diff (ou o histórico de mudanças) inteiro.
+- [ ] Procurei os sinais de alerta (valores fixos, segredos, erros engolidos, mudanças fora do escopo, testes vazios).
+- [ ] Testei à mão pelo menos um caso negativo.
+- [ ] Revisei a lista de suposições declaradas.
+- [ ] Apliquei o Protocolo 8 em sessão separada (para componentes relevantes).
+- [ ] Registrei a mudança (commit, versão, diário).
+
+### B5 — Automação robusta (Cap. 24)
+
+- [ ] Catálogo de exceções baseado em dados reais, com caminho padrão para o imprevisto.
+- [ ] Erros classificados em transitórios (repetir com intervalo crescente) e permanentes (não repetir).
+- [ ] Idempotência testada (execução dupla sem efeito duplicado).
+- [ ] Retomada testada (interrupção no meio sem perda nem duplicação).
+- [ ] Logs estruturados, sem segredos nem dados pessoais desnecessários.
+- [ ] Alerta de ausência testado.
+- [ ] Manual de operação seguido por outra pessoa.
+- [ ] Interruptor e processo manual alternativo disponíveis.
+
+### B6 — Integração (Caps. 13 e 25)
+
+- [ ] As oito perguntas estão respondidas.
+- [ ] Mapeamento de campos e identificadores documentado.
+- [ ] Estados de trânsito definidos; nada marcado como concluído sem confirmação do outro lado.
+- [ ] Tratamento por código de erro.
+- [ ] Webhooks: assinatura verificada, duplicatas e desordem tratadas.
+- [ ] Conciliação periódica funcionando.
+- [ ] Credenciais com escopo mínimo, fora do código.
+- [ ] Sei como ficarei sabendo de mudanças no contrato do outro lado.
+
+### B7 — Componente com IA (Caps. 16 e 27)
+
+- [ ] A parte está no quadrante 2, 3 ou 4 da Matriz Entrada × Regra (não no 1).
+- [ ] Comparei com uma alternativa determinística razoável.
+- [ ] Conjunto de avaliação com casos difíceis, gabarito prévio e parte separada.
+- [ ] Limiares definidos antes de medir.
+- [ ] Saída validada por esquema e por regras de negócio independentes do modelo.
+- [ ] "Não sei" é uma resposta permitida e testada.
+- [ ] Fallback de incerteza (revisão humana) e de indisponibilidade.
+- [ ] Nível de autonomia coerente com o custo do erro.
+- [ ] Auditoria por amostragem e reavaliação a cada mudança de modelo ou instrução.
+- [ ] Casos adversariais de injeção testados.
+
+### B8 — Agente (Cap. 29)
+
+- [ ] O teste do fluxograma foi aplicado e documentado.
+- [ ] Cada ferramenta tem permissão mínima e nível de autonomia próprio.
+- [ ] Ações externas, irreversíveis ou financeiras exigem aprovação humana.
+- [ ] Listas de permissão aplicadas pelo sistema, não pela instrução.
+- [ ] Limites de passos, tempo e custo aplicados pelo sistema.
+- [ ] Critério de parada definido.
+- [ ] Logs permitem reconstruir cada execução.
+- [ ] Testes adversariais executados.
+- [ ] Risk Register aprovado por quem responde pelos ativos.
+
+### B9 — Segurança e privacidade (Cap. 32)
+
+- [ ] Segredos fora do código, das conversas e das planilhas; com dono e prazo de troca.
+- [ ] Autenticação em dois fatores para dados sensíveis e ações críticas.
+- [ ] Autorização no backend, testada célula a célula da matriz de permissões.
+- [ ] Automações com contas de serviço e permissões mínimas.
+- [ ] Dados pessoais minimizados, com finalidade e prazo de retenção.
+- [ ] Dados reais não usados em testes nem enviados a serviços não aprovados.
+- [ ] Links compartilhados, exportações e recursos públicos revisados.
+- [ ] Ações irreversíveis protegidas (exclusão lógica, versões, espera, aprovação).
+- [ ] Logs de auditoria protegidos contra alteração.
+- [ ] Acessos revisados (pessoas que saíram, permissões que sobraram).
+
+### B10 — Pronto para piloto (Cap. 26)
+
+- [ ] Test Plan executado (E2).
+- [ ] Autenticação e permissões implementadas.
+- [ ] Cópia de segurança automática com restauração testada.
+- [ ] Logs e alertas mínimos funcionando.
+- [ ] Guia de uso e manual de operação.
+- [ ] Dono definido, com substituto.
+- [ ] Custo de operação estimado e com alerta.
+- [ ] Caminho de volta (processo anterior) disponível.
+- [ ] Plano de validação escrito.
+
+### B11 — Encerramento e entrega (Caps. 31, 34 e P09)
+
+- [ ] Validation Report escrito com limitações.
+- [ ] Retrospectiva feita, com hipóteses revisadas.
+- [ ] Pacote de entrega: guia de uso, manual de operação, Decision Log, plano de saída.
+- [ ] Quem vai operar foi treinado e operou sem ajuda.
+- [ ] Credenciais transferidas de forma segura; acessos do construtor revisados.
+- [ ] Inventário de componentes atualizado (inclusive automações).
+- [ ] Caso de portfólio escrito e autorizado.
+
+## Apêndice C — Rubricas
+
+### C1 — Escala geral
+
+| Nível | Nome | Significado | Exemplo (Test Plan) |
+|---|---|---|---|
+| 1 | Insuficiente | Ausente, incorreto ou sem evidência. | Não há Test Plan, ou só há casos felizes sem registro. |
+| 2 | Em desenvolvimento | Presente, com lacunas que comprometem o uso ou a confiança. | Há casos negativos, mas faltam permissões e limites; resultados sem evidência. |
+| 3 | Proficiente | Atende ao descritor do critério, com evidência verificável. | Casos normais, negativos, limites, permissões e duplicidade, com evidência e data. |
+| 4 | Avançado | Atende e vai além: antecipa, generaliza, transfere. | Inclui teste de sabotagem e casos adversariais que revelaram defeitos não óbvios. |
+
+### C2 — Rubrica dos exercícios com gabarito
+
+Para os exercícios do livro, use uma escala simplificada na autoavaliação:
+
+| Resultado | Critério |
+|---|---|
+| **Completo** | Sua resposta contém todos os elementos listados no "Para conferir", ou equivalentes justificados. |
+| **Parcial** | Contém a maior parte dos elementos, mas omite algum que o gabarito destaca como importante. |
+| **A refazer** | Comete o erro comum descrito no gabarito, ou omite a maioria dos elementos. |
+
+Exercícios "a refazer" devem ser refeitos depois de reler a seção correspondente, e não apenas corrigidos a partir do gabarito.
+
+### C3 — Rubrica do caso de portfólio
+
+| Critério | Proficiente (3) | Avançado (4) |
+|---|---|---|
+| Clareza do problema | O leitor entende o problema e por que importava, sem conhecer o contexto. | O caso mostra como o enquadramento mudou ao longo do projeto. |
+| Qualidade das decisões | Decisões principais com alternativas e justificativa. | Mostra decisões de não fazer, com razões. |
+| Evidência | Resultados com nível de evidência declarado e método. | Explicações alternativas discutidas. |
+| Honestidade | Limitações explícitas; autoria e uso de IA declarados. | Analisa o que o resultado não permite concluir. |
+| Aprendizado | Aprendizados específicos, ligados a episódios do projeto. | Aprendizados transferíveis, com indicação de quando se aplicariam. |
+
+### C4 — Rubrica do exame de transferência
+
+O exame é corrigido por blocos, usando a escala geral:
+
+| Bloco | Itens do exame | Proficiente (3) | Avançado (4) |
+|---|---|---|---|
+| Pensar e modelar | 1 a 7 | Problema verificável sem solução; sistema, processo, dados, regras e exceções modelados; lacunas e perguntas explícitas. | Conflitos de stakeholders tratados; padrões estruturais nomeados e usados. |
+| Decidir e especificar | 8 a 12 | Intervenções em vários degraus; matriz Entrada × Regra; alternativas comparadas; decisão registrada; brief delegável; autonomia coerente. | Proposta de explicitação de regras antes de automatizar; decisões irreversíveis tratadas com cautela. |
+| Confiar | 13 a 15 | Testes com negativos e adversariais; validação com explicações alternativas; riscos com privacidade e injeção. | Supervisão desenhada contra viés de automação; indicadores com atraso tratados. |
+| Transferir | conjunto | Raciocínio adaptado ao domínio, com termos do domínio ligados aos conceitos do método. | Identifica onde o método precisaria de ajuste naquele domínio. |
+
+### C5 — Orientações para avaliadores
+
+- Avalie a **evidência**, não a apresentação.
+- Para cada nota, escreva a evidência que a sustenta.
+- Atribua nível 4 apenas com evidência de transferência ou de antecipação real.
+- Quando a evidência de processo (diário, Decision Log, histórico) for incompatível com o produto, converse antes de avaliar.
+- Use os exemplos-âncora do programa; quando um trabalho não se parecer com nenhum âncora, registre o caso para a próxima calibração.
+
+## Apêndice D — Decisões comentadas
+
+### D1 — ADR completo: arquitetura do Caso Vértice
+
+```
+ADR-001 — ARQUITETURA DA SOLUÇÃO PARA O LEAD TIME DE LAUDOS
+Data: (ilustrativa)   Status: aceita
+Responsável: Beatriz (coordenação de qualidade)   Participantes: Rodrigo, analista sênior
+
+1. CONTEXTO
+   Problema (T02 v3): 41% dos laudos de rotina em até 2 dias úteis; meta 90% em 6 meses,
+   sem aumento de erros de revisão e mantendo rastreabilidade.
+   Mudanças de processo (degraus 1–2) já aplicadas elevaram o indicador para 63%.
+   Causas remanescentes: registro em planilha sem estados explícitos; digitação de
+   resultados; ausência de visibilidade da fila; laudo montado manualmente.
+   Restrições: trilha de auditoria obrigatória; um analista de sistemas compartilhado;
+   orçamento limitado; instrumentos não podem ser trocados.
+
+2. ALTERNATIVAS
+   A) Planilha melhorada (degraus 1–3)
+   B) Aplicação interna simples (degraus 3–5)
+   C) Sistema de laboratório pronto (comprar)
+   D) Aplicação com IA em todo o fluxo (degraus 5–8)
+   E) B em fases, com IA pontual condicionada a avaliação (degraus 3–6)
+
+3. CRITÉRIOS E COMPARAÇÃO
+   Eliminatório: trilha de auditoria (elimina A).
+   Ponderados (ver matriz do Capítulo 19): E 59; B 54; C 46; D 35.
+   Robustez: aumentar o peso de "custo de manutenção" de 2 para 3 aproxima C de E,
+   mas não inverte; aumentar o peso de "dependência de fornecedor" amplia a vantagem de E.
+
+4. DECISÃO
+   Alternativa E, em quatro fases: (1) registro e fluxo; (2) importação de arquivos dos
+   instrumentos; (3) integração com sistema de lotes; (4) extração de certificados com IA,
+   somente se a avaliação justificar.
+
+5. JUSTIFICATIVA
+   Atende ao eliminatório; ataca as causas remanescentes na ordem de impacto esperado;
+   permite parar depois de qualquer fase com valor entregue; mantém a IA fora das
+   decisões que exigem rastreabilidade.
+
+6. EVIDÊNCIA
+   Medida: levantamento de 212 amostras; 30 casos acompanhados; efeito das mudanças
+   de processo (2 semanas). Especialista: analista sênior sobre a função de conferência
+   da digitação. Fornecedor: descrições de sistemas prontos (não testadas — fraca).
+
+7. CONSEQUÊNCIAS
+   Positivas: controle do processo; dados estruturados para indicadores.
+   Negativas aceitas: manutenção interna depende de Rodrigo (risco de continuidade);
+   desenvolvimento em fases alonga o prazo total.
+   Mais difícil de mudar depois: o modelo de dados central.
+
+8. RISCOS (ref. T13): continuidade (R1); perda da conferência ao eliminar digitação (R2);
+   alteração indevida da trilha de auditoria durante a construção (R3).
+
+9. REVERSIBILIDADE
+   Fase 1 reversível para a planilha em poucos dias (exportação testada).
+   Fases seguintes independentes entre si.
+
+10. HIPÓTESE E VALIDAÇÃO
+    Esperamos 90% em até 2 dias úteis após a fase 2.
+    Medição mensal; sinal de erro: menos de 75% três meses após a fase 2.
+
+11. RELACIONADOS: DL-01 (mudanças de processo antes do sistema); DL-04 (importação
+    em vez de digitação); ADR-002 (estados de liberação na integração).
+```
+
+**Comentário.** Três escolhas tornam esse ADR útil. O critério eliminatório é aplicado antes da soma, o que impede que uma alternativa barata e inadequada vença. O teste de robustez mostra quanto a decisão depende dos pesos — e mostra que, se a manutenção se revelar mais cara do que o esperado, a alternativa C deve ser reconsiderada. E o risco de continuidade, uma consequência negativa da decisão, está escrito, o que obriga alguém a tratá-lo (no caso, com o arquivo de contexto e um segundo responsável treinado).
+
+### D2 — Três entradas de Decision Log: fraca, razoável e boa
+
+**Versão fraca:**
+
+> DL-02 — Usar uma planilha. Motivo: é mais fácil.
+
+**Versão razoável:**
+
+> DL-02 — Planilha estruturada para o sistema de Lucas. Alternativas: aplicativo de finanças pronto; aplicação própria. Justificativa: um usuário, poucos registros, sem exigência de auditoria. Risco: outra pessoa da família passar a editar.
+
+**Versão boa:**
+
+> DL-02 — Planilha estruturada, uma aba por entidade, colunas tipadas e listas fechadas para status. *Contexto:* sistema pessoal de contas, documentos e garantias; cerca de 60 registros ativos. *Alternativas:* (a) aplicativo de finanças pronto — descartado porque não cobre documentos e garantias e exigiria acesso às contas bancárias; (b) aplicação própria — custo de construção e manutenção desproporcional; (c) planilha estruturada. *Evidência:* contagem dos registros reais (medida); experiência de Lucas com planilhas (experiência). *Riscos:* edição simultânea se outra pessoa da família passar a usar; ausência de histórico de alterações. *Hipótese:* manutenção de até 30 minutos por semana. *Validação:* registrar o tempo semanal por quatro semanas; se passar de 45 minutos em duas semanas, revisar. Revisar também se outra pessoa passar a editar. *Status:* aceita.
+
+**Comentário.** A versão fraca não permite aprender nada. A razoável registra alternativas e um risco, mas não diz como se saberá se a decisão foi boa. A boa transforma a decisão numa aposta verificável, com sinal de erro definido — e é só um pouco mais longa.
+
+## Apêndice E — Cartões dos protocolos de IA
+
+| # | Protocolo | Objetivo | Use quando | Instrução-chave | Valide com |
+|---|---|---|---|---|---|
+| 1 | Exploração | Entender domínio desconhecido | Início, antes de entrevistas | "Não proponha soluções; dê conceitos, problemas típicos, perguntas e incertezas; marque [VERIFICAR]." | Conversas reais e fontes primárias |
+| 2 | Decomposição | Criticar e ampliar sua decomposição | Depois da sua versão M0 | "Não reescreva; aponte lacunas, sobreposições e partes não delegáveis; proponha outro critério." | Process Map e System Map |
+| 3 | Arquitetura | Gerar alternativas com trade-offs | Antes de decidir | "Cinco alternativas, duas nos degraus 0–3, uma 'comprar'; nove questões; quando fracassaria." | Requisitos eliminatórios; verificação de capacidades |
+| 4 | Decisão | Testar uma decisão | Antes de registrar | "Não diga se concorda; argumento contrário, pré-mortem, riscos, evidência que mudaria a decisão." | Avaliação de cada objeção por você |
+| 5 | Especificação | Achar lacunas antes de construir | Antes de delegar | "Não implemente; liste perguntas, suposições, contradições e critérios ausentes." | Você responde e atualiza o brief |
+| 6 | Implementação | Construir no escopo | Brief fechado | "Resuma e pergunte antes; só no escopo; sem segredos; teste por critério; liste suposições." | Seus testes, diff, Protocolo 8 |
+| 7 | Teste | Gerar casos a partir de critérios | Antes/junto da construção | "A partir dos critérios, não do código; normal, negativo, limites, ausência, duplicidade, concorrência, adversarial." | Teste de sabotagem |
+| 8 | Auditoria | Revisão independente | Antes de aceitar e de implantar | "Você não escreveu isto; verifique cada regra; procure [lista]; classifique por gravidade." | Defeito plantado |
+| 9 | Documentação | Docs a partir dos artefatos | Fim de fase, entrega | "Para [leitor] e [tarefas]; só o que está nos artefatos; marque [NÃO CONFIRMADO]." | Leitor executa tarefa real |
+| 10 | Ensino | Aprender o necessário | Falta de entendimento | "Em etapas, com exemplo meu; consenso × opinião; cinco perguntas, uma por vez." | Explicar sem ajuda; fonte primária |
+
+**Regras transversais:** você pensa primeiro quando o pensamento é o ponto; contexto explícito; saída verificável; gerar e avaliar em sessões separadas; registrar o uso no diário.
+
+## Apêndice F — Catálogo de anti-padrões
+
+| Anti-padrão | Sintoma | Correção | Cap. |
+|---|---|---|---|
+| **Começar pela ferramenta** | A primeira conversa é sobre plataforma ou modelo. | Nenhuma ferramenta antes de Problem Statement com critério. | 4 |
+| **Começar pelo prompt** | A primeira ação é descrever o sistema a uma IA. | Usar IA para explorar; construir só após requisitos e decisão. | 21 |
+| **Usar IA por moda** | IA aparece na solução antes de aparecer no problema. | Matriz Entrada × Regra; experimento determinístico × IA. | 27 |
+| **Construir antes de entender** | O protótipo vem antes do mapeamento. | Mapeamento mínimo primeiro; protótipo para testar hipóteses. | 8 |
+| **Automatizar processo ruim** | A automação acelera etapas que não deveriam existir. | Melhorar o processo (degraus 0–2) e depois automatizar. | 8 |
+| **Confundir automação com melhoria de processo** | Sucesso medido por etapas automatizadas. | Ligar cada automação a uma causa e ao indicador. | 15 |
+| **Adicionar complexidade desnecessária** | Componentes sem requisito; agentes sem teste do fluxograma. | "Que requisito exige isto?"; arquitetura em fases. | 19, 29 |
+| **Ignorar exceções** | Só o caminho feliz está especificado. | Catálogo de exceções; caminho padrão para o imprevisto. | 10, 24 |
+| **Confiar cegamente no output** | "Parece certo", "rodou". | Validação proporcional ao custo do erro; nunca perguntar à própria IA se está certa. | 22 |
+| **Não definir critérios de aceitação** | "Está pronto?" — "Parece que sim." | Critérios com negativo e limite antes de delegar. | 18 |
+| **Não testar casos negativos** | Testes só verificam o que deve acontecer. | Negativos, permissões, transições proibidas; sabotagem. | 30 |
+| **Confundir demonstração com validação** | Sucesso declarado após apresentação. | Plano de validação prévio; nível de evidência declarado. | 31 |
+| **Confundir protótipo com produto** | O provisório vira permanente. | Checklist protótipo × produto antes de qualquer uso real. | 26 |
+| **Não registrar decisões** | Ninguém sabe por que o sistema é assim. | Decision Log desde o primeiro dia. | 20 |
+| **Depender de uma ferramenta** | Lógica e dados só existem dentro da plataforma. | Plano de saída com quatro itens. | 34 |
+| **Confundir prompt com especificação** | "A especificação está no histórico da conversa." | Especificação como artefato versionado. | 21 |
+| *Decompor pela ferramenta* | Partes com nomes de ferramentas. | Decompor por etapa, função, entidade, decisão ou risco. | 6 |
+| *Otimizar fora do gargalo* | Melhoria numa etapa que não limita o sistema. | Encontrar o gargalo antes de intervir. | 5 |
+| *Parar na pessoa* | A análise de causas termina num culpado. | Perguntar o que no sistema torna o erro fácil. | 4, 33 |
+| *Supervisão de fachada* | Humano "no circuito" aprova sem olhar. | Volume compatível, destaque do que importa, auditoria da supervisão. | 32 |
+
+As linhas em itálico são anti-padrões complementares, tratados ao longo do livro além dos dezesseis principais.
+
+## Apêndice G — Glossário
+
+**Abstração** — Representação que mantém o que importa para um propósito e esconde o resto.
+
+**ADR (Architecture Decision Record)** — Documento curto que registra uma decisão de arquitetura, com contexto, alternativas, justificativa, consequências e validação.
+
+**Agente** — Modelo de linguagem que opera em ciclo, decidindo ações, usando ferramentas e observando resultados até um objetivo ou limite.
+
+**Alerta de ausência** — Aviso disparado quando algo que deveria acontecer não acontece.
+
+**API** — Interface de um sistema para outros sistemas, com endpoints e contrato de requisição e resposta.
+
+**Autenticação** — Comprovação da identidade de quem acessa.
+
+**Autorização** — Decisão sobre o que uma identidade autenticada pode fazer.
+
+**Backend** — Parte do sistema que roda no servidor e aplica regras, acessa dados e integra serviços.
+
+**Banco de dados** — Sistema especializado em guardar, consultar e proteger dados com integridade.
+
+**Cardinalidade** — Quantas ocorrências de uma entidade se relacionam com quantas de outra (um para um, um para muitos, muitos para muitos).
+
+**Chave de idempotência** — Identificador de uma operação que permite reconhecer e ignorar repetições.
+
+**Chave estrangeira** — Coluna que guarda a chave primária de outra tabela, criando uma relação.
+
+**Chave primária** — Identificador único de cada linha de uma tabela.
+
+**Cloud (nuvem)** — Uso de servidores e serviços alugados de provedores e acessados pela internet.
+
+**Conciliação** — Comparação periódica entre registros que deveriam coincidir, para detectar e tratar divergências.
+
+**Conjunto de avaliação** — Coleção de casos com respostas corretas definidas antes, usada para medir componentes com IA.
+
+**Contexto (de IA)** — Tudo o que o modelo "vê" numa interação: instruções, mensagens, documentos, resultados de ferramentas.
+
+**Critério de aceitação** — Condição verificável que define se um requisito foi atendido.
+
+**Decision Log** — Registro corrente das decisões de um projeto, com alternativas, evidência, hipótese e validação.
+
+**Diff** — Diferença, linha a linha, entre duas versões de um arquivo.
+
+**Dívida técnica** — Atalhos tomados na construção que economizam tempo agora e cobram depois.
+
+**Embedding** — Representação numérica do significado de um texto, usada para encontrar textos semelhantes.
+
+**Endpoint** — Endereço de um recurso ou operação numa API.
+
+**Escada de Intervenção** — Organização das soluções possíveis em degraus de complexidade, do eliminar ao agente.
+
+**Escala de evidência** — Níveis E0 a E4 (opinião, demonstração, teste planejado, uso real controlado, uso sustentado).
+
+**Esqueleto andante** — Primeira versão mínima de um sistema que atravessa todas as camadas de ponta a ponta.
+
+**Estoque** — Algo que se acumula num sistema (fila, pendências).
+
+**Fabricação (alucinação)** — Produção, por um modelo, de informação falsa com aparência de verdadeira.
+
+**Fatia vertical** — Incremento de construção que entrega uma funcionalidade completa, de ponta a ponta.
+
+**Fluxo** — O que faz um estoque aumentar ou diminuir.
+
+**Fonte da verdade** — Lugar cujo valor prevalece quando a mesma informação existe em vários lugares.
+
+**Frontend** — Parte do sistema que roda no dispositivo do usuário.
+
+**Gargalo** — Etapa de menor capacidade, que limita a saída de todo o sistema.
+
+**Git** — Ferramenta de controle de versões amplamente usada.
+
+**Guardrail** — Defesa que limita o que um sistema com IA pode fazer, independentemente do comportamento do modelo.
+
+**Idempotência** — Propriedade de uma operação que, executada várias vezes, produz o mesmo efeito que uma vez.
+
+**Injeção de instruções (prompt injection)** — Instruções embutidas em dados que alteram o comportamento de um modelo.
+
+**Interface** — Ponto de interação entre um usuário (pessoa ou sistema) e um sistema.
+
+**Invariante** — Regra que deve ser verdadeira o tempo todo, em qualquer estado.
+
+**JSON** — Formato de texto para dados estruturados com objetos, listas e valores.
+
+**Laço de realimentação** — Cadeia de causa e efeito que volta ao ponto de partida (de reforço ou de equilíbrio).
+
+**Log** — Registro de eventos de um sistema.
+
+**Manual de operação (runbook)** — Documento com o que fazer em cada situação operacional ou alerta.
+
+**Mapa Humano–Máquina** — Registro de quem executa, decide, verifica e responde por cada atividade.
+
+**Matriz Entrada × Regra** — Ferramenta para decidir entre solução determinística, IA ou humano, pela estrutura da entrada e explicitabilidade da regra.
+
+**Método (HTTP)** — Tipo de ação numa requisição: GET, POST, PUT, PATCH, DELETE.
+
+**Modelo de linguagem** — Modelo treinado para gerar continuações prováveis de texto, capaz de seguir instruções.
+
+**Níveis de autonomia** — N0 a N5, do manual à autonomia sem supervisão regular; definidos por ação.
+
+**Observabilidade** — Capacidade de entender o comportamento de um sistema por seus registros, métricas e alertas.
+
+**Padrão estrutural** — Forma recorrente de problema que aparece em domínios diferentes (fila, aprovação, reconciliação...).
+
+**Payload** — Conteúdo (corpo) de uma requisição ou resposta.
+
+**Pré-mortem** — Técnica de imaginar que uma decisão fracassou e explicar por quê.
+
+**Problem Statement** — Declaração de um problema com afetados, estados atual e desejado, impacto, causas, restrições, critério de resolução e escopo.
+
+**Processo** — Sequência de atividades que transforma entradas em saídas para alguém.
+
+**Quarentena (fila de exceções)** — Lugar onde itens que não podem ser processados automaticamente esperam tratamento humano.
+
+**RAG** — Geração aumentada por recuperação: busca de trechos relevantes colocados no contexto antes da resposta.
+
+**Regressão** — Reaparecimento de um defeito, ou o teste que verifica que o que funcionava continua funcionando.
+
+**Requisito** — Afirmação sobre o que uma solução precisa fazer ou ser.
+
+**Segredo** — Informação que dá acesso: senha, chave, token.
+
+**Servidor** — Computador ou programa disponível continuamente para responder a requisições.
+
+**Sincronização** — Manutenção da mesma informação em mais de um sistema.
+
+**Status (código de)** — Número que indica o resultado de uma requisição (2xx sucesso, 4xx erro de quem pede, 5xx erro de quem responde).
+
+**Tabela de decisão** — Representação de regras com condições em colunas e combinações em linhas.
+
+**Teste de sabotagem** — Quebrar deliberadamente uma regra para verificar se algum teste falha.
+
+**Teste do defeito plantado** — Inserir defeitos conhecidos antes de uma auditoria para calibrar a confiança nela.
+
+**Teste do fluxograma** — Pergunta "consigo desenhar os passos?", que separa problemas de fluxo de problemas que exigem agente.
+
+**Trilha de auditoria** — Registro protegido de quem fez o quê, quando, sobre qual dado.
+
+**Webhook** — Requisição que um sistema externo envia ao seu quando um evento acontece.

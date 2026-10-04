@@ -108,6 +108,8 @@ Como medir:
 
 E, antes de rodar, **defina os limiares de aceitação**: que desempenho é suficiente para cada nível de autonomia? Definir o limiar depois de ver o resultado é uma forma de autoengano.
 
+> **▲ Avançado — quanto confiar num número medido em poucos casos** — Um conjunto de avaliação de 40 casos com 36 acertos dá 90% de acerto, mas esse número é incerto: com outros 40 casos parecidos, o resultado poderia ser razoavelmente diferente. Quanto menor o conjunto, maior a incerteza e maior a cautela necessária na decisão. Três práticas ajudam: reportar o número de casos junto com a porcentagem ("36 de 40", e não apenas "90%"); examinar os erros um a um, porque um único erro crítico pode pesar mais do que a taxa; e, quando duas alternativas diferem por poucos casos, tratar a diferença como inconclusiva até ampliar o conjunto. Quem tem formação em estatística pode calcular intervalos de confiança; quem não tem deve, no mínimo, evitar tratar diferenças pequenas em amostras pequenas como evidência forte.
+
 ### Confiabilidade e incerteza
 
 Um sistema com IA precisa saber quando não confiar em si mesmo. Algumas formas de detectar incerteza, da mais fraca para a mais forte:
@@ -140,6 +142,8 @@ E precisa de supervisão contínua:
 ### Exercícios
 
 **Exercício 27.1 · F · M0** — Posicione cada tarefa na Matriz Entrada × Regra e indique o custo do erro: (a) calcular o valor de uma fatura a partir das horas registradas; (b) identificar, em e-mails de clientes, os que pedem cancelamento; (c) decidir se um pedido de exceção na política de devolução deve ser aceito; (d) ler a data de validade em fotos de documentos; (e) decidir a prioridade de chamados de manutenção a partir de descrições livres.
+
+> **Para conferir** — (a) Quadrante 1: regra explícita sobre dados estruturados — determinístico, sem IA; erro com custo financeiro. (b) Quadrante 2: classificar texto livre; a IA identifica os pedidos de cancelamento e regras ou pessoas decidem o que fazer; o cancelamento não deveria ser executado automaticamente a partir da classificação. (c) Quadrante 3 ou 4: julgamento; a decisão é humana, e a IA pode, no máximo, resumir o histórico do cliente. (d) Quadrante 2: extração de imagens, com validação de formato e de plausibilidade da data; custo do erro alto se a data dispara obrigações. (e) Entre os quadrantes 2 e 4: tentar primeiro explicitar critérios de prioridade (segurança, número de pessoas afetadas, impacto na operação); a IA sugere a categoria a partir da descrição e uma pessoa confirma os casos de prioridade alta.
 
 **Exercício 27.2 · P · M2** — Amplie o conjunto de avaliação do Exercício 16.4 para pelo menos 40 mensagens, com respostas definidas antes. Separe um terço. Ajuste a instrução da IA usando só os dois terços; depois meça no terço separado. A diferença de desempenho entre as duas partes é grande? O que isso indica?
 
@@ -209,6 +213,8 @@ RAG é frequentemente proposto para problemas que não precisam dele. Antes de c
 
 **Exercício 28.1 · F · M0** — Para cada situação, diga se RAG é adequado ou exagero, e qual a alternativa: (a) um assistente para responder dúvidas de funcionários sobre 300 páginas de políticas internas; (b) responder a clientes sobre o horário de funcionamento; (c) consultar o saldo de férias de um funcionário; (d) ajudar técnicos a encontrar soluções em 5.000 registros de chamados anteriores.
 
+> **Para conferir** — (a) Adequado: muitos documentos e perguntas variadas — com citação das fontes e controle das versões vigentes. (b) Exagero: informação fixa; uma página de informações resolve. (c) Exagero: é uma consulta a dado estruturado no sistema de pessoal, não uma pergunta sobre documentos. (d) Possivelmente adequado (busca por semelhança em histórico extenso), mas avalie antes se uma busca bem organizada já resolve; atenção a dados pessoais registrados nos chamados.
+
 **Exercício 28.2 · P · M0** — Monte um conjunto de avaliação para um RAG sobre um conjunto de documentos que você conhece (manuais, regulamentos, materiais de curso): quinze perguntas com resposta e fonte esperadas, incluindo cinco cuja resposta não está nos documentos.
 
 **Exercício 28.3 · A · M3** — Se você tiver acesso a uma ferramenta que permita consultar documentos próprios com IA, aplique o conjunto do exercício anterior. Meça separadamente busca, fidelidade, exatidão, citação e comportamento sem resposta. Que componente falhou mais?
@@ -222,12 +228,22 @@ Um agente, como visto no Capítulo 16, é um modelo de linguagem que opera em ci
 Entre a automação totalmente definida e o agente totalmente aberto, há um espectro:
 
 ```
-  FLUXO FIXO             FLUXO FIXO COM          FLUXO COM DECISÃO       AGENTE COM            AGENTE
-  com etapas de IA  ──►  ROTEAMENTO POR IA  ──►  DE PASSOS LIMITADA ──►  FERRAMENTAS     ──►  ABERTO
-  (passos definidos;     (IA escolhe qual        (IA escolhe entre       RESTRITAS             (muitas ferramentas,
-   IA extrai/classifica)  caminho seguir)         poucas ações)          (decide os passos,     amplas permissões)
-                                                                          dentro de limites)
-  ◄────────── mais previsível, testável, barato ──────────    ────────── mais flexível, arriscado, caro ──────────►
+  FLUXO FIXO COM ETAPAS DE IA ........... passos definidos; a IA extrai ou classifica
+        │
+        ▼
+  FLUXO COM ROTEAMENTO POR IA ........... a IA escolhe qual caminho seguir
+        │
+        ▼
+  FLUXO COM DECISÃO DE PASSOS LIMITADA .. a IA escolhe entre poucas ações
+        │
+        ▼
+  AGENTE COM FERRAMENTAS RESTRITAS ...... decide os passos, dentro de limites
+        │
+        ▼
+  AGENTE ABERTO ......................... muitas ferramentas, amplas permissões
+
+  De cima para baixo: menos previsível, testável e barato;
+                      mais flexível, arriscado e caro.
 ```
 
 A regra do método é a mesma de sempre: comece pela esquerda e mova-se para a direita apenas quando o problema exigir.
@@ -322,6 +338,8 @@ Guardrails são as defesas que limitam o que um agente pode fazer, independentem
 ### Exercícios
 
 **Exercício 29.1 · F · M0** — Aplique o teste do fluxograma a cada proposta e diga se é caso de fluxo ou de agente: (a) responder a perguntas de clientes sobre o status do pedido; (b) pesquisar e comparar fornecedores de embalagens a partir de critérios dados; (c) processar pedidos de reembolso; (d) investigar por que as vendas de uma linha de produtos caíram; (e) agendar reuniões entre pessoas com agendas compartilhadas.
+
+> **Para conferir** — (a) Fluxo: consulta ao status, com IA no máximo para entender a pergunta. (b) Agente pode fazer sentido: os passos dependem do que se encontra em fontes variadas; com ferramentas apenas de leitura e resultado para decisão humana. (c) Fluxo: processo com regras conhecidas e exceções enumeráveis. (d) Agente de análise pode ajudar, somente com leitura, entregando um relatório para pessoas decidirem. (e) Fluxo: é um problema de agendamento com restrição; buscar horários livres e propor não exige que a sequência de passos seja decidida durante a execução.
 
 **Exercício 29.2 · P · M0** — Especifique um agente para uma tarefa do seu contexto que passou no teste do fluxograma (isto é, que realmente precisa de agente), usando a tabela de componentes. Atribua autonomia a cada ferramenta.
 

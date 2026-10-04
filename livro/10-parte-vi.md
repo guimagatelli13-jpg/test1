@@ -8,7 +8,7 @@ Construir ficou barato. Confiar continua caro. Esta parte trata do trabalho que 
 
 ### Testar e validar não são a mesma coisa
 
-Duas perguntas diferentes, que exigem atividades diferentes:
+São perguntas diferentes, que exigem atividades diferentes:
 
 - **Testar** responde: *a solução funciona como foi especificada?* Compara o comportamento com os critérios de aceitação.
 - **Validar** responde: *a solução resolve o problema que motivou o projeto?* Compara o mundo depois da solução com o Problem Statement.
@@ -55,6 +55,8 @@ Não é possível testar todas as entradas possíveis. Quatro técnicas ajudam a
 ### O teste de sabotagem
 
 Como saber se seus testes são bons? Uma técnica direta: **quebre deliberadamente o sistema e veja se algum teste falha.** Inverta um limite (de "menor ou igual" para "menor"), remova uma verificação de permissão, desative a checagem de duplicidade. Se, depois da sabotagem, todos os testes continuam passando, eles não estavam testando aquilo. Profissionais técnicos conhecem a versão automatizada dessa ideia como teste de mutação; a versão manual, aplicada às regras mais críticas, está ao alcance de qualquer leitor.
+
+> **▲ Avançado — testes de propriedade e de mutação** — Duas técnicas ampliam o alcance dos testes para quem trabalha com código. *Testes baseados em propriedades* não verificam um exemplo específico, mas uma regra que deve valer para qualquer entrada ("para qualquer conjunto de pedidos aceitos, a soma das UTs do dia nunca excede a capacidade"); uma ferramenta gera centenas de entradas variadas e procura uma que viole a propriedade — os invariantes do Capítulo 10 são candidatos naturais. *Testes de mutação* automatizam o teste de sabotagem: uma ferramenta introduz pequenas alterações no código (troca "menor ou igual" por "menor", remove uma condição) e verifica se algum teste falha; as alterações que "sobrevivem" apontam regras não testadas. As duas técnicas são especialmente úteis para verificar código gerado por IA, porque procuram defeitos que ninguém pensou em procurar.
 
 ### O Test Plan
 
@@ -107,11 +109,15 @@ Além disso, componentes com IA que recebem texto de terceiros devem ter **casos
 
 **Exercício 30.1 · F · M0** — Para a regra "reembolsos de até R$ 200,00 com recibo são aprovados automaticamente", identifique as classes de equivalência e os valores limite, e escreva os casos de teste.
 
+> **Para conferir** — Classes: valor até o limite com recibo (aprovação automática); valor acima do limite com recibo (outra regra); sem recibo (outra regra); valor inválido (zero, negativo, não numérico). Valores limite: R$ 199,99; R$ 200,00; R$ 200,01; e, na fronteira inferior, R$ 0,00 e R$ 0,01. Antes de escrever os testes, uma pergunta precisa de resposta de quem é dono da regra: "até R$ 200,00" inclui exatamente R$ 200,00? Testes de limite costumam revelar ambiguidades como essa antes mesmo de rodarem.
+
 **Exercício 30.2 · P · M0** — A partir da máquina de estado do pedido da Marzipã (Capítulo 10), escreva os testes de todas as transições permitidas e de pelo menos uma transição proibida a partir de cada estado.
 
 **Exercício 30.3 · P · M3** — Escreva o Test Plan de um componente do seu projeto, execute-o e registre os resultados com evidência. Depois, aplique o teste de sabotagem a duas regras críticas. Algum teste deixou de falhar quando deveria?
 
 **Exercício 30.4 · P · M4** — Um colega diz: "Testei a automação de lembretes: cadastrei uma conta para amanhã e o lembrete chegou. Está funcionando." Liste o que esse teste não verifica e escreva os dez casos de teste mais importantes que faltam.
+
+> **Para conferir** — O teste verifica apenas um caso feliz, uma vez. Casos que faltam: conta já paga (não deve gerar lembrete); conta sem data de vencimento; execução repetida no mesmo dia (sem duplicidade); vencimento em fim de semana; várias contas no mesmo dia (uma mensagem com todas?); conta vencida ontem; status digitado de forma diferente; falha do serviço de mensagens; conteúdo da mensagem correto (fornecedor, valor, data); e a automação que não rodou (alerta de ausência). Um teste que não foi registrado também não pode ser repetido depois de uma mudança.
 
 > **Etapa concluída para o Projeto P06.** Com os Capítulos 26 e 30, você pode concluir o Projeto P06 — Aplicação.
 
@@ -135,7 +141,7 @@ O Capítulo 3 apresentou a escala de evidência. Aqui ela se torna um instrument
 | **E3** | Uso real controlado | Resolve o problema com usuários e dados reais? | Piloto com indicador medido contra linha de base. | Período e escala limitados. |
 | **E4** | Uso sustentado | Continua resolvendo ao longo do tempo? | Operação acompanhada por métricas; incidentes tratados. | Exige tempo; o contexto pode mudar. |
 
-Duas regras de uso. Primeiro, **declare sempre o nível de evidência** ao afirmar que algo funciona ("a importação foi testada em E2; o piloto de duas semanas está em andamento"). Segundo, **o nível exigido depende do uso**: E2 antes de qualquer pessoa usar; E3 antes de chamar de solução; E4 antes de remover o processo antigo ou de ampliar a escala.
+A escala tem duas regras de uso. Primeiro, **declare sempre o nível de evidência** ao afirmar que algo funciona ("a importação foi testada em E2; o piloto de duas semanas está em andamento"). Segundo, **o nível exigido depende do uso**: E2 antes de qualquer pessoa usar; E3 antes de chamar de solução; E4 antes de remover o processo antigo ou de ampliar a escala.
 
 ### O plano de validação
 
@@ -192,6 +198,8 @@ O template T12 organiza o resultado da validação em: problema e indicador; hip
 ### Exercícios
 
 **Exercício 31.1 · F · M0** — Classifique cada afirmação pelo nível de evidência: (a) "Mostramos o sistema para a diretoria e todos gostaram"; (b) "Nos 40 casos do Test Plan, 39 passaram; o que falhou foi corrigido e retestado"; (c) "Em três meses de uso, o tempo médio de atendimento caiu de 30 para 12 horas, e se mantém"; (d) "O fornecedor garante 99% de acerto"; (e) "Durante o piloto de três semanas com uma equipe, os erros de cadastro caíram pela metade em relação às três semanas anteriores".
+
+> **Para conferir** — (a) E0: a reação da plateia é opinião; o que foi mostrado vale, no máximo, como E1. (b) E2. (c) E4, se as métricas continuarem acompanhadas. (d) E0 para o seu caso: é uma afirmação do fornecedor, não testada no seu contexto. (e) E3, com as cautelas do capítulo (período curto, comparação simples antes e depois).
 
 **Exercício 31.2 · P · M0** — Escreva o plano de validação completo (dez itens) para o seu projeto. Dê atenção especial ao método de comparação e às explicações alternativas que poderiam produzir uma melhora falsa.
 
@@ -337,6 +345,8 @@ Pôr "um humano no circuito" não garante supervisão. Pessoas que aprovam cente
 **Exercício 32.3 · P · M3** — Crie dez casos adversariais de injeção de instruções para o componente com IA do seu projeto (ou para a triagem de mensagens da Marzipã). Execute-os. Algum produziu efeito além do esperado? Que defesa de arquitetura teria contido o efeito?
 
 **Exercício 32.4 · P · M4** — Identifique os problemas de privacidade e exposição: "Para treinar a equipe no novo sistema, copiamos a base de clientes para o ambiente de testes. Também colamos algumas conversas reais de clientes no assistente de IA para ajustar a triagem. Os logs guardam as mensagens completas para facilitar o diagnóstico."
+
+> **Para conferir** — Problemas: dados reais de clientes copiados para o ambiente de testes (exposição desnecessária; use dados fictícios ou anonimizados); treinamento com dados reais amplia quem tem acesso a eles; conversas reais coladas num assistente de IA sem anonimização nem verificação de que o serviço é aprovado para esses dados; logs com mensagens completas (dados pessoais nos logs sem necessidade; registre identificadores e metadados, não o conteúdo). Cada prática, isoladamente, parece pequena; juntas, multiplicam os lugares por onde os dados podem vazar.
 
 > **Etapa concluída para o Projeto P08.** Com os Capítulos 29 e 32, você pode concluir o Projeto P08 — Sistema com agente.
 

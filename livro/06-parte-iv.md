@@ -110,6 +110,8 @@ Além dos critérios de aceitação de cada requisito, projetos se beneficiam de
 
 **Exercício 18.1 · F · M0** — Reescreva cada requisito de forma verificável: (a) "O sistema deve ser fácil de usar"; (b) "Os lembretes devem ser enviados com antecedência adequada"; (c) "O sistema deve suportar muitos usuários"; (d) "A IA deve entender as mensagens dos clientes".
 
+> **Para conferir** — Respostas possíveis: (a) "Um usuário novo conclui o registro de um pedido em até cinco minutos, sem ajuda, em teste com três usuários". (b) "O lembrete é enviado três dias antes do vencimento, às 8h; se o terceiro dia anterior cair em dia não útil, no último dia útil antes dele". (c) "O sistema atende 20 usuários simultâneos com tempo de resposta inferior a 2 segundos" — o número deve vir do volume esperado, não de um valor genérico. (d) O requisito é dependente de solução e não verificável; reescreva sem IA: "mensagens de pedido são transformadas em rascunhos com data, produto, tamanho e modo de entrega preenchidos; campos sem informação clara ficam marcados como 'a confirmar'", com desempenho medido num conjunto de avaliação.
+
 **Exercício 18.2 · P · M0** — Para o problema que você vem trabalhando, escreva uma lista de requisitos com pelo menos um de cada tipo. Ligue cada requisito a uma causa da árvore de problemas ou a um stakeholder. Priorize com as quatro categorias, garantindo que no máximo metade fique em "deve".
 
 **Exercício 18.3 · P · M0** — Escolha os dois requisitos mais importantes da sua lista e escreva critérios de aceitação no formato Dado / Quando / Então, cobrindo caso normal, negativo, limite e dado ausente.
@@ -117,11 +119,10 @@ Além dos critérios de aceitação de cada requisito, projetos se beneficiam de
 **Exercício 18.4 · P · M4** — Os critérios abaixo foram escritos para o lembrete de contas de Lucas. Identifique o que está faltando ou ambíguo e reescreva-os.
 
 > CA-1: Dado que há contas vencendo, quando chegar a hora, então o sistema envia lembrete.
+>
 > CA-2: O sistema não deve enviar lembretes de contas pagas.
 
 > **Para conferir** — CA-1 não diz quanto antes do vencimento ("vencendo" quando?), que hora é "a hora", para quem vai o lembrete, o que ele contém, nem o que acontece se houver várias contas (uma mensagem por conta ou uma lista?). CA-2 é uma regra útil, mas não está no formato verificável e não diz como o sistema sabe que a conta foi paga (status marcado manualmente? conferência com extrato?). Faltam: conta sem data de vencimento; conta que vence no fim de semana; lembrete já enviado hoje (duplicidade); falha no envio. Uma reescrita do CA-1: "*Dado* uma conta com status 'recebida' e vencimento daqui a 3 dias, *quando* a automação rodar às 8h, *então* Lucas recebe uma única mensagem listando essa conta com fornecedor, valor e data de vencimento."
-
-> **Fim da etapa de pré-requisitos do Projeto P02.** Você já pode fazer o Projeto P02 — Sistema pessoal.
 
 ## Capítulo 19 — Arquitetura como sequência de decisões
 
@@ -186,7 +187,7 @@ Com as alternativas em mãos, compare-as segundo critérios derivados dos requis
 >
 > A alternativa A foi descartada por não atender à trilha de auditoria — um requisito obrigatório, que funciona como eliminatório independentemente da soma. C ficou competitiva em efeito e auditoria, mas exigiria adaptar o processo recém-melhorado ao sistema comprado, com custo recorrente alto para o porte do laboratório; ela foi registrada como alternativa a reavaliar se a aplicação própria se mostrasse difícil de manter. D foi descartada por risco e custo: a IA em todo o fluxo acrescentava opacidade a decisões que exigem rastreabilidade, sem ganho correspondente no indicador. E foi escolhida.
 
-Duas advertências sobre matrizes desse tipo.
+Matrizes desse tipo são úteis, mas podem enganar de duas formas.
 
 **Os números dão uma falsa sensação de precisão.** As notas são julgamentos, e os pesos também. A matriz não decide; ela organiza a discussão, torna os julgamentos visíveis e permite que alguém conteste um peso ou uma nota específica. Se mudar um peso de 2 para 3 inverte a decisão, a decisão é frágil — e isso deve ser registrado.
 
@@ -264,6 +265,8 @@ Um erro comum é tratar todas as decisões da mesma forma: ou com análise demai
 > "Um agente de IA atende os clientes no aplicativo de mensagens, entende o pedido, consulta o calendário de produção, gera a cobrança do sinal, confirma o pedido e atualiza o banco de dados. Um segundo agente monitora o estoque de ingredientes e faz pedidos aos fornecedores automaticamente. Um painel mostra tudo em tempo real. A arquitetura usa microsserviços em nuvem para garantir escalabilidade."
 
 > **Para conferir** — Excessos: dois agentes autônomos para um negócio com poucas dezenas de pedidos por semana; microsserviços e "escalabilidade" sem requisito que os justifique; compra automática de ingredientes sem que esse problema tenha aparecido no Problem Statement. Lacunas: quem confirma o pedido (a confirmação envolve compromisso e capacidade — deveria ficar com Helena); como o agente sabe a capacidade (as UTs e suas regras); o que acontece com mensagens ambíguas, reclamações e alterações de pedido em produção; riscos de injeção de instruções via mensagens de clientes; custo de operação; quem mantém. Uma arquitetura assim parece moderna e ignora quase todas as nove questões.
+
+> **Fim da etapa de pré-requisitos do Projeto P02.** Você já pode fazer o Projeto P02 — Sistema pessoal.
 
 ## Capítulo 20 — Decisões registradas
 

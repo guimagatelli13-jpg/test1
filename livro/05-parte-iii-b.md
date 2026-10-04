@@ -60,7 +60,7 @@ Autorizar é decidir o que uma identidade pode fazer. A forma mais comum de orga
 >
 > A célula vazia em "alterar resultado aprovado" é deliberada: ninguém altera. Uma correção depois da aprovação exige um novo registro, vinculado ao original, com motivo — preservando a trilha de auditoria. A matriz também deixa claro que "analista" corrige apenas os próprios resultados.
 
-Dois princípios orientam a autorização:
+A autorização bem feita se apoia nestes princípios:
 
 **Menor privilégio.** Cada identidade recebe apenas as permissões necessárias para sua função, e nada mais. Isso vale para pessoas, para automações e, principalmente, para agentes de IA (Capítulo 29).
 
@@ -110,9 +110,13 @@ Toda automação age com alguma identidade. Se a automação de lembretes da Mar
 
 **Exercício 14.1 · F · M0** — Para cada situação, diga se o problema é de autenticação ou de autorização: (a) um ex-funcionário ainda consegue entrar no sistema; (b) um estagiário consegue apagar registros de clientes; (c) alguém descobriu a senha de um gerente; (d) uma automação de relatórios consegue enviar e-mails em nome do diretor.
 
+> **Para conferir** — (a) Autenticação — a credencial do ex-funcionário não foi revogada (um problema de processo de saída). (b) Autorização — o papel do estagiário tem permissões demais. (c) Autenticação — a credencial foi comprometida; um segundo fator teria reduzido o dano. (d) Autorização — a automação age com uma identidade ou um escopo inadequados; deveria usar uma conta de serviço com permissão apenas para o que precisa.
+
 **Exercício 14.2 · P · M0** — Construa a matriz de permissões do sistema de pedidos da Marzipã, considerando os papéis: Helena (dona), confeiteira, entregador, automação de lembretes, IA de triagem de mensagens. Lembre-se: a IA de triagem cria rascunhos, mas não confirma pedidos.
 
 **Exercício 14.3 · P · M4** — Identifique todas as violações da Regra dos segredos no relato: "Montei a automação usando minha conta pessoal. A chave da API de pagamentos eu deixei numa aba escondida da planilha de pedidos, para não perder. Quando deu erro, colei a configuração inteira no assistente de IA e ele resolveu. Depois mandei a configuração para a Helena por mensagem, para ela ter uma cópia."
+
+> **Para conferir** — Violações: a automação usa a conta pessoal (deveria ser uma conta de serviço); a chave está numa planilha (regra 1: segredos só em cofre ou variáveis de ambiente); a configuração com a chave foi colada num assistente de IA (regra 2); foi enviada por mensagem (regra 2); não há dono nem prazo de troca (regra 4). Consequência obrigatória, pela regra 5: a chave foi exposta em pelo menos três lugares e deve ser revogada e substituída — apagar as mensagens não basta.
 
 ## Capítulo 15 — Anatomia de uma automação
 
@@ -206,6 +210,8 @@ e) Copiar diariamente as amostras registradas para uma planilha de indicadores d
 
 **Exercício 15.3 · P · M4** — Uma pessoa descreve sua automação: "Quando chega um e-mail com 'nota fiscal' no assunto, a automação salva o anexo numa pasta e lança o valor na planilha de despesas." Liste os elementos que estão faltando e pelo menos cinco situações reais em que essa automação falharia ou faria algo errado.
 
+> **Para conferir** — Faltam, entre outros: estado (quais e-mails já foram processados, para não lançar duas vezes), exceções, tratamento de erro, log e supervisão. Situações de falha: reprocessamento duplica lançamentos; e-mail promocional com "nota fiscal" no assunto; e-mail sem anexo, ou com anexo que não é a nota; várias notas no mesmo e-mail; nota cancelada depois; valor extraído do campo errado; assunto escrito de outra forma ("NF", "NF-e"); e um risco de segurança sério: anexos de remetentes desconhecidos podem ser maliciosos. Se a sua lista não tem nenhum item de segurança, revise-a.
+
 > **Fim da etapa de pré-requisitos do Projeto P01.** Você já pode fazer o Projeto P01 — Automação pessoal.
 
 ## Capítulo 16 — Como a IA funciona, o suficiente para decidir
@@ -273,7 +279,7 @@ Para usar IA dentro de um sistema (e não só numa conversa), é preciso que ela
 
 ### Ferramentas, recuperação e agentes
 
-Três ideias ampliam o que um modelo de linguagem consegue fazer. Elas serão aprofundadas nos Capítulos 28 e 29; aqui, o objetivo é reconhecê-las.
+Ferramentas, recuperação e agentes ampliam o que um modelo de linguagem consegue fazer. Elas serão aprofundadas nos Capítulos 28 e 29; aqui, o objetivo é reconhecê-las.
 
 **Uso de ferramentas.** Um modelo pode ser configurado para, em vez de responder diretamente, pedir que o sistema execute uma ferramenta: consultar um banco de dados, chamar uma API, fazer um cálculo, buscar na internet. O sistema executa e devolve o resultado ao modelo, que continua. O modelo não executa nada sozinho; ele *pede*, e o sistema ao redor decide se executa. Essa distinção é o que permite pôr limites.
 
@@ -344,6 +350,8 @@ O primeiro critério é o mais importante e o mais negligenciado. A única forma
 ### Exercícios
 
 **Exercício 16.1 · F · M0** — Classifique cada tarefa por função (classificar, extrair, gerar, transformar, analisar, interpretar) e ordene da mais fácil para a mais difícil de verificar: (a) identificar o idioma de um e-mail; (b) resumir uma reunião; (c) encontrar o número da nota fiscal num PDF; (d) sugerir por que as vendas caíram; (e) reescrever uma política em linguagem simples; (f) decidir se uma reclamação é procedente.
+
+> **Para conferir** — (a) Classificar. (b) Transformar/gerar (resumo). (c) Extrair. (d) Analisar e interpretar. (e) Transformar. (f) Interpretar — e é uma decisão de julgamento que deveria permanecer humana. Ordem aproximada, da mais fácil à mais difícil de verificar: (a), (c), (e), (b), (d), (f). Classificação e extração têm resposta conferível; resumos e reescritas exigem comparar com o original; análises e julgamentos não têm gabarito simples.
 
 **Exercício 16.2 · P · M4** — Peça a uma IA três referências bibliográficas sobre um tema específico do seu trabalho, com autores, títulos e anos. Verifique cada uma em fontes confiáveis (catálogo de biblioteca, site da editora, base acadêmica). Registre quantas existem exatamente como descritas, quantas existem com dados diferentes e quantas não existem. O objetivo não é "pegar a IA no erro", mas calibrar sua confiança para esse tipo de pedido.
 
@@ -419,7 +427,7 @@ Dados se perdem: por erro humano, por falha de serviço, por uma automação que
 
 ### Custos e dependências
 
-Duas últimas camadas de infraestrutura invisível.
+Restam duas camadas de infraestrutura invisível: os custos e as dependências.
 
 **Custos de uso.** Muitos serviços — nuvem, plataformas de automação, IA — cobram por uso: por execução, por requisição, por volume de texto processado. Um erro de lógica que faz uma automação rodar em ciclo pode gerar um custo inesperado em poucas horas. Configure limites de gasto e alertas de custo sempre que o serviço permitir.
 
@@ -462,6 +470,8 @@ Duas últimas camadas de infraestrutura invisível.
 **Exercício 17.2 · P · M0** — Escreva, para a automação de lembretes de Lucas, a lista do que deve ser registrado em log a cada execução, duas métricas semanais e dois alertas. Indique o que nunca deveria aparecer nos logs.
 
 **Exercício 17.3 · P · M4** — Uma pessoa relata: "A IA refez meu script e agora ele não funciona mais. Não sei o que ela mudou. Pedi para ela consertar, ela mudou de novo, e agora está pior." Explique quais práticas deste capítulo teriam evitado a situação e o que a pessoa deve fazer agora.
+
+> **Para conferir** — Teriam evitado a situação: commits (ou versões) pequenos e frequentes, leitura do diff antes de aceitar cada mudança, e construção em fatias verificadas. A pessoa está numa espiral de correções (Capítulo 23). O que fazer agora: parar de pedir correções; recuperar a última versão que funcionava (histórico da ferramenta, cópia ou controle de versões); se não houver nenhuma, reconstruir em pequenos passos a partir da especificação, verificando e registrando cada um. E, daqui em diante, versionar.
 
 ## Revisão da Parte III
 

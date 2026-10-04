@@ -10,7 +10,7 @@ O Capítulo 22 apresenta os dez protocolos de colaboração com IA, que valem pa
 
 O Capítulo 2 propôs tratar a IA como um consultor externo extremamente rápido, que sabe muito em geral e nada sobre o seu caso, raramente diz "não sei" e não sofre as consequências dos próprios erros. Este capítulo transforma essa atitude em prática.
 
-Quatro princípios orientam toda colaboração com IA no método:
+Toda colaboração com IA, no método, segue estes princípios:
 
 **Você pensa primeiro quando o pensamento é o ponto.** Em enquadramento, decomposição e decisão, produza sua própria versão antes de consultar a IA. A versão da IA é mais útil como contraste do que como ponto de partida.
 
@@ -467,6 +467,8 @@ O ciclo de construção vale para qualquer forma de construir. O que muda é ond
 | Testar | Executar com dados de teste, um caso por vez | Casos de teste numa aba própria | Testes automatizados |
 | Revisar mudanças | Histórico de versões da plataforma, se houver; registro manual se não houver | Histórico de versões da planilha | Diff no controle de versões |
 | Registrar | Exportar a configuração e guardar com data | Cópia datada + diário | Commit |
+
+> **Atenção — para quem nunca executou um programa** — Se você é do Perfil A e a sua solução exige código, não tente aprender programação ao mesmo tempo em que constrói o projeto. Há três caminhos, em ordem de preferência: (1) prefira plataformas visuais ou planilhas com automações, que tornam cada etapa visível; (2) se o código for necessário, use um assistente de programação que execute e mostre os resultados num ambiente isolado, e peça, com o Protocolo 10, que ele guie a preparação do ambiente passo a passo, confirmando com você o resultado de cada passo antes do seguinte; (3) faça par com alguém do Perfil B ou C na primeira configuração e escreva você mesmo o passo a passo, para conseguir repeti-lo sozinho. Em qualquer caminho, a sua responsabilidade não muda: critérios de aceitação, testes, leitura das mudanças e registro.
 
 Se a plataforma que você usa não tem histórico de versões nem forma de exportar a configuração, isso é um risco a registrar no Decision Log — e um motivo para manter documentação da configuração fora dela.
 

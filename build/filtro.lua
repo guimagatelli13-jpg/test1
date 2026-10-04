@@ -20,6 +20,43 @@ local rotulos = {
   { "^Decisão",       "decisao" },
 }
 
+
+-- Diagramas em texto: corpo da fonte ajustado à largura disponível,
+-- para que nenhuma linha quebre (o que destruiria o desenho).
+local TAMANHOS = { 79, 76, 73, 70, 67, 64, 61, 58 }
+local LARGURA_PAGINA, LARGURA_CAIXA = 159, 149 -- mm úteis para o texto do bloco
+
+local function eh_diagrama(texto)
+  for _, c in ipairs({ "│", "─", "►", "▼", "◄", "▲" }) do
+    if texto:find(c, 1, true) then return true end
+  end
+  return false
+end
+
+local function largura(texto)
+  local maior = 0
+  for linha in (texto .. "\n"):gmatch("(.-)\n") do
+    local n = utf8.len(linha) or #linha
+    if n > maior then maior = n end
+  end
+  return maior
+end
+
+local function classe_tamanho(caracteres, mm)
+  for _, t in ipairs(TAMANHOS) do
+    -- largura de um caractere monoespaçado = 0,6 em; 1 pt = 0,3528 mm
+    if caracteres * 0.6 * 0.3528 * (t / 10) <= mm then return "fs" .. t end
+  end
+  return "fs58"
+end
+
+function CodeBlock(el)
+  if eh_diagrama(el.text) then
+    el.classes = pandoc.List({ "diagrama", classe_tamanho(largura(el.text), LARGURA_PAGINA) })
+  end
+  return el
+end
+
 local function rotulo_de(bloco)
   if not bloco or (bloco.t ~= "Para" and bloco.t ~= "Plain") then
     return nil
@@ -36,7 +73,16 @@ function BlockQuote(el)
   if txt then
     for _, par in ipairs(rotulos) do
       if txt:match(par[1]) then
-        return pandoc.Div(el.content, pandoc.Attr("", { "caixa", par[2] }))
+        local classes = { "caixa", par[2] }
+        for _, b in ipairs(el.content) do
+          if b.t == "CodeBlock" then
+            table.insert(classes, "com-diagrama")
+            if eh_diagrama(b.text) then
+              b.classes = pandoc.List({ "diagrama", classe_tamanho(largura(b.text), LARGURA_CAIXA) })
+            end
+          end
+        end
+        return pandoc.Div(el.content, pandoc.Attr("", classes))
       end
     end
   end
