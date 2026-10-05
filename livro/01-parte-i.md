@@ -24,9 +24,9 @@ O livro foi escrito para funcionar sozinho. Ele é ao mesmo tempo:
 - um **método**, com instrumentos que se repetem e se acumulam;
 - um **currículo**, com uma progressão de onze projetos;
 - um **manual do aluno**, com exercícios, gabaritos comentados, rubricas e templates;
-- a **base de um produto educacional**, com uma parte dedicada a quem vai conduzir turmas, avaliar alunos e manter o material atualizado.
+- a **base de um produto educacional**, complementado por um volume separado — o **Manual do Programa** — para quem vai conduzir turmas, avaliar alunos e manter o material atualizado.
 
-Esta é a primeira versão. A estrutura pedagógica foi projetada e revisada com cuidado, mas ainda não foi validada com turmas reais. A Parte IX descreve exatamente que evidências precisam ser obtidas antes de se afirmar que o método produz os resultados que promete. Preferimos dizer isso aqui, na primeira página, do que deixar a impressão de que o produto já está comprovado.
+Esta é a primeira versão. A estrutura pedagógica foi projetada e revisada com cuidado, mas ainda não foi validada com turmas reais. O Manual do Programa descreve exatamente que evidências precisam ser obtidas antes de se afirmar que o método produz os resultados que promete. Preferimos dizer isso aqui, na primeira página, do que deixar a impressão de que o produto já está comprovado.
 
 Uma última observação. Os casos usados ao longo do livro — um laboratório de controle de qualidade, uma confeitaria e a administração de uma casa — são fictícios e compostos a partir de situações comuns. Os números que aparecem neles são ilustrativos e servem para tornar o raciocínio concreto; não são dados de pesquisa.
 
@@ -75,7 +75,8 @@ Essa lista é o critério de sucesso do livro. Ela volta no Capítulo 36, na for
 | VI — Construir algo confiável | Testar, validar, proteger, observar, evoluir | Como saber que funciona e continuará funcionando? |
 | VII — Projetos | Aplicar tudo em onze projetos progressivos | Consigo fazer isso de verdade? |
 | VIII — Domínio e transferência | Avaliar competências e transferi-las | Aprendi o conceito ou decorei o procedimento? |
-| IX — O produto educacional | Orientar quem conduz, avalia e mantém o método | Como isso funciona sem depender do autor? |
+
+Dez apêndices (A a J) completam o livro como material de consulta e de prática: templates, checklists, rubricas, protocolos, glossário e, nos três últimos, o **caso-guia** com material simulado (H), **trabalhos comentados** para autoavaliação (I) e as **respostas** dos testes e do caso-guia (J). Quem vai conduzir turmas, avaliar alunos ou manter o método encontra o restante no Manual do Programa.
 
 A progressão segue uma ordem deliberada: **pensar → modelar → decidir → especificar → construir → testar → validar → evoluir → orquestrar.** Capítulos posteriores pressupõem os anteriores e não ensinam de novo o que já deveria estar dominado; quando retomam um conceito, é para usá-lo em um nível mais alto. Se você chegar a um capítulo e sentir que falta base, a referência ao capítulo anterior está indicada no texto.
 
@@ -109,6 +110,8 @@ Respeite os modos. Fazer um exercício M0 com IA não é trapaça contra o livro
 
 Os exercícios são numerados por capítulo (Exercício 4.2 é o segundo exercício do Capítulo 4) e marcados com camada e modo, por exemplo: **Exercício 4.2 · P · M0**. Muitos exercícios têm uma caixa **Para conferir** com um gabarito comentado: não uma resposta única, mas os elementos que uma boa resposta precisa conter e os erros mais comuns. Use-a depois de fazer o exercício, nunca antes.
 
+Três tipos de prática merecem menção. Os exercícios marcados como **Completar** trazem um artefato parcialmente pronto para você terminar — são a forma mais rápida de aprender um formato novo, especialmente para o Perfil A. Ao fim de cada parte, um **teste de recuperação** pede respostas curtas sem consulta, com respostas no Apêndice J; responder de memória fixa o conteúdo muito melhor do que reler. E o Apêndice I traz **trabalhos comentados** de projetos, em dois níveis de qualidade, para você calibrar a própria avaliação.
+
 Os onze projetos (P00 a P10) estão reunidos na Parte VII, mas **não devem ser feitos só no final**. Cada projeto fica disponível quando você termina os capítulos de que ele depende:
 
 | Projeto | Faça depois de | Tema |
@@ -124,6 +127,8 @@ Os onze projetos (P00 a P10) estão reunidos na Parte VII, mas **não devem ser 
 | P08 — Sistema com agente | Capítulos 29 e 32 | Contexto, ferramentas, limites e supervisão |
 | P09 — Projeto profissional | Parte VI completa | Problema real de terceiro |
 | P10 — Capstone | Livro completo | Problema altamente ambíguo, de ponta a ponta |
+
+Se você não tiver um contexto próprio para um projeto — uma organização, pessoas para entrevistar, dados —, use o **caso-guia** do Apêndice H: uma clínica fictícia com entrevistas, observação de campo, planilhas e mensagens, preparada para os projetos P00, P03 e P07 (e utilizável nos P02 e P04 a P06).
 
 Projetos têm rubrica, critérios de aprovação e um resultado de portfólio. Um projeto só está concluído quando seus critérios de aprovação são atendidos — não quando você "terminou de fazer".
 
@@ -144,7 +149,7 @@ Parece burocracia. Não é. O diário é a matéria-prima de três coisas que o 
 
 ### Trilhas e ritmo
 
-As estimativas abaixo são estimativas de projeto pedagógico, ainda não medidas com turmas reais (a Parte IX explica como medi-las). Use-as para planejar, não como promessa.
+As estimativas abaixo são estimativas de projeto pedagógico, ainda não medidas com turmas reais (o Manual do Programa explica como medi-las). Use-as para planejar, não como promessa.
 
 | Trilha | Para quem | Como percorrer |
 |---|---|---|
@@ -154,7 +159,22 @@ As estimativas abaixo são estimativas de projeto pedagógico, ainda não medida
 
 O ritmo que tende a funcionar melhor é regular e moderado: algumas sessões por semana, com um projeto sempre em andamento. A leitura sem projeto produz a sensação de ter entendido; o projeto revela o que de fato foi entendido.
 
-Se você estuda sozinho, combine com alguém (um colega, um amigo) para apresentar seus projetos P03, P06 e P09. Explicar uma decisão para outra pessoa é uma das formas mais eficazes de descobrir que ela era fraca. Se você estuda em grupo ou com mentor, a Parte IX descreve os formatos acompanhados.
+Se você estuda sozinho, combine com alguém (um colega, um amigo) para apresentar seus projetos P03, P06 e P09. Explicar uma decisão para outra pessoa é uma das formas mais eficazes de descobrir que ela era fraca. Se você estuda em grupo ou com mentor, o Manual do Programa descreve os formatos acompanhados.
+
+### A Trilha Essencial
+
+Nem todo leitor precisa — ou pode — percorrer o livro inteiro antes de aplicá-lo. A Trilha Essencial é o caminho mais curto que ainda desenvolve a competência central: os capítulos do núcleo do método, quatro projetos (três deles com o caso-guia) e o exame de transferência. Ela também está publicada como uma edição própria, a **Edição Essencial**, que contém apenas esses capítulos.
+
+| Etapa | Capítulos | Prática | Horas estimadas |
+|---|---|---|---|
+| 1. Fundamentos | Prefácio, Como usar, 1 a 3 | Exercícios selecionados; o ciclo em uma tarde (3.5); revisão da Parte I | 5 |
+| 2. Pensar | 4 a 10 | Exercícios selecionados; revisão da Parte II; **P00 com o caso-guia** | 14 |
+| 3. Enxergar | 11, 15 e 16 | Exercícios selecionados; **P01** (automação pessoal, com uma semana de uso) | 8 |
+| 4. Projetar | 18 a 21 | Exercícios selecionados; revisão da Parte IV; **P03 com o caso-guia** | 11 |
+| 5. Construir e confiar | 22, 23, 27, 29, 30, 31 e 32 | Exercícios selecionados; revisões das Partes V e VI; **P07 com o caso-guia** | 14 |
+| 6. Transferir | 36 | **Exame de transferência**; autodiagnóstico de saída | 4 |
+
+As horas são estimativas de projeto pedagógico, ainda não medidas: no total, cerca de 55 horas, ou de cinco a sete semanas com oito a dez horas por semana. A Edição Essencial começa com um guia que lista, etapa por etapa, os exercícios selecionados. Os capítulos fora da trilha continuam disponíveis para consulta quando um projeto pedir — por exemplo, o Capítulo 13 (APIs) quando você for integrar sistemas.
 
 ### Materiais necessários
 
@@ -636,6 +656,45 @@ O método é o mesmo para uma automação de lembretes pessoais e para a reorgan
 
 Um bom praticante percebe quando está fazendo método demais para um problema pequeno — e, principalmente, quando está fazendo método de menos para um problema grande. A regra prática: **a profundidade da análise deve ser proporcional ao custo de errar**, não ao tamanho do que será construído. Uma automação de três passos que envia dados de clientes para fora da empresa merece mais análise do que um sistema grande que só reorganiza dados internos não sensíveis.
 
+### O núcleo do método
+
+Este capítulo apresentou muitos instrumentos, e o livro apresentará outros. Nem todos têm o mesmo peso. Se você pudesse levar apenas seis para qualquer problema, seriam estes — e são eles que você vai usar em todos os projetos:
+
+| Instrumento | Para quê | Onde se aprofunda |
+|---|---|---|
+| **Problem Statement** | Saber qual é o problema e como se saberá que foi resolvido. | Cap. 4 |
+| **Process Map** | Ver como o trabalho acontece de verdade, com esperas e exceções. | Cap. 8 |
+| **Escada de Intervenção** | Procurar a solução mais simples que resolve. | Cap. 3 e 19 |
+| **Critérios de aceitação** | Definir o que é "certo" antes de construir ou delegar. | Cap. 18 |
+| **Decision Log** | Registrar escolhas como apostas verificáveis. | Cap. 20 |
+| **Escala de evidência** | Saber quanto confiar no que foi construído. | Cap. 31 |
+
+Todos os demais — os níveis de autonomia, a Matriz Entrada × Regra, os protocolos de IA, os padrões estruturais, os templates — são instrumentos de apoio: aprenda-os bem quando o problema pedir, e consulte-os quando precisar. Se em algum momento o livro parecer ter instrumentos demais, volte a esta tabela.
+
+### O ciclo em uma tarde
+
+O método é aplicado a problemas de qualquer tamanho. Para enxergá-lo inteiro antes de estudar cada parte, veja-o aplicado a um problema pequeno, em poucas horas.
+
+> **Caso Casa** — Lucas paga multas frequentes por atraso na devolução de livros da biblioteca da escola dos filhos. Ele aplicou o ciclo inteiro numa tarde de sábado, com tempo marcado para cada movimento.
+>
+> **Pensar (15 min).** Problem Statement mínimo: "Nos últimos três meses, pagamos multa por atraso em 5 de 9 devoluções. Queremos zero multas nos próximos dois meses, com no máximo cinco minutos por semana de esforço."
+>
+> **Modelar (20 min).** Processo: as crianças retiram livros às sextas; o prazo é de 14 dias; os livros ficam espalhados pela casa; ninguém sabe a data de devolução. Dados: livro, filho, data de retirada, data de devolução. Regras: prazo de 14 dias; uma renovação permitida pelo site da biblioteca. Descoberta: três das cinco multas foram de livros que já estavam lidos havia dias — o problema não era tempo de leitura, era lembrar e achar o livro.
+>
+> **Decidir (15 min).** Alternativas pela Escada: (1) lugar fixo para os livros da biblioteca, perto da porta; (2) devolver *toda* sexta tudo o que já foi lido; (4) lembrete automático na quinta à noite. Decisão: 1 + 2 + 4 — registrada em quatro linhas no Decision Log mínimo, com "como saberemos": zero multas em dois meses.
+>
+> **Especificar (15 min).** Critério de aceitação: "Toda quinta às 20h, Lucas recebe um lembrete com os livros que vencem até a sexta seguinte; livros já devolvidos não aparecem."
+>
+> **Construir (40 min).** Uma tabela de três colunas (livro, filho, data de devolução) e um lembrete semanal no calendário que aponta para ela. Uma caixa ao lado da porta.
+>
+> **Testar (15 min).** Três situações: livro retirado numa quarta (fora do padrão); livro renovado; semana sem livros. A segunda revelou uma lacuna: a renovação não atualizava a tabela. Regra acrescentada: "ao renovar, atualizar a data na tabela".
+>
+> **Validar (dois meses).** Zero multas em oito semanas; esforço medido de três a quatro minutos por semana (E3, em pequena escala).
+>
+> **Evoluir.** Na retrospectiva, o lembrete automático se mostrou menos importante do que a caixa ao lado da porta. A evidência mudou a explicação do que funcionou.
+
+O exemplo é pequeno de propósito. Ele mostra que o ciclo não é burocracia: com tempo marcado, ele cabe numa tarde — e mesmo assim produziu uma descoberta (o problema não era o tempo de leitura) e uma correção (a renovação) que uma solução improvisada teria deixado passar. Se quiser ver o mesmo caminho num problema grande, leia agora "Antes dos projetos: um caso completo", no início da Parte VII.
+
 ### Exercícios
 
 **Exercício 3.1 · F · M0** — Sem consultar o texto, escreva os nove movimentos e a pergunta central de cada um. Depois compare com a tabela. Os movimentos que você esqueceu ou confundiu indicam onde o seu modelo mental ainda está fraco.
@@ -655,3 +714,27 @@ e) Responder a perguntas sobre o horário de funcionamento de uma loja.
 > **Para conferir** — Não há resposta única, mas há justificativas fracas. (d) envolve ação irreversível sobre dados possivelmente sujeitos a obrigações de guarda: qualquer nível acima de N2 exige justificativa muito forte. (e) tem baixo custo de erro e alto volume: N4 ou N5 é razoável *se* a informação vier de uma fonte única e atualizada. Em (b), o ponto crítico é de onde vem a informação de que o pagamento foi recebido: se vier diretamente do sistema de pagamento, N4 é razoável; se for inferida de uma mensagem do cliente ("já paguei!"), nada acima de N1.
 
 **Exercício 3.4 · A · M2** — Peça a uma IA que proponha uma solução para o problema do Exercício 1.2. Classifique a solução proposta nos degraus da Escada. Em seguida, pergunte à IA qual seria a solução mais simples possível que ainda resolvesse a maior parte do problema. Compare as duas respostas e registre no diário: a primeira proposta da IA estava no degrau mínimo suficiente? O que isso sugere sobre como pedir soluções?
+
+**Exercício 3.5 · F · M0 (M3 só no "construir")** — Aplique o ciclo em uma tarde a um problema pequeno e de baixo risco da sua vida, seguindo os tempos do exemplo de Lucas (cerca de duas horas, mais o período de validação). Entregue uma página com os oito movimentos. Não tente fazer bem cada etapa: o objetivo é percorrer todas, uma vez, e perceber qual delas você teria pulado se não houvesse um roteiro.
+
+> **Para conferir** — Uma boa resposta tem um indicador mensurável no "pensar", pelo menos uma descoberta no "modelar" (algo que você não sabia antes de olhar o processo), pelo menos uma alternativa nos degraus 0 a 2 no "decidir", um critério de aceitação verificável e pelo menos um teste de situação fora do padrão. Se o seu "construir" levou mais tempo do que todos os outros movimentos somados, observe isso: é o hábito que o livro quer mudar.
+
+## Revisão da Parte I
+
+### Teste de recuperação
+
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir.
+
+**R1.1** Qual a diferença entre tarefa e problema? Dê um exemplo em que a tarefa pedida esconde uma decisão. (Cap. 1)
+
+**R1.2** Liste, em ordem, os nove movimentos do ciclo. (Cap. 3)
+
+**R1.3** Por que pular degraus da Escada de Intervenção é o erro mais caro? (Cap. 3)
+
+**R1.4** Uma automação envia avisos internos; o erro custa pouco e é reversível, o volume é alto e a confiabilidade medida é alta. Que nível de autonomia você daria, e por quê? (Cap. 3)
+
+**R1.5** Qual a diferença entre os níveis de evidência E1 e E2? E entre E2 e E3? (Cap. 3)
+
+**R1.6** Segundo o princípio da proporcionalidade, o que deve variar entre um projeto pessoal pequeno e um projeto de risco alto? (Cap. 3)
+
+**R1.7** Complete o princípio da responsabilidade: "A IA pode construir. Você continua responsável por..." (Como usar este livro)

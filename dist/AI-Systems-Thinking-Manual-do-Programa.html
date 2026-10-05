@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Manual do Programa · versão 1.1 (edição de teste)" />
+  <meta name="dcterms.date" content="2026-01-01" />
+  <meta name="description" content="Livro, currículo e manual do aluno do método AI Systems Thinking." />
+  <title>AI Systems Thinking</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+:root {
+--tinta: #1b1f24;
+--suave: #5b6470;
+--marinho: #13233b;
+--acento: #b5651d;
+--linha: #d5d9de;
+--fundo: #fdfdfc;
+--fundo-codigo: #f4f5f7;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--tinta: #e6e8eb;
+--suave: #a3abb5;
+--marinho: #b8cbe6;
+--acento: #e0a35c;
+--linha: #39414b;
+--fundo: #14181d;
+--fundo-codigo: #1d232a;
+}
+}
+html { background: var(--fundo); }
+body {
+font-family: "Noto Serif", Georgia, serif;
+color: var(--tinta);
+background: var(--fundo);
+max-width: 46em;
+margin: 0 auto;
+padding: 2em 16px 6em 16px;
+line-height: 1.6;
+font-size: 1.04rem;
+}
+h1, h2, h3, h4, h5 { font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; color: var(--marinho); line-height: 1.25; }
+h1.parte { margin-top: 3.5em; border-bottom: 3px solid var(--acento); padding-bottom: 0.3em; }
+h2 { margin-top: 2.6em; }
+h2.capitulo, h2.projeto, h2.apendice { border-left: 5px solid var(--acento); padding-left: 0.5em; }
+a { color: var(--marinho); }
+header#title-block-header { padding: 3em 0 2em 0; border-bottom: 1px solid var(--linha); margin-bottom: 2em; }
+header#title-block-header::before { content: "PROJETO OFICIAL 00"; letter-spacing: 0.3em; font-size: 0.8em; color: var(--acento); font-family: "IBM Plex Sans", system-ui, sans-serif; }
+header#title-block-header h1.title { font-size: 2.6em; margin: 0.3em 0; }
+header#title-block-header .subtitle { font-size: 1.25em; color: var(--suave); }
+nav#TOC ul { list-style: none; padding-left: 1em; }
+nav#TOC > ul { padding-left: 0; }
+nav#TOC > ul > li { margin-top: 0.7em; font-weight: 600; }
+nav#TOC > ul > li > ul > li { font-weight: 400; }
+code, pre { font-family: "JetBrains Mono", "DejaVu Sans Mono", Consolas, monospace; }
+code { background: var(--fundo-codigo); padding: 0 0.2em; border-radius: 3px; font-size: 0.88em; }
+pre { background: var(--fundo-codigo); border: 1px solid var(--linha); padding: 0.9em 1em; overflow-x: auto; font-size: 0.8em; line-height: 1.4; border-radius: 4px; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86em; display: block; overflow-x: auto; margin-bottom: 1.2em; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+th { background: var(--marinho); color: var(--fundo); text-align: left; padding: 0.4em 0.6em; }
+td { border-bottom: 1px solid var(--linha); padding: 0.4em 0.6em; vertical-align: top; }
+blockquote, div.caixa { margin: 1em 0; padding: 0.7em 1em; border-left: 4px solid var(--linha); background: var(--fundo-codigo); border-radius: 3px; }
+div.caso { border-left-color: #2a7d74; }
+div.antipadrao { border-left-color: #b2443a; }
+div.avancado { border-left-color: #6a5cb3; }
+div.ficha { border-left-color: #2d5f9e; }
+div.principio, div.decisao { border-left-color: var(--acento); }
+div.gabarito { border-left-color: #4a8a3c; }
+div.atencao { border-left-color: #d1801f; }
+div.exercicio { border-left: 2px solid var(--linha); padding-left: 0.8em; margin-bottom: 0.8em; }
+ul.task-list { list-style: none; padding-left: 0.2em; }
+ul.task-list li input { margin-right: 0.5em; }
+pre.diagrama { white-space: pre; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI Systems Thinking</h1>
+<p class="subtitle">Manual do Programa — para quem cria, conduz, avalia
+e mantém o método</p>
+<p class="author">Manual do Programa · versão 1.1 (edição de teste)</p>
+<p class="date">2026</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Sumário</h2>
+<ul>
+<li><a href="#parte-a-o-primeiro-teste" id="toc-parte-a-o-primeiro-teste">PARTE A — O PRIMEIRO TESTE</a>
+<ul>
+<li><a href="#guia-do-primeiro-teste" id="toc-guia-do-primeiro-teste">Guia do primeiro teste</a></li>
+</ul></li>
+<li><a href="#parte-b-o-produto-educacional" id="toc-parte-b-o-produto-educacional">PARTE B — O PRODUTO
+EDUCACIONAL</a>
+<ul>
+<li><a href="#capítulo-m1-founder-track" id="toc-capítulo-m1-founder-track">Capítulo M1 — Founder Track</a></li>
+<li><a href="#capítulo-m2-experiência-do-aluno-e-formatos-de-oferta" id="toc-capítulo-m2-experiência-do-aluno-e-formatos-de-oferta">Capítulo
+M2 — Experiência do aluno e formatos de oferta</a></li>
+<li><a href="#capítulo-m3-avaliação-certificação-e-governança" id="toc-capítulo-m3-avaliação-certificação-e-governança">Capítulo M3 —
+Avaliação, certificação e governança</a></li>
+<li><a href="#capítulo-m4-validação-externa-e-comercialização" id="toc-capítulo-m4-validação-externa-e-comercialização">Capítulo M4 —
+Validação externa e comercialização</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 class="parte" id="parte-a-o-primeiro-teste">PARTE A — O PRIMEIRO
+TESTE</h1>
+<p>Este Manual acompanha o Livro do Aluno e é escrito para quem cria,
+conduz, avalia e mantém o método. A Parte A orienta o primeiro teste do
+material, feito por uma única pessoa — normalmente o próprio criador —
+antes de haver turmas. A Parte B trata do produto educacional: Founder
+Track, formatos de oferta, avaliação, certificação, governança e
+validação externa.</p>
+<h2 class="capitulo" id="guia-do-primeiro-teste">Guia do primeiro
+teste</h2>
+<h3 id="para-que-serve-este-guia">Para que serve este guia</h3>
+<p>Este guia é para quem vai ser o primeiro a percorrer o método — em
+especial, o criador do produto, que ainda não tem com quem testá-lo. O
+teste tem dois objetivos ao mesmo tempo, e é importante não
+confundi-los:</p>
+<ol type="1">
+<li><strong>Aprender o método</strong>, fazendo de verdade os exercícios
+e projetos da Trilha Essencial.</li>
+<li><strong>Produzir evidência sobre o material</strong>: onde ele
+funciona, onde trava, onde é longo demais, onde falta algo — de forma
+registrada, para virar a versão seguinte.</li>
+</ol>
+<p>O segundo objetivo exige disciplina, porque quem testa o próprio
+produto é o leitor menos parecido com o leitor real: conhece a intenção
+de cada página, tem interesse em que dê certo e preenche lacunas sem
+perceber. O teste não elimina esse viés; as regras abaixo servem para
+reduzi-lo e para que o tempo investido gere informação útil. Pela escala
+de evidência do livro, o que este teste produz é, no máximo, evidência
+E1 sobre o produto — valiosa para corrigir o material, insuficiente para
+afirmar que ele ensina (veja “O que este teste prova e o que não prova”,
+no fim do guia).</p>
+<p>O tempo total estimado é de cerca de 55 horas, distribuídas em seis
+etapas — de cinco a sete semanas, com oito a dez horas por semana. São
+estimativas: medir o tempo real é uma das saídas do teste.</p>
+<h3 id="antes-de-começar-30-minutos">Antes de começar (30 minutos)</h3>
+<ul>
+<li><strong>Autodiagnóstico de entrada.</strong> Responda às dez
+afirmações da seção “Como usar este livro” e guarde as respostas.</li>
+<li><strong>Previsões.</strong> Escreva, antes de ler qualquer capítulo:
+quanto tempo você acha que cada etapa vai levar; qual etapa será mais
+difícil; que nota (1 a 4) você espera em cada critério crítico dos
+projetos P00, P03 e P07. No fim, essas previsões serão comparadas com o
+que aconteceu — é um exercício de calibração (Capítulo 38) e uma medida
+do quanto você conhece o próprio produto.</li>
+<li><strong>Perfil.</strong> Decida, com honestidade, se você está mais
+perto do Perfil A, B ou C. Isso muda a leitura das dificuldades que
+encontrar.</li>
+<li><strong>Material.</strong> Uma pasta de trabalho; uma cópia de
+<code>material/caso-guia/</code> (sem abrir a subpasta
+<code>respostas/</code>); o diário de bordo; o registro de fricção
+(abaixo).</li>
+</ul>
+<h3 id="regras-do-teste">Regras do teste</h3>
+<ol type="1">
+<li><strong>Faça antes de conferir.</strong> Exercícios primeiro,
+gabarito depois. M0 é sem IA.</li>
+<li><strong>Respeite o tempo.</strong> Cada etapa tem um tempo estimado.
+Se passar 50% dele, registre e siga em frente. O estouro é um dado sobre
+o material, não uma falha sua.</li>
+<li><strong>Não corrija o livro durante o teste.</strong> Registre no
+registro de fricção e corrija depois, em lote. Corrigir no meio faz você
+testar uma versão diferente a cada dia — e transforma o teste em
+edição.</li>
+<li><strong>Avalie-se com a rubrica antes de olhar as
+respostas.</strong> Para P00, P03 e P07: preencha a rubrica do projeto,
+compare com os trabalhos comentados do Apêndice I e só então abra o
+gabarito do caso-guia (Apêndice J).</li>
+<li><strong>Desconfie do “óbvio”.</strong> Quando algo parecer evidente,
+pergunte: “eu entenderia isto sem saber o que o autor quis dizer?”. Se a
+resposta for “talvez não”, registre.</li>
+<li><strong>Limite os bloqueios.</strong> Se travar mais de 20 minutos
+num exercício, registre “travou”, leia o gabarito e continue.</li>
+<li><strong>Registre o uso de IA.</strong> Em cada uso: protocolo,
+pedido, resultado, verificação — e se a IA ajudou a aprender ou fez o
+trabalho por você.</li>
+</ol>
+<h3 id="a-trilha-etapa-por-etapa">A trilha, etapa por etapa</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Etapa</th>
+<th>Ler</th>
+<th>Fazer</th>
+<th>Projeto</th>
+<th>Tempo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Fundamentos</strong></td>
+<td>Prefácio, Como usar, Capítulos 1 a 3</td>
+<td>Exercícios 1.1, 1.2, 3.2, 3.3 e 3.5 (o ciclo em uma tarde); teste de
+recuperação da Parte I</td>
+<td>—</td>
+<td>5 h</td>
+</tr>
+<tr class="even">
+<td><strong>2. Pensar</strong></td>
+<td>Capítulos 4 a 10</td>
+<td>Exercícios 4.1, 4.2, 4.7, 5.2, 6.3, 7.2, 8.4, 9.3, 10.4 e 10.6;
+teste da Parte II</td>
+<td><strong>P00 com o caso-guia</strong> (3–4 h)</td>
+<td>14 h</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Enxergar</strong></td>
+<td>Capítulos 11, 15 e 16</td>
+<td>Exercícios 11.2, 15.2, 15.3, 16.1 e 16.4; do teste da Parte III,
+apenas R3.1, R3.5, R3.6 e R3.7</td>
+<td><strong>P01</strong> (4 h + uma semana de uso)</td>
+<td>8 h</td>
+</tr>
+<tr class="even">
+<td><strong>4. Projetar</strong></td>
+<td>Capítulos 18 a 21</td>
+<td>Exercícios 18.1, 18.4, 18.5, 19.4, 20.5, 21.4 e 21.6; teste da Parte
+IV</td>
+<td><strong>P03 com o caso-guia</strong> (5 h)</td>
+<td>11 h</td>
+</tr>
+<tr class="odd">
+<td><strong>5. Construir e confiar</strong></td>
+<td>Capítulos 22, 23, 27, 29, 30, 31 e 32</td>
+<td>Exercícios 22.5, 23.5, 27.1, 29.1, 29.3, 30.1, 30.4, 31.1, 31.3 e
+32.4; do teste da Parte V, R5.1 a R5.3 e R5.7 a R5.9; do teste da Parte
+VI, R6.1 a R6.6</td>
+<td><strong>P07 com o caso-guia</strong> (6 h)</td>
+<td>14 h</td>
+</tr>
+<tr class="even">
+<td><strong>6. Transferir</strong></td>
+<td>Capítulo 36</td>
+<td>Exame de transferência (3 h, sem IA, tempo fixo); autodiagnóstico de
+saída; comparação com as previsões</td>
+<td>—</td>
+<td>4 h</td>
+</tr>
+</tbody>
+</table>
+<p>Algumas orientações por etapa:</p>
+<ul>
+<li><strong>Etapa 1.</strong> O exercício 3.5 é o mais importante da
+etapa: ele mostra se o ciclo inteiro “cabe” na cabeça antes dos
+detalhes. Registre qual movimento você teria pulado sem o roteiro.</li>
+<li><strong>Etapa 2.</strong> É a etapa mais longa de leitura e a que
+mais tende a parecer lenta para quem já usa IA. Registre onde você
+sentiu impaciência: é informação sobre o ritmo do material. No P00, use
+apenas as seções H1 a H6 do Apêndice H.</li>
+<li><strong>Etapa 3.</strong> A Edição Essencial traz só três capítulos
+da Parte III. Se o P01 exigir algo que não está neles (por exemplo, como
+funciona uma API), consulte o capítulo correspondente na edição completa
+e registre a lacuna.</li>
+<li><strong>Etapa 4.</strong> O P03 é o projeto em que o caso-guia mais
+rende: limpe a planilha, calcule as taxas, confronte as hipóteses das
+entrevistas com os dados. Registre quanto tempo levou a limpeza dos
+dados.</li>
+<li><strong>Etapa 5.</strong> No P07, rotule as 60 mensagens
+<em>antes</em> de abrir a referência. A sua concordância com a
+referência é um dos resultados mais informativos do teste: divergências
+mostram tanto erros seus quanto ambiguidades do guia de rotulagem.</li>
+<li><strong>Etapa 6.</strong> Faça o exame de transferência de uma vez,
+com tempo marcado e sem IA. Corrija com a rubrica C4 (Apêndice C).
+Depois, refaça o autodiagnóstico de entrada e compare.</li>
+</ul>
+<h3 id="o-registro-de-fricção">O registro de fricção</h3>
+<p>Preencha uma entrada por capítulo e por projeto. Leva dois ou três
+minutos; o valor está na regularidade.</p>
+<pre><code>REGISTRO DE FRICÇÃO
+Etapa / capítulo / exercício: ________   Data: ______
+Tempo previsto: ____   Tempo real: ____
+
+CLAREZA (1 a 5): __   Onde precisei reler:
+DIFICULDADE (1 a 5): __   O que faltou saber antes:
+TRAVEI? (sim/não)   Onde, e por quanto tempo:
+GABARITO: acertei / acertei em parte / errei   O gabarito ajudou a entender o erro? ___
+REPETIÇÃO: trecho que repetiu algo que eu já sabia:
+EU CORTARIA:
+EU ACRESCENTARIA:
+IA: o que pedi · o que aconteceu · ajudou a aprender ou fez por mim?</code></pre>
+<h3 id="simular-outros-leitores-com-ia-opcional-com-limites">Simular
+outros leitores com IA (opcional, com limites)</h3>
+<p>Enquanto não houver outras pessoas para testar, uma IA pode simular
+leitores de outros perfis e antecipar onde eles tropeçariam. Isso
+<strong>não</strong> substitui leitores reais: modelos tendem a ser
+genéricos e condescendentes, e não aprendem com o capítulo da forma como
+uma pessoa aprende. Trate o resultado como hipótese a confirmar (E0 a
+E1) e use-o apenas para os capítulos em que a sua própria fricção foi
+baixa — exatamente onde o seu viés de autor é maior.</p>
+<pre><code>Você vai simular um leitor do perfil [A: nunca programou / B: usa IA e automação,
+mas não projeta sistemas / C: programa profissionalmente]. Leia o capítulo abaixo
+como esse leitor leria, na primeira vez.
+Não elogie nem resuma. Liste:
+1. os três trechos em que esse leitor provavelmente se perderia, com a frase exata
+   e o motivo;
+2. termos usados sem explicação suficiente para esse perfil;
+3. o exercício que esse leitor teria mais dificuldade de fazer, e por quê;
+4. o que esse leitor provavelmente pularia por achar óbvio ou irrelevante.
+[capítulo]</code></pre>
+<p>Registre as respostas separadamente da sua fricção, marcadas como
+“simulação”.</p>
+<h3 id="ao-terminar-transformar-o-teste-em-decisões">Ao terminar:
+transformar o teste em decisões</h3>
+<ol type="1">
+<li><strong>Consolide o registro de fricção.</strong> Liste as dez
+fricções mais importantes, ordenadas por frequência e impacto (uma
+fricção que fez você travar num projeto pesa mais que uma frase
+confusa).</li>
+<li><strong>Decida cada uma como decisão de currículo.</strong> Para
+cada fricção: corrigir, cortar, acrescentar ou adiar — com uma entrada
+no Decision Log do currículo (Capítulo M1), incluindo a evidência (o
+registro) e a hipótese (“com esta mudança, o exercício X deixa de
+travar”).</li>
+<li><strong>Compare previsões e resultados.</strong> Tempo por etapa,
+dificuldade, notas nos projetos. Onde você errou mais? O que isso diz
+sobre o quanto o livro depende do conhecimento de quem o escreveu?</li>
+<li><strong>Analise o exame de transferência.</strong> Em que blocos da
+rubrica C4 você ficou abaixo de 3? Que capítulos deveriam ter preparado
+melhor para isso?</li>
+<li><strong>Produza a versão seguinte de uma vez,</strong> com notas de
+versão, e não aos poucos.</li>
+<li><strong>Recrute os próximos testadores.</strong> Uma ou duas pessoas
+de cada perfil, começando pelas Etapas 1 e 2 e pelo P00 com o caso-guia.
+O seu teste prepara o deles; não o substitui.</li>
+</ol>
+<h3 id="o-que-este-teste-prova-e-o-que-não-prova">O que este teste prova
+e o que não prova</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Prova (para o material)</th>
+<th>Não prova</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Que a Trilha Essencial pode ser percorrida de ponta a ponta por uma
+pessoa motivada.</td>
+<td>Que um leitor iniciante, sem a sua motivação e o seu conhecimento,
+aprende com ela.</td>
+</tr>
+<tr class="even">
+<td>Quanto tempo cada etapa leva para você.</td>
+<td>Quanto tempo leva para os perfis A, B e C.</td>
+</tr>
+<tr class="odd">
+<td>Erros, lacunas e trechos confusos que um leitor atento
+encontra.</td>
+<td>Que as rubricas produzem avaliações consistentes entre avaliadores
+diferentes.</td>
+</tr>
+<tr class="even">
+<td>Se os projetos com o caso-guia são executáveis com o material
+disponível.</td>
+<td>Que o método produz transferência para outras pessoas.</td>
+</tr>
+<tr class="odd">
+<td>A sua própria evolução entre o autodiagnóstico de entrada e o de
+saída.</td>
+<td>Qualquer coisa sobre o valor comercial do produto.</td>
+</tr>
+</tbody>
+</table>
+<p>Nível de evidência que o teste fornece sobre o produto: E1. É o
+primeiro degrau, e é indispensável — mas é o primeiro.</p>
+<h1 class="parte" id="parte-b-o-produto-educacional">PARTE B — O PRODUTO
+EDUCACIONAL</h1>
+<p>O Livro do Aluno foi escrito para quem aprende. Esta parte do Manual
+é escrita para quem vai <strong>criar, conduzir, avaliar e
+manter</strong> o método como produto educacional: o fundador, mentores,
+avaliadores, coordenadores de turma, parceiros corporativos.</p>
+<p>Ela segue o próprio método. Trata o produto como um sistema, com
+problema, stakeholders, decisões, riscos e validação. E aplica a si
+mesma a regra que o livro aplica a tudo: <strong>distinguir o que foi
+projetado do que foi comprovado</strong>. Tudo o que esta parte descreve
+é estrutura. Nada aqui foi, ainda, validado com alunos ou com o mercado
+— e o Capítulo M4 diz exatamente o que precisaria acontecer para que
+fosse.</p>
+<div class="caixa atencao">
+<p><strong>Atenção</strong> — Neste Manual, os capítulos M1 a M4
+pertencem ao próprio Manual. Referências a capítulos numerados de 1 a
+38, aos projetos P00 a P10 e aos apêndices A a J remetem ao Livro do
+Aluno.</p>
+</div>
+<h2 class="capitulo" id="capítulo-m1-founder-track">Capítulo M1 —
+Founder Track</h2>
+<h3 id="o-princípio-da-independência">O princípio da independência</h3>
+<p>O fundador de um método educacional enfrenta uma tentação: ser a peça
+que faz tudo funcionar. Ele explica melhor, responde às dúvidas, corrige
+os projetos, percebe quando um aluno está perdido. No início, isso
+parece qualidade. Na verdade, é um defeito de projeto: <strong>um
+produto que depende do fundador não escala, não sobrevive à ausência
+dele e não pode ser avaliado</strong>, porque não se sabe se os
+resultados vêm do método ou da pessoa.</p>
+<p>O Founder Track descreve como o criador do método deve trabalhar para
+que o produto funcione sem ele. Ele tem nove frentes.</p>
+<h3 id="aprender">1. Aprender</h3>
+<p>Antes de ensinar o método, o fundador precisa praticá-lo
+integralmente. O primeiro passo é o teste descrito na Parte A deste
+Manual, que percorre a Trilha Essencial com o caso-guia; depois dele, o
+fundador completa o restante:</p>
+<ul>
+<li>fazer <strong>todos os projetos, P00 a P10</strong>, em domínios
+diferentes, com as mesmas regras de aprovação do aluno, avaliados por
+outra pessoa;</li>
+<li>manter o próprio <strong>diário de bordo</strong> e o próprio
+portfólio;</li>
+<li>registrar, em cada projeto, <strong>onde o livro foi
+insuficiente</strong>: o conceito que faltou, o exercício que não
+preparou, o template que não serviu.</li>
+</ul>
+<p>Esse registro é a primeira fonte de melhoria do produto. Um fundador
+que não fez os projetos não sabe onde o aluno vai tropeçar.</p>
+<h3 id="testar">2. Testar</h3>
+<p>O material precisa ser testado com pessoas reais antes de qualquer
+oferta em escala:</p>
+<ul>
+<li><strong>leitura acompanhada</strong> — leitores dos perfis A, B e C
+leem um capítulo pensando em voz alta, enquanto alguém registra onde
+hesitam, onde se perdem, onde se entediam;</li>
+<li><strong>percurso cognitivo</strong> — para cada exercício, alguém
+tenta resolvê-lo usando apenas o que veio antes no livro; se precisar de
+algo que não foi ensinado, há um problema de pré-requisito;</li>
+<li><strong>piloto pequeno</strong> — uma turma reduzida percorre uma
+parte do livro com acompanhamento próximo, para observar o ritmo real,
+as dúvidas recorrentes e os projetos que travam.</li>
+</ul>
+<h3 id="documentar">3. Documentar</h3>
+<p>As decisões sobre o currículo são decisões de arquitetura do produto
+e devem ser registradas como tal: um <strong>Decision Log do
+currículo</strong>, com ADRs para decisões pedagógicas importantes (“por
+que a Parte II não tem exercícios com IA”, “por que P07 é aprovado mesmo
+quando a IA perde”). Isso permite que outros mantenham o produto sem
+desfazer, por desconhecimento, decisões que tinham boas razões.</p>
+<p>Além disso, cada versão do material tem <strong>notas de
+versão</strong> (o que mudou e por quê) e cada papel do produto (mentor,
+avaliador, coordenador) tem um <strong>guia próprio</strong>.</p>
+<h3 id="validar">4. Validar</h3>
+<p>Validar o produto educacional significa obter evidência de que
+<strong>o aluno aprende a resolver problemas que nunca viu
+antes</strong> — a promessa central. Isso exige medir, no mínimo:</p>
+<ul>
+<li><strong>desempenho no exame de transferência</strong>, antes e
+depois da formação, com problemas equivalentes e nunca vistos,
+corrigidos por avaliadores que não conhecem o aluno nem sabem se a prova
+é de entrada ou de saída;</li>
+<li><strong>aprovação nos projetos na primeira tentativa</strong>, por
+projeto e por perfil de aluno;</li>
+<li><strong>concordância entre avaliadores</strong> — duas pessoas,
+corrigindo o mesmo projeto de forma independente, chegam ao mesmo
+nível?;</li>
+<li><strong>aplicação posterior</strong> — meses depois, o aluno aplicou
+o método num problema real? Com que resultado? (Com evidência, não só
+com declaração.)</li>
+</ul>
+<p>A escala de evidência do Capítulo 31 vale aqui. “Os alunos gostaram”
+é E0. “Os alunos foram aprovados nos projetos” é E2 para o produto. “Os
+alunos melhoraram no exame de transferência, numa comparação adequada” é
+E3. “Ex-alunos continuam aplicando o método com resultados verificáveis”
+é E4.</p>
+<h3 id="revisar">5. Revisar</h3>
+<p>O produto tem ciclos de revisão regulares (Capítulo M3) e revisões
+extraordinárias quando: um exercício ou projeto tem taxa de reprovação
+muito alta ou muito baixa; avaliadores discordam sistematicamente num
+critério; uma mudança tecnológica torna um trecho enganoso; alunos de um
+perfil abandonam sistematicamente numa parte.</p>
+<h3 id="transformar-experiência-em-material">6. Transformar experiência
+em material</h3>
+<p>Os melhores exemplos e exercícios vêm de projetos reais. Mas a
+passagem de um projeto real para material didático exige cuidado. O
+protocolo:</p>
+<ol type="1">
+<li><strong>Autorização.</strong> Obter consentimento de quem forneceu o
+caso.</li>
+<li><strong>Anonimização e composição.</strong> Remover tudo o que
+identifica pessoas e organizações; quando necessário, combinar elementos
+de vários casos (como os casos deste livro).</li>
+<li><strong>Extração dos pontos de decisão.</strong> O valor didático de
+um caso está nos momentos em que algo poderia ter sido decidido de outra
+forma. Identifique-os.</li>
+<li><strong>Contraexemplo.</strong> Para cada decisão, registre a
+alternativa plausível e por que ela seria pior — ou melhor em outro
+contexto.</li>
+<li><strong>Conversão em exercício.</strong> Transforme o ponto de
+decisão numa pergunta com contexto suficiente, e escreva o gabarito
+comentado (elementos de uma boa resposta e erros comuns).</li>
+<li><strong>Teste pedagógico</strong> (próxima seção).</li>
+<li><strong>Marcação dos números.</strong> Números de casos compostos
+são marcados como ilustrativos.</li>
+</ol>
+<h3 id="testar-pedagogicamente-cada-novo-conteúdo">7. Testar
+pedagogicamente cada novo conteúdo</h3>
+<p>Todo capítulo, exercício ou projeto novo — ou revisado — passa por
+cinco testes antes de entrar no material:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Teste</th>
+<th>Pergunta</th>
+<th>Como aplicar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Clareza</strong></td>
+<td>Um leitor do perfil A entende?</td>
+<td>Leitura acompanhada com um leitor A.</td>
+</tr>
+<tr class="even">
+<td><strong>Desafio</strong></td>
+<td>Um leitor do perfil B aprende algo que não sabia?</td>
+<td>Leitura com um leitor B; pedir que aponte o que é novo.</td>
+</tr>
+<tr class="odd">
+<td><strong>Crescimento</strong></td>
+<td>Um leitor do perfil C encontra aprofundamento?</td>
+<td>Verificar a existência de camada avançada útil.</td>
+</tr>
+<tr class="even">
+<td><strong>Pré-requisitos</strong></td>
+<td>Tudo o que é necessário foi ensinado antes?</td>
+<td>Percurso cognitivo.</td>
+</tr>
+<tr class="odd">
+<td><strong>Transferência</strong></td>
+<td>Há pelo menos uma variação que impede a repetição mecânica?</td>
+<td>Revisão por um avaliador.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="medir-resultados">8. Medir resultados</h3>
+<p>Um painel mínimo do produto acompanha quatro famílias de indicadores.
+A distinção entre elas importa, porque indicadores fáceis de medir (como
+engajamento) são frequentemente os menos significativos.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Família</th>
+<th>Exemplos</th>
+<th>Cuidado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Engajamento</strong></td>
+<td>Progresso por parte; tempo por projeto; abandono por parte.</td>
+<td>Engajamento alto não significa aprendizado.</td>
+</tr>
+<tr class="even">
+<td><strong>Aprendizagem</strong></td>
+<td>Aprovação por projeto; desempenho no exame de transferência;
+evolução do autodiagnóstico versus evidências.</td>
+<td>Requer avaliação independente e calibrada.</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado</strong></td>
+<td>Aplicação posterior com evidência; qualidade dos portfólios;
+avaliação de terceiros atendidos no P09.</td>
+<td>Exige acompanhamento por meses; amostras pequenas.</td>
+</tr>
+<tr class="even">
+<td><strong>Produto</strong></td>
+<td>Conclusão; recomendação espontânea; recompra corporativa; custo de
+entrega por aluno.</td>
+<td>Não confundir intenção declarada com comportamento.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atualizar">9. Atualizar</h3>
+<p>O material é versionado (por exemplo, versão principal e revisão:
+1.0, 1.1, 2.0). Mudanças de revisão corrigem e melhoram sem alterar a
+estrutura; mudanças de versão principal alteram a estrutura, os projetos
+ou os critérios de aprovação. Alunos em andamento concluem na versão em
+que começaram, salvo correções. Certificados indicam a versão do método
+em que foram obtidos.</p>
+<h3 id="o-teste-de-independência">O teste de independência</h3>
+<p>O produto funciona sem o fundador quando todos os itens abaixo
+existem e foram testados por alguém que não é o fundador:</p>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>O livro completo, com gabaritos
+comentados dos exercícios.</label></li>
+<li><label><input type="checkbox"></input>Os templates, checklists e rubricas,
+utilizáveis sem explicação adicional.</label></li>
+<li><label><input type="checkbox"></input>Exemplos-âncora para cada rubrica:
+trabalhos reais (anonimizados) ou realistas nos níveis 2, 3 e 4, com a
+justificativa do nível. (O Apêndice I do Livro do Aluno traz os
+primeiros, para P00, P03 e P07.)</label></li>
+<li><label><input type="checkbox"></input>O guia do avaliador, com o processo
+de calibração.</label></li>
+<li><label><input type="checkbox"></input>O guia do mentor, com as
+dificuldades previstas por parte e as intervenções
+recomendadas.</label></li>
+<li><label><input type="checkbox"></input>O banco de cenários e o banco de
+exames de transferência e de capstones, com renovação planejada. (O
+caso-guia do Apêndice H é o primeiro caso completo com material de
+trabalho.)</label></li>
+<li><label><input type="checkbox"></input>O processo de governança e de
+atualização, com responsáveis que não sejam apenas o
+fundador.</label></li>
+<li><label><input type="checkbox"></input>Pelo menos uma turma conduzida e
+avaliada inteiramente por outras pessoas, com resultados comparáveis aos
+das turmas conduzidas pelo fundador.</label></li>
+</ul>
+<p>O último item é a prova real. Até ele acontecer, a independência é
+uma hipótese.</p>
+<h2 class="capitulo" id="capítulo-m2-experiência-do-aluno-e-formatos-de-oferta">Capítulo M2 —
+Experiência do aluno e formatos de oferta</h2>
+<h3 id="a-jornada-do-aluno">A jornada do aluno</h3>
+<p>Independentemente do formato, a jornada tem as mesmas etapas:</p>
+<pre class="diagrama fs79"><code> ENTRADA ──────────► TRILHA ──────────► CICLOS ────────────────────► AVALIAÇÃO
+ autodiagnóstico     F / P / A          leitura + exercícios +       projetos, exame,
+                                        projeto, ao longo do livro   defesa
+                                                                         │
+                                                                         ▼
+                     CERTIFICAÇÃO ◄────────────────────────────── PORTFÓLIO
+                     (se aplicável)                               3 a 5 casos</code></pre>
+<h3 id="onde-os-alunos-devem-tropeçar">Onde os alunos devem
+tropeçar</h3>
+<p>O projeto pedagógico permite prever, como hipóteses a verificar nos
+pilotos, os pontos de dificuldade e preparar respostas:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Ponto</th>
+<th>Quem tende a tropeçar</th>
+<th>Por quê</th>
+<th>Resposta prevista</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Parte II</td>
+<td>Perfil B e C</td>
+<td>Parece lenta (“quando vamos construir?”).</td>
+<td>Mostrar cedo o Caso Vértice completo; P00 com stakeholder real.</td>
+</tr>
+<tr class="even">
+<td>Parte III</td>
+<td>Perfil A</td>
+<td>Muitos conceitos novos de uma vez.</td>
+<td>Fichas como referência; exercícios F; sessão de dúvidas nos formatos
+acompanhados.</td>
+</tr>
+<tr class="odd">
+<td>P01</td>
+<td>Perfil A</td>
+<td>Primeira construção; ferramenta desconhecida.</td>
+<td>Caminho “sem código” detalhado; par com perfil B ou C.</td>
+</tr>
+<tr class="even">
+<td>P04 e P06</td>
+<td>Todos</td>
+<td>Volume de trabalho; frustração com espirais de correção.</td>
+<td>Fatias menores; revisão do arquivo de contexto; mentoria focada em
+supervisão.</td>
+</tr>
+<tr class="odd">
+<td>P07</td>
+<td>Perfil B</td>
+<td>Resistência a resultados em que a IA perde.</td>
+<td>Reforçar que se avalia a decisão, não a tecnologia vencedora.</td>
+</tr>
+<tr class="even">
+<td>P09</td>
+<td>Todos</td>
+<td>Encontrar um terceiro; dependência da agenda dele.</td>
+<td>Banco de organizações parceiras; prazos flexíveis com escopo
+ajustável.</td>
+</tr>
+<tr class="odd">
+<td>P10</td>
+<td>Todos</td>
+<td>Ambiguidade; ansiedade da defesa.</td>
+<td>Defesa simulada com variações; exemplos-âncora.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="formatos-de-oferta">Formatos de oferta</h3>
+<p>O mesmo método pode ser oferecido em quatro formatos. A tabela
+descreve a <strong>estrutura proposta</strong> de cada um. Durações,
+tamanhos de turma e proporções são hipóteses de projeto, a serem
+ajustadas pelos pilotos; nenhum preço é sugerido aqui (ver Capítulo
+M4).</p>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Autodirigido</th>
+<th>Formação acompanhada</th>
+<th>Programa intensivo</th>
+<th>Treinamento corporativo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Para quem</strong></td>
+<td>Pessoas com disciplina para estudar sozinhas.</td>
+<td>Pessoas que se beneficiam de ritmo, grupo e devolutiva.</td>
+<td>Pessoas com tempo concentrado e alguma base (perfis B e C).</td>
+<td>Equipes de uma organização.</td>
+</tr>
+<tr class="even">
+<td><strong>Componentes</strong></td>
+<td>Livro, templates, banco de cenários, avaliação por pares, comunidade
+opcional.</td>
+<td>Livro + encontros periódicos + mentoria + avaliação dos projetos por
+avaliador.</td>
+<td>Livro + imersão com trabalho diário supervisionado.</td>
+<td>Livro + adaptação aos processos da organização + mentoria +
+avaliação.</td>
+</tr>
+<tr class="odd">
+<td><strong>Projetos</strong></td>
+<td>P00 a P10, com avaliação por pares e autoavaliação.</td>
+<td>P00 a P10, com avaliação por avaliador.</td>
+<td>Seleção: P00, P03, P06 ou P07, P10 reduzido; os demais como
+opcionais.</td>
+<td>P00, P03 e P09 em processos reais da organização; demais conforme o
+objetivo.</td>
+</tr>
+<tr class="even">
+<td><strong>Duração indicativa</strong></td>
+<td>Definida pelo aluno.</td>
+<td>Vários meses.</td>
+<td>Algumas semanas.</td>
+<td>Definida com a organização.</td>
+</tr>
+<tr class="odd">
+<td><strong>Papéis</strong></td>
+<td>Aluno; par avaliador.</td>
+<td>Aluno; mentor; avaliador; coordenador.</td>
+<td>Aluno; mentor dedicado; avaliador.</td>
+<td>Aluno; mentor; avaliador; patrocinador interno; responsável por
+dados e segurança da organização.</td>
+</tr>
+<tr class="even">
+<td><strong>Certificação</strong></td>
+<td>Possível com avaliação paga de P09, P10 e exame (opcional).</td>
+<td>Sim, nos níveis do Capítulo M3.</td>
+<td>Parcial (nível correspondente aos projetos feitos).</td>
+<td>Sim, nos níveis; resultados também medidos nos indicadores da
+organização.</td>
+</tr>
+<tr class="odd">
+<td><strong>Riscos principais</strong></td>
+<td>Abandono; autoavaliação complacente.</td>
+<td>Custo de mentoria e avaliação; dependência de bons mentores.</td>
+<td>Perda de profundidade; projetos superficiais; falta de tempo de uso
+real para validação.</td>
+<td>Conflito entre aprendizagem e entrega; sigilo; pressão por
+resultados rápidos.</td>
+</tr>
+<tr class="even">
+<td><strong>O que precisa ser validado</strong></td>
+<td>Taxa de conclusão; qualidade da avaliação por pares.</td>
+<td>Ganho no exame de transferência; viabilidade econômica.</td>
+<td>Se a versão reduzida produz transferência comparável.</td>
+<td>Efeito nos indicadores da organização; recompra.</td>
+</tr>
+</tbody>
+</table>
+<p>Algumas observações sobre cada formato:</p>
+<p><strong>Autodirigido.</strong> É o formato mais escalável e o que
+mais depende da qualidade do material. É também o que mais exige o teste
+de independência do Capítulo M1. A avaliação por pares precisa de regras
+claras e de exemplos-âncora acessíveis.</p>
+<p><strong>Formação acompanhada.</strong> O mentor não ensina o conteúdo
+— o livro faz isso. O mentor faz o que o livro não pode fazer: observa o
+raciocínio, faz perguntas de variação, ajuda a sair de bloqueios,
+devolve com especificidade. O guia do mentor deve proibir explicitamente
+que o mentor faça o trabalho pelo aluno.</p>
+<p><strong>Programa intensivo.</strong> O risco é a compressão destruir
+a transferência: projetos feitos sem tempo de uso real não chegam a E3,
+e a reflexão fica superficial. A versão intensiva deve declarar
+honestamente o que não cobre e deve, sempre que possível, incluir um
+acompanhamento posterior de algumas semanas para o projeto ser usado de
+verdade.</p>
+<p><strong>Treinamento corporativo.</strong> Trabalhar com problemas
+reais da organização é a maior vantagem e o maior risco. Vantagem:
+transferência imediata e resultados mensuráveis. Risco: o projeto vira
+entrega de consultoria e o aprendizado fica em segundo plano; ou o
+sigilo impede o uso de dados e ferramentas. A oferta corporativa precisa
+de um acordo explícito sobre dados, ferramentas de IA aprovadas, papel
+do gestor, propriedade dos artefatos e critérios de sucesso. A adaptação
+deve acontecer por meio de cenários e exemplos da organização, sem
+alterar o núcleo do método (ciclo, princípios, competências, critérios
+de aprovação).</p>
+<h3 id="papéis">Papéis</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Papel</th>
+<th>Responsabilidade</th>
+<th>Não é responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Aluno</strong></td>
+<td>Estudar, praticar, registrar, entregar com honestidade.</td>
+<td>Agradar o avaliador.</td>
+</tr>
+<tr class="even">
+<td><strong>Mentor</strong></td>
+<td>Fazer perguntas, observar raciocínio, desbloquear, devolver com
+especificidade.</td>
+<td>Fazer o trabalho; dar a resposta antes do aluno tentar.</td>
+</tr>
+<tr class="odd">
+<td><strong>Avaliador</strong></td>
+<td>Aplicar rubricas com base em evidência; participar da
+calibração.</td>
+<td>Avaliar quem também mentora (separação de funções, quando
+possível).</td>
+</tr>
+<tr class="even">
+<td><strong>Coordenador</strong></td>
+<td>Ritmo da turma, logística, acompanhamento de abandono, coleta de
+dados do produto.</td>
+<td>Alterar critérios de aprovação.</td>
+</tr>
+<tr class="odd">
+<td><strong>Patrocinador (corporativo)</strong></td>
+<td>Garantir acesso a problemas, dados e tempo; remover obstáculos.</td>
+<td>Escolher quem é aprovado.</td>
+</tr>
+</tbody>
+</table>
+<h2 class="capitulo" id="capítulo-m3-avaliação-certificação-e-governança">Capítulo M3 —
+Avaliação, certificação e governança</h2>
+<h3 id="níveis-de-certificação">Níveis de certificação</h3>
+<p>A estrutura proposta tem três níveis. Cada um atesta algo específico
+e, igualmente importante, não atesta outras coisas.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Nível</th>
+<th>Requisitos</th>
+<th>Atesta</th>
+<th>Não atesta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Praticante</strong></td>
+<td>P00 a P04 aprovados; autodiagnóstico de entrada e saída.</td>
+<td>Capacidade de enquadrar problemas, mapear processos e construir
+automações robustas em contexto próprio.</td>
+<td>Capacidade de construir aplicações, usar IA aplicada com rigor ou
+trabalhar para terceiros.</td>
+</tr>
+<tr class="even">
+<td><strong>Construtor</strong></td>
+<td>Praticante + P05 a P08 aprovados.</td>
+<td>Capacidade de integrar sistemas, construir aplicações, comparar
+soluções com e sem IA e projetar agentes com limites.</td>
+<td>Capacidade de conduzir projetos para terceiros até validação.</td>
+</tr>
+<tr class="odd">
+<td><strong>Profissional</strong></td>
+<td>Construtor + P09 e P10 aprovados + exame de transferência +
+defesa.</td>
+<td>Capacidade de resolver problemas novos e ambíguos de terceiros, de
+ponta a ponta, com evidência E3.</td>
+<td>Especialização técnica profunda em qualquer tecnologia específica;
+competência jurídica.</td>
+</tr>
+</tbody>
+</table>
+<p>A certificação é uma <strong>atestação interna do programa</strong>,
+baseada nas rubricas e evidências descritas neste livro. Ela não é uma
+acreditação externa e não deve ser apresentada como tal. Se no futuro
+houver acreditação por terceiros, ela deve ser declarada com o nome da
+entidade e o escopo exato.</p>
+<h3 id="avaliadores-e-calibração">Avaliadores e calibração</h3>
+<p>A credibilidade da certificação depende da consistência da avaliação.
+Por isso:</p>
+<ul>
+<li><strong>Requisitos do avaliador.</strong> Ter concluído o método no
+nível Profissional (ou ter competência equivalente demonstrada por
+avaliação), e ter participado do processo de calibração.</li>
+<li><strong>Calibração inicial.</strong> Novos avaliadores corrigem um
+conjunto de trabalhos-âncora (com níveis já definidos) e comparam suas
+notas com as de referência. Divergências são discutidas até que a
+interpretação da rubrica seja compartilhada.</li>
+<li><strong>Dupla correção por amostragem.</strong> Uma parte dos
+projetos é corrigida por dois avaliadores independentes. A concordância
+é acompanhada; quando cai, há nova sessão de calibração.</li>
+<li><strong>Revisão da rubrica.</strong> Critérios com discordância
+persistente entre avaliadores calibrados indicam rubrica ambígua — e
+devem ser reescritos, com novos exemplos-âncora.</li>
+<li><strong>Separação de funções.</strong> Sempre que possível, quem
+mentora um aluno não é quem avalia seus projetos somativos.</li>
+</ul>
+<h3 id="integridade-e-uso-de-ia">Integridade e uso de IA</h3>
+<p>A política de integridade segue o Capítulo 36: modos de IA declarados
+e respeitados; evidência de processo como parte da avaliação;
+transferência avaliada em condições controladas; uso não declarado
+invalida o projeto. Além disso:</p>
+<ul>
+<li>trabalhos com resultados inconsistentes com a evidência de processo
+são encaminhados a uma conversa de verificação (o aluno explica e
+responde a variações);</li>
+<li>a política é revisada a cada versão, porque as formas de usar IA
+mudam.</li>
+</ul>
+<h3 id="recurso">Recurso</h3>
+<p>O aluno pode contestar uma avaliação. O recurso é analisado por um
+avaliador diferente, que tem acesso aos artefatos e à justificativa da
+primeira avaliação. A decisão é registrada com justificativa. Recursos
+recorrentes sobre o mesmo critério são sinal de que a rubrica precisa de
+revisão.</p>
+<h3 id="governança">Governança</h3>
+<p>O produto precisa de uma estrutura de governança simples e
+explícita:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Elemento</th>
+<th>Definição proposta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Responsável pelo currículo</strong></td>
+<td>Uma pessoa ou comitê com autoridade sobre o conteúdo, os projetos e
+os critérios de aprovação. Deve incluir pelo menos uma pessoa além do
+fundador.</td>
+</tr>
+<tr class="even">
+<td><strong>Processo de mudança</strong></td>
+<td>Mudanças relevantes são propostas como ADR do currículo, com
+justificativa, evidência (dados de turmas, feedback de avaliadores) e
+impacto em alunos em andamento.</td>
+</tr>
+<tr class="odd">
+<td><strong>Conflito de interesse</strong></td>
+<td>Avaliadores não avaliam pessoas com quem têm relação comercial ou
+pessoal; patrocinadores corporativos não interferem em aprovações.</td>
+</tr>
+<tr class="even">
+<td><strong>Dados dos alunos</strong></td>
+<td>Trabalhos e dados pessoais dos alunos são protegidos com os
+princípios do Capítulo 32; uso de trabalhos como exemplo exige
+consentimento e anonimização.</td>
+</tr>
+<tr class="odd">
+<td><strong>Transparência</strong></td>
+<td>Critérios de aprovação, rubricas e níveis de certificação são
+públicos para os alunos desde o início.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="atualização-e-obsolescência">Atualização e obsolescência</h3>
+<p>O método foi escrito para resistir à obsolescência tecnológica, mas o
+material inevitavelmente envelhece em alguns pontos. A política de
+atualização:</p>
+<ul>
+<li><strong>Revisão periódica completa</strong>, com intervalo definido
+pela governança (sugere-se uma revisão ao menos anual, e semestral para
+os capítulos da Parte V e para o Capítulo 16).</li>
+<li><strong>Revisão de obsolescência</strong>, aplicada a cada revisão:
+procurar menções a ferramentas, interfaces, modelos, marcas, preços e
+versões; para cada uma, perguntar se é exemplo ou fundamento; substituir
+por princípio sempre que possível; marcar com data as afirmações sobre
+capacidades atuais da IA.</li>
+<li><strong>Gatilhos de revisão extraordinária</strong>: mudança
+tecnológica que torne um trecho enganoso; padrão de reprovação ou
+discordância de avaliadores; erro relatado.</li>
+<li><strong>Errata pública</strong> entre versões.</li>
+</ul>
+<h2 class="capitulo" id="capítulo-m4-validação-externa-e-comercialização">Capítulo M4 —
+Validação externa e comercialização</h2>
+<h3 id="estrutura-comercial-não-é-validação-comercial">Estrutura
+comercial não é validação comercial</h3>
+<p>Este livro descreve uma <strong>estrutura comercial</strong>:
+formatos de oferta, papéis, níveis de certificação, processos de
+avaliação e governança. Essa estrutura foi projetada com cuidado, mas é
+uma hipótese. <strong>Validação comercial</strong> é outra coisa:
+evidência, obtida no mundo real, de que pessoas e organizações precisam
+do produto, pagam por ele, concluem, aprendem, aplicam e recomendam.</p>
+<p>Até o momento desta edição, <strong>nenhuma validação comercial foi
+obtida</strong>. Não há dados de mercado, preços testados, turmas
+concluídas, depoimentos ou resultados de alunos. Qualquer afirmação em
+sentido contrário, em material de divulgação, seria falsa.</p>
+<p>O resto deste capítulo aplica o próprio método ao produto: formula as
+hipóteses, define a evidência necessária e propõe a sequência de
+experimentos.</p>
+<h3 id="o-produto-como-problema">O produto como problema</h3>
+<p>Antes de qualquer oferta, o produto merece um Problem Statement
+próprio, escrito com os oito elementos — e sujeito às mesmas regras: sem
+solução embutida, com indicador e proteção. Uma formulação provisória, a
+ser testada:</p>
+<blockquote>
+<p>“Pessoas e equipes que já têm acesso a IA, software e automação
+frequentemente não conseguem transformar esse acesso em soluções que
+resolvam problemas reais de forma confiável: constroem coisas que não
+resolvem o problema, que falham em operação ou cujo efeito ninguém
+consegue demonstrar. Queremos que quem conclui a formação seja capaz de
+resolver, com evidência, problemas novos em contextos que nunca viu —
+medido pelo desempenho em exames de transferência e pela aplicação
+posterior verificada — sem criar dependência de ferramentas específicas
+nem de quem conduz a formação.”</p>
+</blockquote>
+<p>Cada parte dessa frase é uma hipótese: que o problema existe, para
+quem, com que intensidade, e que a formação o resolve.</p>
+<h3 id="hipóteses-a-validar">Hipóteses a validar</h3>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Hipótese</th>
+<th>Como testar</th>
+<th>Evidência que contaria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>H1</td>
+<td>O problema existe e é sentido por um público identificável.</td>
+<td>Entrevistas de enquadramento (Capítulo 4) com pessoas dos perfis A,
+B e C e com gestores.</td>
+<td>Casos concretos e recentes de projetos com IA ou automação que
+fracassaram pelas razões descritas.</td>
+</tr>
+<tr class="even">
+<td>H2</td>
+<td>O método produz aprendizagem transferível.</td>
+<td>Piloto com exame de transferência antes e depois, corrigido às
+cegas.</td>
+<td>Melhora consistente nos itens do exame, em comparação adequada.</td>
+</tr>
+<tr class="odd">
+<td>H3</td>
+<td>Os alunos concluem.</td>
+<td>Pilotos nos formatos autodirigido e acompanhado.</td>
+<td>Taxas de conclusão por formato e por perfil, e motivos de abandono
+conhecidos.</td>
+</tr>
+<tr class="even">
+<td>H4</td>
+<td>Os alunos aplicam depois.</td>
+<td>Acompanhamento de egressos por alguns meses.</td>
+<td>Projetos reais com evidência (portfólio, avaliação de
+terceiros).</td>
+</tr>
+<tr class="odd">
+<td>H5</td>
+<td>Há disposição real de pagar.</td>
+<td>Ofertas reais com preço, a públicos definidos.</td>
+<td>Pagamentos efetivos — não respostas a pesquisas de intenção.</td>
+</tr>
+<tr class="even">
+<td>H6</td>
+<td>O custo de entrega é sustentável.</td>
+<td>Medição do tempo de mentoria e avaliação por aluno nos pilotos.</td>
+<td>Custo por aluno compatível com o preço praticado, no formato.</td>
+</tr>
+<tr class="odd">
+<td>H7</td>
+<td>Organizações percebem valor.</td>
+<td>Piloto corporativo com indicadores da própria organização.</td>
+<td>Efeito nos indicadores combinados e decisão de continuidade ou
+expansão.</td>
+</tr>
+<tr class="even">
+<td>H8</td>
+<td>O produto funciona sem o fundador.</td>
+<td>Turma conduzida e avaliada por outras pessoas.</td>
+<td>Resultados comparáveis aos das turmas do fundador.</td>
+</tr>
+</tbody>
+</table>
+<p>Para cada hipótese, os limiares de sucesso devem ser definidos
+<strong>antes</strong> do experimento, como no P07. Definir o limiar
+depois de ver o resultado é a forma mais comum de se convencer de que um
+produto funciona.</p>
+<h3 id="sequência-de-experimentos">Sequência de experimentos</h3>
+<p>Uma sequência razoável, em que cada etapa só começa se a anterior
+produzir evidência suficiente:</p>
+<ol type="1">
+<li><strong>Validação pedagógica pequena.</strong> Uma turma reduzida,
+sem cobrança ou com valor simbólico, percorrendo pelo menos as Partes I
+a IV e os projetos P00 a P03, com exame de transferência antes e depois.
+Objetivo: H1, H2 (parcial), H3 (parcial) e correções do material.</li>
+<li><strong>Piloto pago.</strong> Uma turma completa, com preço real, no
+formato acompanhado. Objetivo: H3, H5, H6.</li>
+<li><strong>Piloto autodirigido.</strong> Material completo com
+avaliação por pares e certificação opcional. Objetivo: H3, H5, H8
+(parcial).</li>
+<li><strong>Piloto corporativo.</strong> Uma organização, com problema
+real e indicadores próprios. Objetivo: H7.</li>
+<li><strong>Acompanhamento de egressos.</strong> Contato com concluintes
+das etapas anteriores, meses depois. Objetivo: H4.</li>
+<li><strong>Turma sem o fundador.</strong> Objetivo: H8.</li>
+</ol>
+<p>Só depois dessas etapas faz sentido falar em escala — e, mesmo então,
+com os indicadores do Capítulo M1 acompanhados continuamente.</p>
+<h3 id="o-que-seria-necessário-para-falar-em-product-market-fit">O que
+seria necessário para falar em product-market fit</h3>
+<p>“Product-market fit” — o ajuste entre produto e mercado — é uma
+expressão frequentemente usada sem critério. Para este produto, ela só
+deveria ser usada quando houver, simultaneamente:</p>
+<ul>
+<li><strong>demanda paga e recorrente</strong>, de públicos definidos,
+sem depender de esforço extraordinário de venda do fundador;</li>
+<li><strong>conclusão e aprendizagem demonstradas</strong>, com melhora
+no exame de transferência em comparações adequadas;</li>
+<li><strong>aplicação posterior verificada</strong> em parte relevante
+dos egressos;</li>
+<li><strong>recomendação espontânea</strong> e, no caso corporativo,
+<strong>recompra ou expansão</strong>;</li>
+<li><strong>viabilidade econômica</strong> do formato, com custo de
+entrega coberto;</li>
+<li><strong>independência do fundador</strong> demonstrada;</li>
+<li><strong>evidência qualitativa forte</strong>: alunos e organizações
+que, perguntados, relatam que ficariam significativamente prejudicados
+se o produto deixasse de existir — e cujo comportamento (uso, pagamento,
+recomendação) é coerente com essa resposta.</li>
+</ul>
+<p>Nenhum desses itens deve ser declarado com base em uma única turma,
+em pesquisas de intenção ou em depoimentos selecionados.</p>
+<h3 id="preço">Preço</h3>
+<p>Este livro não sugere preços. Preço é uma decisão a ser tomada com
+evidência, e não há evidência ainda. O método para chegar a ele:</p>
+<ul>
+<li>calcular o <strong>custo de entrega</strong> por aluno em cada
+formato (incluindo tempo de mentoria e avaliação, que tende a ser o
+maior custo dos formatos acompanhados);</li>
+<li>formular <strong>hipóteses de valor</strong> por público (o que o
+aluno ou a organização deixa de perder ou passa a ganhar);</li>
+<li>testar com <strong>ofertas reais</strong>, em que a pessoa de fato
+paga ou não paga;</li>
+<li>registrar a decisão no Decision Log do produto, com hipótese e
+validação, como qualquer outra decisão.</li>
+</ul>
+<h3 id="o-que-não-fazer">O que não fazer</h3>
+<ul>
+<li>Não inventar números de mercado, de alunos, de resultados ou de
+satisfação.</li>
+<li>Não usar depoimentos fictícios, editados ou sem consentimento.</li>
+<li>Não chamar o método de “comprovado” antes da evidência
+descrita.</li>
+<li>Não prometer empregos, renda ou resultados profissionais.</li>
+<li>Não apresentar a certificação interna como acreditação externa.</li>
+<li>Não confundir o interesse gerado pela palavra “IA” com demanda pelo
+produto. Muitas pessoas querem aprender “a usar IA”; o produto oferece
+outra coisa — e essa diferença precisa ser testada, não suposta.</li>
+</ul>
+<h3 id="o-método-aplicado-ao-método">O método aplicado ao método</h3>
+<p>Há uma coerência que vale a pena explicitar no fim. Tudo o que este
+livro ensina — enquadrar antes de construir, registrar decisões, testar
+casos negativos, validar com evidência, declarar limitações, projetar
+para a falha, não depender de uma única pessoa ou ferramenta — se aplica
+ao próprio produto. Um método que ensina a distinguir demonstração de
+validação não pode ser vendido com base em demonstrações. Essa é, ao
+mesmo tempo, a maior exigência e a maior oportunidade do produto: se ele
+funcionar, a evidência de que funciona será do mesmo tipo que ele ensina
+a produzir.</p>
+</body>
+</html>

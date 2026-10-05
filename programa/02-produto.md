@@ -1,10 +1,12 @@
-# PARTE IX — O PRODUTO EDUCACIONAL
+# PARTE B — O PRODUTO EDUCACIONAL
 
-As partes anteriores foram escritas para o aluno. Esta é escrita para quem vai **criar, conduzir, avaliar e manter** o método como produto educacional: o fundador, mentores, avaliadores, coordenadores de turma, parceiros corporativos.
+O Livro do Aluno foi escrito para quem aprende. Esta parte do Manual é escrita para quem vai **criar, conduzir, avaliar e manter** o método como produto educacional: o fundador, mentores, avaliadores, coordenadores de turma, parceiros corporativos.
 
-Ela segue o próprio método. Trata o produto como um sistema, com problema, stakeholders, decisões, riscos e validação. E aplica a si mesma a regra que o livro aplica a tudo: **distinguir o que foi projetado do que foi comprovado**. Tudo o que esta parte descreve é estrutura. Nada aqui foi, ainda, validado com alunos ou com o mercado — e o Capítulo 42 diz exatamente o que precisaria acontecer para que fosse.
+Ela segue o próprio método. Trata o produto como um sistema, com problema, stakeholders, decisões, riscos e validação. E aplica a si mesma a regra que o livro aplica a tudo: **distinguir o que foi projetado do que foi comprovado**. Tudo o que esta parte descreve é estrutura. Nada aqui foi, ainda, validado com alunos ou com o mercado — e o Capítulo M4 diz exatamente o que precisaria acontecer para que fosse.
 
-## Capítulo 39 — Founder Track
+> **Atenção** — Neste Manual, os capítulos M1 a M4 pertencem ao próprio Manual. Referências a capítulos numerados de 1 a 38, aos projetos P00 a P10 e aos apêndices A a J remetem ao Livro do Aluno.
+
+## Capítulo M1 — Founder Track
 
 ### O princípio da independência
 
@@ -14,7 +16,7 @@ O Founder Track descreve como o criador do método deve trabalhar para que o pro
 
 ### 1. Aprender
 
-Antes de ensinar o método, o fundador precisa praticá-lo integralmente:
+Antes de ensinar o método, o fundador precisa praticá-lo integralmente. O primeiro passo é o teste descrito na Parte A deste Manual, que percorre a Trilha Essencial com o caso-guia; depois dele, o fundador completa o restante:
 
 - fazer **todos os projetos, P00 a P10**, em domínios diferentes, com as mesmas regras de aprovação do aluno, avaliados por outra pessoa;
 - manter o próprio **diário de bordo** e o próprio portfólio;
@@ -49,7 +51,7 @@ A escala de evidência do Capítulo 31 vale aqui. "Os alunos gostaram" é E0. "O
 
 ### 5. Revisar
 
-O produto tem ciclos de revisão regulares (Capítulo 41) e revisões extraordinárias quando: um exercício ou projeto tem taxa de reprovação muito alta ou muito baixa; avaliadores discordam sistematicamente num critério; uma mudança tecnológica torna um trecho enganoso; alunos de um perfil abandonam sistematicamente numa parte.
+O produto tem ciclos de revisão regulares (Capítulo M3) e revisões extraordinárias quando: um exercício ou projeto tem taxa de reprovação muito alta ou muito baixa; avaliadores discordam sistematicamente num critério; uma mudança tecnológica torna um trecho enganoso; alunos de um perfil abandonam sistematicamente numa parte.
 
 ### 6. Transformar experiência em material
 
@@ -96,16 +98,16 @@ O produto funciona sem o fundador quando todos os itens abaixo existem e foram t
 
 - [ ] O livro completo, com gabaritos comentados dos exercícios.
 - [ ] Os templates, checklists e rubricas, utilizáveis sem explicação adicional.
-- [ ] Exemplos-âncora para cada rubrica: trabalhos reais (anonimizados) ou realistas nos níveis 2, 3 e 4, com a justificativa do nível.
+- [ ] Exemplos-âncora para cada rubrica: trabalhos reais (anonimizados) ou realistas nos níveis 2, 3 e 4, com a justificativa do nível. (O Apêndice I do Livro do Aluno traz os primeiros, para P00, P03 e P07.)
 - [ ] O guia do avaliador, com o processo de calibração.
 - [ ] O guia do mentor, com as dificuldades previstas por parte e as intervenções recomendadas.
-- [ ] O banco de cenários e o banco de exames de transferência e de capstones, com renovação planejada.
+- [ ] O banco de cenários e o banco de exames de transferência e de capstones, com renovação planejada. (O caso-guia do Apêndice H é o primeiro caso completo com material de trabalho.)
 - [ ] O processo de governança e de atualização, com responsáveis que não sejam apenas o fundador.
 - [ ] Pelo menos uma turma conduzida e avaliada inteiramente por outras pessoas, com resultados comparáveis aos das turmas conduzidas pelo fundador.
 
 O último item é a prova real. Até ele acontecer, a independência é uma hipótese.
 
-## Capítulo 40 — Experiência do aluno e formatos de oferta
+## Capítulo M2 — Experiência do aluno e formatos de oferta
 
 ### A jornada do aluno
 
@@ -114,7 +116,7 @@ Independentemente do formato, a jornada tem as mesmas etapas:
 ```
  ENTRADA ──────────► TRILHA ──────────► CICLOS ────────────────────► AVALIAÇÃO
  autodiagnóstico     F / P / A          leitura + exercícios +       projetos, exame,
-                                        projeto, nas nove partes     defesa
+                                        projeto, ao longo do livro   defesa
                                                                          │
                                                                          ▼
                      CERTIFICAÇÃO ◄────────────────────────────── PORTFÓLIO
@@ -137,7 +139,7 @@ O projeto pedagógico permite prever, como hipóteses a verificar nos pilotos, o
 
 ### Formatos de oferta
 
-O mesmo método pode ser oferecido em quatro formatos. A tabela descreve a **estrutura proposta** de cada um. Durações, tamanhos de turma e proporções são hipóteses de projeto, a serem ajustadas pelos pilotos; nenhum preço é sugerido aqui (ver Capítulo 42).
+O mesmo método pode ser oferecido em quatro formatos. A tabela descreve a **estrutura proposta** de cada um. Durações, tamanhos de turma e proporções são hipóteses de projeto, a serem ajustadas pelos pilotos; nenhum preço é sugerido aqui (ver Capítulo M4).
 
 | Elemento | Autodirigido | Formação acompanhada | Programa intensivo | Treinamento corporativo |
 |---|---|---|---|---|
@@ -146,13 +148,13 @@ O mesmo método pode ser oferecido em quatro formatos. A tabela descreve a **est
 | **Projetos** | P00 a P10, com avaliação por pares e autoavaliação. | P00 a P10, com avaliação por avaliador. | Seleção: P00, P03, P06 ou P07, P10 reduzido; os demais como opcionais. | P00, P03 e P09 em processos reais da organização; demais conforme o objetivo. |
 | **Duração indicativa** | Definida pelo aluno. | Vários meses. | Algumas semanas. | Definida com a organização. |
 | **Papéis** | Aluno; par avaliador. | Aluno; mentor; avaliador; coordenador. | Aluno; mentor dedicado; avaliador. | Aluno; mentor; avaliador; patrocinador interno; responsável por dados e segurança da organização. |
-| **Certificação** | Possível com avaliação paga de P09, P10 e exame (opcional). | Sim, nos níveis do Capítulo 41. | Parcial (nível correspondente aos projetos feitos). | Sim, nos níveis; resultados também medidos nos indicadores da organização. |
+| **Certificação** | Possível com avaliação paga de P09, P10 e exame (opcional). | Sim, nos níveis do Capítulo M3. | Parcial (nível correspondente aos projetos feitos). | Sim, nos níveis; resultados também medidos nos indicadores da organização. |
 | **Riscos principais** | Abandono; autoavaliação complacente. | Custo de mentoria e avaliação; dependência de bons mentores. | Perda de profundidade; projetos superficiais; falta de tempo de uso real para validação. | Conflito entre aprendizagem e entrega; sigilo; pressão por resultados rápidos. |
 | **O que precisa ser validado** | Taxa de conclusão; qualidade da avaliação por pares. | Ganho no exame de transferência; viabilidade econômica. | Se a versão reduzida produz transferência comparável. | Efeito nos indicadores da organização; recompra. |
 
 Algumas observações sobre cada formato:
 
-**Autodirigido.** É o formato mais escalável e o que mais depende da qualidade do material. É também o que mais exige o teste de independência do Capítulo 39. A avaliação por pares precisa de regras claras e de exemplos-âncora acessíveis.
+**Autodirigido.** É o formato mais escalável e o que mais depende da qualidade do material. É também o que mais exige o teste de independência do Capítulo M1. A avaliação por pares precisa de regras claras e de exemplos-âncora acessíveis.
 
 **Formação acompanhada.** O mentor não ensina o conteúdo — o livro faz isso. O mentor faz o que o livro não pode fazer: observa o raciocínio, faz perguntas de variação, ajuda a sair de bloqueios, devolve com especificidade. O guia do mentor deve proibir explicitamente que o mentor faça o trabalho pelo aluno.
 
@@ -170,7 +172,7 @@ Algumas observações sobre cada formato:
 | **Coordenador** | Ritmo da turma, logística, acompanhamento de abandono, coleta de dados do produto. | Alterar critérios de aprovação. |
 | **Patrocinador (corporativo)** | Garantir acesso a problemas, dados e tempo; remover obstáculos. | Escolher quem é aprovado. |
 
-## Capítulo 41 — Avaliação, certificação e governança
+## Capítulo M3 — Avaliação, certificação e governança
 
 ### Níveis de certificação
 
@@ -226,7 +228,7 @@ O método foi escrito para resistir à obsolescência tecnológica, mas o materi
 - **Gatilhos de revisão extraordinária**: mudança tecnológica que torne um trecho enganoso; padrão de reprovação ou discordância de avaliadores; erro relatado.
 - **Errata pública** entre versões.
 
-## Capítulo 42 — Validação externa e comercialização
+## Capítulo M4 — Validação externa e comercialização
 
 ### Estrutura comercial não é validação comercial
 
@@ -270,7 +272,7 @@ Uma sequência razoável, em que cada etapa só começa se a anterior produzir e
 5. **Acompanhamento de egressos.** Contato com concluintes das etapas anteriores, meses depois. Objetivo: H4.
 6. **Turma sem o fundador.** Objetivo: H8.
 
-Só depois dessas etapas faz sentido falar em escala — e, mesmo então, com os indicadores do Capítulo 39 acompanhados continuamente.
+Só depois dessas etapas faz sentido falar em escala — e, mesmo então, com os indicadores do Capítulo M1 acompanhados continuamente.
 
 ### O que seria necessário para falar em product-market fit
 
@@ -307,11 +309,3 @@ Este livro não sugere preços. Preço é uma decisão a ser tomada com evidênc
 ### O método aplicado ao método
 
 Há uma coerência que vale a pena explicitar no fim. Tudo o que este livro ensina — enquadrar antes de construir, registrar decisões, testar casos negativos, validar com evidência, declarar limitações, projetar para a falha, não depender de uma única pessoa ou ferramenta — se aplica ao próprio produto. Um método que ensina a distinguir demonstração de validação não pode ser vendido com base em demonstrações. Essa é, ao mesmo tempo, a maior exigência e a maior oportunidade do produto: se ele funcionar, a evidência de que funciona será do mesmo tipo que ele ensina a produzir.
-
-## Nota final
-
-Este livro começou com uma cena: alguém chega com um pedido pronto e uma ferramenta em mente. Ao longo de nove partes, você aprendeu a fazer outra coisa com esse pedido: perguntar pelo problema, enxergar o sistema, mapear o processo real, encontrar os dados e as regras, procurar soluções nos degraus mais baixos antes de subir, decidir comparando alternativas, especificar o que deve ser construído, delegar com contexto, supervisionar a construção, testar o que pode dar errado, validar se resolveu, proteger o que precisa ser protegido, aprender com as falhas e coordenar o conjunto.
-
-Nenhuma dessas competências depende de uma ferramenta específica. Todas ficam mais valiosas à medida que as ferramentas ficam mais poderosas — porque quanto mais rápido for construir, mais importante é saber o que deveria ser construído e como saber se está certo.
-
-O critério de sucesso do livro foi definido nas primeiras páginas, e ele não mudou: diante de um problema que você nunca viu, num domínio que não é o seu, você consegue ir do pedido vago à solução validada, sabendo em cada passo o que está fazendo e por quê. A IA pode construir. Você continua responsável por decidir se aquilo deveria existir, como deveria funcionar e se está correto.

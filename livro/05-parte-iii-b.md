@@ -475,22 +475,25 @@ Restam duas camadas de infraestrutura invisível: os custos e as dependências.
 
 ## Revisão da Parte III
 
-Antes de seguir para a Parte IV, verifique se consegue, sem consultar o texto:
+### Teste de recuperação
 
-- descrever as seis camadas de um sistema e localizar em que camada um problema acontece;
-- explicar por que regras importantes devem estar no backend;
-- distinguir planilha de banco de dados e decidir quando cada um é suficiente;
-- transformar um modelo conceitual em tabelas com chaves e restrições;
-- ler e escrever um JSON simples e reconhecer erros de estrutura e de conteúdo;
-- descrever uma requisição de API (método, endpoint, headers, corpo) e interpretar sua resposta;
-- dizer quais códigos de erro devem ser repetidos e quais não;
-- explicar os cuidados com webhooks: assinatura, duplicatas, ordem, conciliação;
-- distinguir autenticação de autorização e construir uma matriz de permissões;
-- aplicar as cinco regras dos segredos;
-- descrever uma automação pelos dez elementos e decidir se ela deve existir;
-- explicar por que a IA fabrica informações e o que é contexto;
-- reconhecer RAG e agentes e quando cada um é exagero;
-- explicar a importância de ambientes, controle de versões, configuração, observabilidade e cópias de segurança.
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir — é mais rápido do que descobrir a lacuna no meio de um projeto.
+
+**R3.1** Por que regras importantes devem ser aplicadas no backend, e não só na interface? (Cap. 11)
+
+**R3.2** Uma integração recebeu o código 429. Outra recebeu 401. O que cada uma deve fazer? (Cap. 13)
+
+**R3.3** Cite três cuidados obrigatórios ao receber webhooks. (Cap. 13)
+
+**R3.4** Diferencie autenticação de autorização com um exemplo. (Cap. 14)
+
+**R3.5** Liste os dez elementos de uma automação. (Cap. 15)
+
+**R3.6** O que significa "IA na borda, regra no centro", e por que é uma boa arquitetura? (Cap. 15)
+
+**R3.7** Em que situações um RAG é exagero? Cite duas. (Cap. 16)
+
+**R3.8** Por que ler o diff antes de aceitar uma mudança feita por IA? (Cap. 17)
 
 ### Exercício integrador
 

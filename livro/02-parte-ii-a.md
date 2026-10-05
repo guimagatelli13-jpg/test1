@@ -190,6 +190,21 @@ c) "O tempo médio de resposta a chamados de suporte é de 30 horas. Queremos im
 
 **Exercício 4.6 · P · M0 · Transferência** — Um hospital de pequeno porte diz: "precisamos de um sistema de inteligência artificial para reduzir as filas do pronto-atendimento". Sem acesso a ninguém do hospital, escreva: (a) as decisões embutidas no pedido; (b) dez perguntas que você faria na primeira conversa, todas pedindo instâncias concretas; (c) três hipóteses de causa que não envolvam tecnologia; (d) um indicador principal e um indicador de proteção plausíveis.
 
+**Exercício 4.7 · F · M0 · Completar** — Uma escola de idiomas (cenário C4) diz que "reposição de aula é um inferno". Os elementos 1 a 3 do Problem Statement já foram escritos; complete os elementos 4 a 8 usando apenas os fatos abaixo, e escreva a declaração final em um parágrafo.
+
+*Fatos levantados:* no último bimestre, houve 46 pedidos de reposição; 19 foram atendidos em até duas semanas; a secretaria gasta em média 15 minutos por pedido, entre mensagens e consulta às turmas; 7 alunos cancelaram a matrícula no bimestre, e 3 deles citaram reposições não atendidas; o contrato diz que o aluno tem direito a reposição se avisar com 24 horas; as turmas têm no máximo 12 alunos.
+
+1. *Afetados:* alunos que faltam, secretaria, professores.
+2. *Estado atual:* 19 de 46 pedidos de reposição atendidos em até duas semanas no último bimestre.
+3. *Estado desejado:* reposições atendidas em prazo previsível.
+4. *Impacto:* ___
+5. *Causas (conhecidas e hipóteses):* ___
+6. *Restrições:* ___
+7. *Critério de resolução (indicador, linha de base, meta, proteção):* ___
+8. *Fora do escopo:* ___
+
+> **Para conferir** — 4: tempo da secretaria (cerca de 11,5 horas no bimestre: 46 × 15 min) e cancelamentos com reposição citada (3 de 7). 5: nenhuma causa é conhecida pelos fatos dados; hipóteses plausíveis — vagas de turma já cheias (limite de 12), ausência de horários dedicados a reposição, controle manual. Uma boa resposta as marca como hipóteses. 6: direito contratual com aviso de 24 horas; limite de 12 alunos por turma. 7: por exemplo, "percentual de pedidos válidos atendidos em até duas semanas: de 41% (19 de 46) para 85% no próximo bimestre; proteção: sem aumento do tempo da secretaria por pedido e sem turmas acima de 12". 8: por exemplo, política de preços e contratação de professores. Erro comum: escrever no elemento 7 "implantar um sistema de reposições" — isso é solução, não critério.
+
 ## Capítulo 5 — Sistemas
 
 ### Por que pensar em sistemas

@@ -1,0 +1,113 @@
+{
+  "periodo": [
+    "2026-08-03",
+    "2026-08-28"
+  ],
+  "dias_uteis": 20,
+  "agendamentos_verdadeiros": 476,
+  "por_status": {
+    "falta": 59,
+    "realizada": 375,
+    "cancelada": 20,
+    "remarcada": 17,
+    "não atendido": 5
+  },
+  "taxa_falta_geral": {
+    "faltas": 59,
+    "base": 434,
+    "taxa": 0.136
+  },
+  "taxa_falta_com_lembrete": {
+    "faltas": 12,
+    "base": 191,
+    "taxa": 0.063
+  },
+  "taxa_falta_sem_lembrete": {
+    "faltas": 40,
+    "base": 198,
+    "taxa": 0.202
+  },
+  "taxa_falta_lembrete_desconhecido": {
+    "faltas": 7,
+    "base": 45,
+    "taxa": 0.156
+  },
+  "taxa_falta_7h": {
+    "faltas": 5,
+    "base": 32,
+    "taxa": 0.156
+  },
+  "taxa_falta_outros_horarios": {
+    "faltas": 54,
+    "base": 402,
+    "taxa": 0.134
+  },
+  "taxa_falta_segunda": {
+    "faltas": 14,
+    "base": 78,
+    "taxa": 0.179
+  },
+  "taxa_falta_outros_dias": {
+    "faltas": 45,
+    "base": 356,
+    "taxa": 0.126
+  },
+  "taxa_falta_antecedencia_mais_7": {
+    "faltas": 55,
+    "base": 398,
+    "taxa": 0.138
+  },
+  "taxa_falta_antecedencia_ate_7": {
+    "faltas": 4,
+    "base": 36,
+    "taxa": 0.111
+  },
+  "taxa_falta_fim_de_pacote": {
+    "faltas": 19,
+    "base": 85,
+    "taxa": 0.224
+  },
+  "taxa_falta_resto_do_pacote": {
+    "faltas": 40,
+    "base": 349,
+    "taxa": 0.115
+  },
+  "lembretes": {
+    "sim": 212,
+    "não": 216,
+    "desconhecido": 48
+  },
+  "horarios_duplicados": 8,
+  "duplicados_por_quem_marcou": {
+    "Caio": 5,
+    "Sílvia": 1,
+    "Tomás": 2
+  },
+  "pacientes_particulares_alem_do_pacote": 3,
+  "sessoes_particulares_alem_do_pacote": 4,
+  "pacientes_convenio_alem_da_autorizacao": 3,
+  "sessoes_convenio_alem_da_autorizacao": 6,
+  "renovacoes": {
+    "em dia": 20,
+    "atrasada": 4
+  },
+  "remarcacoes_e_encaixes_por_quem_marcou": {
+    "Caio": 9,
+    "Sílvia": 4,
+    "Joana": 3,
+    "Tomás": 3,
+    "Renata": 1
+  },
+  "linhas_planilha": 483,
+  "linhas_duplicadas_inseridas": 7,
+  "pacientes_com_variacao_de_nome": 8,
+  "mensagens_por_categoria": {
+    "CONFIRMA": 23,
+    "REMARCAR": 12,
+    "CANCELAR": 7,
+    "DUVIDA": 9,
+    "OUTRO": 9
+  },
+  "mensagens_requer_humano": 37,
+  "mensagens_iniciadas_por_1_ou_2": 13
+}

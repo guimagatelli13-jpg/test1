@@ -2,21 +2,23 @@
 
 **Projeto Oficial 00** — Método para aprender a resolver problemas complexos usando IA, software e automação.
 
-Primeira edição — versão 1.0 (edição de validação).
+Versão 1.1 — edição de teste. Veja as [notas de versão](NOTAS-DE-VERSAO.md).
 
-Este repositório contém o livro completo, que funciona ao mesmo tempo como livro, método, currículo, manual do aluno e base de um produto educacional. A estrutura pedagógica foi projetada e revisada; a validação com turmas reais e com o mercado ainda não foi feita (a Parte IX descreve exatamente que evidências faltam).
+Este repositório contém o livro completo, que funciona ao mesmo tempo como livro, método, currículo, manual do aluno e base de um produto educacional. A estrutura pedagógica foi projetada e revisada; a validação com turmas reais e com o mercado ainda não foi feita (o Manual do Programa descreve exatamente que evidências faltam).
 
-## Ler o livro
+## Por onde começar
 
-Versões prontas, em `dist/`:
+**Se você vai ser o primeiro a testar o método**, abra a [Edição Essencial](dist/AI-Systems-Thinking-Edicao-Essencial.pdf). Ela começa com o Guia do primeiro teste e contém só os capítulos da Trilha Essencial, com o caso-guia, os trabalhos comentados e as respostas. Copie também a pasta [`material/caso-guia/`](material/caso-guia/) (sem abrir `respostas/` antes de fazer os projetos).
 
-| Arquivo | Uso |
-|---|---|
-| [`dist/AI-Systems-Thinking.pdf`](dist/AI-Systems-Thinking.pdf) | Versão diagramada para leitura e impressão (A4). |
-| [`dist/AI-Systems-Thinking.epub`](dist/AI-Systems-Thinking.epub) | E-book. |
-| [`dist/AI-Systems-Thinking.html`](dist/AI-Systems-Thinking.html) | Arquivo único para leitura em tela (tema claro e escuro). |
-| [`dist/AI-Systems-Thinking.docx`](dist/AI-Systems-Thinking.docx) | Versão editável. |
-| [`dist/AI-Systems-Thinking.md`](dist/AI-Systems-Thinking.md) | Versão integral em um único Markdown. |
+## As edições
+
+| Edição | Arquivos | Para quem |
+|---|---|---|
+| **Edição Essencial** | [PDF](dist/AI-Systems-Thinking-Edicao-Essencial.pdf) · [HTML](dist/AI-Systems-Thinking-Edicao-Essencial.html) | Quem quer o caminho mais curto pelo método (cerca de 55 horas estimadas) — e o primeiro teste. |
+| **Livro do Aluno** (completo) | [PDF](dist/AI-Systems-Thinking.pdf) · [EPUB](dist/AI-Systems-Thinking.epub) · [HTML](dist/AI-Systems-Thinking.html) · [DOCX](dist/AI-Systems-Thinking.docx) · [Markdown](dist/AI-Systems-Thinking.md) | Percurso completo: 38 capítulos, 11 projetos, apêndices A a J. |
+| **Manual do Programa** | [PDF](dist/AI-Systems-Thinking-Manual-do-Programa.pdf) · [HTML](dist/AI-Systems-Thinking-Manual-do-Programa.html) · [DOCX](dist/AI-Systems-Thinking-Manual-do-Programa.docx) | Quem cria, conduz, avalia e mantém o método: guia do primeiro teste, Founder Track, formatos, certificação, governança, validação externa. |
+
+Material de trabalho do caso-guia (planilhas e mensagens): [`material/caso-guia/`](material/caso-guia/LEIA-ME.md).
 
 O texto-fonte, por parte, está em `livro/`:
 
@@ -33,19 +35,27 @@ O texto-fonte, por parte, está em `livro/`:
 | [`09-parte-v-c.md`](livro/09-parte-v-c.md) | Parte V — caps. 27–29 (IA aplicada, RAG, agentes) e revisão |
 | [`10-parte-vi.md`](livro/10-parte-vi.md) | Parte VI — Construir algo confiável: caps. 30–34 (testes, validação, segurança e privacidade, observabilidade e falhas, evolução) |
 | [`11-parte-vii.md`](livro/11-parte-vii.md) | Parte VII — Projetos P00 a P10, com rubricas e critérios de aprovação |
-| [`12-parte-viii.md`](livro/12-parte-viii.md) | Parte VIII — Domínio e transferência: matriz de 26 competências, avaliação e exame de transferência, portfólio, orquestração |
-| [`13-parte-ix.md`](livro/13-parte-ix.md) | Parte IX — O produto educacional: Founder Track, formatos de oferta, certificação e governança, validação externa |
+| [`12-parte-viii.md`](livro/12-parte-viii.md) | Parte VIII — Domínio e transferência: matriz de 26 competências, avaliação e exame de transferência, portfólio, orquestração; Nota final |
 | [`14-apendice-a.md`](livro/14-apendice-a.md) | Apêndice A — 16 templates |
 | [`15-apendices-b-g.md`](livro/15-apendices-b-g.md) | Apêndices B–G — checklists, rubricas, decisões comentadas, cartões dos protocolos, anti-padrões, glossário |
+| [`16-apendice-h.md`](livro/16-apendice-h.md) | Apêndice H — Caso-guia: Clínica Movimento |
+| [`17-apendice-i.md`](livro/17-apendice-i.md) | Apêndice I — Trabalhos comentados (P00, P03, P07) |
+| [`18-apendice-j.md`](livro/18-apendice-j.md) | Apêndice J — Respostas dos testes de recuperação e gabarito do caso-guia |
+
+O Manual do Programa está em `programa/`: [`01-guia-do-primeiro-teste.md`](programa/01-guia-do-primeiro-teste.md) e [`02-produto.md`](programa/02-produto.md).
 
 ## Gerar as versões
 
 Requisitos: `pandoc` 3.x, o pacote Python `weasyprint` e as fontes Noto Serif, IBM Plex Sans e JetBrains Mono (em Ubuntu: `apt-get install pandoc fonts-noto-core fonts-ibm-plex fonts-jetbrains-mono` e `pip install weasyprint`).
 
 ```
-python3 build/build.py            # gera PDF, EPUB, HTML, DOCX e Markdown integral em dist/
-python3 build/build.py --sem-pdf  # mais rápido, sem o PDF
+python3 build/build.py                      # gera as três edições em dist/
+python3 build/build.py essencial            # só uma edição (aluno, essencial ou programa)
+python3 build/build.py --sem-pdf            # mais rápido, sem os PDFs
+python3 material/caso-guia/gerar.py         # regenera os dados do caso-guia (resultado idêntico)
 ```
+
+A seleção de capítulos da Edição Essencial está na lista `ESSENCIAL` de `build/build.py`.
 
 A diagramação fica em `build/`: `filtro.lua` transforma as citações rotuladas do Markdown (Caso, Anti-padrão, Princípio, Ficha, ▲ Avançado, Para conferir) em caixas tipadas e ajusta o corpo dos diagramas em texto; `livro.css` define a versão impressa; `tela.css`, as versões de tela.
 

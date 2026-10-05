@@ -359,7 +359,7 @@ Ao avaliar uma resposta a uma variação, observe:
 
 ### O exame de transferência
 
-O exame de transferência é a avaliação somativa central do método, aplicado ao fim da Parte VIII (e exigido para o nível profissional de certificação, Capítulo 41). Ele apresenta um problema que não aparece no livro e pede que o aluno percorra o ciclo até a especificação, o plano de construção, de teste e de validação. A construção completa não é exigida no exame; ela já foi demonstrada nos projetos.
+O exame de transferência é a avaliação somativa central do método, aplicado ao fim da Parte VIII (e exigido para o nível profissional de certificação, descrito no Manual do Programa). Ele apresenta um problema que não aparece no livro e pede que o aluno percorra o ciclo até a especificação, o plano de construção, de teste e de validação. A construção completa não é exigida no exame; ela já foi demonstrada nos projetos.
 
 O exame abaixo é um modelo. Os formatos acompanhados devem manter um banco de problemas equivalentes, renovado periodicamente, para que o exame não seja conhecido de antemão.
 
@@ -589,3 +589,11 @@ Ela é especialmente importante quando se trabalha com IA, por uma razão simple
 **Exercício 38.2 · P · M0** — Durante duas semanas de trabalho em projeto, registre antes de cada teste ou verificação sua previsão e sua confiança (de 0 a 100%). No fim, compare. Você estava calibrado? Em que tipo de previsão errou mais?
 
 **Exercício 38.3 · A · M0** — Aplique o teste da explicação a um sistema que você construiu com IA. Liste as partes que não consegue explicar. Para cada uma, decida: estudar (Protocolo 10), simplificar ou aceitar o risco conscientemente, registrando no Decision Log.
+
+## Nota final
+
+Este livro começou com uma cena: alguém chega com um pedido pronto e uma ferramenta em mente. Ao longo destas páginas, você aprendeu a fazer outra coisa com esse pedido: perguntar pelo problema, enxergar o sistema, mapear o processo real, encontrar os dados e as regras, procurar soluções nos degraus mais baixos antes de subir, decidir comparando alternativas, especificar o que deve ser construído, delegar com contexto, supervisionar a construção, testar o que pode dar errado, validar se resolveu, proteger o que precisa ser protegido, aprender com as falhas e coordenar o conjunto.
+
+Nenhuma dessas competências depende de uma ferramenta específica. Todas ficam mais valiosas à medida que as ferramentas ficam mais poderosas — porque quanto mais rápido for construir, mais importante é saber o que deveria ser construído e como saber se está certo.
+
+O critério de sucesso do livro foi definido nas primeiras páginas, e ele não mudou: diante de um problema que você nunca viu, num domínio que não é o seu, você consegue ir do pedido vago à solução validada, sabendo em cada passo o que está fazendo e por quê. A IA pode construir. Você continua responsável por decidir se aquilo deveria existir, como deveria funcionar e se está correto.

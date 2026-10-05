@@ -124,6 +124,16 @@ Além dos critérios de aceitação de cada requisito, projetos se beneficiam de
 
 > **Para conferir** — CA-1 não diz quanto antes do vencimento ("vencendo" quando?), que hora é "a hora", para quem vai o lembrete, o que ele contém, nem o que acontece se houver várias contas (uma mensagem por conta ou uma lista?). CA-2 é uma regra útil, mas não está no formato verificável e não diz como o sistema sabe que a conta foi paga (status marcado manualmente? conferência com extrato?). Faltam: conta sem data de vencimento; conta que vence no fim de semana; lembrete já enviado hoje (duplicidade); falha no envio. Uma reescrita do CA-1: "*Dado* uma conta com status 'recebida' e vencimento daqui a 3 dias, *quando* a automação rodar às 8h, *então* Lucas recebe uma única mensagem listando essa conta com fornecedor, valor e data de vencimento."
 
+**Exercício 18.5 · F · M0 · Completar** — Requisito: "Na véspera de cada sessão, o paciente recebe um lembrete com a data, o horário e o nome do profissional" (caso-guia, Apêndice H). O primeiro critério já está escrito. Escreva os outros quatro, nos tipos indicados.
+
+- CA-1 (normal): *Dado* um paciente com sessão marcada para amanhã às 15h com Renata, *quando* a automação rodar hoje às 18h, *então* o paciente recebe uma única mensagem com a data, "15h" e "Renata".
+- CA-2 (negativo): ___
+- CA-3 (limite — fim de semana): ___
+- CA-4 (dado ausente): ___
+- CA-5 (duplicidade): ___
+
+> **Para conferir** — Respostas possíveis. CA-2: *dado* uma sessão cancelada ou remarcada, *quando* a automação rodar, *então* nenhum lembrete é enviado para ela. CA-3: *dado* uma sessão na segunda-feira, *quando* a automação rodar na sexta às 18h, *então* o lembrete é enviado na sexta (e não no domingo, quando a recepção não pode responder). CA-4: *dado* um paciente sem telefone no cadastro, *quando* a automação rodar, *então* nenhuma mensagem é enviada e o caso aparece na lista de pendências da recepção. CA-5: *dado* que a automação rodou duas vezes no mesmo dia, *quando* a segunda execução terminar, *então* cada paciente recebeu um único lembrete. Se o seu CA-3 não mencionou a segunda-feira, releia a entrevista de Joana: é exatamente onde o processo atual falha.
+
 ## Capítulo 19 — Arquitetura como sequência de decisões
 
 ### O que é arquitetura
@@ -536,22 +546,45 @@ A coluna "Responde" nunca deve conter uma IA ou uma automação. Se, ao preenche
 
 **Exercício 21.5 · A · M0** — Construa o Mapa Humano–Máquina do seu projeto, com todas as atividades da construção e da operação. Verifique: há alguma atividade sem ninguém em "verifica"? Sem ninguém em "responde"? Alguma IA ou automação em "decide" para algo de alto custo de erro?
 
+**Exercício 21.6 · P · M0 · Completar** — Complete o AI Delegation Brief abaixo, preenchendo os blocos em branco. O componente é simples de propósito: o foco está nas restrições, regras e critérios.
+
+> CONTEXTO — Clínica Movimento (caso-guia). Pacientes respondem ao lembrete da véspera pelo aplicativo de mensagens. Este componente recebe o texto de cada resposta e decide se ela pode ser processada automaticamente.
+>
+> OBJETIVO — Implementar a função `classificar_resposta(texto)`, que devolve `CONFIRMA`, `REMARCAR` ou `HUMANO`.
+>
+> DADOS — Entrada: texto livre, como recebido. Saída: um dos três valores acima.
+>
+> RESTRIÇÕES — ___
+>
+> REGRAS — ___
+>
+> CRITÉRIOS — ___
+>
+> ACEITAÇÃO — ___
+
+> **Para conferir** — *Restrições:* sem IA (é uma regra determinística); sem acesso à agenda nem a qualquer serviço; não alterar outros módulos. *Regras:* R1 — texto que, removidos espaços nas pontas, é exatamente "1" → CONFIRMA; R2 — exatamente "2" → REMARCAR; R3 — qualquer outro texto, incluindo "1" ou "2" seguidos de outras palavras, "1 2", vazio ou só espaços → HUMANO. *Critérios:* um caso por regra; "1 obrigado" → HUMANO (há texto além do número); "  1  " → CONFIRMA; "1 2" → HUMANO; texto vazio → HUMANO. *Aceitação:* testes automatizados para todos os critérios, executados por você; nenhum texto diferente de "1" e "2" pode resultar em CONFIRMA ou REMARCAR. Se a sua regra classificava "1. Posso chegar 15 min atrasado?" como CONFIRMA, a pergunta do paciente se perderia (veja M29 no Apêndice J).
+
 ## Revisão da Parte IV
 
-Verifique se consegue, sem consultar:
+### Teste de recuperação
 
-- escrever requisitos dos seis tipos, verificáveis e rastreáveis;
-- priorizar com as quatro categorias sem colocar tudo em "deve";
-- escrever critérios de aceitação Dado / Quando / Então cobrindo caso normal, negativo, limite, dado ausente e concorrência;
-- responder às nove questões de arquitetura para uma solução;
-- gerar alternativas em degraus diferentes e compará-las com critérios eliminatórios e ponderados;
-- distinguir decisões reversíveis de irreversíveis e tratar cada uma de forma proporcional;
-- registrar decisões com alternativas, evidência classificada, hipótese e validação;
-- fazer um pré-mortem;
-- escrever um AI Delegation Brief com os nove blocos;
-- explicar a diferença entre prompt e especificação;
-- dizer quando não delegar;
-- construir um Mapa Humano–Máquina.
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir — é mais rápido do que descobrir a lacuna no meio de um projeto.
+
+**R4.1** Reescreva de forma verificável: "o relatório deve ser gerado rapidamente". (Cap. 18)
+
+**R4.2** Que tipos de caso os critérios de aceitação de um requisito importante devem cobrir? (Cap. 18)
+
+**R4.3** Por que critérios eliminatórios não entram na soma ponderada de uma matriz de comparação? (Cap. 19)
+
+**R4.4** Qual a diferença entre decisão reversível e irreversível, e como tratar cada uma? (Cap. 19)
+
+**R4.5** Que campos transformam uma entrada do Decision Log numa aposta verificável? (Cap. 20)
+
+**R4.6** Quais são os nove blocos de um AI Delegation Brief? (Cap. 21)
+
+**R4.7** Cite três situações em que você não deve delegar a uma IA. (Cap. 21)
+
+**R4.8** Que coluna do Mapa Humano–Máquina nunca pode conter uma IA ou automação? Por quê? (Cap. 21)
 
 ### Exercício integrador
 

@@ -351,21 +351,27 @@ Guardrails são as defesas que limitam o que um agente pode fazer, independentem
 
 ## Revisão da Parte V
 
-Verifique se consegue:
+### Teste de recuperação
 
-- aplicar os dez protocolos de IA e dizer o risco e a validação de cada um;
-- separar geração de avaliação e fazer o teste do defeito plantado;
-- supervisionar a construção em fatias verticais, começando pelo esqueleto andante;
-- reconhecer sinais de alerta em código sem saber programar e sair de uma espiral de correções;
-- montar um catálogo de exceções e distinguir erros transitórios de permanentes;
-- garantir idempotência e retomada em automações;
-- projetar logs, alertas de ausência, manual de operação e interruptor;
-- responder às oito perguntas de uma integração e separar o que é seu, o que é do outro e o que está em trânsito;
-- ir de jornadas a telas, operações e fatias; distinguir os quatro tipos de protótipo e a distância até o produto;
-- usar a Matriz Entrada × Regra e o padrão "IA na borda, regra no centro";
-- montar e usar um conjunto de avaliação com parte separada e limiares definidos antes;
-- decidir quando RAG é exagero e avaliar busca e resposta separadamente;
-- aplicar o teste do fluxograma e especificar um agente com autonomia por ação e guardrails.
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir — é mais rápido do que descobrir a lacuna no meio de um projeto.
+
+**R5.1** Por que gerar e avaliar em sessões separadas? (Cap. 22)
+
+**R5.2** O que é o teste do defeito plantado e o que ele mede? (Cap. 22)
+
+**R5.3** O que é um esqueleto andante e por que começar por ele? (Cap. 23)
+
+**R5.4** Diferencie erro transitório de erro permanente e diga como tratar cada um. (Cap. 24)
+
+**R5.5** Como testar se uma automação é idempotente? (Cap. 24)
+
+**R5.6** Numa integração, por que separar o que é seu, o que é do outro sistema e o que está em trânsito? (Cap. 25)
+
+**R5.7** Descreva os quatro quadrantes da Matriz Entrada × Regra. (Cap. 27)
+
+**R5.8** Por que separar uma parte do conjunto de avaliação antes de ajustar as instruções da IA? (Cap. 27)
+
+**R5.9** Qual é o teste do fluxograma? (Cap. 29)
 
 ### Exercício integrador
 

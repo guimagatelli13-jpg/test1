@@ -175,7 +175,7 @@ O exame é corrigido por blocos, usando a escala geral:
 - Para cada nota, escreva a evidência que a sustenta.
 - Atribua nível 4 apenas com evidência de transferência ou de antecipação real.
 - Quando a evidência de processo (diário, Decision Log, histórico) for incompatível com o produto, converse antes de avaliar.
-- Use os exemplos-âncora do programa; quando um trabalho não se parecer com nenhum âncora, registre o caso para a próxima calibração.
+- Use os trabalhos comentados do Apêndice I e os exemplos-âncora do programa; quando um trabalho não se parecer com nenhum âncora, registre o caso para a próxima calibração.
 
 ## Apêndice D — Decisões comentadas
 

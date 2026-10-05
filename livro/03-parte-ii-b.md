@@ -534,23 +534,38 @@ Essa classificação será decisiva no Capítulo 27, quando você aprender a dec
 
 **Exercício 10.5 · A · M0** — Escreva três invariantes para o modelo de dados do Exercício 9.1 (biblioteca). Para cada um, descreva uma situação concreta que o violaria e como ela poderia acontecer na prática.
 
+**Exercício 10.6 · F · M0 · Completar** — A política de reposição da escola de idiomas (Exercício 4.7) foi parcialmente escrita como tabela de decisão. Complete as linhas em branco, encontre a combinação que a tabela ainda não cobre e escreva a pergunta que você faria à coordenação para fechá-la.
+
+| # | Avisou com 24 h? | Atestado médico? | Reposições já usadas no mês | Ação |
+|---|---|---|---|---|
+| 1 | sim | — | menos de 2 | Oferecer reposição |
+| 2 | sim | — | 2 ou mais | ___ |
+| 3 | não | sim | ___ | Oferecer reposição |
+| 4 | não | não | — | ___ |
+
+> **Para conferir** — Linha 2: a resposta depende da regra da escola; uma resposta coerente é "não oferecer reposição; registrar e informar o limite mensal". Linha 3: "—" (com atestado, o limite não se aplica) ou "menos de 2", conforme a regra — o importante é perceber que é uma decisão a tomar. Linha 4: "sem direito a reposição; informar a política". Combinação não coberta (se a linha 3 usar "menos de 2"): sem aviso, com atestado e duas ou mais reposições usadas. Pergunta: "O atestado médico dispensa o limite de duas reposições por mês?". Se você não encontrou nenhuma lacuna, reveja a linha 3 com cuidado: lacunas aparecem justamente quando uma condição fica "em branco" sem que ninguém tenha decidido.
+
 ## Revisão da Parte II
 
-Você chegou ao fim da parte que não fala de tecnologia. Antes de seguir, verifique se consegue fazer, sem consultar o texto, cada uma das coisas abaixo.
+### Teste de recuperação
 
-- Distinguir situação, sintoma, problema e tarefa, e reescrever uma tarefa como problema.
-- Escrever um Problem Statement com os oito elementos, incluindo indicador, linha de base, meta e indicador de proteção.
-- Separar fatos, interpretações e hipóteses numa conversa.
-- Mapear stakeholders distinguindo posição e interesse.
-- Desenhar um System Map com fronteira, atores, fluxos, estoques e laços.
-- Encontrar o gargalo de um processo e explicar por que melhorar outra etapa não ajuda.
-- Decompor um problema por pelo menos três critérios e aplicar a regra de parada.
-- Reconhecer padrões estruturais num problema novo.
-- Mapear o processo real, com esperas, exceções e retrabalho, e propor melhorias sem tecnologia.
-- Modelar entidades, atributos, relações, identificadores, estados e fonte da verdade.
-- Avaliar a qualidade de dados pelas seis dimensões.
-- Representar regras como tabela de decisão, árvore e máquina de estado; encontrar lacunas e conflitos.
-- Classificar exceções e decisões pelo grau de explicitabilidade.
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir — é mais rápido do que descobrir a lacuna no meio de um projeto.
+
+**R2.1** Quais são os oito elementos de um Problem Statement? (Cap. 4)
+
+**R2.2** Classifique como fato, interpretação ou hipótese: "o processo é lento"; "o pedido 812 ficou 3 dias na fila"; "a fila existe porque só uma pessoa aprova". (Cap. 4)
+
+**R2.3** Num processo de quatro etapas, as capacidades são 60, 40, 55 e 90 itens por dia. Onde está o gargalo, e o que acontece se você dobrar a capacidade da etapa de 90? (Cap. 5)
+
+**R2.4** Por que o nome de uma pessoa não serve como identificador? Dê duas razões. (Cap. 9)
+
+**R2.5** O que a regra de parada da decomposição exige de cada parte? (Cap. 6)
+
+**R2.6** Cite três padrões estruturais, com um exemplo de cada em domínios diferentes. (Cap. 7)
+
+**R2.7** Para que serve uma tabela de decisão, além de registrar a regra? (Cap. 10)
+
+**R2.8** O que é uma exceção imprevista, e qual é a regra para ela? (Cap. 10)
 
 ### Exercício integrador · P · M0
 

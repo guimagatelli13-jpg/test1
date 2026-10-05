@@ -108,14 +108,14 @@ end
 function Header(el)
   local txt = pandoc.utils.stringify(el.content)
   if el.level == 1 then
-    if txt:match("^PARTE") then
+    if txt:match("^PARTE") or txt:match("^ANTES DE COMEÇAR") then
       el.classes:insert("parte")
     elseif txt:match("^APÊNDICE") then
       el.classes:insert("parte")
       el.classes:insert("apendices")
     end
   elseif el.level == 2 then
-    if txt:match("^Capítulo") then
+    if txt:match("^Capítulo") or txt:match("^Guia do primeiro teste") then
       el.classes:insert("capitulo")
     elseif txt:match("^P%d%d") then
       el.classes:insert("projeto")

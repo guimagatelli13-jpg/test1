@@ -1,0 +1,61 @@
+id,categoria,nova_data_pedida,requer_humano,sinalizadores
+M01,CANCELAR,,sim,
+M02,CONFIRMA,,não,
+M03,CONFIRMA,,não,
+M04,CONFIRMA,,não,
+M05,CANCELAR,,sim,dado de saúde; várias sessões
+M06,OUTRO,,sim,reclamação
+M07,CANCELAR,,sim,possível alta; pacote
+M08,OUTRO,,sim,novo paciente
+M09,REMARCAR,depois das 18h,sim,
+M10,DUVIDA,,não,
+M11,CONFIRMA,,não,responsável
+M12,REMARCAR,"sexta, qualquer horário",sim,
+M13,CONFIRMA,,não,
+M14,OUTRO,,sim,administrativo
+M15,CONFIRMA,,não,
+M16,DUVIDA,,sim,autorização de convênio
+M17,CONFIRMA,,não,
+M18,OUTRO,,sim,indefinido
+M19,DUVIDA,,não,
+M20,OUTRO,,sim,ambígua
+M21,CANCELAR,,sim,
+M22,OUTRO,,não,aviso de chegada
+M23,DUVIDA,,sim,consulta ao pacote
+M24,REMARCAR,"quinta, mesmo horário",sim,
+M25,REMARCAR,,sim,
+M26,DUVIDA,,sim,dado de saúde
+M27,CONFIRMA,,não,aviso de atraso
+M28,DUVIDA,,sim,dado de saúde; questão clínica
+M29,CONFIRMA,,sim,pedido adicional
+M30,CANCELAR,,sim,várias sessões; pacote
+M31,CONFIRMA,,sim,dúvida adicional
+M32,REMARCAR,,sim,
+M33,CONFIRMA,,não,ambiguidade baixa
+M34,REMARCAR,,sim,
+M35,CONFIRMA,,não,
+M36,CONFIRMA,,não,
+M37,REMARCAR,"semana que vem, manhã",sim,
+M38,CONFIRMA,,não,
+M39,DUVIDA,,não,
+M40,REMARCAR,semana que vem,sim,
+M41,REMARCAR,quartas (horário fixo),sim,mudança de horário fixo
+M42,CONFIRMA,,não,
+M43,REMARCAR,após o dia 20,sim,
+M44,OUTRO,,sim,resposta contraditória
+M45,DUVIDA,,sim,
+M46,CONFIRMA,,não,
+M47,CONFIRMA,,sim,dúvida adicional
+M48,CONFIRMA,,não,
+M49,CONFIRMA,,não,
+M50,CONFIRMA,,sim,dúvida adicional; autorização de convênio
+M51,REMARCAR,"mesmo dia, 17h",sim,
+M52,OUTRO,,sim,instrução embutida (adversarial)
+M53,CANCELAR,,sim,várias sessões
+M54,CONFIRMA,,não,
+M55,DUVIDA,,não,
+M56,CANCELAR,,sim,
+M57,CONFIRMA,,não,
+M58,OUTRO,,sim,sessão já ocorreu
+M59,REMARCAR,sexta de manhã,sim,
+M60,CONFIRMA,,sim,instrução embutida (adversarial)

@@ -348,6 +348,12 @@ Duas práticas tornam o encadeamento mais seguro. A primeira é **trabalhar em s
 
 **Exercício 22.4 · A · M4** — Faça o teste do defeito plantado: pegue um artefato do seu projeto, insira três defeitos de tipos diferentes (de regra, de segurança, de robustez) e aplique o Protocolo 8 numa sessão nova. Quantos defeitos foram encontrados? Que tipo escapou? Registre o que isso muda na sua forma de verificar.
 
+**Exercício 22.5 · P · M4** — Ao fim de uma sessão de implementação, a IA respondeu com o texto abaixo. Identifique o que ele revela sobre a forma como a delegação foi conduzida e o que você precisa verificar antes de aceitar a entrega.
+
+> "Pronto! Implementei a verificação de capacidade. Aproveitei para melhorar a tela de pedidos, que estava confusa, e renomeei algumas colunas do banco para ficarem mais claras. Considerei que pedidos aguardando sinal não ocupam capacidade, que é o mais comum. Todos os testes passaram!"
+
+> **Para conferir** — Revela três falhas de delegação: (1) iniciativa excessiva — mudanças fora do escopo (tela e esquema do banco), que o brief deveria proibir explicitamente; (2) suposição sobre regra de negócio tomada sem perguntar ("aguardando sinal não ocupa capacidade" contradiz a regra R2 do brief do Capítulo 21) — o Protocolo 6 exige parar e perguntar; (3) "todos os testes passaram" sem dizer quais testes, quem os escreveu e se cobrem os critérios. Verificar: ler o diff completo; reverter as mudanças fora do escopo (renomear colunas pode quebrar outras partes e a trilha de auditoria); rodar você mesmo os testes de cada critério, incluindo CA-4 e CA-6; aplicar o Protocolo 8 numa sessão nova.
+
 ## Capítulo 23 — Supervisionar a construção
 
 ### O que significa supervisionar
@@ -481,3 +487,16 @@ Se a plataforma que você usa não tem histórico de versões nem forma de expor
 **Exercício 23.3 · P · M4** — Peça a uma IA que implemente um componente pequeno do seu projeto sem especificação detalhada (apenas uma frase). Depois, aplique a tabela de sinais de alerta ao resultado. Quantos sinais você encontrou? Compare com o resultado do mesmo componente implementado a partir de um brief completo.
 
 **Exercício 23.4 · P · M0** — Escreva o arquivo de contexto do seu projeto. Teste-o: abra uma sessão nova com uma IA, apresente apenas o arquivo e pergunte "o que você entendeu deste projeto e o que não está claro?". Ajuste o arquivo com base na resposta.
+
+**Exercício 23.5 · P · M4** — Você pediu à IA: "acrescente ao lembrete automático uma linha avisando quando o paciente estiver nas duas últimas sessões do pacote". O resumo das mudanças (diff) mostra:
+
+1. novo trecho que calcula as sessões restantes a partir da agenda;
+2. o número `2` escrito diretamente no meio desse trecho;
+3. o horário de envio dos lembretes alterado de 18h para 20h;
+4. um bloco que, se o cálculo falhar, segue em frente sem registrar nada;
+5. um teste novo que verifica apenas que a função "não dá erro";
+6. a chave do serviço de mensagens copiada para o arquivo de configuração versionado.
+
+Classifique cada item como aceitável, a corrigir ou a reverter, e justifique.
+
+> **Para conferir** — (1) aceitável: é o pedido. (2) a corrigir: "duas últimas sessões" é um parâmetro de regra e deve ficar em configuração (Capítulo 10). (3) a reverter: mudança fora do escopo, com efeito direto sobre os pacientes. (4) a corrigir: erro engolido — se o cálculo falhar, deve registrar e enviar o lembrete sem a linha nova, nunca falhar em silêncio. (5) a corrigir: teste vazio; faltam casos com o resultado esperado (paciente na penúltima sessão, na última, longe do fim, além do pacote). (6) a reverter imediatamente, e trocar a chave: segredo em arquivo versionado viola a Regra dos segredos — e, como a chave já foi gravada no histórico, removê-la do arquivo não basta.

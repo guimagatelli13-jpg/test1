@@ -12,7 +12,8 @@ Todo projeto precisa de um contexto real ou realista. Há três opções, em ord
 
 1. **Seu próprio contexto** — um problema do seu trabalho, da sua casa, de uma organização de que você participa.
 2. **Contexto de um terceiro** — um colega, um pequeno negócio, uma organização sem fins lucrativos, que aceite colaborar (obrigatório no P09).
-3. **Banco de cenários** — se você não tiver acesso a nenhum dos anteriores, use um dos cenários descritos adiante. Os cenários são propositalmente incompletos: parte do trabalho é decidir o que perguntar e registrar as suposições.
+3. **Caso-guia** — para o P00, o P03 e o P07 (e opcionalmente para P02 e P04 a P06), a Clínica Movimento do Apêndice H, com entrevistas, observação, planilhas e mensagens prontas. É a melhor opção quando você estuda sozinho e ainda não tem acesso a uma organização.
+4. **Banco de cenários** — para os demais projetos, se você não tiver acesso a nenhum dos anteriores, use um dos cenários descritos adiante. Os cenários são propositalmente incompletos: parte do trabalho é decidir o que perguntar e registrar as suposições.
 
 Para garantir transferência, **pelo menos três projetos devem ser feitos em domínios diferentes entre si**, e pelo menos um deles em um domínio que você não conhece.
 
@@ -35,7 +36,9 @@ Cada rubrica de projeto descreve, para cada critério, o que é o nível 3 (prof
 
 > **Regra de aprovação** — Um projeto é aprovado quando: (a) todos os critérios críticos estão no nível 3 ou 4; (b) nenhum critério está no nível 1; (c) a reflexão e o exercício de transferência foram entregues. Projetos não aprovados são revisados e reapresentados; a revisão deve vir acompanhada de uma nota explicando o que mudou.
 
-Quem avalia? No estudo autodirigido, você mesmo, usando a rubrica com honestidade e, sempre que possível, com a avaliação de um colega (avaliação por pares). Nos formatos acompanhados, um avaliador treinado (Parte IX). Em ambos os casos, **a avaliação se baseia em evidências** — artefatos, logs, registros de teste — e não na impressão sobre o resultado.
+Para calibrar a sua leitura das rubricas, o Apêndice I traz trabalhos comentados do P00, do P03 e do P07, em dois níveis, com a nota e a justificativa de um avaliador para cada critério.
+
+Quem avalia? No estudo autodirigido, você mesmo, usando a rubrica com honestidade e, sempre que possível, com a avaliação de um colega (avaliação por pares). Nos formatos acompanhados, um avaliador treinado (Manual do Programa). Em ambos os casos, **a avaliação se baseia em evidências** — artefatos, logs, registros de teste — e não na impressão sobre o resultado.
 
 ### Integridade
 
@@ -106,6 +109,8 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Restrições.** Não proponha nenhuma solução tecnológica neste projeto. O entregável principal deve caber em duas páginas. Ao menos uma conversa com alguém afetado pela situação (que não seja você), ou, se a situação for só sua, uma semana de registro de ocorrências.
 
+**Com o caso-guia.** Use as seções H1 a H5 do Apêndice H no lugar das conversas: leia as entrevistas como se as tivesse conduzido, registre fatos, interpretações e hipóteses e use a planilha de agenda para obter a linha de base. A validação com um afetado pode ser substituída por uma checagem escrita: para cada frase do seu Problem Statement, aponte o trecho de entrevista ou o dado que a sustenta.
+
 **Competências desenvolvidas.** Problem Framing, Systems Thinking, Communication, Metacognition.
 
 **Briefing.** Escolha a situação. Faça pelo menos duas conversas usando as perguntas do Capítulo 4, pedindo casos concretos e recentes. Registre fatos, interpretações e hipóteses em colunas separadas. Construa o mapa de stakeholders com posição, interesse e o que cada um perde se a situação mudar. Desenhe o System Map. Escreva o Problem Statement com os oito elementos, incluindo um indicador e o método para obter a linha de base (ainda que você não a tenha medido). Mostre o Problem Statement a um afetado e registre a reação. Só então peça a uma IA que critique o Problem Statement (M1) e registre o que aceitou e rejeitou.
@@ -150,7 +155,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Entregáveis.** Mini Problem Statement; análise da Escada e dos cinco fatores; especificação dos dez elementos usada como pedido de construção; automação funcionando; lista de testes executada, com resultado e evidência de cada situação; log de duas semanas; reflexão.
 
-**Critérios de sucesso.** Duas semanas de operação sem falha não tratada; teste de duplicidade aprovado; indicador medido antes e depois.
+**Critérios de sucesso.** Duas semanas de operação sem falha não tratada; teste de duplicidade aprovado; indicador medido antes e depois. Na Trilha Essencial, uma semana de operação é suficiente.
 
 **Testes.** Executar duas vezes seguidas; remover um dado obrigatório; simular indisponibilidade do serviço usado; desligar a automação e verificar se o alerta de ausência (ou resumo) revela a ausência.
 
@@ -219,6 +224,8 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 **Problema.** O processo tem um problema percebido (demora, erro, retrabalho, insatisfação), mas ninguém sabe exatamente onde nem por quê.
 
 **Restrições.** Pelo menos duas pessoas que executam o processo devem ser entrevistadas, e pelo menos três casos reais acompanhados. A proposta deve incluir pelo menos uma melhoria sem tecnologia (degraus 0 a 2). Confidencialidade dos participantes respeitada.
+
+**Com o caso-guia.** As entrevistas e a observação da recepção (Apêndice H) substituem as entrevistas e o acompanhamento; os "casos acompanhados" são linhas reais da planilha de agenda, que você deve limpar e analisar. A proposta é escrita para Sílvia, em até três páginas, e o piloto é substituído por um plano de piloto com indicador, linha de base e critério de interrupção.
 
 **Competências desenvolvidas.** Process Mapping, Systems Thinking, Decomposition, Communication, Technical Decision Making, Project Management.
 
@@ -373,6 +380,8 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 
 **Restrições.** Conjunto de avaliação com pelo menos 40 casos, respostas definidas antes, um terço separado. Limiares definidos antes da execução. As duas versões implementadas de forma razoável (a versão determinística não pode ser um "espantalho"). Dados anonimizados. Fallback e supervisão projetados.
 
+**Com o caso-guia.** Use as 60 mensagens do Apêndice H e o guia de rotulagem. Rotule você mesmo todas as mensagens antes de abrir a rotulagem de referência; depois, compare as duas e registre a concordância — ela substitui a segunda pessoa do critério avançado. Com 60 casos, separe 20 para a medição final. As mensagens são fictícias, mas trate as que contêm dados de saúde como se fossem reais ao escolher o serviço de IA.
+
 **Competências desenvolvidas.** AI Opportunity Identification, Testing, Validation, Technical Decision Making, Risk Analysis.
 
 **Briefing.** Posicione a parte na Matriz Entrada × Regra e estime o custo do erro. Monte o conjunto de avaliação com casos difíceis. Defina métricas por campo ou categoria, erros críticos e limiares por nível de autonomia. Construa a versão determinística mais simples razoável e a versão com IA mais simples razoável. Ajuste usando dois terços; meça no terço separado; repita a execução da IA para medir variação. Considere combinações. Decida, com nível de autonomia, fallback de incerteza e de indisponibilidade, e supervisão. Escreva o plano de validação para um piloto.
@@ -492,7 +501,7 @@ Observe três coisas nessa cadeia. A IA, que estava no pedido inicial, entrou ap
 - algum dado sensível;
 - incerteza real sobre qual é a melhor solução.
 
-O problema pode vir do seu contexto, de um terceiro ou do banco de capstones mantido pelo programa (Parte IX).
+O problema pode vir do seu contexto, de um terceiro ou do banco de capstones mantido pelo programa (Manual do Programa).
 
 **Problema.** Deliberadamente mal definido no início. Parte da avaliação é como você o define.
 

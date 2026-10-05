@@ -1,0 +1,61 @@
+id,nome,telefone,tipo,profissional_referencia,inicio_tratamento
+P001,Ana Esteves,(00) 95560-4012,Particular,Renata,20/05/2026
+P002,Bruno Campos,(00) 97950-8651,Particular,Tomás,29/05/2026
+P003,Carla Xavier,(00) 99057-3672,Particular,Sílvia,18/06/2026
+P004,Daniel Valente,(00) 92208-2160,Convênio Alfa,Renata,25/07/2026
+P005,Elisa Esteves,(00) 99508-2248,Convênio Alfa,Sílvia,30/06/2026
+P006,Fábio Valente,(00) 91910-5139,Particular,Caio,16/07/2026
+P007,Gabriela Campos,(00) 92714-4670,Convênio Alfa,Caio,20/07/2026
+P008,Hugo Diniz,(00) 95176-6900,Particular,Caio,25/05/2026
+P009,Isabel Brandão,(00) 91086-1593,Convênio Beta,Sílvia,04/07/2026
+P010,João Teixeira,(00) 98049-8405,Particular,Renata,06/06/2026
+P011,Karina Farias,(00) 93022-5110,Particular,Renata,16/07/2026
+P012,Luiz Lacerda,(00) 95673-2124,Particular,Renata,10/07/2026
+P013,Marta Guerra,(00) 92288-1973,Particular,Caio,12/07/2026
+P014,Nelson Macedo,(00) 91032-2236,Particular,Caio,21/07/2026
+P015,Olga Almeida,(00) 99072-6522,Particular,Tomás,17/06/2026
+P016,Paulo Xavier,(00) 94799-2230,Particular,Renata,31/07/2026
+P017,Queila Almeida,(00) 97564-8642,Particular,Renata,19/07/2026
+P018,Rafael Guerra,(00) 92971-8993,Convênio Alfa,Caio,14/07/2026
+P019,Sônia Duarte,(00) 97097-9433,Convênio Beta,Tomás,10/07/2026
+P020,Thiago Fontes,(00) 97946-9479,Convênio Alfa,Renata,02/08/2026
+P021,Úrsula Esteves,(00) 91058-9451,Convênio Beta,Caio,26/07/2026
+P022,Vítor Lacerda,(00) 91177-1948,Convênio Beta,Sílvia,19/07/2026
+P023,Wanda Paiva,(00) 92179-9090,Convênio Beta,Tomás,14/07/2026
+P024,Xavier Paiva,(00) 94297-5804,Convênio Beta,Caio,28/07/2026
+P025,Yara Paiva,(00) 97001-8333,Convênio Alfa,Tomás,29/07/2026
+P026,Zeca Campos,(00) 94268-7083,Particular,Caio,16/07/2026
+P027,Antônio Diniz,(00) 97859-4423,Convênio Beta,Tomás,31/07/2026
+P028,Beatriz Rezende,(00) 93379-7227,Convênio Alfa,Caio,21/07/2026
+P029,Celso Coutinho,(00) 99476-4899,Convênio Alfa,Sílvia,03/07/2026
+P030,Débora Brandão,(00) 97935-4898,Convênio Beta,Renata,14/07/2026
+P031,Edson Lacerda,(00) 93271-7480,Convênio Beta,Renata,29/07/2026
+P032,Fernanda Guerra,(00) 99934-7800,Particular,Renata,09/06/2026
+P033,Gilberto Paiva,(00) 99653-2305,Convênio Alfa,Caio,15/07/2026
+P034,Helena Lacerda,(00) 98521-4791,Particular,Renata,02/07/2026
+P035,Ítalo Teixeira,(00) 92741-2642,Particular,Caio,31/07/2026
+P036,Júlia Xavier,(00) 95847-9646,Particular,Caio,21/06/2026
+P037,Lourdes Fontes,(00) 95832-5976,Particular,Tomás,16/07/2026
+P038,Márcio Gomes,(00) 97793-1649,Particular,Tomás,08/06/2026
+P039,Nádia Nogueira,(00) 91428-2383,Particular,Renata,30/07/2026
+P040,Otávio Gomes,(00) 95366-8688,Particular,Caio,16/07/2026
+P041,Priscila Paiva,(00) 91936-6004,Particular,Renata,26/06/2026
+P042,Renato Queiroz,(00) 98336-3044,Convênio Alfa,Caio,07/07/2026
+P043,Simone Teixeira,(00) 98695-9357,Particular,Sílvia,28/07/2026
+P044,Tânia Barros,(00) 92975-7228,Convênio Beta,Caio,22/07/2026
+P045,Valter Valente,(00) 98640-1710,Convênio Beta,Renata,12/07/2026
+P046,Vera Sampaio,(00) 95938-9545,Convênio Beta,Caio,04/07/2026
+P047,Wilson Lacerda,(00) 99499-7012,Particular,Caio,02/07/2026
+P048,Zilda Barros,(00) 93639-4511,Convênio Alfa,Caio,10/07/2026
+P049,Alice Rezende,(00) 98939-4773,Particular,Caio,05/06/2026
+P050,Caetano Macedo,(00) 93663-4972,Particular,Renata,08/04/2026
+P051,Diva Macedo,(00) 95229-6707,Convênio Beta,Tomás,25/07/2026
+P052,Emílio Nogueira,(00) 95824-8799,Particular,Renata,30/07/2026
+P053,Flávia Diniz,(00) 93185-3610,Particular,Renata,29/07/2026
+P054,Glória Henriques,(00) 98495-5479,Convênio Alfa,Renata,25/07/2026
+P055,Heitor Valente,(00) 96232-8158,Convênio Alfa,Caio,12/07/2026
+P056,Iara Farias,(00) 92628-8598,Convênio Alfa,Sílvia,26/07/2026
+P057,Jorge Duarte,(00) 93987-6495,Particular,Renata,07/07/2026
+P058,Lúcia Lacerda,(00) 93725-9755,Particular,Caio,22/07/2026
+P059,Mauro Campos,(00) 94270-9387,Convênio Beta,Tomás,05/07/2026
+P060,Neide Paiva,(00) 94745-8778,Convênio Alfa,Renata,17/07/2026

@@ -511,22 +511,24 @@ Aposentar também é um projeto: migrar dados, avisar usuários, desligar integr
 
 ## Revisão da Parte VI
 
-Verifique se consegue:
+### Teste de recuperação
 
-- distinguir teste de validação e "funciona no meu exemplo" de evidência;
-- escolher casos de teste com classes de equivalência, valores limite, tabelas de decisão e máquinas de estado;
-- escrever e executar um Test Plan com casos negativos, de permissão, duplicidade, concorrência e falha de dependência;
-- aplicar o teste de sabotagem;
-- testar componentes com IA por conjunto de avaliação, com regressão;
-- usar a escala de evidência e escrever um plano de validação com método de comparação e explicações alternativas;
-- escrever um Validation Report com limitações declaradas;
-- aplicar as quatro perguntas de risco e manter um Risk Register;
-- explicar como a arquitetura define o tamanho dos riscos;
-- aplicar princípios de privacidade e evitar os caminhos comuns de exposição de dados;
-- defender sistemas contra injeção de instruções por meio da arquitetura;
-- projetar reversibilidade e supervisão humana que funcione;
-- definir métricas das cinco famílias, alertas acionáveis e análise de modos de falha;
-- conduzir a resposta a incidentes e uma revisão pós-incidente sem culpados;
-- conduzir retrospectivas, gerir dívida técnica, garantir continuidade e planejar a saída de dependências.
+Responda por escrito, sem consultar o texto e sem IA (modo M0), em poucas linhas cada. Depois confira no Apêndice J. Se errar ou deixar em branco mais de duas questões, releia os capítulos indicados entre parênteses antes de seguir — é mais rápido do que descobrir a lacuna no meio de um projeto.
+
+**R6.1** Qual a diferença entre testar e validar? (Cap. 30)
+
+**R6.2** Para a regra "pedidos de até 10 itens", que valores você testaria? (Cap. 30)
+
+**R6.3** O que é o teste de sabotagem? (Cap. 30)
+
+**R6.4** Cite três explicações alternativas para uma melhora do indicador depois de um piloto. (Cap. 31)
+
+**R6.5** Por que se diz que a arquitetura define o tamanho dos riscos? Dê um exemplo. (Cap. 32)
+
+**R6.6** Cite duas defesas contra injeção de instruções que não dependem de o modelo obedecer. (Cap. 32)
+
+**R6.7** O que é um alerta de ausência? (Cap. 33)
+
+**R6.8** Quais são os quatro itens de um plano de saída de uma dependência? (Cap. 34)
 
 > **Fim da etapa de pré-requisitos do Projeto P09.** Com a Parte VI completa, você pode fazer o Projeto P09 — Projeto profissional.
